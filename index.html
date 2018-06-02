@@ -201,7 +201,7 @@
       <script src="javascripts/all.js"></script>
   </head>
 
-  <body class="index" data-languages="[&quot;shell&quot;,&quot;ruby&quot;,&quot;python&quot;,&quot;javascript&quot;]">
+  <body class="index" data-languages="[&quot;shell&quot;]">
     <a href="#" id="nav-button">
       <span>
         NAV
@@ -212,9 +212,6 @@
       <img src="images/logo.png" class="logo" alt="Logo" />
         <div class="lang-selector">
               <a href="#" data-language-name="shell">shell</a>
-              <a href="#" data-language-name="ruby">ruby</a>
-              <a href="#" data-language-name="python">python</a>
-              <a href="#" data-language-name="javascript">javascript</a>
         </div>
         <div class="search">
           <input type="text" class="search" id="input-search" placeholder="Search">
@@ -222,27 +219,83 @@
         <ul class="search-results"></ul>
       <div id="toc" class="toc-list-h1">
           <li>
-            <a href="#introduction" class="toc-h1 toc-link" data-title="Introduction">Introduction</a>
+            <a href="#organization-api" class="toc-h1 toc-link" data-title="organization-api">Organization API</a>
           </li>
           <li>
-            <a href="#authentication" class="toc-h1 toc-link" data-title="Authentication">Authentication</a>
+            <a href="#authentication" class="toc-h1 toc-link" data-title="authentication">Authentication</a>
           </li>
           <li>
-            <a href="#kittens" class="toc-h1 toc-link" data-title="Kittens">Kittens</a>
+            <a href="#pagination" class="toc-h1 toc-link" data-title="pagination">Pagination</a>
+          </li>
+          <li>
+            <a href="#members" class="toc-h1 toc-link" data-title="members">Members</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#get-all-kittens" class="toc-h2 toc-link" data-title="Get All Kittens">Get All Kittens</a>
+                    <a href="#member-resource" class="toc-h2 toc-link" data-title="member-resource">Member Resource</a>
                   </li>
                   <li>
-                    <a href="#get-a-specific-kitten" class="toc-h2 toc-link" data-title="Get a Specific Kitten">Get a Specific Kitten</a>
+                    <a href="#list-members" class="toc-h2 toc-link" data-title="list-members">List Members</a>
                   </li>
                   <li>
-                    <a href="#delete-a-specific-kitten" class="toc-h2 toc-link" data-title="Delete a Specific Kitten">Delete a Specific Kitten</a>
+                    <a href="#retrieve-a-member" class="toc-h2 toc-link" data-title="retrieve-a-member">Retrieve a Member</a>
                   </li>
               </ul>
           </li>
           <li>
-            <a href="#errors" class="toc-h1 toc-link" data-title="Errors">Errors</a>
+            <a href="#jobs" class="toc-h1 toc-link" data-title="jobs">Jobs</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#job-resource" class="toc-h2 toc-link" data-title="job-resource">Job Resource</a>
+                  </li>
+                  <li>
+                    <a href="#list-jobs" class="toc-h2 toc-link" data-title="list-jobs">List Jobs</a>
+                  </li>
+                  <li>
+                    <a href="#retrieve-a-job" class="toc-h2 toc-link" data-title="retrieve-a-job">Retrieve a Job</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#job-events" class="toc-h1 toc-link" data-title="job-events">Job Events</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#job-events-resource" class="toc-h2 toc-link" data-title="job-events-resource">Job Events Resource</a>
+                  </li>
+                  <li>
+                    <a href="#event-types" class="toc-h2 toc-link" data-title="event-types">Event Types</a>
+                  </li>
+                  <li>
+                    <a href="#list-job-events" class="toc-h2 toc-link" data-title="list-job-events">List Job Events</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#employers" class="toc-h1 toc-link" data-title="employers">Employers</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#employer-resource" class="toc-h2 toc-link" data-title="employer-resource">Employer Resource</a>
+                  </li>
+                  <li>
+                    <a href="#list-employers" class="toc-h2 toc-link" data-title="list-employers">List Employers</a>
+                  </li>
+                  <li>
+                    <a href="#retrieve-an-employer" class="toc-h2 toc-link" data-title="retrieve-an-employer">Retrieve an Employer</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#webhooks" class="toc-h1 toc-link" data-title="webhooks">Webhooks</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#receiving-webhooks" class="toc-h2 toc-link" data-title="receiving-webhooks">Receiving Webhooks</a>
+                  </li>
+                  <li>
+                    <a href="#responding-to-a-webhook" class="toc-h2 toc-link" data-title="responding-to-a-webhook">Responding to a webhook</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#errors" class="toc-h1 toc-link" data-title="errors">Errors</a>
           </li>
       </div>
         <ul class="toc-footer">
@@ -253,80 +306,161 @@
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
-        <h1 id='introduction'>Introduction</h1>
-<p>Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.</p>
+        <h1 id='organization-api'>Organization API</h1>
+<blockquote>
+<p>API Endpoint:</p>
+</blockquote>
+<pre class="highlight plaintext"><code>    https://api.huntr.co/org
+</code></pre>
+<p>The Huntr API for Organizations is organized around <a href="https://en.wikipedia.org/wiki/Representational_State_Transfer">REST</a>. You can use this API to access Huntr&#39;s Organizational API endpoints, which can get information on your members plus the jobs, employers, and events they manage through Huntr.</p>
 
-<p>We have language bindings in Shell, Ruby, and Python! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.</p>
+<p>This API is for you if you are an organization using Huntr to follow the job search progress of your members (job seekers). This is the case if you have an <a href="https://huntr.co/advisors">organizational account</a> with member boards managed by your organization&#39;s advisors.</p>
 
-<p>This example API documentation page was created with <a href="https://github.com/lord/slate">Slate</a>. Feel free to edit it and use it as a base for your own API&#39;s documentation.</p>
+<p>This API will <strong>NOT</strong> work for you if multiple job seekers have <strong>personally</strong> shared their boards with you, in that case there is no concept of an organization, and you are using Huntr as an individual.</p>
 <h1 id='authentication'>Authentication</h1>
 <blockquote>
 <p>To authorize, use this code:</p>
 </blockquote>
-<pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code><span class="c"># With shell, you can just pass the correct header with each request</span>
+<pre class="highlight shell tab-shell"><code><span class="c"># With shell, you can just pass the correct header with each request</span>
 curl <span class="s2">"api_endpoint_here"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">);</span>
+  -H <span class="s2">"Authorization: Bearer &lt;ORG_ACCESS_TOKEN&gt;"</span>
 </code></pre>
 <blockquote>
-<p>Make sure to replace <code>meowmeowmeow</code> with your API key.</p>
+<p>Make sure to replace <code>ORG_ACCESS_TOKEN</code> with your API key.</p>
 </blockquote>
 
-<p>Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our <a href="http://example.com/developers">developer portal</a>.</p>
+<p>Huntr uses Access Tokens to allow access to the organization API. You can register a new Huntr Access Token in your organization&#39;s admin dashboard.</p>
 
-<p>Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:</p>
+<p>Huntr expects for the Access Token to be included in all API requests to the server in a header that looks like the following:</p>
 
-<p><code>Authorization: meowmeowmeow</code></p>
+<p><code>Authorization: Bearer &lt;ORG_ACCESS_TOKEN&gt;</code></p>
 
 <aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
+You must replace <code>ORG_ACCESS_TOKEN</code> with your organization's Access Token.
 </aside>
-<h1 id='kittens'>Kittens</h1><h2 id='get-all-kittens'>Get All Kittens</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
 
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span>
-</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">kittens</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="nx">get</span><span class="p">();</span>
+<aside class="warning">
+Your Access Token carries many privileges, so be sure to keep them secure! Do not share your secret API keys in publicly accessible areas such GitHub, client-side code, and so forth.
+</aside>
+<h1 id='pagination'>Pagination</h1>
+<blockquote>
+<p>A sample list query:</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.huntr.co/org/members?limit=2"</span>
+  -H <span class="s2">"Authorization: Bearer &lt;ORG_ACCESS_TOKEN&gt;"</span>
 </code></pre>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fluffums"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"calico"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">]</span><span class="w">
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"_id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"5a70a7361d06bb000f0f1c43"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"email"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"leod@purpleuniversity.edu"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"givenName"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Leo"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"familyName"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Davis"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"createdAt"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-01-30T17:11:18.399Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"isActive"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"_id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"5a70a7361d06bb000f0f1c44"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"email"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"johnj@purpleuniversity.edu"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"givenName"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"John"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"familyName"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Johnson"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"createdAt"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-01-28T17:11:18.399Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"isActive"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"next"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5a70a7361d06bb000f0f1c44"</span><span class="w">
+</span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>This endpoint retrieves all kittens.</p>
+<blockquote>
+<p>Retrieve the second page of results with this query:</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.huntr.co/org/members?limit=2&amp;next=5a70a7361d06bb000f0f1c44"</span>
+  -H <span class="s2">"Authorization: Bearer &lt;ORG_ACCESS_TOKEN&gt;"</span>
+</code></pre>
+<p>Some API resources have support for bulk fetches via &quot;list&quot; API methods. For instance, you can list members, jobs, and job events. These list API methods share a common structure, taking these two parameters: <code>limit</code>, <code>next</code>.</p>
+
+<p>Huntr uses cursor-based pagination via the <code>next</code> parameter which takes an existing object ID value. Every &quot;list&quot; endpoint result includes a <code>data</code> parameter, with the results from the call, along with a <code>next</code> parameter. The <code>next</code> parameter represents the id of the last object returned. Passing this parameter in subsequent call will return the next page of results. So, if you&#39;ve made your first query and set 100 as a limit and want to retrieve the second page of results, you can repeat the same query, but with the <code>next</code> parameter set with the value returned by your first call. You can see an example set of queries on the right.</p>
+<h1 id='members'>Members</h1><h2 id='member-resource'>Member Resource</h2>
+<blockquote>
+<p>A member of your organization:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"_id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"5a70a7361d06bb000f0f1c43"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"email"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"leod@purpleuniversity.edu"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"givenName"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Leo"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"familyName"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Davis"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"createdAt"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-01-30T17:11:18.399Z"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"isActive"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>A member is one of the job seekers using Huntr under your organization. If you are an educational institution, your job seeking students qualify as your members.</p>
+
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>_id</td>
+<td>Member&#39;s Huntr id</td>
+</tr>
+<tr>
+<td>email</td>
+<td>Member&#39;s email</td>
+</tr>
+<tr>
+<td>givenName</td>
+<td>Member&#39;s first name</td>
+</tr>
+<tr>
+<td>familyName</td>
+<td>Member&#39;s last name</td>
+</tr>
+<tr>
+<td>createdAt</td>
+<td>Date the member signed up for Huntr</td>
+</tr>
+<tr>
+<td>isActive</td>
+<td>Defines if member has been deactivated by an organization admin or advisor. Deactivating a member prevents them from continuing activity on boards managed by your organization, and it is usually done for members who have found a job and stopped using Huntr.</td>
+</tr>
+</tbody></table>
+<h2 id='list-members'>List Members</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.huntr.co/org/members?active=true"</span>
+  -H <span class="s2">"Authorization: Bearer &lt;ORG_ACCESS_TOKEN&gt;"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"_id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"5a70a7361d06bb000f0f1c43"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"email"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"leod@purpleuniversity.edu"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"givenName"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Leo"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"familyName"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Davis"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"createdAt"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-01-30T17:11:18.399Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"isActive"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"_id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"5a70a7361d06bb000f0f1c44"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"email"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"johnj@purpleuniversity.edu"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"givenName"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"John"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"familyName"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Johnson"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"createdAt"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-01-28T17:11:18.399Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"isActive"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"next"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5a70a7361d06bb000f0f1c44"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+<p>This endpoint retrieves all members for your organization.</p>
 <h3 id='http-request'>HTTP Request</h3>
-<p><code>GET http://example.com/api/kittens</code></p>
+<p><code>GET https://api.huntr.co/org/members</code></p>
 <h3 id='query-parameters'>Query Parameters</h3>
 <table><thead>
 <tr>
@@ -336,51 +470,39 @@ You must replace <code>meowmeowmeow</code> with your personal API key.
 </tr>
 </thead><tbody>
 <tr>
-<td>include_cats</td>
-<td>false</td>
-<td>If set to true, the result will also include cats.</td>
+<td>active</td>
+<td>none</td>
+<td>If set to <code>true</code>, the result will only include active members. If set to <code>false</code> the result will only include deactivated members.</td>
 </tr>
 <tr>
-<td>available</td>
-<td>true</td>
-<td>If set to false, the result will include kittens that have already been adopted.</td>
+<td>limit</td>
+<td>100</td>
+<td>Defines the maximum number of members to return</td>
+</tr>
+<tr>
+<td>next</td>
+<td>none</td>
+<td>If set, returns the next set of results after the object id provided</td>
 </tr>
 </tbody></table>
-
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside>
-<h2 id='get-a-specific-kitten'>Get a Specific Kitten</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens/2"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">max</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+<h2 id='retrieve-a-member'>Retrieve a Member</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.huntr.co/org/members/5a70a7361d06bb000f0f1c43"</span>
+  -H <span class="s2">"Authorization: Bearer &lt;ORG_ACCESS_TOKEN&gt;"</span>
 </code></pre>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
+  </span><span class="s2">"_id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"5a70a7361d06bb000f0f1c43"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"email"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"leod@purpleuniversity.edu"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"givenName"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Leo"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"familyName"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Davis"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"createdAt"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-01-30T17:11:18.399Z"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"isActive"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>This endpoint retrieves a specific kitten.</p>
-
-<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
+<p>This endpoint retrieves a specific member.</p>
 <h3 id='http-request-2'>HTTP Request</h3>
-<p><code>GET http://example.com/kittens/&lt;ID&gt;</code></p>
+<p><code>GET https://api.huntr.co/org/members/&lt;ID&gt;</code></p>
 <h3 id='url-parameters'>URL Parameters</h3>
 <table><thead>
 <tr>
@@ -390,36 +512,268 @@ Remember — a happy kitten is an authenticated kitten!
 </thead><tbody>
 <tr>
 <td>ID</td>
-<td>The ID of the kitten to retrieve</td>
+<td>The ID of the member to retrieve</td>
 </tr>
 </tbody></table>
-<h2 id='delete-a-specific-kitten'>Delete a Specific Kitten</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
+<h1 id='jobs'>Jobs</h1><h2 id='job-resource'>Job Resource</h2>
+<blockquote>
+<p>A job in one of your members&#39; boards:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"_id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"5b105edfb83359000f7b6353"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"_member"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5a70a7361d06bb000f0f1c43"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"title"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Full Stack Engineer"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"If you want to experience what it's like working with a tight team of entrepreneurs, and you'd like to maximize the pace of personal development, Routific might be the place for you to jump-start your career..."</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"salary"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$95,000"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"url"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"https://angel.co/routific/jobs/200057-full-stack-engineer"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"deadline"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-05-25T20:45:25.933Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"applicationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-05-31T20:45:25.933Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"firstInterviewDate"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"secondInterviewDate"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"offerDate"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"_employer"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5af1cd55a2642af3c39b8e2f"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Routific"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"domain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"routific.com"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"_list"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Applied"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"location"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"lat"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"49.2827"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"lng"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"-123.1207"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Vancouver"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"address"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Vancouver, BC, Canada"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"updatedAt"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-05-31T20:45:25.933Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"createdAt"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-05-31T20:45:19.742Z"</span><span class="p">,</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>A job is an instance of a job opportunity that one of your members has added to one of their boards managed by your organization. Each job card in the Huntr UI represent a different Job.</p>
 
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">delete</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens/2"</span>
-  -X DELETE
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">max</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="k">delete</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>_id</td>
+<td>Job&#39;s id</td>
+</tr>
+<tr>
+<td>_member</td>
+<td>id for the member who owns the job</td>
+</tr>
+<tr>
+<td>title</td>
+<td>Job title</td>
+</tr>
+<tr>
+<td>description</td>
+<td>Job description</td>
+</tr>
+<tr>
+<td>salary</td>
+<td>Job salary</td>
+</tr>
+<tr>
+<td>url</td>
+<td>URL for the original job post (i.e: https://indeed.com/jobs/001)</td>
+</tr>
+<tr>
+<td>deadline</td>
+<td>Date of job&#39;s application deadline</td>
+</tr>
+<tr>
+<td>applicationDate</td>
+<td>Date of application deadline</td>
+</tr>
+<tr>
+<td>firstInterviewDate</td>
+<td>Date of first interview</td>
+</tr>
+<tr>
+<td>secondInterviewDate</td>
+<td>Date of second interview</td>
+</tr>
+<tr>
+<td>offerDate</td>
+<td>Date offer was received</td>
+</tr>
+<tr>
+<td>_employer</td>
+<td>Object representing the employer</td>
+</tr>
+<tr>
+<td>_list</td>
+<td>Object representing the list the job is in. A list is a stage in a specific Huntr board.</td>
+</tr>
+<tr>
+<td>location</td>
+<td>Object representing job&#39;s location</td>
+</tr>
+<tr>
+<td>createdAt</td>
+<td>Date the job was created by the member</td>
+</tr>
+<tr>
+<td>updatedAt</td>
+<td>Date the job entity was last updated</td>
+</tr>
+</tbody></table>
+<h2 id='list-jobs'>List Jobs</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.huntr.co/org/jobs"</span>
+  -H <span class="s2">"Authorization: Bearer &lt;ORG_ACCESS_TOKEN&gt;"</span>
 </code></pre>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"deleted"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">":("</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"_id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"5b105edfb83359000f7b6353"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"_member"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5a70a7361d06bb000f0f1c43"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"title"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Full Stack Engineer"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"If you want to experience what it's like working with a tight team of entrepreneurs, and you'd like to maximize the pace of personal development, Routific might be the place for you to jump-start your career..."</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"salary"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$95,000"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"url"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"https://angel.co/routific/jobs/200057-full-stack-engineer"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"deadline"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-05-25T20:45:25.933Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"applicationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-05-31T20:45:25.933Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"firstInterviewDate"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"secondInterviewDate"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"offerDate"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"_employer"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5af1cd55a2642af3c39b8e2f"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Routific"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"domain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"routific.com"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"_list"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Applied"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"location"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"lat"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"49.2827"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"lng"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"-123.1207"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Vancouver"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"address"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Vancouver, BC, Canada"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"updatedAt"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-05-31T20:45:25.933Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"createdAt"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-05-31T20:45:19.742Z"</span><span class="p">,</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"_id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"5b105edfb83359000f7b6353"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"_member"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5a70a7361d06bb000f0f1c44"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"title"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Product Manager"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"At Stripe, Product Managers help build innovative payments products for our customers. Product development is an extremely collaborative effort between engineering, design, analytics and customer-facing teams. In this role, youd be supporting the full stack engineering team that builds the..."</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"salary"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$105,000"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"url"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"https://betalist.com/jobs/171556-product-manager-seattle-at-stripe"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"deadline"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-05-23T20:45:25.933Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"applicationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-05-29T20:45:25.933Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"firstInterviewDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-05-31T20:45:25.933Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"secondInterviewDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-06-02T20:45:25.933Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"offerDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-06-03T20:45:25.933Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"_employer"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5af1cd55a2642af3d39d8e2f"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Stripe"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"domain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"stripe.com"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"_list"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Offer"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"location"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"lat"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"49.2827"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"lng"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"-123.1207"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Seattle"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"address"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Seattle, WA, USA"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"updatedAt"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-05-31T20:45:25.933Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"createdAt"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-05-21T20:45:19.742Z"</span><span class="p">,</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"next"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5b105edfb83359000f7b6353"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>This endpoint deletes a specific kitten.</p>
+<p>This endpoint lists all jobs added by members from your organization, jobs are sorted by the date they were created, starting from the most recently created.</p>
 <h3 id='http-request-3'>HTTP Request</h3>
-<p><code>DELETE http://example.com/kittens/&lt;ID&gt;</code></p>
+<p><code>GET https://api.huntr.co/org/jobs?member_id=&lt;MEMBER_ID&gt;</code></p>
+<h3 id='query-parameters-2'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>member_id</td>
+<td>none</td>
+<td>no</td>
+<td>If set, will only return jobs belonging to member</td>
+</tr>
+<tr>
+<td>created_after</td>
+<td>none</td>
+<td>no</td>
+<td>If set, will only return jobs created after time sent</td>
+</tr>
+<tr>
+<td>created_before</td>
+<td>none</td>
+<td>no</td>
+<td>If set, will only return jobs created before time sent</td>
+</tr>
+<tr>
+<td>limit</td>
+<td>100</td>
+<td>Defines the maximum number of jobs to return</td>
+<td></td>
+</tr>
+<tr>
+<td>next</td>
+<td>none</td>
+<td>If set, returns the next set of results after the object id provided</td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id='retrieve-a-job'>Retrieve a Job</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.huntr.co/org/jobs/5b105edfb83359000f7b6353"</span>
+  -H <span class="s2">"Authorization: Bearer &lt;ORG_ACCESS_TOKEN&gt;"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"_id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"5b105edfb83359000f7b6353"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"_member"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5a70a7361d06bb000f0f1c44"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"title"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Product Manager"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"At Stripe, Product Managers help build innovative payments products for our customers. Product development is an extremely collaborative effort between engineering, design, analytics and customer-facing teams. In this role, youd be supporting the full stack engineering team that builds the..."</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"salary"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$105,000"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"url"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"https://betalist.com/jobs/171556-product-manager-seattle-at-stripe"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"deadline"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-05-23T20:45:25.933Z"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"applicationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-05-29T20:45:25.933Z"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"firstInterviewDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-05-31T20:45:25.933Z"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"secondInterviewDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-06-02T20:45:25.933Z"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"offerDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-06-03T20:45:25.933Z"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"_employer"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5af1cd55a2642af3d39d8e2f"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Stripe"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"domain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"stripe.com"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"_list"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Offer"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"location"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"lat"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"49.2827"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"lng"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"-123.1207"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Seattle"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"address"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Seattle, WA, USA"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"updatedAt"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-05-31T20:45:25.933Z"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"createdAt"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-05-21T20:45:19.742Z"</span><span class="p">,</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint retrieves a specific job.</p>
+<h3 id='http-request-4'>HTTP Request</h3>
+<p><code>GET https://api.huntr.co/org/jobs/&lt;ID&gt;</code></p>
 <h3 id='url-parameters-2'>URL Parameters</h3>
 <table><thead>
 <tr>
@@ -429,13 +783,368 @@ Remember — a happy kitten is an authenticated kitten!
 </thead><tbody>
 <tr>
 <td>ID</td>
-<td>The ID of the kitten to delete</td>
+<td>The ID of the job to retrieve</td>
 </tr>
 </tbody></table>
-<h1 id='errors'>Errors</h1>
-<aside class="notice">This error section is stored in a separate file in `includes/_errors.md`. Slate allows you to optionally separate out your docs into many files...just save them to the `includes` folder and add them to the top of your `index.md`'s frontmatter. Files are included in the order listed.</aside>
+<h1 id='job-events'>Job Events</h1><h2 id='job-events-resource'>Job Events Resource</h2>
+<blockquote>
+<p>A job event object:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"_id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"5b105edfb83359000f7b6353"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"_member"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5a70a7361d06bb000f0f1c43"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"_job"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5b105edfb83359000f7b6353"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-05-18T20:45:19.742Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"eventType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"JOB_APPLICATION_DATE_SET"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-05-21T20:45:19.742Z"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>A job event represents one of many events that can occur during the lifetime of a job, therefore a single job may have <strong>multiple</strong> events related to it:</p>
 
-<p>The Kittn API uses the following error codes:</p>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+<th>Included in event types</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>_id</td>
+<td>id for the event</td>
+<td>All</td>
+</tr>
+<tr>
+<td>_member</td>
+<td>Member id of member who owns the job</td>
+<td>All</td>
+</tr>
+<tr>
+<td>_job</td>
+<td>Job id for which event applies to</td>
+<td>All</td>
+</tr>
+<tr>
+<td>eventType</td>
+<td>Type of event</td>
+<td>All</td>
+</tr>
+<tr>
+<td>date</td>
+<td>Date when the event actually happened (will happen), this date is usually set by the job seekers themselves</td>
+<td>JOB_APPLICATION_DATE_SET, JOB_FIRST_INTERVIEW_DATE_SET, JOB_SECOND_INTERVIEW_DATE_SET, JOB_OFFER_DATE_SET</td>
+</tr>
+<tr>
+<td>_fromList</td>
+<td>List from which a job was moved in a job moved event</td>
+<td>JOB_MOVED</td>
+</tr>
+<tr>
+<td>_toList</td>
+<td>List to which a job was moved in a job moved event</td>
+<td>JOB_MOVED</td>
+</tr>
+<tr>
+<td>createdAt</td>
+<td>Date the event was logged. As an example, if a member logged an interview date today, but the actual interview date logged is Friday week, then <code>createdAt</code> is <strong>today</strong>, and <code>date</code> is <strong>next friday</strong></td>
+<td>All</td>
+</tr>
+</tbody></table>
+<h2 id='event-types'>Event Types</h2>
+<p>There are multiple event types which include:</p>
+
+<table><thead>
+<tr>
+<th>Event Name</th>
+<th>Description</th>
+<th>Extra fields</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>JOB_ADDED</td>
+<td>A new job is added</td>
+<td>none</td>
+</tr>
+<tr>
+<td>JOB_MOVED</td>
+<td>An existing job is moved</td>
+<td>_fromList, _toList</td>
+</tr>
+<tr>
+<td>JOB_APPLICATION_DATE_SET</td>
+<td>Application date is set for an existing job</td>
+<td>date</td>
+</tr>
+<tr>
+<td>JOB_FIRST_INTERVIEW_DATE_SET</td>
+<td>First interview date is set for an existing job</td>
+<td>date</td>
+</tr>
+<tr>
+<td>JOB_SECOND_INTERVIEW_DATE_SET</td>
+<td>Second interview date is set for an existing job</td>
+<td>date</td>
+</tr>
+<tr>
+<td>JOB_OFFER_DATE_SET</td>
+<td>Offer date is set for an existing job</td>
+<td>date</td>
+</tr>
+</tbody></table>
+<h2 id='list-job-events'>List Job Events</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.huntr.co/org/job-events"</span>
+  -H <span class="s2">"Authorization: Bearer &lt;ORG_ACCESS_TOKEN&gt;"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"eventType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"JOB_FIRST_INTERVIEW_DATE_SET"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"_id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"5b105edfb83359000f7b6353"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"_member"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5a70a7361d06bb000f0f1c43"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"_job"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5b105edfb83359000f7b6353"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-05-18T20:45:19.742Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-06-01T20:45:19.742Z"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"eventType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"JOB_APPLICATION_DATE_SET"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"_id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"5b105edfb83359000f7b6351"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"_member"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5a70a7361d06bb000f0f1c43"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"_job"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5b105edfb83359000f7b6353"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-05-18T22:25:19.742Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-05-20T20:45:19.742Z"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"eventType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"JOB_MOVED"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"_id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"5b105edfb83359000f7b6341"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"_member"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5a70a7361d06bb000f0f1c43"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"_job"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5b105edfb83359000f7b6353"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"_fromList"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Wishlist"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"_toList"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Applied"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-05-20T20:45:19.742Z"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"eventType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"JOB_ADDED"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"_id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"5b105edfb83359000f7b6330"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"_member"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5a70a7361d06bb000f0f1c43"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"_job"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5b105edfb83359000f7b6353"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-05-19T20:45:19.742Z"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"next"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5b105edfb83359000f7b6330"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint retrieves all job events for your organization.</p>
+<h3 id='http-request-5'>HTTP Request</h3>
+<p><code>GET https://api.huntr.co/org/job-events</code></p>
+<h3 id='query-parameters-3'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>member_id</td>
+<td>none</td>
+<td>If set, will only return job events belonging to member</td>
+</tr>
+<tr>
+<td>job_id</td>
+<td>none</td>
+<td>If set, will only return job events belonging to job</td>
+</tr>
+<tr>
+<td>event_type</td>
+<td>none</td>
+<td>If set, will only return job events of the specific type. See <a href="#event-types">event types</a> section for possible event name values.</td>
+</tr>
+<tr>
+<td>limit</td>
+<td>100</td>
+<td>Defines the maximum number of jobs to return</td>
+</tr>
+<tr>
+<td>next</td>
+<td>none</td>
+<td>If set, returns the next set of results after the object id provided</td>
+</tr>
+</tbody></table>
+<h1 id='employers'>Employers</h1><h2 id='employer-resource'>Employer Resource</h2>
+<blockquote>
+<p>An employer for which your members have added a job for:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"_id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"5a70a7361d06bb000f0f1c43"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Routific"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"domain"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"routific.com"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"foundedYear"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"description"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Routific is a market-leading route optimization solution. Our software can help you plan routes in minutes."</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"location"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"788 Beatty St. Level B1, Vancouver, BC, V6B2M1, Canada"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"jobCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"applicationCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"interviewCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"offerCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>An employer for which your members have added a job for.</p>
+
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>_id</td>
+<td>Employer&#39;s id</td>
+</tr>
+<tr>
+<td>name</td>
+<td>Name of the employer</td>
+</tr>
+<tr>
+<td>domain</td>
+<td>Website for the employer</td>
+</tr>
+<tr>
+<td>foundedYear</td>
+<td>Year the employer was founded</td>
+</tr>
+<tr>
+<td>description</td>
+<td>Employer description</td>
+</tr>
+<tr>
+<td>location</td>
+<td>Full address for the employer</td>
+</tr>
+<tr>
+<td>jobCount</td>
+<td>Number of jobs added for this employer</td>
+</tr>
+<tr>
+<td>applicationCount</td>
+<td>Number of applications to this employer</td>
+</tr>
+<tr>
+<td>interviewCount</td>
+<td>Number of interviews from this employer</td>
+</tr>
+<tr>
+<td>offerCount</td>
+<td>Number of offers from this employer</td>
+</tr>
+</tbody></table>
+<h2 id='list-employers'>List Employers</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.huntr.co/org/employers"</span>
+  -H <span class="s2">"Authorization: Bearer &lt;ORG_ACCESS_TOKEN&gt;"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"_id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"5a71a7361d04bb000f1f1c43"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Routific"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"domain"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"routific.com"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"foundedYear"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"description"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Routific is a market-leading route optimization solution. Our software can help you plan routes in minutes."</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"location"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"788 Beatty St. Level B1, Vancouver, BC, V6B2M1, Canada"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"jobCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"applicationCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"interviewCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"offerCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"_id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"5a74a7361d08bc000f1f1c49"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Hootsuite"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"domain"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"hootsuite.com"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"foundedYear"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"description"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Enhance your social media management with Hootsuite, the leading social media dashboard. Manage multiple networks and profiles and measure your ..."</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"location"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"5 E 8th Ave, Vancouver, BC V5T 1R6, Canada"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"jobCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"applicationCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"interviewCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"offerCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="err">...</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"next"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5a74a7361d08bc000f1f1c50"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+<p>This endpoint retrieves all employers to which your members have added a job for.</p>
+<h3 id='http-request-6'>HTTP Request</h3>
+<p><code>GET https://api.huntr.co/org/employers</code></p>
+<h3 id='query-parameters-4'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>limit</td>
+<td>100</td>
+<td>Defines the maximum number of employers to return</td>
+</tr>
+<tr>
+<td>next</td>
+<td>none</td>
+<td>If set, returns the next set of results after the object id provided</td>
+</tr>
+</tbody></table>
+<h2 id='retrieve-an-employer'>Retrieve an Employer</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.huntr.co/org/employers/5a71a7361d04bb000f1f1c43"</span>
+  -H <span class="s2">"Authorization: Bearer &lt;ORG_ACCESS_TOKEN&gt;"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"_id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"5a71a7361d04bb000f1f1c43"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Routific"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"domain"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"routific.com"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"foundedYear"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"description"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Routific is a market-leading route optimization solution. Our software can help you plan routes in minutes."</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"location"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"788 Beatty St. Level B1, Vancouver, BC, V6B2M1, Canada"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"jobCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"applicationCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"interviewCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"offerCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint retrieves a specific employer.</p>
+<h3 id='http-request-7'>HTTP Request</h3>
+<p><code>GET https://api.huntr.co/org/employers/&lt;ID&gt;</code></p>
+<h3 id='url-parameters-3'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ID</td>
+<td>The ID of the employer to retrieve</td>
+</tr>
+</tbody></table>
+<h1 id='webhooks'>Webhooks</h1><h2 id='receiving-webhooks'>Receiving Webhooks</h2>
+<p>Huntr can send webhook events to notify your application any time a <a href="#job-events">job event</a> happens within your organization.</p>
+
+<p>You can register webhook URLs in your organization&#39;s admin dashboard, under the <strong>Developers</strong> tab that we will notify any time a job event happens in your organization. When the event occurs—a new job is added, an interview date set, etc.—Huntr creates a <strong><a href="#job-events">Job Event</a></strong> object.</p>
+
+<p>The Job Event object contains all the information about the event that just happened, including the type of event and the data associated with that event. Huntr will send the <strong>Job Event</strong> via an <code>HTTP POST</code> request, to any endpoint URLs that you have defined in your organization&#39;s Webhooks settings.</p>
+<h2 id='responding-to-a-webhook'>Responding to a webhook</h2>
+<p>To acknowledge receipt of a webhook, your endpoint should return a <code>200</code> HTTP status code. All other response codes will indicate to Huntr that you did not receive the webhook.</p>
+<h1 id='errors'>Errors</h1>
+<p>The Huntr API uses the following error codes:</p>
 
 <table><thead>
 <tr>
@@ -445,7 +1154,7 @@ Remember — a happy kitten is an authenticated kitten!
 </thead><tbody>
 <tr>
 <td>400</td>
-<td>Bad Request -- Your request sucks.</td>
+<td>Bad Request -- Your request is invalid.</td>
 </tr>
 <tr>
 <td>401</td>
@@ -453,15 +1162,15 @@ Remember — a happy kitten is an authenticated kitten!
 </tr>
 <tr>
 <td>403</td>
-<td>Forbidden -- The kitten requested is hidden for administrators only.</td>
+<td>Forbidden -- The resource requested is hidden for administrators only.</td>
 </tr>
 <tr>
 <td>404</td>
-<td>Not Found -- The specified kitten could not be found.</td>
+<td>Not Found -- The specified resource could not be found.</td>
 </tr>
 <tr>
 <td>405</td>
-<td>Method Not Allowed -- You tried to access a kitten with an invalid method.</td>
+<td>Method Not Allowed -- You tried to access a resource with an invalid method.</td>
 </tr>
 <tr>
 <td>406</td>
@@ -469,7 +1178,7 @@ Remember — a happy kitten is an authenticated kitten!
 </tr>
 <tr>
 <td>410</td>
-<td>Gone -- The kitten requested has been removed from our servers.</td>
+<td>Gone -- The resource requested has been removed from our servers.</td>
 </tr>
 <tr>
 <td>418</td>
@@ -477,7 +1186,7 @@ Remember — a happy kitten is an authenticated kitten!
 </tr>
 <tr>
 <td>429</td>
-<td>Too Many Requests -- You&#39;re requesting too many kittens! Slow down!</td>
+<td>Too Many Requests -- You&#39;re requesting too many resources! Slow down!</td>
 </tr>
 <tr>
 <td>500</td>
@@ -493,9 +1202,6 @@ Remember — a happy kitten is an authenticated kitten!
       <div class="dark-box">
           <div class="lang-selector">
                 <a href="#" data-language-name="shell">shell</a>
-                <a href="#" data-language-name="ruby">ruby</a>
-                <a href="#" data-language-name="python">python</a>
-                <a href="#" data-language-name="javascript">javascript</a>
           </div>
       </div>
     </div>
