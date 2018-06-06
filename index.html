@@ -256,16 +256,16 @@
               </ul>
           </li>
           <li>
-            <a href="#job-events" class="toc-h1 toc-link" data-title="job-events">Job Events</a>
+            <a href="#events" class="toc-h1 toc-link" data-title="events">Events</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#job-events-resource" class="toc-h2 toc-link" data-title="job-events-resource">Job Events Resource</a>
+                    <a href="#events-resource" class="toc-h2 toc-link" data-title="events-resource">Events Resource</a>
                   </li>
                   <li>
                     <a href="#event-types" class="toc-h2 toc-link" data-title="event-types">Event Types</a>
                   </li>
                   <li>
-                    <a href="#list-job-events" class="toc-h2 toc-link" data-title="list-job-events">List Job Events</a>
+                    <a href="#list-events" class="toc-h2 toc-link" data-title="list-events">List Events</a>
                   </li>
               </ul>
           </li>
@@ -277,9 +277,6 @@
                   </li>
                   <li>
                     <a href="#list-employers" class="toc-h2 toc-link" data-title="list-employers">List Employers</a>
-                  </li>
-                  <li>
-                    <a href="#retrieve-an-employer" class="toc-h2 toc-link" data-title="retrieve-an-employer">Retrieve an Employer</a>
                   </li>
               </ul>
           </li>
@@ -353,25 +350,25 @@ Your Access Token carries many privileges, so be sure to keep them secure! Do no
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"_id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"5a70a7361d06bb000f0f1c43"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"email"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"leod@purpleuniversity.edu"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"givenName"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Leo"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"familyName"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Davis"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"createdAt"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-01-30T17:11:18.399Z"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"isActive"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"_id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"5a70a7361d06bb000f0f1c44"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"email"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"johnj@purpleuniversity.edu"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"givenName"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"John"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"familyName"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Johnson"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"createdAt"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-01-28T17:11:18.399Z"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"isActive"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">],</span><span class="w">
-  </span><span class="s2">"next"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5a70a7361d06bb000f0f1c44"</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5b0379b5712bb674fd0d561e"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"givenName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Graciela"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"familyName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Varela"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"gracev@huntr.co"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1526954421</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"isActive"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5b037898b7f93473edc1c43a"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"givenName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Nicole"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"familyName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Haylock"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nicoleh@huntr.co"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1526954136</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"isActive"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"next"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5b037898b7f93473edc1c43a"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <blockquote>
@@ -388,12 +385,12 @@ Your Access Token carries many privileges, so be sure to keep them secure! Do no
 <p>A member of your organization:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"_id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"5a70a7361d06bb000f0f1c43"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"email"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"leod@purpleuniversity.edu"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"givenName"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Leo"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"familyName"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Davis"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"createdAt"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-01-30T17:11:18.399Z"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"isActive"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5b0379b5712bb674fd0d561e"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"givenName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Graciela"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"familyName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Varela"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"gracev@huntr.co"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1526954421</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"isActive"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>A member is one of the job seekers using Huntr under your organization. If you are an educational institution, your job seeking students qualify as your members.</p>
@@ -401,62 +398,76 @@ Your Access Token carries many privileges, so be sure to keep them secure! Do no
 <table><thead>
 <tr>
 <th>Field</th>
+<th>Type</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>_id</td>
+<td>id</td>
+<td>String</td>
 <td>Member&#39;s Huntr id</td>
 </tr>
 <tr>
-<td>email</td>
-<td>Member&#39;s email</td>
-</tr>
-<tr>
 <td>givenName</td>
+<td>String</td>
 <td>Member&#39;s first name</td>
 </tr>
 <tr>
 <td>familyName</td>
+<td>String</td>
 <td>Member&#39;s last name</td>
 </tr>
 <tr>
+<td>email</td>
+<td>String</td>
+<td>Member&#39;s email</td>
+</tr>
+<tr>
 <td>createdAt</td>
+<td>Unix timestamp</td>
 <td>Date the member signed up for Huntr</td>
 </tr>
 <tr>
 <td>isActive</td>
+<td>Boolean</td>
 <td>Defines if member has been deactivated by an organization admin or advisor. Deactivating a member prevents them from continuing activity on boards managed by your organization, and it is usually done for members who have found a job and stopped using Huntr.</td>
 </tr>
 </tbody></table>
-<h2 id='list-members'>List Members</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.huntr.co/org/members?active=true"</span>
+<h2 id='list-members'>List Members</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.huntr.co/org/members?active=true&amp;limit=3"</span>
   -H <span class="s2">"Authorization: Bearer &lt;ORG_ACCESS_TOKEN&gt;"</span>
 </code></pre>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"_id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"5a70a7361d06bb000f0f1c43"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"email"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"leod@purpleuniversity.edu"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"givenName"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Leo"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"familyName"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Davis"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"createdAt"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-01-30T17:11:18.399Z"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"isActive"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"_id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"5a70a7361d06bb000f0f1c44"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"email"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"johnj@purpleuniversity.edu"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"givenName"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"John"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"familyName"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Johnson"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"createdAt"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-01-28T17:11:18.399Z"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"isActive"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">],</span><span class="w">
-  </span><span class="s2">"next"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5a70a7361d06bb000f0f1c44"</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5b0377c7b7f93473edc1c433"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"givenName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Roberto"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"familyName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Moscoso"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"robertom@huntr.co"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1526953927</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"isActive"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5a9f699edd2f935a4e5b263a"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"givenName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rennie"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"familyName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Haylock"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rennie@huntr.co"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1520396702</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"isActive"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5a9b3d392bd2e22e37dee4f0"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"givenName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"familyName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Smith"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"johns@huntr.co"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1520123193</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"isActive"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"next"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5a9b3d392bd2e22e37dee4f0"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-
 </span></code></pre>
 <p>This endpoint retrieves all members for your organization.</p>
 <h3 id='http-request'>HTTP Request</h3>
@@ -465,39 +476,43 @@ Your Access Token carries many privileges, so be sure to keep them secure! Do no
 <table><thead>
 <tr>
 <th>Parameter</th>
+<th>Type</th>
 <th>Default</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>active</td>
+<td><code>active</code></td>
+<td>Boolean</td>
 <td>none</td>
 <td>If set to <code>true</code>, the result will only include active members. If set to <code>false</code> the result will only include deactivated members.</td>
 </tr>
 <tr>
-<td>limit</td>
+<td><code>limit</code></td>
+<td>Integer</td>
 <td>100</td>
 <td>Defines the maximum number of members to return</td>
 </tr>
 <tr>
-<td>next</td>
+<td><code>next</code></td>
+<td>String</td>
 <td>none</td>
 <td>If set, returns the next set of results after the object id provided</td>
 </tr>
 </tbody></table>
-<h2 id='retrieve-a-member'>Retrieve a Member</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.huntr.co/org/members/5a70a7361d06bb000f0f1c43"</span>
+<h2 id='retrieve-a-member'>Retrieve a Member</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.huntr.co/org/members/5a9b3d392bd2e22e37dee4f0"</span>
   -H <span class="s2">"Authorization: Bearer &lt;ORG_ACCESS_TOKEN&gt;"</span>
 </code></pre>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"_id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"5a70a7361d06bb000f0f1c43"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"email"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"leod@purpleuniversity.edu"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"givenName"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Leo"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"familyName"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Davis"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"createdAt"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-01-30T17:11:18.399Z"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"isActive"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5a9b3d392bd2e22e37dee4f0"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"givenName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"familyName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Smith"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"johns@huntr.co"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1520123193</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"isActive"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint retrieves a specific member.</p>
@@ -507,11 +522,13 @@ Your Access Token carries many privileges, so be sure to keep them secure! Do no
 <table><thead>
 <tr>
 <th>Parameter</th>
+<th>Type</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>ID</td>
+<td>String</td>
 <td>The ID of the member to retrieve</td>
 </tr>
 </tbody></table>
@@ -520,33 +537,48 @@ Your Access Token carries many privileges, so be sure to keep them secure! Do no
 <p>A job in one of your members&#39; boards:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"_id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"5b105edfb83359000f7b6353"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"_member"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5a70a7361d06bb000f0f1c43"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"title"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Full Stack Engineer"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"If you want to experience what it's like working with a tight team of entrepreneurs, and you'd like to maximize the pace of personal development, Routific might be the place for you to jump-start your career..."</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"salary"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$95,000"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"url"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"https://angel.co/routific/jobs/200057-full-stack-engineer"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"deadline"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-05-25T20:45:25.933Z"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"applicationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-05-31T20:45:25.933Z"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"firstInterviewDate"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"secondInterviewDate"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"offerDate"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"_employer"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5af1cd55a2642af3c39b8e2f"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Routific"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"domain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"routific.com"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"_list"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Applied"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"location"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"lat"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"49.2827"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"lng"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"-123.1207"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Vancouver"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"address"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Vancouver, BC, Canada"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"updatedAt"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-05-31T20:45:25.933Z"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"createdAt"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-05-31T20:45:19.742Z"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5b088a7b12728af4ec0be9d6"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Senior Engineer"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A job description"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"salary"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$90,000"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://linkedin.com/jobs/asdf234adf"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"location"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"lng"</span><span class="p">:</span><span class="w"> </span><span class="s2">"13.384453399999984"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"lat"</span><span class="p">:</span><span class="w"> </span><span class="s2">"52.53073269999999"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://maps.google.com/?cid=13193077415763177194"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1c56fadc63fb73a87bfae16a1096735b2817793b"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"placeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ChIJbTkS9uxRqEcR6u7KfAI6F7c"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ResearchGate"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Invalidenstraße 115, 10115 Berlin, Germany"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"deadline"</span><span class="p">:</span><span class="w"> </span><span class="mi">1527404400</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"applicationDate"</span><span class="p">:</span><span class="w"> </span><span class="mi">1527490800</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"firstInterviewDate"</span><span class="p">:</span><span class="w"> </span><span class="mi">1527750000</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"secondInterviewDate"</span><span class="p">:</span><span class="w"> </span><span class="mi">1527836400</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"offerDate"</span><span class="p">:</span><span class="w"> </span><span class="mi">1528095600</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1527286395</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"member"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5a6bf0758f18344d6f76d118"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"givenName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Gracielita"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"familyName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Varelita"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rennie+grace@huntr.co"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1517023349</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"employer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5b088a7bb9defaba88d36f1e"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ResearchGate"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"domain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"researchgate.net"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"foundedYear"</span><span class="p">:</span><span class="w"> </span><span class="mi">2008</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Find 100+ million publication pages, 15+ million researchers, and 700k+ projects. ResearchGate is where you discover scientific knowledge and share your work."</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"location"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10115 Berlin, Germany"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"jobCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"applicationCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"interviewCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"offerCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"list"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"wishlist"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>A job is an instance of a job opportunity that one of your members has added to one of their boards managed by your organization. Each job card in the Huntr UI represent a different Job.</p>
@@ -554,221 +586,246 @@ Your Access Token carries many privileges, so be sure to keep them secure! Do no
 <table><thead>
 <tr>
 <th>Field</th>
+<th>Type</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>_id</td>
+<td><code>id</code></td>
+<td>String</td>
 <td>Job&#39;s id</td>
 </tr>
 <tr>
-<td>_member</td>
-<td>id for the member who owns the job</td>
-</tr>
-<tr>
-<td>title</td>
+<td><code>title</code></td>
+<td>String</td>
 <td>Job title</td>
 </tr>
 <tr>
-<td>description</td>
+<td><code>description</code></td>
+<td>String</td>
 <td>Job description</td>
 </tr>
 <tr>
-<td>salary</td>
+<td><code>salary</code></td>
+<td>String</td>
 <td>Job salary</td>
 </tr>
 <tr>
-<td>url</td>
-<td>URL for the original job post (i.e: https://indeed.com/jobs/001)</td>
+<td><code>url</code></td>
+<td>String</td>
+<td>URL for the original job post</td>
 </tr>
 <tr>
-<td>deadline</td>
-<td>Date of job&#39;s application deadline</td>
-</tr>
-<tr>
-<td>applicationDate</td>
-<td>Date of application deadline</td>
-</tr>
-<tr>
-<td>firstInterviewDate</td>
-<td>Date of first interview</td>
-</tr>
-<tr>
-<td>secondInterviewDate</td>
-<td>Date of second interview</td>
-</tr>
-<tr>
-<td>offerDate</td>
-<td>Date offer was received</td>
-</tr>
-<tr>
-<td>_employer</td>
-<td>Object representing the employer</td>
-</tr>
-<tr>
-<td>_list</td>
-<td>Object representing the list the job is in. A list is a stage in a specific Huntr board.</td>
-</tr>
-<tr>
-<td>location</td>
+<td><code>location</code></td>
+<td>Object</td>
 <td>Object representing job&#39;s location</td>
 </tr>
 <tr>
-<td>createdAt</td>
+<td><code>deadline</code></td>
+<td>Unix timestamp</td>
+<td>Date of job&#39;s application deadline</td>
+</tr>
+<tr>
+<td><code>applicationDate</code></td>
+<td>Unix timestamp</td>
+<td>Date of application deadline</td>
+</tr>
+<tr>
+<td><code>firstInterviewDate</code></td>
+<td>Unix timestamp</td>
+<td>Date of first interview</td>
+</tr>
+<tr>
+<td><code>secondInterviewDate</code></td>
+<td>Unix timestamp</td>
+<td>Date of second interview</td>
+</tr>
+<tr>
+<td><code>offerDate</code></td>
+<td>Unix timestamp</td>
+<td>Date offer was received</td>
+</tr>
+<tr>
+<td><code>createdAt</code></td>
+<td>Unix timestamp</td>
 <td>Date the job was created by the member</td>
 </tr>
 <tr>
-<td>updatedAt</td>
-<td>Date the job entity was last updated</td>
+<td><code>member</code></td>
+<td>Object</td>
+<td>Object representing the member who added the job</td>
+</tr>
+<tr>
+<td><code>employer</code></td>
+<td>Object</td>
+<td>Object representing the employer</td>
+</tr>
+<tr>
+<td><code>list</code></td>
+<td>Object</td>
+<td>Object representing the list the job is in. A list is a stage in a specific Huntr board.</td>
 </tr>
 </tbody></table>
-<h2 id='list-jobs'>List Jobs</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.huntr.co/org/jobs"</span>
+<h2 id='list-jobs'>List Jobs</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.huntr.co/org/jobs?limit=2&amp;member_id=589189b5448fe5e45f01256b"</span>
   -H <span class="s2">"Authorization: Bearer &lt;ORG_ACCESS_TOKEN&gt;"</span>
 </code></pre>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"_id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"5b105edfb83359000f7b6353"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"_member"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5a70a7361d06bb000f0f1c43"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"title"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Full Stack Engineer"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"If you want to experience what it's like working with a tight team of entrepreneurs, and you'd like to maximize the pace of personal development, Routific might be the place for you to jump-start your career..."</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"salary"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$95,000"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"url"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"https://angel.co/routific/jobs/200057-full-stack-engineer"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"deadline"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-05-25T20:45:25.933Z"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"applicationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-05-31T20:45:25.933Z"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"firstInterviewDate"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"secondInterviewDate"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"offerDate"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"_employer"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5af1cd55a2642af3c39b8e2f"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Routific"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"domain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"routific.com"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="s2">"_list"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Applied"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="s2">"location"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"lat"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"49.2827"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"lng"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"-123.1207"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Vancouver"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"address"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Vancouver, BC, Canada"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="s2">"updatedAt"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-05-31T20:45:25.933Z"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"createdAt"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-05-31T20:45:19.742Z"</span><span class="p">,</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"_id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"5b105edfb83359000f7b6353"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"_member"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5a70a7361d06bb000f0f1c44"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"title"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Product Manager"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"At Stripe, Product Managers help build innovative payments products for our customers. Product development is an extremely collaborative effort between engineering, design, analytics and customer-facing teams. In this role, youd be supporting the full stack engineering team that builds the..."</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"salary"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$105,000"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"url"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"https://betalist.com/jobs/171556-product-manager-seattle-at-stripe"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"deadline"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-05-23T20:45:25.933Z"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"applicationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-05-29T20:45:25.933Z"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"firstInterviewDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-05-31T20:45:25.933Z"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"secondInterviewDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-06-02T20:45:25.933Z"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"offerDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-06-03T20:45:25.933Z"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"_employer"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5af1cd55a2642af3d39d8e2f"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Stripe"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"domain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"stripe.com"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="s2">"_list"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Offer"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="s2">"location"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"lat"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"49.2827"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"lng"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"-123.1207"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Seattle"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"address"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Seattle, WA, USA"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="s2">"updatedAt"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-05-31T20:45:25.933Z"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"createdAt"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-05-21T20:45:19.742Z"</span><span class="p">,</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">],</span><span class="w">
-  </span><span class="s2">"next"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5b105edfb83359000f7b6353"</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5b00d6695cadd481fb0536a2"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Developer"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"offerDate"</span><span class="p">:</span><span class="w"> </span><span class="mi">1526781545</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1526781545</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"member"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"589189b5448fe5e45f01256b"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"givenName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Samir"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"familyName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Marin"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rennie+dev2@huntr.co"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1485932981</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"employer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5b00d669a2567c2730e038b8"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"StubHub"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"domain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"stubhub.com"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"foundedYear"</span><span class="p">:</span><span class="w"> </span><span class="mi">2000</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Your ticket out   www.stubhub.com   Twitter / Instagram: @StubHub   Snapchat: stubhub  https://www.snapchat.com/add/stubhub"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"location"</span><span class="p">:</span><span class="w"> </span><span class="s2">"San Francisco, CA, USA"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"jobCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"applicationCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"interviewCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"offerCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"list"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"offer"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5b00b6745e6a971db86c43de"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Developer"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"firstInterviewDate"</span><span class="p">:</span><span class="w"> </span><span class="mi">1526773364</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1526773364</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"member"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"589189b5448fe5e45f01256b"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"givenName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Samir"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"familyName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Marin"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rennie+dev2@huntr.co"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1485932981</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"employer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"58a21e5cc9903d839de2f879"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Reddit"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"domain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"reddit.com"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"foundedYear"</span><span class="p">:</span><span class="w"> </span><span class="mi">2005</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"reddit is a source for what's new and popular online. vote on links that you like or dislike and help decide what's popular, or submit your own!"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"location"</span><span class="p">:</span><span class="w"> </span><span class="s2">"548 Market St, San Francisco, CA 94104, USA"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"jobCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"applicationCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"interviewCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"offerCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"list"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"interview"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"next"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5b00b6745e6a971db86c43de"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint lists all jobs added by members from your organization, jobs are sorted by the date they were created, starting from the most recently created.</p>
 <h3 id='http-request-3'>HTTP Request</h3>
-<p><code>GET https://api.huntr.co/org/jobs?member_id=&lt;MEMBER_ID&gt;</code></p>
+<p><code>GET https://api.huntr.co/org/jobs</code></p>
 <h3 id='query-parameters-2'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
+<th>Type</th>
 <th>Default</th>
-<th>Required</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>member_id</td>
+<td><code>member_id</code></td>
+<td>String</td>
 <td>none</td>
-<td>no</td>
 <td>If set, will only return jobs belonging to member</td>
 </tr>
 <tr>
-<td>created_after</td>
+<td><code>created_after</code></td>
+<td>Unix timestamp</td>
 <td>none</td>
-<td>no</td>
-<td>If set, will only return jobs created after time sent</td>
+<td>If set, will only return jobs created after <code>created_after</code></td>
 </tr>
 <tr>
-<td>created_before</td>
+<td><code>created_before</code></td>
+<td>Unix timestamp</td>
 <td>none</td>
-<td>no</td>
-<td>If set, will only return jobs created before time sent</td>
+<td>If set, will only return jobs created before <code>created_before</code></td>
 </tr>
 <tr>
-<td>limit</td>
+<td><code>limit</code></td>
+<td>Integer</td>
 <td>100</td>
 <td>Defines the maximum number of jobs to return</td>
-<td></td>
 </tr>
 <tr>
-<td>next</td>
+<td><code>next</code></td>
+<td>String</td>
 <td>none</td>
 <td>If set, returns the next set of results after the object id provided</td>
-<td></td>
 </tr>
 </tbody></table>
-<h2 id='retrieve-a-job'>Retrieve a Job</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.huntr.co/org/jobs/5b105edfb83359000f7b6353"</span>
+<h2 id='retrieve-a-job'>Retrieve a Job</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.huntr.co/org/jobs/5b088a7b12728af4ec0be9d6"</span>
   -H <span class="s2">"Authorization: Bearer &lt;ORG_ACCESS_TOKEN&gt;"</span>
 </code></pre>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"_id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"5b105edfb83359000f7b6353"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"_member"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5a70a7361d06bb000f0f1c44"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"title"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Product Manager"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"At Stripe, Product Managers help build innovative payments products for our customers. Product development is an extremely collaborative effort between engineering, design, analytics and customer-facing teams. In this role, youd be supporting the full stack engineering team that builds the..."</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"salary"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$105,000"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"url"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"https://betalist.com/jobs/171556-product-manager-seattle-at-stripe"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"deadline"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-05-23T20:45:25.933Z"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"applicationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-05-29T20:45:25.933Z"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"firstInterviewDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-05-31T20:45:25.933Z"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"secondInterviewDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-06-02T20:45:25.933Z"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"offerDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-06-03T20:45:25.933Z"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"_employer"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5af1cd55a2642af3d39d8e2f"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Stripe"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"domain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"stripe.com"</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5b088a7b12728af4ec0be9d6"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Senior Engineer"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A job description"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"salary"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$90,000"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://linkedin.com/jobs/asdf234adf"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"location"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"lng"</span><span class="p">:</span><span class="w"> </span><span class="s2">"13.384453399999984"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"lat"</span><span class="p">:</span><span class="w"> </span><span class="s2">"52.53073269999999"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://maps.google.com/?cid=13193077415763177194"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1c56fadc63fb73a87bfae16a1096735b2817793b"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"placeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ChIJbTkS9uxRqEcR6u7KfAI6F7c"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ResearchGate"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Invalidenstraße 115, 10115 Berlin, Germany"</span><span class="w">
   </span><span class="p">},</span><span class="w">
-  </span><span class="s2">"_list"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Offer"</span><span class="w">
+  </span><span class="s2">"deadline"</span><span class="p">:</span><span class="w"> </span><span class="mi">1527404400</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"applicationDate"</span><span class="p">:</span><span class="w"> </span><span class="mi">1527490800</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"firstInterviewDate"</span><span class="p">:</span><span class="w"> </span><span class="mi">1527750000</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"secondInterviewDate"</span><span class="p">:</span><span class="w"> </span><span class="mi">1527836400</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"offerDate"</span><span class="p">:</span><span class="w"> </span><span class="mi">1528095600</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1527286395</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"member"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5a6bf0758f18344d6f76d118"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"givenName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Gracielita"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"familyName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Varelita"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rennie+grace@huntr.co"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1517023349</span><span class="w">
   </span><span class="p">},</span><span class="w">
-  </span><span class="s2">"location"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"lat"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"49.2827"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"lng"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"-123.1207"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Seattle"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"address"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Seattle, WA, USA"</span><span class="w">
+  </span><span class="s2">"employer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5b088a7bb9defaba88d36f1e"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ResearchGate"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"domain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"researchgate.net"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"foundedYear"</span><span class="p">:</span><span class="w"> </span><span class="mi">2008</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Find 100+ million publication pages, 15+ million researchers, and 700k+ projects. ResearchGate is where you discover scientific knowledge and share your work."</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"location"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10115 Berlin, Germany"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"jobCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"applicationCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"interviewCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"offerCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
   </span><span class="p">},</span><span class="w">
-  </span><span class="s2">"updatedAt"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-05-31T20:45:25.933Z"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"createdAt"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-05-21T20:45:19.742Z"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"list"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"wishlist"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint retrieves a specific job.</p>
@@ -786,67 +843,92 @@ Your Access Token carries many privileges, so be sure to keep them secure! Do no
 <td>The ID of the job to retrieve</td>
 </tr>
 </tbody></table>
-<h1 id='job-events'>Job Events</h1><h2 id='job-events-resource'>Job Events Resource</h2>
+<h1 id='events'>Events</h1><h2 id='events-resource'>Events Resource</h2>
 <blockquote>
-<p>A job event object:</p>
+<p>An event object:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"_id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"5b105edfb83359000f7b6353"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"_member"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5a70a7361d06bb000f0f1c43"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"_job"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5b105edfb83359000f7b6353"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-05-18T20:45:19.742Z"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"eventType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"JOB_APPLICATION_DATE_SET"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-05-21T20:45:19.742Z"</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5b05ca43f193b66c692c29a0"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"eventType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"JOB_MOVED"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1527106115</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"member"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5a5a88fae10d8c2cea07f2f7"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"givenName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Gwen"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"familyName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Johnson"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"gwenj@huntr.co"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1515882746</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"job"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5a8a255bb4271026f0c0f749"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Engineer"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"applicationDate"</span><span class="p">:</span><span class="w"> </span><span class="mi">1527106115</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1519002971</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"toList"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"applied"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"fromList"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"wishlist"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>A job event represents one of many events that can occur during the lifetime of a job, therefore a single job may have <strong>multiple</strong> events related to it:</p>
+<p>An event represents one of many events that can occur during the lifetime of a job, therefore a single job may have <strong>multiple</strong> events related to it:</p>
 
 <table><thead>
 <tr>
 <th>Field</th>
+<th>Type</th>
+<th>In all events</th>
 <th>Description</th>
-<th>Included in event types</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>_id</td>
+<td><code>id</code></td>
+<td>String</td>
+<td>true</td>
 <td>id for the event</td>
-<td>All</td>
 </tr>
 <tr>
-<td>_member</td>
-<td>Member id of member who owns the job</td>
-<td>All</td>
-</tr>
-<tr>
-<td>_job</td>
-<td>Job id for which event applies to</td>
-<td>All</td>
-</tr>
-<tr>
-<td>eventType</td>
+<td><code>eventType</code></td>
+<td>String</td>
+<td>true</td>
 <td>Type of event</td>
-<td>All</td>
 </tr>
 <tr>
-<td>date</td>
+<td><code>date</code></td>
+<td>Unix timestamp</td>
+<td>false</td>
 <td>Date when the event actually happened (will happen), this date is usually set by the job seekers themselves</td>
-<td>JOB_APPLICATION_DATE_SET, JOB_FIRST_INTERVIEW_DATE_SET, JOB_SECOND_INTERVIEW_DATE_SET, JOB_OFFER_DATE_SET</td>
 </tr>
 <tr>
-<td>_fromList</td>
-<td>List from which a job was moved in a job moved event</td>
-<td>JOB_MOVED</td>
+<td><code>createdAt</code></td>
+<td>Unix timestamp</td>
+<td>true</td>
+<td>Date the event was logged. As an example, if a member logged an interview date today, but the actual interview date logged is next Friday, then <code>createdAt</code> is <strong>today</strong>, and <code>date</code> is <strong>next friday</strong></td>
 </tr>
 <tr>
-<td>_toList</td>
-<td>List to which a job was moved in a job moved event</td>
-<td>JOB_MOVED</td>
+<td><code>member</code></td>
+<td>Object</td>
+<td>true</td>
+<td>Member who owns the job</td>
 </tr>
 <tr>
-<td>createdAt</td>
-<td>Date the event was logged. As an example, if a member logged an interview date today, but the actual interview date logged is Friday week, then <code>createdAt</code> is <strong>today</strong>, and <code>date</code> is <strong>next friday</strong></td>
-<td>All</td>
+<td><code>job</code></td>
+<td>Object</td>
+<td>true</td>
+<td>Job for which event applies to</td>
+</tr>
+<tr>
+<td><code>fromList</code></td>
+<td>Object</td>
+<td>false</td>
+<td>List from which job was moved in a job moved event</td>
+</tr>
+<tr>
+<td><code>toList</code></td>
+<td>Object</td>
+<td>false</td>
+<td>List to which a job was moved or added to</td>
 </tr>
 </tbody></table>
 <h2 id='event-types'>Event Types</h2>
@@ -860,37 +942,37 @@ Your Access Token carries many privileges, so be sure to keep them secure! Do no
 </tr>
 </thead><tbody>
 <tr>
-<td>JOB_ADDED</td>
-<td>A new job is added</td>
-<td>none</td>
+<td><code>JOB_ADDED</code></td>
+<td>A new job is created</td>
+<td><code>toList</code></td>
 </tr>
 <tr>
-<td>JOB_MOVED</td>
+<td><code>JOB_MOVED</code></td>
 <td>An existing job is moved</td>
-<td>_fromList, _toList</td>
+<td><code>fromList</code>, <code>toList</code></td>
 </tr>
 <tr>
-<td>JOB_APPLICATION_DATE_SET</td>
+<td><code>JOB_APPLICATION_DATE_SET</code></td>
 <td>Application date is set for an existing job</td>
-<td>date</td>
+<td><code>date</code></td>
 </tr>
 <tr>
-<td>JOB_FIRST_INTERVIEW_DATE_SET</td>
+<td><code>JOB_FIRST_INTERVIEW_DATE_SET</code></td>
 <td>First interview date is set for an existing job</td>
-<td>date</td>
+<td><code>date</code></td>
 </tr>
 <tr>
-<td>JOB_SECOND_INTERVIEW_DATE_SET</td>
+<td><code>JOB_SECOND_INTERVIEW_DATE_SET</code></td>
 <td>Second interview date is set for an existing job</td>
-<td>date</td>
+<td><code>date</code></td>
 </tr>
 <tr>
-<td>JOB_OFFER_DATE_SET</td>
+<td><code>JOB_OFFER_DATE_SET</code></td>
 <td>Offer date is set for an existing job</td>
-<td>date</td>
+<td><code>date</code></td>
 </tr>
 </tbody></table>
-<h2 id='list-job-events'>List Job Events</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.huntr.co/org/job-events"</span>
+<h2 id='list-events'>List Events</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.huntr.co/org/events?limit=2"</span>
   -H <span class="s2">"Authorization: Bearer &lt;ORG_ACCESS_TOKEN&gt;"</span>
 </code></pre>
 <blockquote>
@@ -899,78 +981,118 @@ Your Access Token carries many privileges, so be sure to keep them secure! Do no
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"eventType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"JOB_FIRST_INTERVIEW_DATE_SET"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"_id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"5b105edfb83359000f7b6353"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"_member"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5a70a7361d06bb000f0f1c43"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"_job"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5b105edfb83359000f7b6353"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-05-18T20:45:19.742Z"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-06-01T20:45:19.742Z"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"eventType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"JOB_APPLICATION_DATE_SET"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"_id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"5b105edfb83359000f7b6351"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"_member"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5a70a7361d06bb000f0f1c43"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"_job"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5b105edfb83359000f7b6353"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-05-18T22:25:19.742Z"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-05-20T20:45:19.742Z"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"eventType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"JOB_MOVED"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"_id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"5b105edfb83359000f7b6341"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"_member"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5a70a7361d06bb000f0f1c43"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"_job"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5b105edfb83359000f7b6353"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"_fromList"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Wishlist"</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5b17300b4453e621e676d90e"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"eventType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"JOB_OFFER_DATE_SET"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"date"</span><span class="p">:</span><span class="w"> </span><span class="mi">1528095600</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1528246283</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"member"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5a6bf0758f18344d6f76d118"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"givenName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Gracielita"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"familyName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Varelita"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rennie+grace@huntr.co"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1517023349</span><span class="w">
         </span><span class="p">},</span><span class="w">
-        </span><span class="s2">"_toList"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Applied"</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-05-20T20:45:19.742Z"</span><span class="w">
+        </span><span class="s2">"job"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5b088a7b12728af4ec0be9d6"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Senior Engineer"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A job description"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"salary"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$90,000"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://linkedin.com/jobs/asdf234adf"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"location"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"lng"</span><span class="p">:</span><span class="w"> </span><span class="s2">"13.384453399999984"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"lat"</span><span class="p">:</span><span class="w"> </span><span class="s2">"52.53073269999999"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://maps.google.com/?cid=13193077415763177194"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1c56fadc63fb73a87bfae16a1096735b2817793b"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"placeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ChIJbTkS9uxRqEcR6u7KfAI6F7c"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ResearchGate"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Invalidenstraße 115, 10115 Berlin, Germany"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"deadline"</span><span class="p">:</span><span class="w"> </span><span class="mi">1527404400</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"applicationDate"</span><span class="p">:</span><span class="w"> </span><span class="mi">1527490800</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"firstInterviewDate"</span><span class="p">:</span><span class="w"> </span><span class="mi">1527750000</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"secondInterviewDate"</span><span class="p">:</span><span class="w"> </span><span class="mi">1527836400</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"offerDate"</span><span class="p">:</span><span class="w"> </span><span class="mi">1528095600</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1527286395</span><span class="w">
+        </span><span class="p">}</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"eventType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"JOB_ADDED"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"_id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"5b105edfb83359000f7b6330"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"_member"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5a70a7361d06bb000f0f1c43"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"_job"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5b105edfb83359000f7b6353"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-05-19T20:45:19.742Z"</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5b1730094453e621e676d905"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"eventType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"JOB_SECOND_INTERVIEW_DATE_SET"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"date"</span><span class="p">:</span><span class="w"> </span><span class="mi">1527836400</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1528246281</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"member"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5a6bf0758f18344d6f76d118"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"givenName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Gracielita"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"familyName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Varelita"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rennie+grace@huntr.co"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1517023349</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"job"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5b088a7b12728af4ec0be9d6"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Senior Engineer"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A job description"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"salary"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$90,000"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://linkedin.com/jobs/asdf234adf"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"location"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"lng"</span><span class="p">:</span><span class="w"> </span><span class="s2">"13.384453399999984"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"lat"</span><span class="p">:</span><span class="w"> </span><span class="s2">"52.53073269999999"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://maps.google.com/?cid=13193077415763177194"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1c56fadc63fb73a87bfae16a1096735b2817793b"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"placeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ChIJbTkS9uxRqEcR6u7KfAI6F7c"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ResearchGate"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Invalidenstraße 115, 10115 Berlin, Germany"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"deadline"</span><span class="p">:</span><span class="w"> </span><span class="mi">1527404400</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"applicationDate"</span><span class="p">:</span><span class="w"> </span><span class="mi">1527490800</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"firstInterviewDate"</span><span class="p">:</span><span class="w"> </span><span class="mi">1527750000</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"secondInterviewDate"</span><span class="p">:</span><span class="w"> </span><span class="mi">1527836400</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"offerDate"</span><span class="p">:</span><span class="w"> </span><span class="mi">1528095600</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1527286395</span><span class="w">
+        </span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">],</span><span class="w">
-  </span><span class="s2">"next"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5b105edfb83359000f7b6330"</span><span class="w">
+  </span><span class="s2">"next"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5b1730094453e621e676d905"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>This endpoint retrieves all job events for your organization.</p>
+<p>This endpoint retrieves all events for your organization, sorted from most recently created to oldest.</p>
 <h3 id='http-request-5'>HTTP Request</h3>
-<p><code>GET https://api.huntr.co/org/job-events</code></p>
+<p><code>GET https://api.huntr.co/org/events</code></p>
 <h3 id='query-parameters-3'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
+<th>Type</th>
 <th>Default</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>member_id</td>
+<td><code>member_id</code></td>
+<td>String</td>
 <td>none</td>
-<td>If set, will only return job events belonging to member</td>
+<td>If set, will only return events belonging to member</td>
 </tr>
 <tr>
-<td>job_id</td>
+<td><code>job_id</code></td>
+<td>String</td>
 <td>none</td>
-<td>If set, will only return job events belonging to job</td>
+<td>If set, will only return events belonging to job</td>
 </tr>
 <tr>
-<td>event_type</td>
+<td><code>event_type</code></td>
+<td>String</td>
 <td>none</td>
-<td>If set, will only return job events of the specific type. See <a href="#event-types">event types</a> section for possible event name values.</td>
+<td>If set, will only return events of the specific type. See <a href="#event-types">event types</a> section for possible event name values.</td>
 </tr>
 <tr>
-<td>limit</td>
+<td><code>limit</code></td>
+<td>Integer</td>
 <td>100</td>
 <td>Defines the maximum number of jobs to return</td>
 </tr>
 <tr>
-<td>next</td>
+<td><code>next</code></td>
+<td>String</td>
 <td>none</td>
 <td>If set, returns the next set of results after the object id provided</td>
 </tr>
@@ -980,16 +1102,16 @@ Your Access Token carries many privileges, so be sure to keep them secure! Do no
 <p>An employer for which your members have added a job for:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"_id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"5a70a7361d06bb000f0f1c43"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Routific"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"domain"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"routific.com"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"foundedYear"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"description"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Routific is a market-leading route optimization solution. Our software can help you plan routes in minutes."</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"location"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"788 Beatty St. Level B1, Vancouver, BC, V6B2M1, Canada"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"jobCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"applicationCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"interviewCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"offerCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"589b77128bf3dd17f01a3055"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Etsy"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"domain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"etsy.com"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"foundedYear"</span><span class="p">:</span><span class="w"> </span><span class="mi">2005</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Find handmade, vintage, and unique goods that express who you are."</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"location"</span><span class="p">:</span><span class="w"> </span><span class="s2">"55 Washington St #512, Brooklyn, NY 11201, USA"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"jobCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"applicationCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"interviewCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"offerCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>An employer for which your members have added a job for.</p>
@@ -997,51 +1119,62 @@ Your Access Token carries many privileges, so be sure to keep them secure! Do no
 <table><thead>
 <tr>
 <th>Field</th>
+<th>Type</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>_id</td>
+<td><code>id</code></td>
+<td>String</td>
 <td>Employer&#39;s id</td>
 </tr>
 <tr>
-<td>name</td>
+<td><code>name</code></td>
+<td>String</td>
 <td>Name of the employer</td>
 </tr>
 <tr>
-<td>domain</td>
+<td><code>domain</code></td>
+<td>String</td>
 <td>Website for the employer</td>
 </tr>
 <tr>
-<td>foundedYear</td>
+<td><code>foundedYear</code></td>
+<td>Integer</td>
 <td>Year the employer was founded</td>
 </tr>
 <tr>
-<td>description</td>
+<td><code>description</code></td>
+<td>String</td>
 <td>Employer description</td>
 </tr>
 <tr>
-<td>location</td>
+<td><code>location</code></td>
+<td>String</td>
 <td>Full address for the employer</td>
 </tr>
 <tr>
-<td>jobCount</td>
+<td><code>jobCount</code></td>
+<td>Integer</td>
 <td>Number of jobs added for this employer</td>
 </tr>
 <tr>
-<td>applicationCount</td>
+<td><code>applicationCount</code></td>
+<td>Integer</td>
 <td>Number of applications to this employer</td>
 </tr>
 <tr>
-<td>interviewCount</td>
+<td><code>interviewCount</code></td>
+<td>Integer</td>
 <td>Number of interviews from this employer</td>
 </tr>
 <tr>
-<td>offerCount</td>
+<td><code>offerCount</code></td>
+<td>Integer</td>
 <td>Number of offers from this employer</td>
 </tr>
 </tbody></table>
-<h2 id='list-employers'>List Employers</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.huntr.co/org/employers"</span>
+<h2 id='list-employers'>List Employers</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.huntr.co/org/employers?limit=2"</span>
   -H <span class="s2">"Authorization: Bearer &lt;ORG_ACCESS_TOKEN&gt;"</span>
 </code></pre>
 <blockquote>
@@ -1049,35 +1182,33 @@ Your Access Token carries many privileges, so be sure to keep them secure! Do no
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"_id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"5a71a7361d04bb000f1f1c43"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Routific"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"domain"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"routific.com"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"foundedYear"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"description"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Routific is a market-leading route optimization solution. Our software can help you plan routes in minutes."</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"location"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"788 Beatty St. Level B1, Vancouver, BC, V6B2M1, Canada"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"jobCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"applicationCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"interviewCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"offerCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"_id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"5a74a7361d08bc000f1f1c49"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Hootsuite"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"domain"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"hootsuite.com"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"foundedYear"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"description"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Enhance your social media management with Hootsuite, the leading social media dashboard. Manage multiple networks and profiles and measure your ..."</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"location"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"5 E 8th Ave, Vancouver, BC V5T 1R6, Canada"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"jobCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"applicationCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"interviewCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"offerCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="err">...</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5b088f63b9defaba88d37264"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The Art Institutes"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"domain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"artinstitutes.edu"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"foundedYear"</span><span class="p">:</span><span class="w"> </span><span class="mi">1921</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The Art Institutes is a system of over 30 nonprofit institutions with a focus on education, student outcomes, and community involvement. Learn more about our programs.</span><span class="se">\r</span><span class="s2">  "</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"location"</span><span class="p">:</span><span class="w"> </span><span class="s2">"K&amp;L Gates Center, 210 Sixth Avenue, Pittsburgh, PA 15222, USA"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"jobCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"applicationCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"interviewCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"offerCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5b088a7bb9defaba88d36f1e"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ResearchGate"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"domain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"researchgate.net"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"foundedYear"</span><span class="p">:</span><span class="w"> </span><span class="mi">2008</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Find 100+ million publication pages, 15+ million researchers, and 700k+ projects. ResearchGate is where you discover scientific knowledge and share your work."</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"location"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10115 Berlin, Germany"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"jobCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"applicationCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"interviewCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"offerCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+      </span><span class="p">}</span><span class="w">
   </span><span class="p">],</span><span class="w">
-  </span><span class="s2">"next"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5a74a7361d08bc000f1f1c50"</span><span class="w">
+  </span><span class="s2">"next"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5b088a7bb9defaba88d36f1e"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-
 </span></code></pre>
 <p>This endpoint retrieves all employers to which your members have added a job for.</p>
 <h3 id='http-request-6'>HTTP Request</h3>
@@ -1101,46 +1232,12 @@ Your Access Token carries many privileges, so be sure to keep them secure! Do no
 <td>If set, returns the next set of results after the object id provided</td>
 </tr>
 </tbody></table>
-<h2 id='retrieve-an-employer'>Retrieve an Employer</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.huntr.co/org/employers/5a71a7361d04bb000f1f1c43"</span>
-  -H <span class="s2">"Authorization: Bearer &lt;ORG_ACCESS_TOKEN&gt;"</span>
-</code></pre>
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"_id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"5a71a7361d04bb000f1f1c43"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Routific"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"domain"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"routific.com"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"foundedYear"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"description"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Routific is a market-leading route optimization solution. Our software can help you plan routes in minutes."</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"location"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"788 Beatty St. Level B1, Vancouver, BC, V6B2M1, Canada"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"jobCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"applicationCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"interviewCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"offerCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<p>This endpoint retrieves a specific employer.</p>
-<h3 id='http-request-7'>HTTP Request</h3>
-<p><code>GET https://api.huntr.co/org/employers/&lt;ID&gt;</code></p>
-<h3 id='url-parameters-3'>URL Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>ID</td>
-<td>The ID of the employer to retrieve</td>
-</tr>
-</tbody></table>
 <h1 id='webhooks'>Webhooks</h1><h2 id='receiving-webhooks'>Receiving Webhooks</h2>
-<p>Huntr can send webhook events to notify your application any time a <a href="#job-events">job event</a> happens within your organization.</p>
+<p>Huntr can send webhook events to notify your application any time an <a href="#events">event</a> happens within your organization.</p>
 
-<p>You can register webhook URLs in your organization&#39;s admin dashboard, under the <strong>Developers</strong> tab that we will notify any time a job event happens in your organization. When the event occurs—a new job is added, an interview date set, etc.—Huntr creates a <strong><a href="#job-events">Job Event</a></strong> object.</p>
+<p>You can register webhook URLs in your organization&#39;s admin dashboard, under the <strong>Developers</strong> tab that we will notify any time a event happens in your organization. When the event occurs—a new job is added, an interview date set, etc.—Huntr creates a <strong><a href="#events">Event</a></strong> object.</p>
 
-<p>The Job Event object contains all the information about the event that just happened, including the type of event and the data associated with that event. Huntr will send the <strong>Job Event</strong> via an <code>HTTP POST</code> request, to any endpoint URLs that you have defined in your organization&#39;s Webhooks settings.</p>
+<p>The Event object contains all the information about the event that just happened, including the type of event and the data associated with that event. Huntr will send the <strong>Event</strong> via an <code>HTTP POST</code> request, to any endpoint URLs that you have defined in your organization&#39;s Webhooks settings.</p>
 <h2 id='responding-to-a-webhook'>Responding to a webhook</h2>
 <p>To acknowledge receipt of a webhook, your endpoint should return a <code>200</code> HTTP status code. All other response codes will indicate to Huntr that you did not receive the webhook.</p>
 <h1 id='errors'>Errors</h1>
