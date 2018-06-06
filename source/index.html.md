@@ -1,5 +1,5 @@
 ---
-title: API Reference
+title: Huntr for Organizations - API Reference
 
 language_tabs: # must be one of https://git.io/vQNgJ
   - shell
@@ -67,25 +67,25 @@ curl "https://api.huntr.co/org/members?limit=2"
 
 ```json
 {
-  "data": [
-    {
-      "_id" : "5a70a7361d06bb000f0f1c43",
-      "email" : "leod@purpleuniversity.edu",
-      "givenName" : "Leo",
-      "familyName" : "Davis",
-      "createdAt" : "2018-01-30T17:11:18.399Z",
-      "isActive": true
-    },
-    {
-      "_id" : "5a70a7361d06bb000f0f1c44",
-      "email" : "johnj@purpleuniversity.edu",
-      "givenName" : "John",
-      "familyName" : "Johnson",
-      "createdAt" : "2018-01-28T17:11:18.399Z",
-      "isActive": true
-    }
-  ],
-  "next": "5a70a7361d06bb000f0f1c44"
+    "data": [
+        {
+            "id": "5b0379b5712bb674fd0d561e",
+            "givenName": "Graciela",
+            "familyName": "Varela",
+            "email": "gracev@huntr.co",
+            "createdAt": 1526954421,
+            "isActive": true
+        },
+        {
+            "id": "5b037898b7f93473edc1c43a",
+            "givenName": "Nicole",
+            "familyName": "Haylock",
+            "email": "nicoleh@huntr.co",
+            "createdAt": 1526954136,
+            "isActive": false
+        }
+    ],
+    "next": "5b037898b7f93473edc1c43a"
 }
 ```
 
@@ -109,30 +109,30 @@ Huntr uses cursor-based pagination via the `next` parameter which takes an exist
 
 ```json
 {
-  "_id" : "5a70a7361d06bb000f0f1c43",
-  "email" : "leod@purpleuniversity.edu",
-  "givenName" : "Leo",
-  "familyName" : "Davis",
-  "createdAt" : "2018-01-30T17:11:18.399Z",
-  "isActive": true
+    "id": "5b0379b5712bb674fd0d561e",
+    "givenName": "Graciela",
+    "familyName": "Varela",
+    "email": "gracev@huntr.co",
+    "createdAt": 1526954421,
+    "isActive": true
 }
 ```
 
 A member is one of the job seekers using Huntr under your organization. If you are an educational institution, your job seeking students qualify as your members.
 
-Field | Description
------ | -----------
-_id | Member's Huntr id
-email | Member's email
-givenName | Member's first name
-familyName | Member's last name
-createdAt | Date the member signed up for Huntr
-isActive | Defines if member has been deactivated by an organization admin or advisor. Deactivating a member prevents them from continuing activity on boards managed by your organization, and it is usually done for members who have found a job and stopped using Huntr.
+Field | Type | Description
+----- | ---- | -----------
+id | String | Member's Huntr id
+givenName | String | Member's first name
+familyName | String | Member's last name
+email | String | Member's email
+createdAt | Unix timestamp | Date the member signed up for Huntr
+isActive | Boolean | Defines if member has been deactivated by an organization admin or advisor. Deactivating a member prevents them from continuing activity on boards managed by your organization, and it is usually done for members who have found a job and stopped using Huntr.
 
 ## List Members
 
 ```shell
-curl "https://api.huntr.co/org/members?active=true"
+curl "https://api.huntr.co/org/members?active=true&limit=3"
   -H "Authorization: Bearer <ORG_ACCESS_TOKEN>"
 ```
 
@@ -140,27 +140,34 @@ curl "https://api.huntr.co/org/members?active=true"
 
 ```json
 {
-  "data": [
-    {
-      "_id" : "5a70a7361d06bb000f0f1c43",
-      "email" : "leod@purpleuniversity.edu",
-      "givenName" : "Leo",
-      "familyName" : "Davis",
-      "createdAt" : "2018-01-30T17:11:18.399Z",
-      "isActive": true
-    },
-    {
-      "_id" : "5a70a7361d06bb000f0f1c44",
-      "email" : "johnj@purpleuniversity.edu",
-      "givenName" : "John",
-      "familyName" : "Johnson",
-      "createdAt" : "2018-01-28T17:11:18.399Z",
-      "isActive": true
-    }
-  ],
-  "next": "5a70a7361d06bb000f0f1c44"
+    "data": [
+        {
+            "id": "5b0377c7b7f93473edc1c433",
+            "givenName": "Roberto",
+            "familyName": "Moscoso",
+            "email": "robertom@huntr.co",
+            "createdAt": 1526953927,
+            "isActive": true
+        },
+        {
+            "id": "5a9f699edd2f935a4e5b263a",
+            "givenName": "Rennie",
+            "familyName": "Haylock",
+            "email": "rennie@huntr.co",
+            "createdAt": 1520396702,
+            "isActive": true
+        },
+        {
+            "id": "5a9b3d392bd2e22e37dee4f0",
+            "givenName": "John",
+            "familyName": "Smith",
+            "email": "johns@huntr.co",
+            "createdAt": 1520123193,
+            "isActive": true
+        }
+    ],
+    "next": "5a9b3d392bd2e22e37dee4f0"
 }
-
 ```
 
 This endpoint retrieves all members for your organization.
@@ -171,16 +178,16 @@ This endpoint retrieves all members for your organization.
 
 ### Query Parameters
 
-Parameter | Default | Description
---------- | ------- | -----------
-active | none | If set to `true`, the result will only include active members. If set to `false` the result will only include deactivated members.
-limit | 100 | Defines the maximum number of members to return
-next | none | If set, returns the next set of results after the object id provided
+Parameter | Type | Default | Description
+--------- | ---- | ------- | -----------
+`active` | Boolean | none | If set to `true`, the result will only include active members. If set to `false` the result will only include deactivated members.
+`limit` | Integer | 100 | Defines the maximum number of members to return
+`next` | String | none | If set, returns the next set of results after the object id provided
 
 ## Retrieve a Member
 
 ```shell
-curl "https://api.huntr.co/org/members/5a70a7361d06bb000f0f1c43"
+curl "https://api.huntr.co/org/members/5a9b3d392bd2e22e37dee4f0"
   -H "Authorization: Bearer <ORG_ACCESS_TOKEN>"
 ```
 
@@ -188,12 +195,12 @@ curl "https://api.huntr.co/org/members/5a70a7361d06bb000f0f1c43"
 
 ```json
 {
-  "_id" : "5a70a7361d06bb000f0f1c43",
-  "email" : "leod@purpleuniversity.edu",
-  "givenName" : "Leo",
-  "familyName" : "Davis",
-  "createdAt" : "2018-01-30T17:11:18.399Z",
-  "isActive": true
+    "id": "5a9b3d392bd2e22e37dee4f0",
+    "givenName": "John",
+    "familyName": "Smith",
+    "email": "johns@huntr.co",
+    "createdAt": 1520123193,
+    "isActive": true
 }
 ```
 
@@ -205,9 +212,9 @@ This endpoint retrieves a specific member.
 
 ### URL Parameters
 
-Parameter | Description
---------- | -----------
-ID | The ID of the member to retrieve
+Parameter | Type | Description
+--------- | ---- | -----------
+ID | String | The ID of the member to retrieve
 
 # Jobs
 
@@ -217,61 +224,75 @@ ID | The ID of the member to retrieve
 
 ```json
 {
-    "_id" : "5b105edfb83359000f7b6353",
-    "_member": "5a70a7361d06bb000f0f1c43",
-    "title" : "Full Stack Engineer",
-    "description": "If you want to experience what it's like working with a tight team of entrepreneurs, and you'd like to maximize the pace of personal development, Routific might be the place for you to jump-start your career...",
-    "salary": "$95,000",
-    "url" : "https://angel.co/routific/jobs/200057-full-stack-engineer",
-    "deadline": "2018-05-25T20:45:25.933Z",
-    "applicationDate": "2018-05-31T20:45:25.933Z",
-    "firstInterviewDate": null,
-    "secondInterviewDate": null,
-    "offerDate": null,
-    "_employer" : {
-      "_id": "5af1cd55a2642af3c39b8e2f",
-      "name": "Routific",
-      "domain": "routific.com"
-    },
-    "_list" : {
-      "name": "Applied"
-    },
-    "location" : {
-      "lat" : "49.2827",
-      "lng" : "-123.1207",
-      "name" : "Vancouver",
-      "address" : "Vancouver, BC, Canada"
-    },
-    "updatedAt" : "2018-05-31T20:45:25.933Z",
-    "createdAt" : "2018-05-31T20:45:19.742Z",
+  "id": "5b088a7b12728af4ec0be9d6",
+  "title": "Senior Engineer",
+  "description": "A job description",
+  "salary": "$90,000",
+  "url": "https://linkedin.com/jobs/asdf234adf",
+  "location": {
+      "lng": "13.384453399999984",
+      "lat": "52.53073269999999",
+      "url": "https://maps.google.com/?cid=13193077415763177194",
+      "id": "1c56fadc63fb73a87bfae16a1096735b2817793b",
+      "placeId": "ChIJbTkS9uxRqEcR6u7KfAI6F7c",
+      "name": "ResearchGate",
+      "address": "Invalidenstraße 115, 10115 Berlin, Germany"
+  },
+  "deadline": 1527404400,
+  "applicationDate": 1527490800,
+  "firstInterviewDate": 1527750000,
+  "secondInterviewDate": 1527836400,
+  "offerDate": 1528095600,
+  "createdAt": 1527286395,
+  "member": {
+      "id": "5a6bf0758f18344d6f76d118",
+      "givenName": "Gracielita",
+      "familyName": "Varelita",
+      "email": "rennie+grace@huntr.co",
+      "createdAt": 1517023349
+  },
+  "employer": {
+      "id": "5b088a7bb9defaba88d36f1e",
+      "name": "ResearchGate",
+      "domain": "researchgate.net",
+      "foundedYear": 2008,
+      "description": "Find 100+ million publication pages, 15+ million researchers, and 700k+ projects. ResearchGate is where you discover scientific knowledge and share your work.",
+      "location": "10115 Berlin, Germany",
+      "jobCount": 0,
+      "applicationCount": 0,
+      "interviewCount": 0,
+      "offerCount": 0
+  },
+  "list": {
+      "name": "wishlist"
+  }
 }
 ```
 
 A job is an instance of a job opportunity that one of your members has added to one of their boards managed by your organization. Each job card in the Huntr UI represent a different Job.
 
-Field | Description
------ | -----------
-_id | Job's id
-_member | id for the member who owns the job
-title | Job title
-description | Job description
-salary | Job salary
-url | URL for the original job post (i.e: https://indeed.com/jobs/001)
-deadline | Date of job's application deadline
-applicationDate | Date of application deadline
-firstInterviewDate | Date of first interview
-secondInterviewDate | Date of second interview
-offerDate | Date offer was received
-_employer  | Object representing the employer
-_list  | Object representing the list the job is in. A list is a stage in a specific Huntr board.
-location | Object representing job's location
-createdAt | Date the job was created by the member
-updatedAt | Date the job entity was last updated
+Field | Type | Description
+----- | ---- | -----------
+`id` | String | Job's id
+`title` | String | Job title  
+`description` | String | Job description
+`salary` | String | Job salary  
+`url` | String | URL for the original job post
+`location` | Object | Object representing job's location
+`deadline` | Unix timestamp | Date of job's application deadline
+`applicationDate` | Unix timestamp | Date of application deadline
+`firstInterviewDate` | Unix timestamp | Date of first interview
+`secondInterviewDate` | Unix timestamp | Date of second interview
+`offerDate` | Unix timestamp | Date offer was received
+`createdAt` | Unix timestamp | Date the job was created by the member
+`member` | Object | Object representing the member who added the job
+`employer`  | Object | Object representing the employer
+`list`  | Object | Object representing the list the job is in. A list is a stage in a specific Huntr board.
 
 ## List Jobs
 
 ```shell
-curl "https://api.huntr.co/org/jobs"
+curl "https://api.huntr.co/org/jobs?limit=2&member_id=589189b5448fe5e45f01256b"
   -H "Authorization: Bearer <ORG_ACCESS_TOKEN>"
 ```
 
@@ -279,67 +300,65 @@ curl "https://api.huntr.co/org/jobs"
 
 ```json
 {
-  "data": [
-    {
-      "_id" : "5b105edfb83359000f7b6353",
-      "_member": "5a70a7361d06bb000f0f1c43",
-      "title" : "Full Stack Engineer",
-      "description": "If you want to experience what it's like working with a tight team of entrepreneurs, and you'd like to maximize the pace of personal development, Routific might be the place for you to jump-start your career...",
-      "salary": "$95,000",
-      "url" : "https://angel.co/routific/jobs/200057-full-stack-engineer",
-      "deadline": "2018-05-25T20:45:25.933Z",
-      "applicationDate": "2018-05-31T20:45:25.933Z",
-      "firstInterviewDate": null,
-      "secondInterviewDate": null,
-      "offerDate": null,
-      "_employer" : {
-        "_id": "5af1cd55a2642af3c39b8e2f",
-        "name": "Routific",
-        "domain": "routific.com"
-      },
-      "_list" : {
-        "name": "Applied"
-      },
-      "location" : {
-        "lat" : "49.2827",
-        "lng" : "-123.1207",
-        "name" : "Vancouver",
-        "address" : "Vancouver, BC, Canada"
-      },
-      "updatedAt" : "2018-05-31T20:45:25.933Z",
-      "createdAt" : "2018-05-31T20:45:19.742Z",
-    },
-    {
-      "_id" : "5b105edfb83359000f7b6353",
-      "_member": "5a70a7361d06bb000f0f1c44",
-      "title" : "Product Manager",
-      "description": "At Stripe, Product Managers help build innovative payments products for our customers. Product development is an extremely collaborative effort between engineering, design, analytics and customer-facing teams. In this role, youd be supporting the full stack engineering team that builds the...",
-      "salary": "$105,000",
-      "url" : "https://betalist.com/jobs/171556-product-manager-seattle-at-stripe",
-      "deadline": "2018-05-23T20:45:25.933Z",
-      "applicationDate": "2018-05-29T20:45:25.933Z",
-      "firstInterviewDate": "2018-05-31T20:45:25.933Z",
-      "secondInterviewDate": "2018-06-02T20:45:25.933Z",
-      "offerDate": "2018-06-03T20:45:25.933Z",
-      "_employer" : {
-        "_id": "5af1cd55a2642af3d39d8e2f",
-        "name": "Stripe",
-        "domain": "stripe.com"
-      },
-      "_list" : {
-        "name": "Offer"
-      },
-      "location" : {
-        "lat" : "49.2827",
-        "lng" : "-123.1207",
-        "name" : "Seattle",
-        "address" : "Seattle, WA, USA"
-      },
-      "updatedAt" : "2018-05-31T20:45:25.933Z",
-      "createdAt" : "2018-05-21T20:45:19.742Z",
-    }
-  ],
-  "next": "5b105edfb83359000f7b6353"
+    "data": [
+        {
+            "id": "5b00d6695cadd481fb0536a2",
+            "title": "Developer",
+            "offerDate": 1526781545,
+            "createdAt": 1526781545,
+            "member": {
+                "id": "589189b5448fe5e45f01256b",
+                "givenName": "Samir",
+                "familyName": "Marin",
+                "email": "rennie+dev2@huntr.co",
+                "createdAt": 1485932981
+            },
+            "employer": {
+                "id": "5b00d669a2567c2730e038b8",
+                "name": "StubHub",
+                "domain": "stubhub.com",
+                "foundedYear": 2000,
+                "description": "Your ticket out   www.stubhub.com   Twitter / Instagram: @StubHub   Snapchat: stubhub  https://www.snapchat.com/add/stubhub",
+                "location": "San Francisco, CA, USA",
+                "jobCount": 0,
+                "applicationCount": 0,
+                "interviewCount": 0,
+                "offerCount": 0
+            },
+            "list": {
+                "name": "offer"
+            }
+        },
+        {
+            "id": "5b00b6745e6a971db86c43de",
+            "title": "Developer",
+            "firstInterviewDate": 1526773364,
+            "createdAt": 1526773364,
+            "member": {
+                "id": "589189b5448fe5e45f01256b",
+                "givenName": "Samir",
+                "familyName": "Marin",
+                "email": "rennie+dev2@huntr.co",
+                "createdAt": 1485932981
+            },
+            "employer": {
+                "id": "58a21e5cc9903d839de2f879",
+                "name": "Reddit",
+                "domain": "reddit.com",
+                "foundedYear": 2005,
+                "description": "reddit is a source for what's new and popular online. vote on links that you like or dislike and help decide what's popular, or submit your own!",
+                "location": "548 Market St, San Francisco, CA 94104, USA",
+                "jobCount": 0,
+                "applicationCount": 0,
+                "interviewCount": 0,
+                "offerCount": 0
+            },
+            "list": {
+                "name": "interview"
+            }
+        }
+    ],
+    "next": "5b00b6745e6a971db86c43de"
 }
 ```
 
@@ -347,22 +366,22 @@ This endpoint lists all jobs added by members from your organization, jobs are s
 
 ### HTTP Request
 
-`GET https://api.huntr.co/org/jobs?member_id=<MEMBER_ID>`
+`GET https://api.huntr.co/org/jobs`
 
 ### Query Parameters
 
-Parameter | Default | Required | Description
---------- | ------- | -------- | -----------
-member_id | none | no | If set, will only return jobs belonging to member
-created_after | none | no | If set, will only return jobs created after time sent
-created_before | none | no | If set, will only return jobs created before time sent
-limit | 100 | Defines the maximum number of jobs to return
-next | none | If set, returns the next set of results after the object id provided
+Parameter | Type | Default | Description
+--------- | ---- | ------- | -----------
+`member_id` | String | none | If set, will only return jobs belonging to member
+`created_after` | Unix timestamp | none | If set, will only return jobs created after `created_after`
+`created_before` | Unix timestamp | none | If set, will only return jobs created before `created_before`
+`limit` | Integer | 100 | Defines the maximum number of jobs to return
+`next` | String | none | If set, returns the next set of results after the object id provided
 
 ## Retrieve a Job
 
 ```shell
-curl "https://api.huntr.co/org/jobs/5b105edfb83359000f7b6353"
+curl "https://api.huntr.co/org/jobs/5b088a7b12728af4ec0be9d6"
   -H "Authorization: Bearer <ORG_ACCESS_TOKEN>"
 ```
 
@@ -370,33 +389,48 @@ curl "https://api.huntr.co/org/jobs/5b105edfb83359000f7b6353"
 
 ```json
 {
-  "_id" : "5b105edfb83359000f7b6353",
-  "_member": "5a70a7361d06bb000f0f1c44",
-  "title" : "Product Manager",
-  "description": "At Stripe, Product Managers help build innovative payments products for our customers. Product development is an extremely collaborative effort between engineering, design, analytics and customer-facing teams. In this role, youd be supporting the full stack engineering team that builds the...",
-  "salary": "$105,000",
-  "url" : "https://betalist.com/jobs/171556-product-manager-seattle-at-stripe",
-  "deadline": "2018-05-23T20:45:25.933Z",
-  "applicationDate": "2018-05-29T20:45:25.933Z",
-  "firstInterviewDate": "2018-05-31T20:45:25.933Z",
-  "secondInterviewDate": "2018-06-02T20:45:25.933Z",
-  "offerDate": "2018-06-03T20:45:25.933Z",
-  "_employer" : {
-    "_id": "5af1cd55a2642af3d39d8e2f",
-    "name": "Stripe",
-    "domain": "stripe.com"
+  "id": "5b088a7b12728af4ec0be9d6",
+  "title": "Senior Engineer",
+  "description": "A job description",
+  "salary": "$90,000",
+  "url": "https://linkedin.com/jobs/asdf234adf",
+  "location": {
+      "lng": "13.384453399999984",
+      "lat": "52.53073269999999",
+      "url": "https://maps.google.com/?cid=13193077415763177194",
+      "id": "1c56fadc63fb73a87bfae16a1096735b2817793b",
+      "placeId": "ChIJbTkS9uxRqEcR6u7KfAI6F7c",
+      "name": "ResearchGate",
+      "address": "Invalidenstraße 115, 10115 Berlin, Germany"
   },
-  "_list" : {
-    "name": "Offer"
+  "deadline": 1527404400,
+  "applicationDate": 1527490800,
+  "firstInterviewDate": 1527750000,
+  "secondInterviewDate": 1527836400,
+  "offerDate": 1528095600,
+  "createdAt": 1527286395,
+  "member": {
+      "id": "5a6bf0758f18344d6f76d118",
+      "givenName": "Gracielita",
+      "familyName": "Varelita",
+      "email": "rennie+grace@huntr.co",
+      "createdAt": 1517023349
   },
-  "location" : {
-    "lat" : "49.2827",
-    "lng" : "-123.1207",
-    "name" : "Seattle",
-    "address" : "Seattle, WA, USA"
+  "employer": {
+      "id": "5b088a7bb9defaba88d36f1e",
+      "name": "ResearchGate",
+      "domain": "researchgate.net",
+      "foundedYear": 2008,
+      "description": "Find 100+ million publication pages, 15+ million researchers, and 700k+ projects. ResearchGate is where you discover scientific knowledge and share your work.",
+      "location": "10115 Berlin, Germany",
+      "jobCount": 0,
+      "applicationCount": 0,
+      "interviewCount": 0,
+      "offerCount": 0
   },
-  "updatedAt" : "2018-05-31T20:45:25.933Z",
-  "createdAt" : "2018-05-21T20:45:19.742Z",
+  "list": {
+      "name": "wishlist"
+  }
 }
 ```
 
@@ -412,35 +446,51 @@ Parameter | Description
 --------- | -----------
 ID | The ID of the job to retrieve
 
-# Job Events
+# Events
 
-## Job Events Resource
+## Events Resource
 
-> A job event object:
+> An event object:
 
 ```json
 {
-    "_id" : "5b105edfb83359000f7b6353",
-    "_member": "5a70a7361d06bb000f0f1c43",
-    "_job": "5b105edfb83359000f7b6353",
-    "date": "2018-05-18T20:45:19.742Z",
-    "eventType": "JOB_APPLICATION_DATE_SET",
-    "createdAt": "2018-05-21T20:45:19.742Z"
+    "id": "5b05ca43f193b66c692c29a0",
+    "eventType": "JOB_MOVED",
+    "createdAt": 1527106115,
+    "member": {
+        "id": "5a5a88fae10d8c2cea07f2f7",
+        "givenName": "Gwen",
+        "familyName": "Johnson",
+        "email": "gwenj@huntr.co",
+        "createdAt": 1515882746
+    },
+    "job": {
+        "id": "5a8a255bb4271026f0c0f749",
+        "title": "Engineer",
+        "applicationDate": 1527106115,
+        "createdAt": 1519002971
+    },
+    "toList": {
+        "name": "applied"
+    },
+    "fromList": {
+        "name": "wishlist"
+    }
 }
 ```
 
-A job event represents one of many events that can occur during the lifetime of a job, therefore a single job may have **multiple** events related to it:
+An event represents one of many events that can occur during the lifetime of a job, therefore a single job may have **multiple** events related to it:
 
-Field | Description | Included in event types
------ | ----------- | -----------------------
-_id | id for the event | All
-_member | Member id of member who owns the job | All
-_job |  Job id for which event applies to | All
-eventType | Type of event | All
-date | Date when the event actually happened (will happen), this date is usually set by the job seekers themselves | JOB_APPLICATION_DATE_SET, JOB_FIRST_INTERVIEW_DATE_SET, JOB_SECOND_INTERVIEW_DATE_SET, JOB_OFFER_DATE_SET
-_fromList | List from which a job was moved in a job moved event | JOB_MOVED
-_toList | List to which a job was moved in a job moved event | JOB_MOVED
-createdAt | Date the event was logged. As an example, if a member logged an interview date today, but the actual interview date logged is Friday week, then `createdAt` is **today**, and `date` is **next friday**  | All
+Field | Type | In all events | Description
+----- | ---- | ------------- | -----------
+`id` | String | true | id for the event
+`eventType` | String | true | Type of event
+`date` | Unix timestamp | false | Date when the event actually happened (will happen), this date is usually set by the job seekers themselves
+`createdAt` | Unix timestamp | true | Date the event was logged. As an example, if a member logged an interview date today, but the actual interview date logged is next Friday, then `createdAt` is **today**, and `date` is **next friday**
+`member` | Object | true | Member who owns the job
+`job` | Object | true |  Job for which event applies to
+`fromList` | Object | false | List from which job was moved in a job moved event
+`toList` | Object | false | List to which a job was moved or added to
 
 ## Event Types
 
@@ -448,17 +498,17 @@ There are multiple event types which include:
 
 Event Name | Description | Extra fields
 ---------- | ----------- | -----------
-JOB_ADDED | A new job is added | none
-JOB_MOVED | An existing job is moved | _fromList, _toList
-JOB_APPLICATION_DATE_SET |  Application date is set for an existing job | date
-JOB_FIRST_INTERVIEW_DATE_SET |  First interview date is set for an existing job | date
-JOB_SECOND_INTERVIEW_DATE_SET |  Second interview date is set for an existing job | date
-JOB_OFFER_DATE_SET |  Offer date is set for an existing job | date
+`JOB_ADDED` | A new job is created | `toList`
+`JOB_MOVED` | An existing job is moved | `fromList`, `toList`
+`JOB_APPLICATION_DATE_SET` |  Application date is set for an existing job | `date`
+`JOB_FIRST_INTERVIEW_DATE_SET` |  First interview date is set for an existing job | `date`
+`JOB_SECOND_INTERVIEW_DATE_SET` |  Second interview date is set for an existing job | `date`
+`JOB_OFFER_DATE_SET` |  Offer date is set for an existing job | `date`
 
-## List Job Events
+## List Events
 
 ```shell
-curl "https://api.huntr.co/org/job-events"
+curl "https://api.huntr.co/org/events?limit=2"
   -H "Authorization: Bearer <ORG_ACCESS_TOKEN>"
 ```
 
@@ -468,61 +518,95 @@ curl "https://api.huntr.co/org/job-events"
 {
   "data": [
     {
-        "eventType": "JOB_FIRST_INTERVIEW_DATE_SET",
-        "_id" : "5b105edfb83359000f7b6353",
-        "_member": "5a70a7361d06bb000f0f1c43",
-        "_job": "5b105edfb83359000f7b6353",
-        "date": "2018-05-18T20:45:19.742Z",
-        "createdAt": "2018-06-01T20:45:19.742Z"
-    },
-    {
-        "eventType": "JOB_APPLICATION_DATE_SET",
-        "_id" : "5b105edfb83359000f7b6351",
-        "_member": "5a70a7361d06bb000f0f1c43",
-        "_job": "5b105edfb83359000f7b6353",
-        "date": "2018-05-18T22:25:19.742Z",
-        "createdAt": "2018-05-20T20:45:19.742Z"
-    },
-    {
-        "eventType": "JOB_MOVED",
-        "_id" : "5b105edfb83359000f7b6341",
-        "_member": "5a70a7361d06bb000f0f1c43",
-        "_job": "5b105edfb83359000f7b6353",
-        "_fromList": {
-          "name": "Wishlist"
+        "id": "5b17300b4453e621e676d90e",
+        "eventType": "JOB_OFFER_DATE_SET",
+        "date": 1528095600,
+        "createdAt": 1528246283,
+        "member": {
+            "id": "5a6bf0758f18344d6f76d118",
+            "givenName": "Gracielita",
+            "familyName": "Varelita",
+            "email": "rennie+grace@huntr.co",
+            "createdAt": 1517023349
         },
-        "_toList": {
-          "name": "Applied"
-        },
-        "createdAt": "2018-05-20T20:45:19.742Z"
+        "job": {
+            "id": "5b088a7b12728af4ec0be9d6",
+            "title": "Senior Engineer",
+            "description": "A job description",
+            "salary": "$90,000",
+            "url": "https://linkedin.com/jobs/asdf234adf",
+            "location": {
+                "lng": "13.384453399999984",
+                "lat": "52.53073269999999",
+                "url": "https://maps.google.com/?cid=13193077415763177194",
+                "id": "1c56fadc63fb73a87bfae16a1096735b2817793b",
+                "placeId": "ChIJbTkS9uxRqEcR6u7KfAI6F7c",
+                "name": "ResearchGate",
+                "address": "Invalidenstraße 115, 10115 Berlin, Germany"
+            },
+            "deadline": 1527404400,
+            "applicationDate": 1527490800,
+            "firstInterviewDate": 1527750000,
+            "secondInterviewDate": 1527836400,
+            "offerDate": 1528095600,
+            "createdAt": 1527286395
+        }
     },
     {
-        "eventType": "JOB_ADDED",
-        "_id" : "5b105edfb83359000f7b6330",
-        "_member": "5a70a7361d06bb000f0f1c43",
-        "_job": "5b105edfb83359000f7b6353",
-        "createdAt": "2018-05-19T20:45:19.742Z"
+        "id": "5b1730094453e621e676d905",
+        "eventType": "JOB_SECOND_INTERVIEW_DATE_SET",
+        "date": 1527836400,
+        "createdAt": 1528246281,
+        "member": {
+            "id": "5a6bf0758f18344d6f76d118",
+            "givenName": "Gracielita",
+            "familyName": "Varelita",
+            "email": "rennie+grace@huntr.co",
+            "createdAt": 1517023349
+        },
+        "job": {
+            "id": "5b088a7b12728af4ec0be9d6",
+            "title": "Senior Engineer",
+            "description": "A job description",
+            "salary": "$90,000",
+            "url": "https://linkedin.com/jobs/asdf234adf",
+            "location": {
+                "lng": "13.384453399999984",
+                "lat": "52.53073269999999",
+                "url": "https://maps.google.com/?cid=13193077415763177194",
+                "id": "1c56fadc63fb73a87bfae16a1096735b2817793b",
+                "placeId": "ChIJbTkS9uxRqEcR6u7KfAI6F7c",
+                "name": "ResearchGate",
+                "address": "Invalidenstraße 115, 10115 Berlin, Germany"
+            },
+            "deadline": 1527404400,
+            "applicationDate": 1527490800,
+            "firstInterviewDate": 1527750000,
+            "secondInterviewDate": 1527836400,
+            "offerDate": 1528095600,
+            "createdAt": 1527286395
+        }
     }
   ],
-  "next": "5b105edfb83359000f7b6330"
+  "next": "5b1730094453e621e676d905"
 }
 ```
 
-This endpoint retrieves all job events for your organization.
+This endpoint retrieves all events for your organization, sorted from most recently created to oldest.
 
 ### HTTP Request
 
-`GET https://api.huntr.co/org/job-events`
+`GET https://api.huntr.co/org/events`
 
 ### Query Parameters
 
-Parameter | Default | Description
---------- | ------- | -----------
-member_id | none | If set, will only return job events belonging to member
-job_id | none | If set, will only return job events belonging to job
-event_type | none | If set, will only return job events of the specific type. See [event types](#event-types) section for possible event name values.
-limit | 100 | Defines the maximum number of jobs to return
-next | none | If set, returns the next set of results after the object id provided
+Parameter | Type | Default | Description
+--------- | ---- | ------- | -----------
+`member_id` | String | none | If set, will only return events belonging to member
+`job_id` | String | none | If set, will only return events belonging to job
+`event_type` | String | none | If set, will only return events of the specific type. See [event types](#event-types) section for possible event name values.
+`limit` | Integer | 100 | Defines the maximum number of jobs to return
+`next` | String | none | If set, returns the next set of results after the object id provided
 
 # Employers
 
@@ -532,38 +616,38 @@ next | none | If set, returns the next set of results after the object id provid
 
 ```json
 {
-  "_id" : "5a70a7361d06bb000f0f1c43",
-  "name" : "Routific",
-  "domain" : "routific.com",
-  "foundedYear": "2015",
-  "description" : "Routific is a market-leading route optimization solution. Our software can help you plan routes in minutes.",
-  "location" : "788 Beatty St. Level B1, Vancouver, BC, V6B2M1, Canada",
-  "jobCount": 4,
-  "applicationCount": 2,
-  "interviewCount": 1,
-  "offerCount": 1
+    "id": "589b77128bf3dd17f01a3055",
+    "name": "Etsy",
+    "domain": "etsy.com",
+    "foundedYear": 2005,
+    "description": "Find handmade, vintage, and unique goods that express who you are.",
+    "location": "55 Washington St #512, Brooklyn, NY 11201, USA",
+    "jobCount": 4,
+    "applicationCount": 2,
+    "interviewCount": 1,
+    "offerCount": 1
 }
 ```
 
 An employer for which your members have added a job for.
 
-Field | Description
------ | -----------
-_id | Employer's id
-name | Name of the employer
-domain | Website for the employer
-foundedYear | Year the employer was founded
-description | Employer description
-location | Full address for the employer
-jobCount | Number of jobs added for this employer
-applicationCount | Number of applications to this employer
-interviewCount | Number of interviews from this employer
-offerCount | Number of offers from this employer
+Field | Type | Description
+----- | ---- | -----------
+`id` | String | Employer's id
+`name` | String | Name of the employer
+`domain` | String | Website for the employer
+`foundedYear` | Integer | Year the employer was founded
+`description` | String | Employer description
+`location` | String | Full address for the employer
+`jobCount` | Integer | Number of jobs added for this employer
+`applicationCount` | Integer | Number of applications to this employer
+`interviewCount` | Integer | Number of interviews from this employer
+`offerCount` | Integer | Number of offers from this employer
 
 ## List Employers
 
 ```shell
-curl "https://api.huntr.co/org/employers"
+curl "https://api.huntr.co/org/employers?limit=2"
   -H "Authorization: Bearer <ORG_ACCESS_TOKEN>"
 ```
 
@@ -572,35 +656,33 @@ curl "https://api.huntr.co/org/employers"
 ```json
 {
   "data": [
-    {
-      "_id" : "5a71a7361d04bb000f1f1c43",
-      "name" : "Routific",
-      "domain" : "routific.com",
-      "foundedYear": "2015",
-      "description" : "Routific is a market-leading route optimization solution. Our software can help you plan routes in minutes.",
-      "location" : "788 Beatty St. Level B1, Vancouver, BC, V6B2M1, Canada",
-      "jobCount": 4,
-      "applicationCount": 2,
-      "interviewCount": 1,
-      "offerCount": 1
-    },
-    {
-      "_id" : "5a74a7361d08bc000f1f1c49",
-      "name" : "Hootsuite",
-      "domain" : "hootsuite.com",
-      "foundedYear": "2015",
-      "description" : "Enhance your social media management with Hootsuite, the leading social media dashboard. Manage multiple networks and profiles and measure your ...",
-      "location" : "5 E 8th Ave, Vancouver, BC V5T 1R6, Canada",
-      "jobCount": 8,
-      "applicationCount": 2,
-      "interviewCount": 0,
-      "offerCount": 0
-    },
-    ...
+      {
+          "id": "5b088f63b9defaba88d37264",
+          "name": "The Art Institutes",
+          "domain": "artinstitutes.edu",
+          "foundedYear": 1921,
+          "description": "The Art Institutes is a system of over 30 nonprofit institutions with a focus on education, student outcomes, and community involvement. Learn more about our programs.\r  ",
+          "location": "K&L Gates Center, 210 Sixth Avenue, Pittsburgh, PA 15222, USA",
+          "jobCount": 1,
+          "applicationCount": 0,
+          "interviewCount": 0,
+          "offerCount": 0
+      },
+      {
+          "id": "5b088a7bb9defaba88d36f1e",
+          "name": "ResearchGate",
+          "domain": "researchgate.net",
+          "foundedYear": 2008,
+          "description": "Find 100+ million publication pages, 15+ million researchers, and 700k+ projects. ResearchGate is where you discover scientific knowledge and share your work.",
+          "location": "10115 Berlin, Germany",
+          "jobCount": 1,
+          "applicationCount": 1,
+          "interviewCount": 2,
+          "offerCount": 1
+      }
   ],
-  "next": "5a74a7361d08bc000f1f1c50"
+  "next": "5b088a7bb9defaba88d36f1e"
 }
-
 ```
 
 This endpoint retrieves all employers to which your members have added a job for.
@@ -616,51 +698,15 @@ Parameter | Default | Description
 limit | 100 | Defines the maximum number of employers to return
 next | none | If set, returns the next set of results after the object id provided
 
-## Retrieve an Employer
-
-```shell
-curl "https://api.huntr.co/org/employers/5a71a7361d04bb000f1f1c43"
-  -H "Authorization: Bearer <ORG_ACCESS_TOKEN>"
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-  "_id" : "5a71a7361d04bb000f1f1c43",
-  "name" : "Routific",
-  "domain" : "routific.com",
-  "foundedYear": "2015",
-  "description" : "Routific is a market-leading route optimization solution. Our software can help you plan routes in minutes.",
-  "location" : "788 Beatty St. Level B1, Vancouver, BC, V6B2M1, Canada",
-  "jobCount": 4,
-  "applicationCount": 2,
-  "interviewCount": 1,
-  "offerCount": 1
-}
-```
-
-This endpoint retrieves a specific employer.
-
-### HTTP Request
-
-`GET https://api.huntr.co/org/employers/<ID>`
-
-### URL Parameters
-
-Parameter | Description
---------- | -----------
-ID | The ID of the employer to retrieve
-
 # Webhooks
 
 ## Receiving Webhooks
 
-Huntr can send webhook events to notify your application any time a [job event](#job-events) happens within your organization.
+Huntr can send webhook events to notify your application any time an [event](#events) happens within your organization.
 
-You can register webhook URLs in your organization's admin dashboard, under the **Developers** tab that we will notify any time a job event happens in your organization. When the event occurs—a new job is added, an interview date set, etc.—Huntr creates a **[Job Event](#job-events)** object.
+You can register webhook URLs in your organization's admin dashboard, under the **Developers** tab that we will notify any time a event happens in your organization. When the event occurs—a new job is added, an interview date set, etc.—Huntr creates a **[Event](#events)** object.
 
-The Job Event object contains all the information about the event that just happened, including the type of event and the data associated with that event. Huntr will send the **Job Event** via an `HTTP POST` request, to any endpoint URLs that you have defined in your organization's Webhooks settings.
+The Event object contains all the information about the event that just happened, including the type of event and the data associated with that event. Huntr will send the **Event** via an `HTTP POST` request, to any endpoint URLs that you have defined in your organization's Webhooks settings.
 
 ## Responding to a webhook
 
