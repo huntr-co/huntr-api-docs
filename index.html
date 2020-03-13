@@ -229,6 +229,17 @@
             <a href="#pagination" class="toc-h1 toc-link" data-title="Pagination">Pagination</a>
           </li>
           <li>
+            <a href="#organization-invitation" class="toc-h1 toc-link" data-title="Organization Invitation">Organization Invitation</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#organization-invitation-resource" class="toc-h2 toc-link" data-title="Organization Invitation Resource">Organization Invitation Resource</a>
+                  </li>
+                  <li>
+                    <a href="#submit-new-invitations" class="toc-h2 toc-link" data-title="Submit new invitations">Submit new invitations</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#members" class="toc-h1 toc-link" data-title="Members">Members</a>
               <ul class="toc-list-h2">
                   <li>
@@ -381,6 +392,150 @@ Your Access Token carries many privileges, so be sure to keep them secure! Do no
 <p>Some API resources have support for bulk fetches via &quot;list&quot; API methods. For instance, you can list members, jobs, and job events. These list API methods share a common structure, taking these two parameters: <code>limit</code>, <code>next</code>.</p>
 
 <p>Huntr uses cursor-based pagination via the <code>next</code> parameter which takes an existing object ID value. Every &quot;list&quot; endpoint result includes a <code>data</code> parameter, with the results from the call, along with a <code>next</code> parameter. The <code>next</code> parameter represents the id of the last object returned. Passing this parameter in subsequent call will return the next page of results. So, if you&#39;ve made your first query and set 100 as a limit and want to retrieve the second page of results, you can repeat the same query, but with the <code>next</code> parameter set with the value returned by your first call. You can see an example set of queries on the right.</p>
+<h1 id='organization-invitation'>Organization Invitation</h1><h2 id='organization-invitation-resource'>Organization Invitation Resource</h2>
+<blockquote>
+<p>An invitation sent to a member to join your Huntr Organization as a job seeker:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5e6a9d1f62593578ce9de841"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"toEmail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test@example.com"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"boardName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Job Search 2020"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"to"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5e6a7c99c56bc6669e3da876"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"givenName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cristobal"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"familyName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hackett"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test@example.com"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1584045343</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"boardTemplate"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5a6e4a567e42789e6e65c986"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tech Jobs"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"listNames"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"Wishlist"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"Applied"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"Phone Interview"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"On Site Interview"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"Offer"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"Rejected"</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>String</td>
+<td>Invitation id</td>
+</tr>
+<tr>
+<td>toEmail</td>
+<td>String</td>
+<td>Email to which invitation was sent to</td>
+</tr>
+<tr>
+<td>boardName</td>
+<td>String</td>
+<td>Name to give the board created when member accepts invite</td>
+</tr>
+<tr>
+<td>to</td>
+<td>Object</td>
+<td>If the user with this email already has a Huntr account this object will show his/her user account information</td>
+</tr>
+<tr>
+<td>email</td>
+<td>String</td>
+<td>Member&#39;s email</td>
+</tr>
+<tr>
+<td>boardTemplate</td>
+<td>Object</td>
+<td>The board template to use to define the board stages when member accepts invite</td>
+</tr>
+</tbody></table>
+<h2 id='submit-new-invitations'>Submit new invitations</h2><pre class="highlight shell tab-shell"><code>curl --location --request POST <span class="s1">'https://api.huntr.co/org/organization-invitations'</span> <span class="se">\</span>
+--header <span class="s1">'Authorization: Bearer &lt;ORG_ACCESS_TOKEN&gt;'</span> <span class="se">\</span>
+--header <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+--data-raw <span class="s1">'{
+    "emails": ["test@example.com"],
+    "boardName": "Job Search 2020"
+}'</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5e6a9d1f62593578ce9de841"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"toEmail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test@example.com"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"boardName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Job Search 2020"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"to"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5e6a7c99c56bc6669e3da876"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"givenName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cristobal"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"familyName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hackett"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test@example.com"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1584045343</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"boardTemplate"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5a6e4a567e42789e6e65c986"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tech Jobs"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"listNames"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"Wishlist"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"Applied"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"Phone Interview"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"On Site Interview"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"Offer"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"Rejected"</span><span class="w">
+            </span><span class="p">]</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+<p>This endpoint creates and sends a new Organization Invitation for a member.
+The people invited through this endpoint will receive an email invitation
+to join your organization under Huntr.</p>
+
+<p>To prevent duplicate invitations from being sent, if you submit a request with one or more emails that have an existing
+pending invitation from your organization, these will be overlooked, and no
+new invitations will be created for those email addresses. In those cases
+you will notice that the response body will not contain results for the email addresses
+that have a pending invitation from your organization.</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>POST https://api.huntr.co/org/organization-invitations</code></p>
+<h3 id='json-body-parameters'>JSON Body Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>emails</code></td>
+<td>yes</td>
+<td>Array</td>
+<td>An array of email addresses for members your want to invite</td>
+</tr>
+<tr>
+<td><code>boardName</code></td>
+<td>no</td>
+<td>String</td>
+<td>Name of board to be created for all members</td>
+</tr>
+<tr>
+<td><code>boardTemplateId</code></td>
+<td>no</td>
+<td>String</td>
+<td>Id of the board template to use when creating boards for members, if none is submitted it will default to Organization&#39;s default board template, or Huntr&#39;s default template if no template has been set as a default.</td>
+</tr>
+</tbody></table>
 <h1 id='members'>Members</h1><h2 id='member-resource'>Member Resource</h2>
 <blockquote>
 <p>A member of your organization:</p>
@@ -471,7 +626,7 @@ Your Access Token carries many privileges, so be sure to keep them secure! Do no
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint retrieves all members for your organization.</p>
-<h3 id='http-request'>HTTP Request</h3>
+<h3 id='http-request-2'>HTTP Request</h3>
 <p><code>GET https://api.huntr.co/org/members</code></p>
 <h3 id='query-parameters'>Query Parameters</h3>
 <table><thead>
@@ -517,7 +672,7 @@ Your Access Token carries many privileges, so be sure to keep them secure! Do no
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint retrieves a specific member.</p>
-<h3 id='http-request-2'>HTTP Request</h3>
+<h3 id='http-request-3'>HTTP Request</h3>
 <p><code>GET https://api.huntr.co/org/members/&lt;ID&gt;</code></p>
 <h3 id='url-parameters'>URL Parameters</h3>
 <table><thead>
@@ -736,7 +891,7 @@ Your Access Token carries many privileges, so be sure to keep them secure! Do no
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint lists all jobs added by members from your organization, jobs are sorted by the date they were created, starting from the most recently created.</p>
-<h3 id='http-request-3'>HTTP Request</h3>
+<h3 id='http-request-4'>HTTP Request</h3>
 <p><code>GET https://api.huntr.co/org/jobs</code></p>
 <h3 id='query-parameters-2'>Query Parameters</h3>
 <table><thead>
@@ -830,7 +985,7 @@ Your Access Token carries many privileges, so be sure to keep them secure! Do no
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint retrieves a specific job.</p>
-<h3 id='http-request-4'>HTTP Request</h3>
+<h3 id='http-request-5'>HTTP Request</h3>
 <p><code>GET https://api.huntr.co/org/jobs/&lt;ID&gt;</code></p>
 <h3 id='url-parameters-2'>URL Parameters</h3>
 <table><thead>
@@ -1056,7 +1211,7 @@ Your Access Token carries many privileges, so be sure to keep them secure! Do no
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint retrieves all events for your organization, sorted from most recently created to oldest.</p>
-<h3 id='http-request-5'>HTTP Request</h3>
+<h3 id='http-request-6'>HTTP Request</h3>
 <p><code>GET https://api.huntr.co/org/events</code></p>
 <h3 id='query-parameters-3'>Query Parameters</h3>
 <table><thead>
@@ -1212,7 +1367,7 @@ Your Access Token carries many privileges, so be sure to keep them secure! Do no
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint retrieves all employers to which your members have added a job for.</p>
-<h3 id='http-request-6'>HTTP Request</h3>
+<h3 id='http-request-7'>HTTP Request</h3>
 <p><code>GET https://api.huntr.co/org/employers</code></p>
 <h3 id='query-parameters-4'>Query Parameters</h3>
 <table><thead>
