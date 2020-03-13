@@ -101,6 +101,114 @@ Some API resources have support for bulk fetches via "list" API methods. For ins
 
 Huntr uses cursor-based pagination via the `next` parameter which takes an existing object ID value. Every "list" endpoint result includes a `data` parameter, with the results from the call, along with a `next` parameter. The `next` parameter represents the id of the last object returned. Passing this parameter in subsequent call will return the next page of results. So, if you've made your first query and set 100 as a limit and want to retrieve the second page of results, you can repeat the same query, but with the `next` parameter set with the value returned by your first call. You can see an example set of queries on the right.
 
+# Organization Invitation
+
+## Organization Invitation Resource
+
+> An invitation sent to a member to join your Huntr Organization as a job seeker:
+
+```json
+{
+    "id": "5e6a9d1f62593578ce9de841",
+    "toEmail": "test@example.com",
+    "boardName": "Job Search 2020",
+    "to": {
+        "id": "5e6a7c99c56bc6669e3da876",
+        "givenName": "Cristobal",
+        "familyName": "Hackett",
+        "email": "test@example.com",
+        "createdAt": 1584045343
+    },
+    "boardTemplate": {
+        "id": "5a6e4a567e42789e6e65c986",
+        "name": "Tech Jobs",
+        "listNames": [
+            "Wishlist",
+            "Applied",
+            "Phone Interview",
+            "On Site Interview",
+            "Offer",
+            "Rejected"
+        ]
+    }
+}
+```
+
+Field | Type | Description
+----- | ---- | -----------
+id | String | Invitation id
+toEmail | String | Email to which invitation was sent to
+boardName | String | Name to give the board created when member accepts invite
+to | Object | If the user with this email already has a Huntr account this object will show his/her user account information
+email | String | Member's email
+boardTemplate | Object | The board template to use to define the board stages when member accepts invite
+
+## Submit new invitations
+
+```shell
+curl --location --request POST 'https://api.huntr.co/org/organization-invitations' \
+--header 'Authorization: Bearer <ORG_ACCESS_TOKEN>' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+	"emails": ["test@example.com"],
+	"boardName": "Job Search 2020"
+}'
+```
+
+> The above command returns JSON structured like this:
+
+```json
+[
+    {
+        "id": "5e6a9d1f62593578ce9de841",
+        "toEmail": "test@example.com",
+        "boardName": "Job Search 2020",
+        "to": {
+            "id": "5e6a7c99c56bc6669e3da876",
+            "givenName": "Cristobal",
+            "familyName": "Hackett",
+            "email": "test@example.com",
+            "createdAt": 1584045343
+        },
+        "boardTemplate": {
+            "id": "5a6e4a567e42789e6e65c986",
+            "name": "Tech Jobs",
+            "listNames": [
+                "Wishlist",
+                "Applied",
+                "Phone Interview",
+                "On Site Interview",
+                "Offer",
+                "Rejected"
+            ]
+        }
+    }
+]
+```
+
+This endpoint creates and sends a new Organization Invitation for a member.
+The people invited through this endpoint will receive an email invitation
+to join your organization under Huntr.
+
+To prevent duplicate invitations from being sent, if you submit a request with one or more emails that have an existing
+pending invitation from your organization, these will be overlooked, and no
+new invitations will be created for those email addresses. In those cases
+you will notice that the response body will not contain results for the email addresses
+that have a pending invitation from your organization.
+
+### HTTP Request
+
+`POST https://api.huntr.co/org/organization-invitations`
+
+### JSON Body Parameters
+
+Parameter | Required | Type | Description
+--------- | -------- | ---- | -----------
+`emails` | yes | Array | An array of email addresses for members your want to invite
+`boardName` | no | String | Name of board to be created for all members
+`boardTemplateId` | no | String | Id of the board template to use when creating boards for members, if none is submitted it will default to Organization's default board template, or Huntr's default template if no template has been set as a default.
+
+
 # Members
 
 ## Member Resource
@@ -215,113 +323,6 @@ This endpoint retrieves a specific member.
 Parameter | Type | Description
 --------- | ---- | -----------
 ID | String | The ID of the member to retrieve
-
-# Organization Invitation
-
-## Organization Invitation Resource
-
-> An invitation sent to a member to join your Huntr Organization as a job seeker:
-
-```json
-{
-    "id": "5e6a9d1f62593578ce9de841",
-    "toEmail": "test@example.com",
-    "boardName": "Job Search 2020",
-    "to": {
-        "id": "5e6a7c99c56bc6669e3da876",
-        "givenName": "Cristobal",
-        "familyName": "Hackett",
-        "email": "test@example.com",
-        "createdAt": 1584045343
-    },
-    "boardTemplate": {
-        "id": "5a6e4a567e42789e6e65c986",
-        "name": "Tech Jobs",
-        "listNames": [
-            "Wishlist",
-            "Applied",
-            "Phone Interview",
-            "On Site Interview",
-            "Offer",
-            "Rejected"
-        ]
-    }
-}
-```
-
-Field | Type | Description
------ | ---- | -----------
-id | String | Invitation id
-toEmail | String | Email to which invitation was sent to
-boardName | String | Name to give the board created when member accepts invite
-to | Object | In case the user with this email already has a Huntr account, this
-object will show his/her user account information
-email | String | Member's email
-boardTemplate | Object | The board template to use to define the board stages
-when member accepts invite
-
-## Submit new invitations
-
-```shell
-curl --location --request POST 'https://api.huntr.co/org/organization-invitations' \
---header 'Authorization: Bearer <ORG_ACCESS_TOKEN>' \
---header 'Content-Type: application/json' \
---data-raw '{
-	"emails": ["test@example.com"],
-	"boardName": "Job Search 2020"
-}'
-```
-
-> The above command returns JSON structured like this:
-
-```json
-[
-    {
-        "id": "5e6a9d1f62593578ce9de841",
-        "toEmail": "test@example.com",
-        "boardName": "Job Search 2020",
-        "to": {
-            "id": "5e6a7c99c56bc6669e3da876",
-            "givenName": "Cristobal",
-            "familyName": "Hackett",
-            "email": "test@example.com",
-            "createdAt": 1584045343
-        },
-        "boardTemplate": {
-            "id": "5a6e4a567e42789e6e65c986",
-            "name": "Tech Jobs",
-            "listNames": [
-                "Wishlist",
-                "Applied",
-                "Phone Interview",
-                "On Site Interview",
-                "Offer",
-                "Rejected"
-            ]
-        }
-    }
-]
-```
-
-This endpoint creates and sends a new Member invitation. The members invited through
-this endpoint will receive an email invitation to join your organization under Huntr.
-In the case where you submit a request with one or more emails that have an existing
-pending invitation from your organization, these will be overlooked, and no
-new invitations will be created for those emails, and you will notice that the
-response body will not contain results for those emails; this is to prevent duplication
-of invitations.
-
-### HTTP Request
-
-`POST https://api.huntr.co/org/organization-invitations`
-
-### JSON Body Parameters
-
-Parameter | Required | Type | Description
---------- | -------- | ---- | -----------
-`emails` | yes | Array | An array of email addresses for members your want to invite
-`boardName` | no | String | Name of board to be created for all members
-`boardTemplateId` | no | String | Id of the board template to use when creating boards for members, if none is submitted it will default to Organization's default board template, or Huntr's default template if no template has been set as a default.
 
 # Jobs
 
