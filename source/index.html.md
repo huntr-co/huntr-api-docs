@@ -332,48 +332,147 @@ ID | String | The ID of the member to retrieve
 
 ```json
 {
-  "id": "5b088a7b12728af4ec0be9d6",
-  "title": "Senior Engineer",
-  "description": "A job description",
-  "salary": "$90,000",
-  "url": "https://linkedin.com/jobs/asdf234adf",
-  "location": {
-      "lng": "13.384453399999984",
-      "lat": "52.53073269999999",
-      "url": "https://maps.google.com/?cid=13193077415763177194",
-      "id": "1c56fadc63fb73a87bfae16a1096735b2817793b",
-      "placeId": "ChIJbTkS9uxRqEcR6u7KfAI6F7c",
-      "name": "ResearchGate",
-      "address": "Invalidenstraße 115, 10115 Berlin, Germany"
-  },
-  "deadline": 1527404400,
-  "applicationDate": 1527490800,
-  "firstInterviewDate": 1527750000,
-  "secondInterviewDate": 1527836400,
-  "offerDate": 1528095600,
-  "createdAt": 1527286395,
-  "member": {
-      "id": "5a6bf0758f18344d6f76d118",
-      "givenName": "Gracielita",
-      "familyName": "Varelita",
-      "email": "rennie+grace@huntr.co",
-      "createdAt": 1517023349
-  },
-  "employer": {
-      "id": "5b088a7bb9defaba88d36f1e",
-      "name": "ResearchGate",
-      "domain": "researchgate.net",
-      "foundedYear": 2008,
-      "description": "Find 100+ million publication pages, 15+ million researchers, and 700k+ projects. ResearchGate is where you discover scientific knowledge and share your work.",
-      "location": "10115 Berlin, Germany",
-      "jobCount": 0,
-      "applicationCount": 0,
-      "interviewCount": 0,
-      "offerCount": 0
-  },
-  "list": {
-      "name": "wishlist"
-  }
+    "id": "5eb0a4338899ba51bf96f645",
+    "title": "Senior Engineer",
+    "htmlDescription": "<p><strong>Description</strong></p><p>Great opportunity</p>",
+    "salary": "$90k",
+    "url": "https://linkedin.com/job/123",
+    "location": {
+        "address": "2015 Main St, Vancouver, BC V5T 3C2, Canada",
+        "name": "Mailchimp",
+        "placeId": "ChIJG7btXnJxhlQR62EUZuSVsOE",
+        "id": "ceb4675ecb0f218b4adf86d215eeffbcb12f5f1f",
+        "url": "https://maps.google.com/?cid=16262663062632554987",
+        "lat": "49.2668893",
+        "lng": "-123.1012246"
+    },
+    "createdAt": 1588634675,
+    "ownerMember": {
+        "id": "5e6a7bbdc56bc6669e3da86c",
+        "givenName": "Ruipo",
+        "familyName": "Fauli",
+        "email": "rennie+thinkful20@huntr.co",
+        "createdAt": 1584036797,
+        "isActive": true
+    },
+    "creatorMember": {
+        "id": "5b2bbb5837fbc835bbe3218b",
+        "givenName": "Advisor",
+        "familyName": "Two",
+        "email": "rennie+advisor2@huntr.co",
+        "createdAt": 1529592664,
+        "isActive": true
+    },
+    "employer": {
+        "id": "5a016b5221bce9aa2bd70296",
+        "name": "MailChimp",
+        "domain": "mailchimp.com",
+        "foundedYear": 2001,
+        "description": "MailChimp provides marketing automation for e-commerce businesses. Send beautiful emails, connect your e-commerce store, advertise, and build your brand.\n",
+        "location": "675 Ponce De Leon Ave NE #5000, Atlanta, GA 30308, USA"
+    },
+    "list": {
+        "name": "Applied"
+    },
+    "activities": [
+        {
+            "id": "5eb0abc13fac1580adcf5b19",
+            "title": "Follow Up",
+            "note": "With pete",
+            "completed": false,
+            "createdByWorkflow": false,
+            "startAt": 1588809403,
+            "createdAt": 1588636609
+        },
+        {
+            "id": "5eb0cbafacf21d6980c45d64",
+            "title": "Apply",
+            "completed": true,
+            "createdByWorkflow": false,
+            "startAt": 1588748400,
+            "completedAt": 1588644783,
+            "createdAt": 1588644783
+        },
+        {
+            "id": "5eb0cbb2acf21d6980c45d66",
+            "title": "On Site Interview",
+            "completed": false,
+            "createdByWorkflow": false,
+            "startAt": 1588834800,
+            "createdAt": 1588644786
+        },
+        {
+            "id": "5eb0cbb6acf21d6980c45d68",
+            "title": "Offer Received",
+            "completed": true,
+            "createdByWorkflow": false,
+            "startAt": 1590044400,
+            "completedAt": 1588644790,
+            "createdAt": 1588644790
+        },
+        {
+            "id": "5eb0cbbaacf21d6980c45d6a",
+            "title": "Accept Offer",
+            "completed": true,
+            "createdByWorkflow": false,
+            "startAt": 1590562800,
+            "completedAt": 1588644794,
+            "createdAt": 1588644794
+        },
+        {
+            "id": "5eb0cebdf9e9ac821876aab0",
+            "title": "On Site Interview",
+            "completed": false,
+            "createdByWorkflow": false,
+            "startAt": 1589353200,
+            "createdAt": 1588645565
+        }
+    ],
+    "interviewActivities": [
+        {
+            "id": "5eb0cbb2acf21d6980c45d66",
+            "title": "Phone interview",
+            "completed": false,
+            "createdByWorkflow": false,
+            "startAt": 1588834800,
+            "createdAt": 1588644786
+        },
+        {
+            "id": "5eb0cebdf9e9ac821876aab0",
+            "title": "On Site Interview",
+            "completed": false,
+            "createdByWorkflow": false,
+            "startAt": 1589353200,
+            "createdAt": 1588645565
+        }
+    ],
+    "applicationActivity": {
+        "id": "5eb0cbafacf21d6980c45d64",
+        "title": "Apply",
+        "completed": true,
+        "createdByWorkflow": false,
+        "startAt": 1588748400,
+        "completedAt": 1588644783,
+        "createdAt": 1588644783
+    },
+    "offerActivity": {
+        "id": "5eb0cbb6acf21d6980c45d68",
+        "title": "Offer Received",
+        "completed": true,
+        "createdByWorkflow": false,
+        "startAt": 1590044400,
+        "completedAt": 1588644790,
+        "createdAt": 1588644790
+    },
+    "offerAcceptedActivity": {
+        "id": "5eb0cbbaacf21d6980c45d6a",
+        "title": "Accept Offer",
+        "completed": true,
+        "createdByWorkflow": false,
+        "startAt": 1590562800,
+        "completedAt": 1588644794,
+        "createdAt": 1588644794
+    }
 }
 ```
 
@@ -384,23 +483,39 @@ Field | Type | Description
 `id` | String | Job's id
 `title` | String | Job title  
 `description` | String | Job description
+`htmlDescription` | String | Html Job description
+`description` | String | Job description
 `salary` | String | Job salary  
 `url` | String | URL for the original job post
 `location` | Object | Object representing job's location
 `deadline` | Unix timestamp | Date of job's application deadline
-`applicationDate` | Unix timestamp | Date of application deadline
-`firstInterviewDate` | Unix timestamp | Date of first interview
-`secondInterviewDate` | Unix timestamp | Date of second interview
-`offerDate` | Unix timestamp | Date offer was received
-`createdAt` | Unix timestamp | Date the job was created by the member
-`member` | Object | Object representing the member who added the job
-`employer`  | Object | Object representing the employer
+`activities` | Array | [Activities](#activities) linked to job
+`applicationActivity` | Object | [Application Activity](#activities) linked to job
+`interviewActivities` | Array | [Interview Activities](#activities) linked to job
+`offerActivity` | Object | [Offer Received Activity](#activities) linked to job
+`offerAcceptedActivity` | Object | [Offer Accepted Activity](#activities) linked to job
+`creatorMember` | Object | [Member](#members) who created the job
+`ownerMember` | Object | [Member](#members) who owns the job
+`employer`  | Object | [Employer](#employers) for the job
 `list`  | Object | Object representing the list the job is in. A list is a stage in a specific Huntr board.
+`createdAt` | Unix timestamp | Date the job was created by the member
+
+### Deprecated job fields
+
+These fields will be supported until the end of 2020. See the **Replacement field** column to see what field is replacing the deprecated fields.
+
+Field | Type | Replacement field | Description
+----- | ---- | ----------------- | -----------
+`applicationDate` | Unix timestamp | `applicationActivity` | Date of application deadline
+`firstInterviewDate` | Unix timestamp | `interviewActivities` | Date of first interview
+`secondInterviewDate` | Unix timestamp | `interviewActivities` | Date of second interview
+`offerDate` | Unix timestamp | `offerActivity` | Date offer was received
+`member` | Object | `ownerMember` | Object representing the member who owns the job
 
 ## List Jobs
 
 ```shell
-curl "https://api.huntr.co/org/jobs?limit=2&member_id=589189b5448fe5e45f01256b"
+curl "https://api.huntr.co/org/jobs?limit=2"
   -H "Authorization: Bearer <ORG_ACCESS_TOKEN>"
 ```
 
@@ -410,63 +525,202 @@ curl "https://api.huntr.co/org/jobs?limit=2&member_id=589189b5448fe5e45f01256b"
 {
     "data": [
         {
-            "id": "5b00d6695cadd481fb0536a2",
-            "title": "Developer",
-            "offerDate": 1526781545,
-            "createdAt": 1526781545,
-            "member": {
-                "id": "589189b5448fe5e45f01256b",
-                "givenName": "Samir",
-                "familyName": "Marin",
-                "email": "rennie+dev2@huntr.co",
-                "createdAt": 1485932981
+            "id": "5eb0a4338899ba51bf96f645",
+            "title": "Software Developer",
+            "htmlDescription": "<p><strong>Description</strong></p><p>Great job!</p>",
+            "salary": "$90k",
+            "url": "google.com",
+            "location": {
+                "address": "2015 Main St, Vancouver, BC V5T 3C2, Canada",
+                "name": "Mailchimp",
+                "placeId": "ChIJG7btXnJxhlQR62EUZuSVsOE",
+                "id": "ceb4675ecb0f218b4adf86d215eeffbcb12f5f1f",
+                "url": "https://maps.google.com/?cid=16262663062632554987",
+                "lat": "49.2668893",
+                "lng": "-123.1012246"
+            },
+            "createdAt": 1588634675,
+            "ownerMember": {
+                "id": "5e6a7bbdc56bc6669e3da86c",
+                "givenName": "Ruipo",
+                "familyName": "Fauli",
+                "email": "rennie+thinkful20@huntr.co",
+                "createdAt": 1584036797,
+                "isActive": true
+            },
+            "creatorMember": {
+                "id": "5b2bbb5837fbc835bbe3218b",
+                "givenName": "Advisor",
+                "familyName": "Two",
+                "email": "rennie+advisor2@huntr.co",
+                "createdAt": 1529592664,
+                "isActive": true
             },
             "employer": {
-                "id": "5b00d669a2567c2730e038b8",
-                "name": "StubHub",
-                "domain": "stubhub.com",
-                "foundedYear": 2000,
-                "description": "Your ticket out   www.stubhub.com   Twitter / Instagram: @StubHub   Snapchat: stubhub  https://www.snapchat.com/add/stubhub",
-                "location": "San Francisco, CA, USA",
-                "jobCount": 0,
-                "applicationCount": 0,
-                "interviewCount": 0,
-                "offerCount": 0
+                "id": "5a016b5221bce9aa2bd70296",
+                "name": "MailChimp",
+                "domain": "mailchimp.com",
+                "foundedYear": 2001,
+                "description": "MailChimp provides marketing automation for e-commerce businesses. Send beautiful emails, connect your e-commerce store, advertise, and build your brand.\n",
+                "location": "675 Ponce De Leon Ave NE #5000, Atlanta, GA 30308, USA"
             },
             "list": {
-                "name": "offer"
+                "name": "Applied"
+            },
+            "activities": [
+                {
+                    "id": "5eb0abc13fac1580adcf5b19",
+                    "title": "Follow Up",
+                    "note": "With pete",
+                    "completed": false,
+                    "createdByWorkflow": false,
+                    "startAt": 1588809403,
+                    "createdAt": 1588636609
+                },
+                {
+                    "id": "5eb0cbafacf21d6980c45d64",
+                    "title": "Apply",
+                    "completed": true,
+                    "createdByWorkflow": false,
+                    "startAt": 1588748400,
+                    "completedAt": 1588644783,
+                    "createdAt": 1588644783
+                },
+                {
+                    "id": "5eb0cbb2acf21d6980c45d66",
+                    "title": "On Site Interview",
+                    "completed": false,
+                    "createdByWorkflow": false,
+                    "startAt": 1588834800,
+                    "createdAt": 1588644786
+                },
+                {
+                    "id": "5eb0cbb6acf21d6980c45d68",
+                    "title": "Offer Received",
+                    "completed": true,
+                    "createdByWorkflow": false,
+                    "startAt": 1590044400,
+                    "completedAt": 1588644790,
+                    "createdAt": 1588644790
+                },
+                {
+                    "id": "5eb0cbbaacf21d6980c45d6a",
+                    "title": "Accept Offer",
+                    "completed": true,
+                    "createdByWorkflow": false,
+                    "startAt": 1590562800,
+                    "completedAt": 1588644794,
+                    "createdAt": 1588644794
+                },
+                {
+                    "id": "5eb0cebdf9e9ac821876aab0",
+                    "title": "On Site Interview",
+                    "completed": false,
+                    "createdByWorkflow": false,
+                    "startAt": 1589353200,
+                    "createdAt": 1588645565
+                }
+            ],
+            "interviewActivities": [
+                {
+                    "id": "5eb0cbb2acf21d6980c45d66",
+                    "title": "On Site Interview",
+                    "completed": false,
+                    "createdByWorkflow": false,
+                    "startAt": 1588834800,
+                    "createdAt": 1588644786
+                },
+                {
+                    "id": "5eb0cebdf9e9ac821876aab0",
+                    "title": "On Site Interview",
+                    "completed": false,
+                    "createdByWorkflow": false,
+                    "startAt": 1589353200,
+                    "createdAt": 1588645565
+                }
+            ],
+            "applicationActivity": {
+                "id": "5eb0cbafacf21d6980c45d64",
+                "title": "Apply",
+                "completed": true,
+                "createdByWorkflow": false,
+                "startAt": 1588748400,
+                "completedAt": 1588644783,
+                "createdAt": 1588644783
+            },
+            "offerActivity": {
+                "id": "5eb0cbb6acf21d6980c45d68",
+                "title": "Offer Received",
+                "completed": true,
+                "createdByWorkflow": false,
+                "startAt": 1590044400,
+                "completedAt": 1588644790,
+                "createdAt": 1588644790
+            },
+            "offerAcceptedActivity": {
+                "id": "5eb0cbbaacf21d6980c45d6a",
+                "title": "Accept Offer",
+                "completed": true,
+                "createdByWorkflow": false,
+                "startAt": 1590562800,
+                "completedAt": 1588644794,
+                "createdAt": 1588644794
             }
         },
         {
-            "id": "5b00b6745e6a971db86c43de",
-            "title": "Developer",
-            "firstInterviewDate": 1526773364,
-            "createdAt": 1526773364,
-            "member": {
-                "id": "589189b5448fe5e45f01256b",
-                "givenName": "Samir",
-                "familyName": "Marin",
-                "email": "rennie+dev2@huntr.co",
-                "createdAt": 1485932981
+            "id": "5eaf7f8e7d33a823fd5a06c1",
+            "title": "Front end engineer",
+            "location": {},
+            "createdAt": 1588559758,
+            "ownerMember": {
+                "id": "5eae15c3a4e9196db88cb394",
+                "givenName": "Rennie",
+                "familyName": "Haylock",
+                "email": "rennie+dev30@huntr.co",
+                "createdAt": 1588467139,
+                "isActive": true
+            },
+            "creatorMember": {
+                "id": "5b2bbb5837fbc835bbe3218b",
+                "givenName": "Advisor",
+                "familyName": "Two",
+                "email": "rennie+advisor2@huntr.co",
+                "createdAt": 1529592664,
+                "isActive": true
             },
             "employer": {
-                "id": "58a21e5cc9903d839de2f879",
-                "name": "Reddit",
-                "domain": "reddit.com",
-                "foundedYear": 2005,
-                "description": "reddit is a source for what's new and popular online. vote on links that you like or dislike and help decide what's popular, or submit your own!",
-                "location": "548 Market St, San Francisco, CA 94104, USA",
-                "jobCount": 0,
-                "applicationCount": 0,
-                "interviewCount": 0,
-                "offerCount": 0
+                "id": "5903fe3a0ceb436653b2bf7d",
+                "name": "ESPN",
+                "domain": "espn.com",
+                "description": "Visit ESPN to get up-to-the-minute sports news coverage, scores, highlights and commentary for NFL, MLB, NBA, College Football, NCAA Basketball and more.",
+                "location": "935 Middle St, Bristol, CT 06010, USA"
             },
             "list": {
-                "name": "interview"
+                "name": "offer"
+            },
+            "activities": [
+                {
+                    "id": "5eaf7fa5f0cf6b54208282be",
+                    "title": "Offer received",
+                    "completed": true,
+                    "createdByWorkflow": true,
+                    "startAt": 1588559758,
+                    "completedAt": 1588559781,
+                    "createdAt": 1588559781
+                }
+            ],
+            "offerActivity": {
+                "id": "5eaf7fa5f0cf6b54208282be",
+                "title": "Offer received",
+                "completed": true,
+                "createdByWorkflow": true,
+                "startAt": 1588559758,
+                "completedAt": 1588559781,
+                "createdAt": 1588559781
             }
         }
     ],
-    "next": "5b00b6745e6a971db86c43de"
+    "next": "5eaf7f8e7d33a823fd5a06c1"
 }
 ```
 
@@ -480,7 +734,8 @@ This endpoint lists all jobs added by members from your organization, jobs are s
 
 Parameter | Type | Default | Description
 --------- | ---- | ------- | -----------
-`member_id` | String | none | If set, will only return jobs belonging to member
+`owner_member_id` | String | none | If set, will only return jobs owned by member
+`creator_member_id` | String | none | If set, will only return jobs created by member
 `created_after` | Unix timestamp | none | If set, will only return jobs created after `created_after`
 `created_before` | Unix timestamp | none | If set, will only return jobs created before `created_before`
 `limit` | Integer | 100 | Defines the maximum number of jobs to return
@@ -489,7 +744,7 @@ Parameter | Type | Default | Description
 ## Retrieve a Job
 
 ```shell
-curl "https://api.huntr.co/org/jobs/5b088a7b12728af4ec0be9d6"
+curl "https://api.huntr.co/org/jobs/5eb0a4338899ba51bf96f645"
   -H "Authorization: Bearer <ORG_ACCESS_TOKEN>"
 ```
 
@@ -497,48 +752,147 @@ curl "https://api.huntr.co/org/jobs/5b088a7b12728af4ec0be9d6"
 
 ```json
 {
-  "id": "5b088a7b12728af4ec0be9d6",
-  "title": "Senior Engineer",
-  "description": "A job description",
-  "salary": "$90,000",
-  "url": "https://linkedin.com/jobs/asdf234adf",
-  "location": {
-      "lng": "13.384453399999984",
-      "lat": "52.53073269999999",
-      "url": "https://maps.google.com/?cid=13193077415763177194",
-      "id": "1c56fadc63fb73a87bfae16a1096735b2817793b",
-      "placeId": "ChIJbTkS9uxRqEcR6u7KfAI6F7c",
-      "name": "ResearchGate",
-      "address": "Invalidenstraße 115, 10115 Berlin, Germany"
-  },
-  "deadline": 1527404400,
-  "applicationDate": 1527490800,
-  "firstInterviewDate": 1527750000,
-  "secondInterviewDate": 1527836400,
-  "offerDate": 1528095600,
-  "createdAt": 1527286395,
-  "member": {
-      "id": "5a6bf0758f18344d6f76d118",
-      "givenName": "Gracielita",
-      "familyName": "Varelita",
-      "email": "rennie+grace@huntr.co",
-      "createdAt": 1517023349
-  },
-  "employer": {
-      "id": "5b088a7bb9defaba88d36f1e",
-      "name": "ResearchGate",
-      "domain": "researchgate.net",
-      "foundedYear": 2008,
-      "description": "Find 100+ million publication pages, 15+ million researchers, and 700k+ projects. ResearchGate is where you discover scientific knowledge and share your work.",
-      "location": "10115 Berlin, Germany",
-      "jobCount": 0,
-      "applicationCount": 0,
-      "interviewCount": 0,
-      "offerCount": 0
-  },
-  "list": {
-      "name": "wishlist"
-  }
+    "id": "5eb0a4338899ba51bf96f645",
+    "title": "Software Engineer",
+    "htmlDescription": "<p><strong>Description</strong></p><p>Great job!</p>",
+    "salary": "$90k",
+    "url": "google.com",
+    "location": {
+        "address": "2015 Main St, Vancouver, BC V5T 3C2, Canada",
+        "name": "Mailchimp",
+        "placeId": "ChIJG7btXnJxhlQR62EUZuSVsOE",
+        "id": "ceb4675ecb0f218b4adf86d215eeffbcb12f5f1f",
+        "url": "https://maps.google.com/?cid=16262663062632554987",
+        "lat": "49.2668893",
+        "lng": "-123.1012246"
+    },
+    "createdAt": 1588634675,
+    "ownerMember": {
+        "id": "5e6a7bbdc56bc6669e3da86c",
+        "givenName": "Ruipo",
+        "familyName": "Fauli",
+        "email": "rennie+thinkful20@huntr.co",
+        "createdAt": 1584036797,
+        "isActive": true
+    },
+    "creatorMember": {
+        "id": "5b2bbb5837fbc835bbe3218b",
+        "givenName": "Advisor",
+        "familyName": "Two",
+        "email": "rennie+advisor2@huntr.co",
+        "createdAt": 1529592664,
+        "isActive": true
+    },
+    "employer": {
+        "id": "5a016b5221bce9aa2bd70296",
+        "name": "MailChimp",
+        "domain": "mailchimp.com",
+        "foundedYear": 2001,
+        "description": "MailChimp provides marketing automation for e-commerce businesses. Send beautiful emails, connect your e-commerce store, advertise, and build your brand.\n",
+        "location": "675 Ponce De Leon Ave NE #5000, Atlanta, GA 30308, USA"
+    },
+    "list": {
+        "name": "Applied"
+    },
+    "activities": [
+        {
+            "id": "5eb0abc13fac1580adcf5b19",
+            "title": "Follow Up",
+            "note": "With pete",
+            "completed": false,
+            "createdByWorkflow": false,
+            "startAt": 1588809403,
+            "createdAt": 1588636609
+        },
+        {
+            "id": "5eb0cbafacf21d6980c45d64",
+            "title": "Apply",
+            "completed": true,
+            "createdByWorkflow": false,
+            "startAt": 1588748400,
+            "completedAt": 1588644783,
+            "createdAt": 1588644783
+        },
+        {
+            "id": "5eb0cbb2acf21d6980c45d66",
+            "title": "On Site Interview",
+            "completed": false,
+            "createdByWorkflow": false,
+            "startAt": 1588834800,
+            "createdAt": 1588644786
+        },
+        {
+            "id": "5eb0cbb6acf21d6980c45d68",
+            "title": "Offer Received",
+            "completed": true,
+            "createdByWorkflow": false,
+            "startAt": 1590044400,
+            "completedAt": 1588644790,
+            "createdAt": 1588644790
+        },
+        {
+            "id": "5eb0cbbaacf21d6980c45d6a",
+            "title": "Accept Offer",
+            "completed": true,
+            "createdByWorkflow": false,
+            "startAt": 1590562800,
+            "completedAt": 1588644794,
+            "createdAt": 1588644794
+        },
+        {
+            "id": "5eb0cebdf9e9ac821876aab0",
+            "title": "On Site Interview",
+            "completed": false,
+            "createdByWorkflow": false,
+            "startAt": 1589353200,
+            "createdAt": 1588645565
+        }
+    ],
+    "interviewActivities": [
+        {
+            "id": "5eb0cbb2acf21d6980c45d66",
+            "title": "On Site Interview",
+            "completed": false,
+            "createdByWorkflow": false,
+            "startAt": 1588834800,
+            "createdAt": 1588644786
+        },
+        {
+            "id": "5eb0cebdf9e9ac821876aab0",
+            "title": "On Site Interview",
+            "completed": false,
+            "createdByWorkflow": false,
+            "startAt": 1589353200,
+            "createdAt": 1588645565
+        }
+    ],
+    "applicationActivity": {
+        "id": "5eb0cbafacf21d6980c45d64",
+        "title": "Apply",
+        "completed": true,
+        "createdByWorkflow": false,
+        "startAt": 1588748400,
+        "completedAt": 1588644783,
+        "createdAt": 1588644783
+    },
+    "offerActivity": {
+        "id": "5eb0cbb6acf21d6980c45d68",
+        "title": "Offer Received",
+        "completed": true,
+        "createdByWorkflow": false,
+        "startAt": 1590044400,
+        "completedAt": 1588644790,
+        "createdAt": 1588644790
+    },
+    "offerAcceptedActivity": {
+        "id": "5eb0cbbaacf21d6980c45d6a",
+        "title": "Accept Offer",
+        "completed": true,
+        "createdByWorkflow": false,
+        "startAt": 1590562800,
+        "completedAt": 1588644794,
+        "createdAt": 1588644794
+    }
 }
 ```
 
@@ -554,9 +908,900 @@ Parameter | Description
 --------- | -----------
 ID | The ID of the job to retrieve
 
-# Events
+# Activities
+
+## Activity Resource
+
+> An activity object:
+
+```json
+{
+  "id": "5eb0abc13fac1580adcf5b19",
+  "title": "Follow Up",
+  "note": "",
+  "completed": false,
+  "createdByWorkflow": false,
+  "startAt": 1588809403,
+  "createdAt": 1588636609,
+  "ownerMember": {
+      "id": "5e6a7bbdc56bc6669e3da86c",
+      "givenName": "Ruipo",
+      "familyName": "Fauli",
+      "email": "rennie+thinkful20@huntr.co",
+      "createdAt": 1584036797,
+      "isActive": true
+  },
+  "creatorMember": {
+      "id": "5b2bbb5837fbc835bbe3218b",
+      "givenName": "Advisor",
+      "familyName": "Two",
+      "email": "rennie+advisor2@huntr.co",
+      "createdAt": 1529592664,
+      "isActive": true
+  },
+  "job": {
+      "id": "5eb0a4338899ba51bf96f645",
+      "title": "Software Engineer",
+      "location": {},
+      "createdAt": 1588634675
+  },
+  "employer": {
+      "id": "5a016b5221bce9aa2bd70296",
+      "name": "MailChimp",
+      "domain": "mailchimp.com",
+      "foundedYear": 2001,
+      "description": "MailChimp provides marketing automation for e-commerce businesses. Send beautiful emails, connect your e-commerce store, advertise, and build your brand.\n",
+      "location": "675 Ponce De Leon Ave NE #5000, Atlanta, GA 30308, USA"
+  },
+  "activityCategory": {
+      "id": "5e448f3bf2b856c29af1128c",
+      "name": "Follow Up"
+  }
+}
+```
+
+An activity represents any task and/or event that happens during a job seeker's search. Activities represent real world things like an `On Site Interview` or an `Offer Received`, or even a `Prep for Interview` task. Each activity is clearly classified into an **[Activity Category](#activity-categories)**.
+
+Field | Type | In all events | Description
+----- | ---- | ------------- | -----------
+`id` | String | true | id for the activity
+`title` | String | true | Title of the activity
+`note` | String | false | Note about activity
+`completed` | Boolean | true | Completion state of activity
+`completedAt` | Unix timestamp | false | If `activity.completed` is true, then this is the date when activity was completed
+`startAt` | Unix timestamp | false | Date when activity is/was scheduled to start
+`endAt` | Unix timestamp | false | Date when activity is/was scheduled to end
+`createdAt` | Unix timestamp | true | Date when activity was created
+`activityCategory` | Object | true |  **[Activity Category](#activity-categories)** representing the type of Activity
+`job` | Object | false |  Job linked to activity
+`employer` | Object | false |  If activity is linked to a job, then this is the job's employer
+`ownerMember` | Object | true | Member who owns the board where the activity was added. i.e: your job seeker
+`creatorMember` | Object | false | Member who created the activity. In most cases, this is your job seeker; but if an advisor created this activity, then it would be your advisor.
+`createdByWorkflow` | Boolean | true | If true, it means the Activity was created by the Huntr system as a response to a user action; like a job being moved to a specific stage. See [Workflows](#workflows) for more information
+
+## List Activities
+
+```shell
+curl "https://api.huntr.co/org/activities?limit=4"
+  -H "Authorization: Bearer <ORG_ACCESS_TOKEN>"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+    "data": [
+        {
+            "id": "5eb0a92378ddef71d0748fb9",
+            "title": "Prep for Interviews",
+            "note": "",
+            "completed": false,
+            "createdByWorkflow": false,
+            "startAt": 1588635936,
+            "createdAt": 1588635939,
+            "ownerMember": {
+                "id": "5b2bbb5837fbc835bbe32187",
+                "givenName": "Nicole",
+                "familyName": "Thinkful",
+                "email": "rennie+nicoleh@huntr.co",
+                "createdAt": 1529592664,
+                "isActive": true
+            },
+            "creatorMember": {
+                "id": "5b2bbb5837fbc835bbe3218b",
+                "givenName": "Advisor",
+                "familyName": "Two",
+                "email": "rennie+advisor2@huntr.co",
+                "createdAt": 1529592664,
+                "isActive": true
+            },
+            "activityCategory": {
+                "id": "5e448f3bf2b856c29af112a7",
+                "name": "Prep for Interview"
+            }
+        },
+        {
+            "id": "5eb0a4745125d758466dea60",
+            "title": "Applied",
+            "completed": true,
+            "createdByWorkflow": true,
+            "startAt": 1588634685,
+            "completedAt": 1588634740,
+            "createdAt": 1588634740,
+            "ownerMember": {
+                "id": "5e6a7bbdc56bc6669e3da86c",
+                "givenName": "Ruipo",
+                "familyName": "Fauli",
+                "email": "rennie+thinkful20@huntr.co",
+                "createdAt": 1584036797,
+                "isActive": true
+            },
+            "job": {
+                "id": "5eb0a4338899ba51bf96f645",
+                "title": "No Job Title",
+                "location": {},
+                "createdAt": 1588634675
+            },
+            "employer": {
+                "id": "5a016b5221bce9aa2bd70296",
+                "name": "MailChimp",
+                "domain": "mailchimp.com",
+                "foundedYear": 2001,
+                "description": "MailChimp provides marketing automation for e-commerce businesses. Send beautiful emails, connect your e-commerce store, advertise, and build your brand.\n",
+                "location": "675 Ponce De Leon Ave NE #5000, Atlanta, GA 30308, USA"
+            },
+            "activityCategory": {
+                "id": "5e448f3bf2b856c29af11289",
+                "name": "Apply"
+            }
+        },
+        {
+            "id": "5eb0a4058899ba51bf96f643",
+            "title": "Got to Networking Event",
+            "note": "",
+            "completed": false,
+            "createdByWorkflow": false,
+            "startAt": 1588634619,
+            "createdAt": 1588634629,
+            "ownerMember": {
+                "id": "5e6a7bbdc56bc6669e3da86c",
+                "givenName": "Ruipo",
+                "familyName": "Fauli",
+                "email": "rennie+thinkful20@huntr.co",
+                "createdAt": 1584036797,
+                "isActive": true
+            },
+            "creatorMember": {
+                "id": "5b2bbb5837fbc835bbe3218b",
+                "givenName": "Advisor",
+                "familyName": "Two",
+                "email": "rennie+advisor2@huntr.co",
+                "createdAt": 1529592664,
+                "isActive": true
+            },
+            "activityCategory": {
+                "id": "5e448f3bf2b856c29af112b3",
+                "name": "Networking Event"
+            }
+        },
+        {
+            "id": "5eaf7fa5f0cf6b54208282be",
+            "title": "Offer received",
+            "completed": true,
+            "createdByWorkflow": true,
+            "startAt": 1588559758,
+            "completedAt": 1588559781,
+            "createdAt": 1588559781,
+            "ownerMember": {
+                "id": "5eae15c3a4e9196db88cb394",
+                "givenName": "Rennie",
+                "familyName": "Haylock",
+                "email": "rennie+dev30@huntr.co",
+                "createdAt": 1588467139,
+                "isActive": true
+            },
+            "job": {
+                "id": "5eaf7f8e7d33a823fd5a06c1",
+                "title": "No Job Title",
+                "location": {},
+                "createdAt": 1588559758
+            },
+            "employer": {
+                "id": "5903fe3a0ceb436653b2bf7d",
+                "name": "ESPN",
+                "domain": "espn.com",
+                "description": "Visit ESPN to get up-to-the-minute sports news coverage, scores, highlights and commentary for NFL, MLB, NBA, College Football, NCAA Basketball and more.",
+                "location": "935 Middle St, Bristol, CT 06010, USA"
+            },
+            "activityCategory": {
+                "id": "5e448f3bf2b856c29af1129c",
+                "name": "Offer Received"
+            }
+        }
+    ],
+    "next": "5eaf7fa5f0cf6b54208282be"
+}
+```
+
+This endpoint retrieves all activities for your organization, sorted from most recently created to oldest.
+
+### HTTP Request
+
+`GET https://api.huntr.co/org/activities`
+
+### Query Parameters
+
+Parameter | Type | Default | Description
+--------- | ---- | ------- | -----------
+`owner_member_id` | String | none | If set, will only return activities belonging to member
+`creator_member_id` | String | none | If set, will only return activities executed by member
+`job_id` | String | none | If set, will only return activities linked to job
+`activity_category_id` | String | none | If set, will only return Activity activities of the specified activity category
+`employer_id` | String | none | If set, will only return activities linked to employer
+`limit` | Integer | 100 | Defines the maximum number of activities to return
+`next` | String | none | If set, returns the next set of results after the object id provided
+`created_after` | Unix timestamp | none | If set, will only return activities created after `created_after`
+`created_before` | Unix timestamp | none | If set, will only return activities created before `created_before`
+
+# Activity Categories
+
+## Activity Category Resource
+
+> An activity category object:
+
+```json
+{
+    "id": "5b05ca43f193b66c692c29a0",
+    "name": "On Site Interview",
+}
+```
+
+This resource classifies a specific instance of an **[Activity](#activities)** into one of a discrete set of Activity Categories.
+
+Parameter | Type | Default | Description
+--------- | ---- | ------- | -----------
+`id` | String | none | id for the activity category
+`name` | String | none | name for the activity category
+
+## Types of Activity Categories
+
+### This is a list of all the activity categories currently available.
+
+`activityCategory.name` | Description
+----------------------- | -----------
+`Email` | Job seeker needs to send an email
+`Meeting` | Job seeker is attending a meeting
+`Phone Call` | Job seeker needs to make a phone call
+`Reach Out` | Job seeker needs to reach out to someone
+`Get Reference` | Job seeker needs to get a reference(s)
+`Prep Cover Letter` | Job seeker needs to prepare their cover letter
+`Prep Resume` | Job seeker needs to prepare their resume
+`Apply` | Job seeker has applied to a job opportunity
+`Follow Up` | Job seeker needs to follow up with someone
+`Send Availability` | Job seeker needs to send their availability
+`Prep for Interview` | Job seeker needs to prepare for an interview
+`Phone Screen` | Job seeker has or completed a phone screen type interview
+`Phone Interview` | Job seeker has or completed a phone interview
+`Assignment` | Job seeker has or has completed an assignment
+`On Site Interview` | Job seeker has or completed an on site interview
+`Rejected` | Job seeker's application has been rejected by the employer
+`Offer Received` | Job seeker has received an offer
+`Decline Offer` | Job seeker declines an offer
+`Accept Offer` | Job seeker accepts an offer
+`Send Thank You` | Job seeker needs to send a thank you
+`Networking Event` | Job seeker needs to or has attended a networking event
+`Application Withdrawn` | Job seeker has withdrawn their application
+`Other` | Other activities
+
+## Key Activity Categories
+
+Here is a shorter list of activity categories we believe represent important milestones in a job seeker's search:
+
+`activityCategory.name` | Description
+----------------------- | -----------
+`Apply` | Job seeker has applied to a job opportunity
+`Phone Screen` | Job seeker has scheduled or completed a phone screen type interview
+`Phone Interview` | Job seeker has scheduled or completed a phone interview
+`Assignment` | Job seeker has scheduled or completed an assignment
+`On Site Interview` | Job seeker has scheduled or completed an on site interview
+`Rejected` | Job seeker's application has been rejected by the employer
+`Offer Received` | Job seeker has received an offer
+`Decline Offer` | Job seeker has declined an offer
+`Accept Offer` | Job seeker has accepted an offer
+`Application Withdrawn` | Job seeker has withdrawn their application
+
+## List Activity Categories
+
+```shell
+curl "https://api.huntr.co/org/activity-categories"
+  -H "Authorization: Bearer <ORG_ACCESS_TOKEN>"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "data": [
+    {
+        "name" : "Email",
+        "id" : "5e448e8df2b856c29af11181"
+    },
+    {
+        "name" : "Meeting",
+        "id" : "5e448f3bf2b856c29af11280"
+    },
+    {
+        "name" : "Phone Call",
+        "id" : "5e448f3bf2b856c29af11281"
+    },
+    {
+        "name" : "Reach Out",
+        "id" : "5e448f3bf2b856c29af11284"
+    },
+    {
+        "name" : "Get Reference",
+        "id" : "5e448f3bf2b856c29af11285"
+    },
+    {
+        "name" : "Prep Cover Letter",
+        "id" : "5e448f3bf2b856c29af11288"
+    },
+    {
+        "name" : "Apply",
+        "id" : "5e448f3bf2b856c29af11289"
+    },
+    {
+        "name" : "Follow Up",
+        "id" : "5e448f3bf2b856c29af1128c"
+    },
+    {
+        "name" : "Send Availability",
+        "id" : "5e448f3bf2b856c29af1128d"
+    },
+    {
+        "name" : "Phone Screen",
+        "id" : "5e448f3bf2b856c29af1128f"
+    },
+    {
+        "name" : "Phone Interview",
+        "id" : "5e448f3bf2b856c29af11293"
+    },
+    {
+        "name" : "Assignment",
+        "id" : "5e448f3bf2b856c29af11295"
+    },
+    {
+        "name" : "On Site Interview",
+        "id" : "5e448f3bf2b856c29af11296"
+    },
+    {
+        "name" : "Rejected",
+        "id" : "5e448f3bf2b856c29af11299"
+    },
+    {
+        "name" : "Offer Received",
+        "id" : "5e448f3bf2b856c29af1129c"
+    },
+    {
+        "name" : "Prep Resume",
+        "id" : "5e448f3bf2b856c29af1129d"
+    },
+    {
+        "name" : "Decline Offer",
+        "id" : "5e448f3bf2b856c29af1129f"
+    },
+    {
+        "name" : "Accept Offer",
+        "id" : "5e448f3bf2b856c29af112a1"
+    },
+    {
+        "name" : "Other",
+        "id" : "5e448f3bf2b856c29af112a3"
+    },
+    {
+        "name" : "Prep for Interview",
+        "id" : "5e448f3bf2b856c29af112a7"
+    },
+    {
+        "name" : "Send Thank You",
+        "id" : "5e448f3bf2b856c29af112ad"
+    },
+    {
+        "name" : "Networking Event",
+        "id" : "5e448f3bf2b856c29af112b3"
+    },
+    {
+        "name" : "Application Withdrawn",
+        "id" : "5e9a596e53a63660289cd97c"
+    }
+  ]
+}
+```
+
+This endpoint retrieves all activity categories.
+
+# Actions
+
+## Action Resource
+
+> An action object:
+
+```json
+{
+  "id": "5eb0a4338899ba51bf96f646",
+  "actionType": "JOB_CREATED",
+  "date": 1588634675,
+  "ownerMember": {
+      "id": "5e6a7bbdc56bc6669e3da86c",
+      "givenName": "Ruipo",
+      "familyName": "Fauli",
+      "email": "rennie+thinkful20@huntr.co",
+      "createdAt": 1584036797,
+      "isActive": true
+  },
+  "creatorMember": {
+      "id": "5b2bbb5837fbc835bbe3218b",
+      "givenName": "Advisor",
+      "familyName": "Two",
+      "email": "rennie+advisor2@huntr.co",
+      "createdAt": 1529592664,
+      "isActive": true
+  },
+  "job": {
+      "id": "5eb0a4338899ba51bf96f645",
+      "title": "No Job Title",
+      "salary": "$90k",
+      "location": {},
+      "createdAt": 1588634675
+  },
+  "employer": {
+      "id": "5a016b5221bce9aa2bd70296",
+      "name": "MailChimp",
+      "domain": "mailchimp.com",
+      "foundedYear": 2001,
+      "description": "MailChimp provides marketing automation for e-commerce businesses. Send beautiful emails, connect your e-commerce store, advertise, and build your brand.\n",
+      "location": "675 Ponce De Leon Ave NE #5000, Atlanta, GA 30308, USA"
+  },
+  "toList": {
+      "name": "Wishlist"
+  },
+  "createdByWorkflow": false,
+  "createdAt": 1588634675,
+  "jobId": "5eb0a4338899ba51bf96f645"
+}
+```
+
+An action represents CRUD (Create, read, update and delete) type events that
+occur within the Huntr application in the context of your organization. Essentially,
+whenever your job seekers or advisors create, update or delete a Job, Activity, Contact,
+or Note a new Action will be created representing that event:
+
+Field | Type | In all actions | Description
+----- | ---- | ------------- | -----------
+`id` | String | true | id for the action
+`actionType` | String | true | Type of action
+`date` | Unix timestamp | true | Date when the action happened
+`createdByWorkflow` | Boolean | true | If true, it means the Action was taken by the Huntr system as a response to another user action; like a job being moved to a specific stage. See [Workflows](#workflows) for more information.
+`ownerMember` | Object | true | Member who owns the board where the action occurred. i.e: your job seeker
+`creatorMember` | Object | true | Member who took the action. In most cases, this is your job seeker; but if an advisor took the action, then it would be your advisor.
+`jobId` | String | false |  id for job linked to this action
+`job` | Object | false |  [Job](#jobs) linked to this action
+`jobs` | Array | false |  [Jobs](#jobs) linked to this action; only applies to Contact actions, since a contact can be linked to multiple jobs
+`employer` | Object | false |  [Employer](#employers) linked to this action
+`employers` | Array | false |  [Employers](#employers) linked to this action; only applies to Contact actions since a contact can be linked to multiple employers
+`activityId` | String | false |  id for Activity linked to this action
+`activity` | Object | false |  [Activity](#activities) linked to this action; only applies to Activity actions
+`activityCategory` | Object | false |  [Activity Category](#activity-categories) linked to this action; only applies to Activity actions
+`noteId` | String | false |  id for note linked to this action
+`note` | Object | false |  [Note](#notes) linked to this action; only applies to Note actions
+`contactId` | String | false |  id for contact linked to this action
+`contact` | Object | false |  [Contact](#contacts) linked to this action; only applies to Contact actions
+`fromList` | Object | false | List from which job was moved in a `JOB_MOVED` action
+`toList` | Object | false | List to which a job was moved or added to in `JOB_MOVED` and `JOB_CREATED` actions
+`update` | Object | false | Entry used to update the resource, only shown in Update actions
+
+## Action Types
+
+There are multiple action types:
+
+Action Type | Description | Extra fields
+---------- | ----------- | -----------
+`JOB_CREATED` | A new job is created | `job` `employer` `toList`
+`JOB_UPDATED` | A job is updated | `job` `employer` `update`
+`JOB_DELETED` | A job is deleted | `jobId` `employer`
+`JOB_MOVED` | A job is moved from one stage to another | `job` `employer` `fromList` `toList`
+`ACTIVITY_CREATED` | A new activity is created | `activity` `activityCategory` `job` `employer`
+`ACTIVITY_UPDATED` | An activity is updated | `activity` `activityCategory` `job` `employer` `update`
+`ACTIVITY_DELETED` | An activity is deleted | `activityId` `activityCategory` `job` `employer`
+`NOTE_CREATED` | A new note is created | `note` `job` `employer`
+`NOTE_UPDATED` | A note is updated | `note` `job` `employer`
+`NOTE_DELETED` |  A note is deleted | `noteId` `job` `employer`
+`CONTACT_CREATED` |  A new contact is created | `contact` `employers` `jobs`
+`CONTACT_UPDATED` |  A contact is updated | `contact` `employers` `jobs` `update`
+`CONTACT_DELETED` |  A contact is deleted | `contactId`
+
+
+## List Actions
+
+```shell
+curl "https://api.huntr.co/org/actions?limit=3"
+  -H "Authorization: Bearer <ORG_ACCESS_TOKEN>"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "data": [
+    {
+        "id": "5eb0abc13fac1580adcf5b1a",
+        "actionType": "ACTIVITY_CREATED",
+        "date": 1588636609,
+        "ownerMember": {
+            "id": "5e6a7bbdc56bc6669e3da86c",
+            "givenName": "Ruipo",
+            "familyName": "Fauli",
+            "email": "rennie+thinkful20@huntr.co",
+            "createdAt": 1584036797,
+            "isActive": true
+        },
+        "creatorMember": {
+            "id": "5b2bbb5837fbc835bbe3218b",
+            "givenName": "Advisor",
+            "familyName": "Two",
+            "email": "rennie+advisor2@huntr.co",
+            "createdAt": 1529592664,
+            "isActive": true
+        },
+        "job": {
+            "id": "5eb0a4338899ba51bf96f645",
+            "title": "No Job Title",
+            "salary": "$90k",
+            "location": {},
+            "createdAt": 1588634675
+        },
+        "employer": {
+            "id": "5a016b5221bce9aa2bd70296",
+            "name": "MailChimp",
+            "domain": "mailchimp.com",
+            "foundedYear": 2001,
+            "description": "MailChimp provides marketing automation for e-commerce businesses. Send beautiful emails, connect your e-commerce store, advertise, and build your brand.\n",
+            "location": "675 Ponce De Leon Ave NE #5000, Atlanta, GA 30308, USA"
+        },
+        "activity": {
+            "id": "5eb0abc13fac1580adcf5b19",
+            "title": "Follow Up",
+            "note": "With pete",
+            "completed": false,
+            "createdByWorkflow": false,
+            "startAt": 1588809403,
+            "createdAt": 1588636609
+        },
+        "activityCategory": {
+            "id": "5e448f3bf2b856c29af1128c",
+            "name": "Follow Up"
+        },
+        "createdByWorkflow": false,
+        "createdAt": 1588636609,
+        "jobId": "5eb0a4338899ba51bf96f645",
+        "activityId": "5eb0abc13fac1580adcf5b19"
+    },
+    {
+        "id": "5eb0a43d8899ba51bf96f647",
+        "actionType": "JOB_MOVED",
+        "date": 1588634685,
+        "ownerMember": {
+            "id": "5e6a7bbdc56bc6669e3da86c",
+            "givenName": "Ruipo",
+            "familyName": "Fauli",
+            "email": "rennie+thinkful20@huntr.co",
+            "createdAt": 1584036797,
+            "isActive": true
+        },
+        "creatorMember": {
+            "id": "5b2bbb5837fbc835bbe3218b",
+            "givenName": "Advisor",
+            "familyName": "Two",
+            "email": "rennie+advisor2@huntr.co",
+            "createdAt": 1529592664,
+            "isActive": true
+        },
+        "job": {
+            "id": "5eb0a4338899ba51bf96f645",
+            "title": "No Job Title",
+            "salary": "$90k",
+            "location": {},
+            "createdAt": 1588634675
+        },
+        "employer": {
+            "id": "5a016b5221bce9aa2bd70296",
+            "name": "MailChimp",
+            "domain": "mailchimp.com",
+            "foundedYear": 2001,
+            "description": "MailChimp provides marketing automation for e-commerce businesses. Send beautiful emails, connect your e-commerce store, advertise, and build your brand.\n",
+            "location": "675 Ponce De Leon Ave NE #5000, Atlanta, GA 30308, USA"
+        },
+        "fromList": {
+            "name": "Wishlist"
+        },
+        "toList": {
+            "name": "Applied"
+        },
+        "createdByWorkflow": false,
+        "createdAt": 1588634685,
+        "jobId": "5eb0a4338899ba51bf96f645"
+    },
+    {
+        "id": "5eae1460180a05fbb45f73af",
+        "actionType": "NOTE_CREATED",
+        "date": 1588466784,
+        "ownerMember": {
+            "id": "5eae15c3a4e9196db88cb394",
+            "givenName": "Rennie",
+            "familyName": "Haylock",
+            "email": "rennie+dev30@huntr.co",
+            "createdAt": 1588467139,
+            "isActive": true
+        },
+        "creatorMember": {
+            "id": "5eae15c3a4e9196db88cb394",
+            "givenName": "Rennie",
+            "familyName": "Haylock",
+            "email": "rennie+dev30@huntr.co",
+            "createdAt": 1588467139,
+            "isActive": true
+        },
+        "job": {
+            "id": "5d7980458a3fd22bfe291f38",
+            "title": "No Job Title",
+            "url": "http://localhost:3000/app/track/boards/5cc7ab1f5073b727a3862719/board",
+            "location": {
+                "address": ""
+            },
+            "createdAt": 1568243781
+        },
+        "employer": {
+            "id": "5d798045ad35fc0158480b95",
+            "name": "The San Diego Foundation",
+            "domain": "sdfoundation.org",
+            "foundedYear": 1975,
+            "description": "The San Diego Foundation is a community resource that improves San Diegans’ quality of life by creating equity and ensuring opportunities in the region.",
+            "location": "2508 Historic Decatur Rd #200, San Diego, CA 92106, USA"
+        },
+        "note": {
+            "id": "5eae14603eabef4cb322078e",
+            "text": "Great Interview"
+        },
+        "createdByWorkflow": false,
+        "createdAt": 1588466784,
+        "jobId": "5d7980458a3fd22bfe291f38",
+        "noteId": "5eae14603eabef4cb322078e"
+    }
+  ],
+  "next": "5eae1460180a05fbb45f73af"
+}
+```
+
+This endpoint retrieves all actions for your organization, sorted from most recently created to oldest.
+
+### HTTP Request
+
+`GET https://api.huntr.co/org/actions`
+
+### Query Parameters
+
+Parameter | Type | Default | Description
+--------- | ---- | ------- | -----------
+`action_type` | String | none | If set, will only return actions of the specific type. See [action types](#action-types) section for possible action type name values.
+`owner_member_id` | String | none | If set, will only return actions belonging to member
+`creator_member_id` | String | none | If set, will only return actions executed by member
+`job_id` | String | none | If set, will only return actions linked to job
+`activity_id` | String | none | If set, will only return actions for the specified activity
+`note_id` | String | none | If set, will only return actions for the specified note
+`contact_id` | String | none | If set, will only return actions for the specified contact
+`activity_category_id` | String | none | If set, will only return Activity actions of the specified activity category
+`employer_id` | String | none | If set, will only return actions linked to employer
+`limit` | Integer | 100 | Defines the maximum number of actions to return
+`next` | String | none | If set, returns the next set of results after the object id provided
+`created_after` | Unix timestamp | none | If set, will only return actions created after `created_after`
+`created_before` | Unix timestamp | none | If set, will only return actions created before `created_before`
+
+# Notes
+
+## Note Resource
+
+> A note object:
+
+```json
+{
+    "id": "5b05ca42f193b66c692c29a0",
+    "text": "Interview went well. It lasted about 2 hours and was half technical and half culture fit.",
+}
+```
+
+This resource represents a note.
+
+Parameter | Type | Default | Description
+--------- | ---- | ------- | -----------
+`id` | String | none | id for the note
+`text` | String | none | text in the note
+
+# Contacts
+
+## Contact Resource
+
+> A contact object:
+
+```json
+{
+    "id": "5b05ca43f193b64c692c29a0",
+    "firstName": "Pepe",
+    "lastName": "Alava",
+    "email": "palava@huntr.co",
+    "title": "HR Manager",
+    "location": "Seattle, WA USA"
+}
+```
+
+This resource represents a contact.
+
+Parameter | Type | Default | Description
+--------- | ---- | ------- | -----------
+`id` | String | none | id for the note
+`firstName` | String | none | Contact's first name
+`lastName` | String | none | Contact's last name
+`email` | String | none | Contact's email
+`title` | String | none | Contact's job title
+`location` | String | none | Contact's location
+
+# Employers
+
+## Employer Resource
+
+> An employer for which your members have added a job for:
+
+```json
+{
+    "id": "589b77128bf3dd17f01a3055",
+    "name": "Etsy",
+    "domain": "etsy.com",
+    "foundedYear": 2005,
+    "description": "Find handmade, vintage, and unique goods that express who you are.",
+    "location": "55 Washington St #512, Brooklyn, NY 11201, USA",
+    "jobCount": 4,
+    "applicationCount": 2,
+    "interviewCount": 1,
+    "offerCount": 1
+}
+```
+
+An employer for which your members have added a job for.
+
+Field | Type | Description
+----- | ---- | -----------
+`id` | String | Employer's id
+`name` | String | Name of the employer
+`domain` | String | Website for the employer
+`foundedYear` | Integer | Year the employer was founded
+`description` | String | Employer description
+`location` | String | Full address for the employer
+`jobCount` | Integer | Number of jobs added for this employer
+`applicationCount` | Integer | Number of applications to this employer
+`interviewCount` | Integer | Number of interviews from this employer
+`offerCount` | Integer | Number of offers from this employer
+
+## List Employers
+
+```shell
+curl "https://api.huntr.co/org/employers?limit=2"
+  -H "Authorization: Bearer <ORG_ACCESS_TOKEN>"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "data": [
+      {
+          "id": "5b088f63b9defaba88d37264",
+          "name": "The Art Institutes",
+          "domain": "artinstitutes.edu",
+          "foundedYear": 1921,
+          "description": "The Art Institutes is a system of over 30 nonprofit institutions with a focus on education, student outcomes, and community involvement. Learn more about our programs.\r  ",
+          "location": "K&L Gates Center, 210 Sixth Avenue, Pittsburgh, PA 15222, USA",
+          "jobCount": 1,
+          "applicationCount": 0,
+          "interviewCount": 0,
+          "offerCount": 0
+      },
+      {
+          "id": "5b088a7bb9defaba88d36f1e",
+          "name": "ResearchGate",
+          "domain": "researchgate.net",
+          "foundedYear": 2008,
+          "description": "Find 100+ million publication pages, 15+ million researchers, and 700k+ projects. ResearchGate is where you discover scientific knowledge and share your work.",
+          "location": "10115 Berlin, Germany",
+          "jobCount": 1,
+          "applicationCount": 1,
+          "interviewCount": 2,
+          "offerCount": 1
+      }
+  ],
+  "next": "5b088a7bb9defaba88d36f1e"
+}
+```
+
+This endpoint retrieves all employers to which your members have added a job for.
+
+### HTTP Request
+
+`GET https://api.huntr.co/org/employers`
+
+### Query Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+limit | 100 | Defines the maximum number of employers to return
+next | none | If set, returns the next set of results after the object id provided
+
+# Events (Deprecated)
+
+<aside class="warning">
+Starting in May 2020, the Events resource is being replaced by the Actions resource.
+</aside>
+
+## Events Deprecation
+
+The Event resource endpoints will work until the end of 2020, but going forward you
+should replace all Event calls for Action calls. Actions offer a more robust
+architecture encompassing many more things that occur within the Huntr application
+(see the **[Action](#actions)** resource for more info).
+
+## Why we are deprecating Events
+
+Our old Event resource mixed CRUD type events like `JOB_ADDED` with real life events like
+`JOB_APPLICATION_DATE_SET` and `JOB_OFFER_DATE_SET`. We have addressed this by creating **[Actions](#actions)**,
+which exclusively represent CRUD type events that happen within the application.
+
+Things like `JOB_CREATED`, `JOB_DELETED`, `NOTE_CREATED`, `CONTACT_UPDATED` are now **[Actions](#actions)**.
+
+Events that happen in the real world, like `Apply`, `Phone Interview`, `Prep for Interview`,
+`Offer Received`, `Offer Accepted` are now represented through the **[Activity](#activities)** resource.
+We like to think of these as things you would put on a to do list or a calendar; they map one
+to one with the items show on the 'Activities' section of Huntr boards. Each activity
+has an Activity Category representing the type of Activity it is (see the **[Activity](#activities)** resource for more info).
+
+Furthermore, the architecture of our old Event resource limited the number of events
+that a job seeker could log. There were only two interview fields for example.
+With the new **[Activity](#activities)** + **[Action](#actions)** combo, job seekers can log as many interviews or
+other activities as they want. It also opens up the possibility to create
+custom Activity Categories for your organization, to track any type of activity.
+
+## Migrating from Events to Actions
+
+You can still listen for both CRUD and real world events through the Action resource
+endpoint. Since real world events are Activities, they are accounted for in Actions through the
+`ACTIVITY_CREATED` action type, which will contain an `activityCategory` field that
+will let you know what kind of activity it represents.
+
+
+### Here is what the old event types would translate to in the new Action resource:
+
+Event Name | `action.actionType` | `action.activityCategory.name`
+---------- | ----------- | -----------
+`JOB_ADDED` | `JOB_CREATED` | `null`
+`JOB_MOVED` | `JOB_MOVED` | `null`
+`JOB_APPLICATION_DATE_SET` | `ACTIVITY_CREATED` |  `Apply`
+`JOB_FIRST_INTERVIEW_DATE_SET` | `ACTIVITY_CREATED` |  `Phone Interview`
+`JOB_SECOND_INTERVIEW_DATE_SET` | `ACTIVITY_CREATED` |  `On Site Interview`
+`JOB_OFFER_DATE_SET` | `ACTIVITY_CREATED` |  `Offer Received`
+
 
 ## Events Resource
+
+<aside class="warning">
+Starting in May 2020, the Events resource is being replaced by the Actions resource.
+</aside>
 
 > An event object:
 
@@ -700,6 +1945,10 @@ curl "https://api.huntr.co/org/events?limit=2"
 }
 ```
 
+<aside class="warning">
+Starting in May 2020, the Events resource is being replaced by the Actions resource.
+</aside>
+
 This endpoint retrieves all events for your organization, sorted from most recently created to oldest.
 
 ### HTTP Request
@@ -716,106 +1965,33 @@ Parameter | Type | Default | Description
 `limit` | Integer | 100 | Defines the maximum number of jobs to return
 `next` | String | none | If set, returns the next set of results after the object id provided
 
-# Employers
+# Workflows
 
-## Employer Resource
+## Workflow Resource
 
-> An employer for which your members have added a job for:
+A workflow allows Huntr to automatically complete certain Actions when other actions happen within the application. For now, workflows power the automatic creation of certain activities when a job is moved or created into a specific stage.
 
-```json
-{
-    "id": "589b77128bf3dd17f01a3055",
-    "name": "Etsy",
-    "domain": "etsy.com",
-    "foundedYear": 2005,
-    "description": "Find handmade, vintage, and unique goods that express who you are.",
-    "location": "55 Washington St #512, Brooklyn, NY 11201, USA",
-    "jobCount": 4,
-    "applicationCount": 2,
-    "interviewCount": 1,
-    "offerCount": 1
-}
-```
+For example, if a job seeker moved a job to a stage called "Apply" then Huntr will automatically create an [Activity](#activities) with the `Apply` [Activity Category](#activity-categories).
 
-An employer for which your members have added a job for.
+## Coming soon
 
-Field | Type | Description
------ | ---- | -----------
-`id` | String | Employer's id
-`name` | String | Name of the employer
-`domain` | String | Website for the employer
-`foundedYear` | Integer | Year the employer was founded
-`description` | String | Employer description
-`location` | String | Full address for the employer
-`jobCount` | Integer | Number of jobs added for this employer
-`applicationCount` | Integer | Number of applications to this employer
-`interviewCount` | Integer | Number of interviews from this employer
-`offerCount` | Integer | Number of offers from this employer
-
-## List Employers
-
-```shell
-curl "https://api.huntr.co/org/employers?limit=2"
-  -H "Authorization: Bearer <ORG_ACCESS_TOKEN>"
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-  "data": [
-      {
-          "id": "5b088f63b9defaba88d37264",
-          "name": "The Art Institutes",
-          "domain": "artinstitutes.edu",
-          "foundedYear": 1921,
-          "description": "The Art Institutes is a system of over 30 nonprofit institutions with a focus on education, student outcomes, and community involvement. Learn more about our programs.\r  ",
-          "location": "K&L Gates Center, 210 Sixth Avenue, Pittsburgh, PA 15222, USA",
-          "jobCount": 1,
-          "applicationCount": 0,
-          "interviewCount": 0,
-          "offerCount": 0
-      },
-      {
-          "id": "5b088a7bb9defaba88d36f1e",
-          "name": "ResearchGate",
-          "domain": "researchgate.net",
-          "foundedYear": 2008,
-          "description": "Find 100+ million publication pages, 15+ million researchers, and 700k+ projects. ResearchGate is where you discover scientific knowledge and share your work.",
-          "location": "10115 Berlin, Germany",
-          "jobCount": 1,
-          "applicationCount": 1,
-          "interviewCount": 2,
-          "offerCount": 1
-      }
-  ],
-  "next": "5b088a7bb9defaba88d36f1e"
-}
-```
-
-This endpoint retrieves all employers to which your members have added a job for.
-
-### HTTP Request
-
-`GET https://api.huntr.co/org/employers`
-
-### Query Parameters
-
-Parameter | Default | Description
---------- | ------- | -----------
-limit | 100 | Defines the maximum number of employers to return
-next | none | If set, returns the next set of results after the object id provided
+The next step is to allow job seekers and organizations to create their own workflows to accomplish things like recurring Activity creation.
 
 # Webhooks
 
 ## Receiving Webhooks
 
-Huntr can send webhook events to notify your application any time an [event](#events) happens within your organization.
+Huntr can send webhook events to notify your application any time an [action](#actions) happens within your organization.
 
-You can register webhook URLs in your organization's admin dashboard, under the **Developers** tab that we will notify any time a event happens in your organization. When the event occurs—a new job is added, an interview date set, etc.—Huntr creates a **[Event](#events)** object.
+You can register webhook URLs in your organization's admin dashboard, under the **Developers** tab that we will notify any time an action happens in your organization. When the action occurs—a new job is created, an activity is updated, etc.—Huntr creates a **[Action](#actions)** object.
 
-The Event object contains all the information about the event that just happened, including the type of event and the data associated with that event. Huntr will send the **Event** via an `HTTP POST` request, to any endpoint URLs that you have defined in your organization's Webhooks settings.
+The Action object contains all the information about the event that just happened, including the type of action and the data associated with that action. Huntr will send the **Action** via an `HTTP POST` request, to any endpoint URLs that you have defined in your organization's Webhooks settings.
 
 ## Responding to a webhook
 
 To acknowledge receipt of a webhook, your endpoint should return a `200` HTTP status code. All other response codes will indicate to Huntr that you did not receive the webhook.
+
+## Webhooks Changelog
+
+### May 2020
+Before May 2020, Webhooks were powered by the now deprecated [Event](#events-deprecated) resource. Webhooks are now powered by the [Action](#actions) resource. To make the transition from Event to Action Webhooks easier, Webhook messages will contain all of the old Event fields until the end of 2020, alongside the new fields introduced in the Action resource.
