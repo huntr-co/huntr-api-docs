@@ -289,6 +289,7 @@ This endpoint retrieves all members for your organization.
 Parameter | Type | Default | Description
 --------- | ---- | ------- | -----------
 `active` | Boolean | none | If set to `true`, the result will only include active members. If set to `false` the result will only include deactivated members.
+`email` | String | none | If set, it will return the single member that matches the provided email address.
 `limit` | Integer | 100 | Defines the maximum number of members to return
 `next` | String | none | If set, returns the next set of results after the object id provided
 
