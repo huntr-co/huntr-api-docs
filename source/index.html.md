@@ -625,7 +625,7 @@ message and the field will not be created.
 
 ### HTTP Request
 
-`POST https://api.huntr.co/org/member-field`
+`POST https://api.huntr.co/org/member-fields`
 
 ### JSON Body Parameters
 
