@@ -408,6 +408,59 @@ Parameter | Type | Description
 --------- | ---- | -----------
 ID | String | The ID of the member to retrieve
 
+## Update a Job Seeker's member field value
+
+```shell
+curl --location --request PUT 'https://api.huntr.co/org/members/5a9b3d392bd2e22e37dee4f0/member-fields/5b3f908c99c94b6177d55a28' \
+--header 'Authorization: Bearer <ORG_ACCESS_TOKEN>' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+	"value": "Seattle"
+}'
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+    "id": "5a9b3d392bd2e22e37dee4f0",
+    "givenName": "John",
+    "familyName": "Smith",
+    "email": "johns@huntr.co",
+    "createdAt": 1589931899,
+    "isActive": true,
+    "memberFieldValues": [
+        {
+            "fieldId": "5b3f908c99c94b6177d55a28",
+            "value": "Seattle"
+        },
+        {
+            "fieldId": "5b3f9cf499c94b6177d55a2a",
+            "value": "Web Design"
+        },
+        {
+            "fieldId": "5b3fb247d9d5bd9d6de8f655",
+            "value": "YVR-001"
+        }
+    ]
+}
+```
+
+This endpoint updates or sets a specific member's field value.
+
+### HTTP Request
+
+`PUT https://api.huntr.co/org/members/<memberId>/member-fields/<fieldId>`
+
+Where `<fieldId>` is the `id` for an existing [Member Field](#member-fields)
+
+### URL Parameters
+
+Parameter | Type | Description
+--------- | ---- | -----------
+`value` | Mixed | The value to give the member field
+
+
 # Member Fields
 
 ## Member Field Resource
