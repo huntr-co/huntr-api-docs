@@ -130,7 +130,14 @@ Huntr uses cursor-based pagination via the `next` parameter which takes an exist
             "Offer",
             "Rejected"
         ]
-    }
+    },
+    "memberFieldValues": [
+      {
+          "fieldId": "5b3f908c99c94b6177d55a28",
+          "value": "Seattle"
+      }
+    ],
+    "createdAt": 1539800736
 }
 ```
 
@@ -142,59 +149,124 @@ boardName | String | Name to give the board created when member accepts invite
 to | Object | If the user with this email already has a Huntr account this object will show his/her user account information
 email | String | Member's email
 boardTemplate | Object | The board template to use to define the board stages when member accepts invite
+memberFieldValues | Array | Array of member field values to assign to the member when invitation is accepted. Each object in the array is of type `{fieldId: "5b3f908c99c94b6177d55a28", value: "Montreal"}`, where `fieldId` represents the `id` of an existing [Member Field](#member-fields)
+createdAt | Unix timestamp | Date the invitation was created
 
-## Submit new invitations
+## List Organization Invitations
+
+```shell
+curl "https://api.huntr.co/org/organization-invitations"
+  -H "Authorization: Bearer <ORG_ACCESS_TOKEN>"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+
+{
+  "data": [
+      {
+          "id": "5bc77e60856b6201a7f84d99",
+          "toEmail": "johns@gmail.com",
+          "boardName": "Fall 2020",
+          "memberFieldValues": [],
+          "createdAt": 1539800672
+      },
+      {
+          "id": "5bc77ea0856b6201a7f84d9a",
+          "toEmail": "peterj@gmail.com",
+          "boardName": "Fall 2020",
+          "memberFieldValues": [],
+          "createdAt": 1539800736
+      },
+      {
+          "id": "5ca53f5687967fd925e3aff4",
+          "toEmail": "joshg@gmail.com",
+          "boardName": "Fall 2020",
+          "boardTemplate": {
+              "id": "5a6e4c3c7e42789e6e65c987",
+              "name": "Fall 2020 Cohort 1",
+              "listNames": [
+                  "Wishlist",
+                  "Applied",
+                  "Interview",
+                  "Offer",
+                  "Rejected"
+              ]
+          },
+          "memberFieldValues": [
+              {
+                  "fieldId": "5b3f908c99c94b6177d55a28",
+                  "value": "Seattle"
+              }
+          ],
+          "createdAt": 1554333526
+      }
+  ]
+}
+```
+
+This endpoint retrieves all pending organization invitations.
+
+### HTTP Request
+
+`GET https://api.huntr.co/org/organization-invitations`
+
+## Create Organization Invitation
 
 ```shell
 curl --location --request POST 'https://api.huntr.co/org/organization-invitations' \
 --header 'Authorization: Bearer <ORG_ACCESS_TOKEN>' \
 --header 'Content-Type: application/json' \
 --data-raw '{
-	"emails": ["test@example.com"],
-	"boardName": "Job Search 2020"
+	"email": "test@example.com",
+	"boardName": "Job Search 2020",
+  "boardTemplateId": "5a6e4a567e42789e6e65c986",
+  "memberFieldValues": [
+    {"fieldId": "5b3f908c99c94b6177d55a28", "value": "Vancouver"},
+    {"fieldId": "5b3f9cf499c94b6177d55a2a", "value": "Web Design"}
+  ]
 }'
 ```
 
 > The above command returns JSON structured like this:
 
 ```json
-[
-    {
-        "id": "5e6a9d1f62593578ce9de841",
-        "toEmail": "test@example.com",
-        "boardName": "Job Search 2020",
-        "to": {
-            "id": "5e6a7c99c56bc6669e3da876",
-            "givenName": "Cristobal",
-            "familyName": "Hackett",
-            "email": "test@example.com",
-            "createdAt": 1584045343
+{
+    "id": "5ec478c20f3c3c8443328eb5",
+    "toEmail": "test@example.com",
+    "boardName": "Job Search 2020",
+    "boardTemplate": {
+        "id": "5a6e4a567e42789e6e65c986",
+        "name": "Tech Jobs",
+        "listNames": [
+            "Wishlist",
+            "Applied",
+            "Phone Interview",
+            "On Site Interview",
+            "Offer",
+            "Rejected"
+        ]
+    },
+    "memberFieldValues": [
+        {
+            "fieldId": "5b3f908c99c94b6177d55a28",
+            "value": "Vancouver"
         },
-        "boardTemplate": {
-            "id": "5a6e4a567e42789e6e65c986",
-            "name": "Tech Jobs",
-            "listNames": [
-                "Wishlist",
-                "Applied",
-                "Phone Interview",
-                "On Site Interview",
-                "Offer",
-                "Rejected"
-            ]
+        {
+            "fieldId": "5b3f9cf499c94b6177d55a2a",
+            "value": "Web Design"
         }
-    }
-]
+    ],
+    "createdAt": 1589934274
+}
 ```
 
-This endpoint creates and sends a new Organization Invitation for a member.
-The people invited through this endpoint will receive an email invitation
+This endpoint creates and sends a single Organization Invitation.
+The person invited through this endpoint will receive an email invitation
 to join your organization under Huntr.
 
-To prevent duplicate invitations from being sent, if you submit a request with one or more emails that have an existing
-pending invitation from your organization, these will be overlooked, and no
-new invitations will be created for those email addresses. In those cases
-you will notice that the response body will not contain results for the email addresses
-that have a pending invitation from your organization.
+To prevent duplicate invitations from being sent, requests with an email that has an existing pending invitation from your organization will return an error and no invitation will be created.
 
 ### HTTP Request
 
@@ -204,10 +276,10 @@ that have a pending invitation from your organization.
 
 Parameter | Required | Type | Description
 --------- | -------- | ---- | -----------
-`emails` | yes | Array | An array of email addresses for members your want to invite
-`boardName` | no | String | Name of board to be created for all members
-`boardTemplateId` | no | String | Id of the board template to use when creating boards for members, if none is submitted it will default to Organization's default board template, or Huntr's default template if no template has been set as a default.
-
+`email` | yes | String | An email address for the job seeker your want to invite
+`boardName` | no | String | Name of board to be created for member
+`boardTemplateId` | no | String | Id of the board template to use when creating a board for member, if none is submitted it will default to Organization's default board template, or Huntr's default template if no template has been set as a default.
+`memberFieldValues` | no | Array | Array of member field values to assign to the member when invitation is accepted. Each object in the array is of type `{fieldId: "5b3f908c99c94b6177d55a28", value: "Montreal"}`, where `fieldId` represents the `id` of an existing [Member Field](#member-fields)
 
 # Members
 
@@ -222,7 +294,13 @@ Parameter | Required | Type | Description
     "familyName": "Varela",
     "email": "gracev@huntr.co",
     "createdAt": 1526954421,
-    "isActive": true
+    "isActive": true,
+    "memberFieldValues": [
+        {
+            "fieldId": "5b3f908c99c94b6177d55a28",
+            "value": "Montreal"
+        }
+    ]
 }
 ```
 
@@ -236,6 +314,7 @@ familyName | String | Member's last name
 email | String | Member's email
 createdAt | Unix timestamp | Date the member signed up for Huntr
 isActive | Boolean | Defines if member has been deactivated by an organization admin or advisor. Deactivating a member prevents them from continuing activity on boards managed by your organization, and it is usually done for members who have found a job and stopped using Huntr.
+memberFieldValues | Array | Array of assigned member field values. Each object in the array is of type `{fieldId: "5b3f908c99c94b6177d55a28", value: "Montreal"}`, where `fieldId` represents the `id` of an existing [Member Field](#member-fields)
 
 ## List Members
 
@@ -255,7 +334,8 @@ curl "https://api.huntr.co/org/members?active=true&limit=3"
             "familyName": "Moscoso",
             "email": "robertom@huntr.co",
             "createdAt": 1526953927,
-            "isActive": true
+            "isActive": true,
+            "memberFieldValues": []
         },
         {
             "id": "5a9f699edd2f935a4e5b263a",
@@ -263,7 +343,8 @@ curl "https://api.huntr.co/org/members?active=true&limit=3"
             "familyName": "Haylock",
             "email": "rennie@huntr.co",
             "createdAt": 1520396702,
-            "isActive": true
+            "isActive": true,
+            "memberFieldValues": []
         },
         {
             "id": "5a9b3d392bd2e22e37dee4f0",
@@ -271,7 +352,8 @@ curl "https://api.huntr.co/org/members?active=true&limit=3"
             "familyName": "Smith",
             "email": "johns@huntr.co",
             "createdAt": 1520123193,
-            "isActive": true
+            "isActive": true,
+            "memberFieldValues": []
         }
     ],
     "next": "5a9b3d392bd2e22e37dee4f0"
@@ -309,7 +391,8 @@ curl "https://api.huntr.co/org/members/5a9b3d392bd2e22e37dee4f0"
     "familyName": "Smith",
     "email": "johns@huntr.co",
     "createdAt": 1520123193,
-    "isActive": true
+    "isActive": true,
+    "memberFieldValues": []
 }
 ```
 
@@ -324,6 +407,263 @@ This endpoint retrieves a specific member.
 Parameter | Type | Description
 --------- | ---- | -----------
 ID | String | The ID of the member to retrieve
+
+# Member Fields
+
+## Member Field Resource
+
+> A member field:
+
+```json
+{
+   "id": "5b3f908c99c94b6177d55a28",
+   "name": "Location",
+   "fieldType": "MULTIPLE_CHOICE",
+   "choices": [
+       "Vancouver",
+       "Seattle",
+       "New York",
+       "Montreal",
+       "Miami"
+   ]
+}
+```
+
+A member field is a custom field created by someone in your organization which describes your members and is used to filter and/or group your members in different areas of your advisor dashboard. For example: If your members are in different cities, you could create a 'location' custom field.
+
+Field | Type | In all fields | Description
+----- | ---- | -------------- | -----------
+id | String | true | Member field id
+name | String | true | Member field name
+fieldType | String | true | Field type
+choices | String | false | Choices found on member fields of fieldType `MULTIPLE_CHOICE`
+
+## Types of Member Fields
+
+### This is a list of all the types of fields currently available.
+
+`memberField.fieldType` | Description
+----------------------- | -----------
+`MULTIPLE_CHOICE` | Represents a multiple choice field type like "Locations" or "Specialties"
+`TEXT` | Represents a text field type like "Nickname"
+`NUMBER` | Represents a number field type like "Age"
+`DATE` | Represents a date field type like "Graduation Date"
+
+## List Member Fields
+
+```shell
+curl "https://api.huntr.co/org/member-fields"
+  -H "Authorization: Bearer <ORG_ACCESS_TOKEN>"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+    "data": [
+        {
+            "id": "5b3f908c99c94b6177d55a28",
+            "name": "Location",
+            "fieldType": "MULTIPLE_CHOICE",
+            "choices": [
+                "Vancouver",
+                "Seattle",
+                "New York",
+                "Montreal",
+                "Miami"
+            ]
+        },
+        {
+            "id": "5b3f960c99c94b6177d55a29",
+            "name": "Graduation",
+            "fieldType": "DATE"
+        },
+        {
+            "id": "5b3f9cf499c94b6177d55a2a",
+            "name": "Program",
+            "fieldType": "MULTIPLE_CHOICE",
+            "choices": [
+                "Web Design",
+                "iOS",
+                "Data Science"
+            ]
+        },
+        {
+            "id": "5b3fb247d9d5bd9d6de8f655",
+            "name": "Cohort",
+            "fieldType": "MULTIPLE_CHOICE",
+            "choices": [
+                "YVR-001",
+                "TRT-001",
+                "YVR-002",
+                "MTR-001"
+            ]
+        },
+        {
+            "id": "5b3ff25b0ec3828665ff7c81",
+            "name": "Status",
+            "fieldType": "MULTIPLE_CHOICE",
+            "choices": [
+                "In program",
+                "Searching",
+                "Placed"
+            ]
+        },
+        {
+            "id": "5b40d89ae582264d4368a2bc",
+            "name": "Gender",
+            "fieldType": "MULTIPLE_CHOICE",
+            "choices": [
+                "Female",
+                "Male"
+            ]
+        },
+        {
+            "id": "5b43ee4a8308d2400b9cced3",
+            "name": "Nickname",
+            "fieldType": "TEXT"
+        }
+    ]
+}
+```
+
+This endpoint retrieves all member fields for your organization.
+
+### HTTP Request
+
+`GET https://api.huntr.co/org/member-fields`
+
+## Create new member field
+
+```shell
+curl --location --request POST 'https://api.huntr.co/org/member-fields' \
+--header 'Authorization: Bearer <ORG_ACCESS_TOKEN>' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+	"name": "Location",
+	"fieldType": "MULTIPLE_CHOICE",
+  "choices": ["London", "Paris", "New York", "San Francisco"]
+}'
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+    "id": "5ec44b9cc482170b3129e569",
+    "name": "Locations",
+    "fieldType": "MULTIPLE_CHOICE",
+    "choices": [
+        "London",
+        "Paris",
+        "New York",
+        "San Francisco"
+    ]
+}
+```
+
+This endpoint creates a new Member Field. After creating the new field, you will
+be able to view the field from your advisor dashboard and will be able to send
+organization invitations with the `memberFieldValues` referring to the newly created field.
+
+To prevent duplicate fields from being created, requests with a field name
+that matches an existing Member Field from your organization, will return an error
+message and the field will not be created.
+
+### HTTP Request
+
+`POST https://api.huntr.co/org/member-field`
+
+### JSON Body Parameters
+
+Parameter | Required | Type | Description
+--------- | -------- | ---- | -----------
+`name` | yes | String | Name of the new field, must be unique (i.e: you cannot have two fields with the same name)
+`fieldType` | yes | String | One of [type of member fields](#types-of-member-fields)
+`choices` | only when `fieldType == 'MULTIPLE_CHOICE'` | Array | List of strings representing choices in a field of type MULTIPLE_CHOICE
+
+# Board Templates
+
+## Board Template Resource
+
+> A board template:
+
+```json
+{
+    "id": "5a6e4a567e42789e6e65c986",
+    "name": "Tech Jobs",
+    "listNames": [
+        "Wishlist",
+        "Applied",
+        "Phone Interview",
+        "On Site Interview",
+        "Offer",
+        "Rejected"
+    ],
+    "isDefault": true
+}
+```
+
+A template to use when creating a new board for your members. Board templates are used when you want your job seekers' boards to have specific stages. Say you want your job seekers' board to have the following stages `['Wishlist', 'Applied', 'Interview', 'Offer']`. First you create a board template where `listNames == ['Wishlist', 'Applied', 'Interview', 'Offer']` (the order of the stages is the same order that will be followed when a new board is created). Then you can create a new [Organization Invitation](#create-organization-invitation) in which `boardTemplateId` is the id of the Board Template you just created.
+
+Field | Type | Found in all records | Description
+----- | ---- | -------------- | -----------
+id | String | true | Board Template id
+name | String | true | Board template name
+listNames | Array | true | Names to give each stage in a board created with this template
+isDefault | Boolean | true | If true, it means the template is the default within the organization
+
+## Default Board Stages
+
+In cases where there are no existing Board Templates for your organization. Huntr will create boards with the following stages (in the order shown):
+
+`[ "wishlist", "applied", "interview", "offer", "rejected" ]`
+
+## List Board Templates
+
+```shell
+curl "https://api.huntr.co/org/board-templates"
+  -H "Authorization: Bearer <ORG_ACCESS_TOKEN>"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+    "data": [
+        {
+            "id": "5a6bd300f92659747fe49a53",
+            "name": "Spring 2018",
+            "listNames": [
+                "Applied",
+                "Wishlist",
+                "Interview",
+                "Offer"
+            ],
+            "isDefault": false
+        },
+        {
+            "id": "5a6e4a567e42789e6e65c986",
+            "name": "Tech Jobs",
+            "listNames": [
+                "Wishlist",
+                "Applied",
+                "Phone Interview",
+                "On Site Interview",
+                "Offer",
+                "Rejected"
+            ],
+            "isDefault": true
+        }
+    ]
+}
+```
+
+This endpoint retrieves all board templates for your organization.
+
+### HTTP Request
+
+`GET https://api.huntr.co/org/board-templates`
 
 # Jobs
 
