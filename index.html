@@ -254,6 +254,9 @@
                   <li>
                     <a href="#retrieve-a-member" class="toc-h2 toc-link" data-title="Retrieve a Member">Retrieve a Member</a>
                   </li>
+                  <li>
+                    <a href="#update-a-job-seeker-39-s-member-field-value" class="toc-h2 toc-link" data-title="Update a Job Seeker's member field value">Update a Job Seeker's member field value</a>
+                  </li>
               </ul>
           </li>
           <li>
@@ -902,6 +905,58 @@ to join your organization under Huntr.</p>
 <td>The ID of the member to retrieve</td>
 </tr>
 </tbody></table>
+<h2 id='update-a-job-seeker-39-s-member-field-value'>Update a Job Seeker&#39;s member field value</h2><pre class="highlight shell tab-shell"><code>curl --location --request PUT <span class="s1">'https://api.huntr.co/org/members/5a9b3d392bd2e22e37dee4f0/member-fields/5b3f908c99c94b6177d55a28'</span> <span class="se">\</span>
+--header <span class="s1">'Authorization: Bearer &lt;ORG_ACCESS_TOKEN&gt;'</span> <span class="se">\</span>
+--header <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+--data-raw <span class="s1">'{
+    "value": "Seattle"
+}'</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5a9b3d392bd2e22e37dee4f0"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"givenName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"familyName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Smith"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"johns@huntr.co"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1589931899</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"isActive"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"memberFieldValues"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"fieldId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5b3f908c99c94b6177d55a28"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Seattle"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"fieldId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5b3f9cf499c94b6177d55a2a"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Web Design"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"fieldId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5b3fb247d9d5bd9d6de8f655"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"YVR-001"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint updates or sets a specific member&#39;s field value.</p>
+<h3 id='http-request-5'>HTTP Request</h3>
+<p><code>PUT https://api.huntr.co/org/members/&lt;memberId&gt;/member-fields/&lt;fieldId&gt;</code></p>
+
+<p>Where <code>&lt;fieldId&gt;</code> is the <code>id</code> for an existing <a href="#member-fields">Member Field</a></p>
+<h3 id='url-parameters-2'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>value</code></td>
+<td>Mixed</td>
+<td>The value to give the member field</td>
+</tr>
+</tbody></table>
 <h1 id='member-fields'>Member Fields</h1><h2 id='member-field-resource'>Member Field Resource</h2>
 <blockquote>
 <p>A member field:</p>
@@ -1052,7 +1107,7 @@ to join your organization under Huntr.</p>
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint retrieves all member fields for your organization.</p>
-<h3 id='http-request-5'>HTTP Request</h3>
+<h3 id='http-request-6'>HTTP Request</h3>
 <p><code>GET https://api.huntr.co/org/member-fields</code></p>
 <h2 id='create-new-member-field'>Create new member field</h2><pre class="highlight shell tab-shell"><code>curl --location --request POST <span class="s1">'https://api.huntr.co/org/member-fields'</span> <span class="se">\</span>
 --header <span class="s1">'Authorization: Bearer &lt;ORG_ACCESS_TOKEN&gt;'</span> <span class="se">\</span>
@@ -1085,7 +1140,7 @@ organization invitations with the <code>memberFieldValues</code> referring to th
 <p>To prevent duplicate fields from being created, requests with a field name
 that matches an existing Member Field from your organization, will return an error
 message and the field will not be created.</p>
-<h3 id='http-request-6'>HTTP Request</h3>
+<h3 id='http-request-7'>HTTP Request</h3>
 <p><code>POST https://api.huntr.co/org/member-field</code></p>
 <h3 id='json-body-parameters-2'>JSON Body Parameters</h3>
 <table><thead>
@@ -1208,7 +1263,7 @@ message and the field will not be created.</p>
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint retrieves all board templates for your organization.</p>
-<h3 id='http-request-7'>HTTP Request</h3>
+<h3 id='http-request-8'>HTTP Request</h3>
 <p><code>GET https://api.huntr.co/org/board-templates</code></p>
 <h1 id='jobs'>Jobs</h1><h2 id='job-resource'>Job Resource</h2>
 <blockquote>
@@ -1713,7 +1768,7 @@ message and the field will not be created.</p>
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint lists all jobs added by members from your organization, jobs are sorted by the date they were created, starting from the most recently created.</p>
-<h3 id='http-request-8'>HTTP Request</h3>
+<h3 id='http-request-9'>HTTP Request</h3>
 <p><code>GET https://api.huntr.co/org/jobs</code></p>
 <h3 id='query-parameters-2'>Query Parameters</h3>
 <table><thead>
@@ -1912,9 +1967,9 @@ message and the field will not be created.</p>
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint retrieves a specific job.</p>
-<h3 id='http-request-9'>HTTP Request</h3>
+<h3 id='http-request-10'>HTTP Request</h3>
 <p><code>GET https://api.huntr.co/org/jobs/&lt;ID&gt;</code></p>
-<h3 id='url-parameters-2'>URL Parameters</h3>
+<h3 id='url-parameters-3'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -2209,7 +2264,7 @@ message and the field will not be created.</p>
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint retrieves all activities for your organization, sorted from most recently created to oldest.</p>
-<h3 id='http-request-10'>HTTP Request</h3>
+<h3 id='http-request-11'>HTTP Request</h3>
 <p><code>GET https://api.huntr.co/org/activities</code></p>
 <h3 id='query-parameters-3'>Query Parameters</h3>
 <table><thead>
@@ -2981,7 +3036,7 @@ or Note a new Action will be created representing that event:</p>
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint retrieves all actions for your organization, sorted from most recently created to oldest.</p>
-<h3 id='http-request-11'>HTTP Request</h3>
+<h3 id='http-request-12'>HTTP Request</h3>
 <p><code>GET https://api.huntr.co/org/actions</code></p>
 <h3 id='query-parameters-4'>Query Parameters</h3>
 <table><thead>
@@ -3277,7 +3332,7 @@ or Note a new Action will be created representing that event:</p>
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint retrieves all employers to which your members have added a job for.</p>
-<h3 id='http-request-12'>HTTP Request</h3>
+<h3 id='http-request-13'>HTTP Request</h3>
 <p><code>GET https://api.huntr.co/org/employers</code></p>
 <h3 id='query-parameters-5'>Query Parameters</h3>
 <table><thead>
@@ -3589,7 +3644,7 @@ Starting in May 2020, the Events resource is being replaced by the Actions resou
 </aside>
 
 <p>This endpoint retrieves all events for your organization, sorted from most recently created to oldest.</p>
-<h3 id='http-request-13'>HTTP Request</h3>
+<h3 id='http-request-14'>HTTP Request</h3>
 <p><code>GET https://api.huntr.co/org/events</code></p>
 <h3 id='query-parameters-6'>Query Parameters</h3>
 <table><thead>
