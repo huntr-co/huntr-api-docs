@@ -235,7 +235,10 @@
                     <a href="#organization-invitation-resource" class="toc-h2 toc-link" data-title="Organization Invitation Resource">Organization Invitation Resource</a>
                   </li>
                   <li>
-                    <a href="#submit-new-invitations" class="toc-h2 toc-link" data-title="Submit new invitations">Submit new invitations</a>
+                    <a href="#list-organization-invitations" class="toc-h2 toc-link" data-title="List Organization Invitations">List Organization Invitations</a>
+                  </li>
+                  <li>
+                    <a href="#create-organization-invitation" class="toc-h2 toc-link" data-title="Create Organization Invitation">Create Organization Invitation</a>
                   </li>
               </ul>
           </li>
@@ -250,6 +253,37 @@
                   </li>
                   <li>
                     <a href="#retrieve-a-member" class="toc-h2 toc-link" data-title="Retrieve a Member">Retrieve a Member</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#member-fields" class="toc-h1 toc-link" data-title="Member Fields">Member Fields</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#member-field-resource" class="toc-h2 toc-link" data-title="Member Field Resource">Member Field Resource</a>
+                  </li>
+                  <li>
+                    <a href="#types-of-member-fields" class="toc-h2 toc-link" data-title="Types of Member Fields">Types of Member Fields</a>
+                  </li>
+                  <li>
+                    <a href="#list-member-fields" class="toc-h2 toc-link" data-title="List Member Fields">List Member Fields</a>
+                  </li>
+                  <li>
+                    <a href="#create-new-member-field" class="toc-h2 toc-link" data-title="Create new member field">Create new member field</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#board-templates" class="toc-h1 toc-link" data-title="Board Templates">Board Templates</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#board-template-resource" class="toc-h2 toc-link" data-title="Board Template Resource">Board Template Resource</a>
+                  </li>
+                  <li>
+                    <a href="#default-board-stages" class="toc-h2 toc-link" data-title="Default Board Stages">Default Board Stages</a>
+                  </li>
+                  <li>
+                    <a href="#list-board-templates" class="toc-h2 toc-link" data-title="List Board Templates">List Board Templates</a>
                   </li>
               </ul>
           </li>
@@ -499,7 +533,14 @@ Your Access Token carries many privileges, so be sure to keep them secure! Do no
             </span><span class="s2">"Offer"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"Rejected"</span><span class="w">
         </span><span class="p">]</span><span class="w">
-    </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"memberFieldValues"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"fieldId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5b3f908c99c94b6177d55a28"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Seattle"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1539800736</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <table><thead>
@@ -539,55 +580,120 @@ Your Access Token carries many privileges, so be sure to keep them secure! Do no
 <td>Object</td>
 <td>The board template to use to define the board stages when member accepts invite</td>
 </tr>
+<tr>
+<td>memberFieldValues</td>
+<td>Array</td>
+<td>Array of member field values to assign to the member when invitation is accepted. Each object in the array is of type <code>{fieldId: &quot;5b3f908c99c94b6177d55a28&quot;, value: &quot;Montreal&quot;}</code>, where <code>fieldId</code> represents the <code>id</code> of an existing <a href="#member-fields">Member Field</a></td>
+</tr>
+<tr>
+<td>createdAt</td>
+<td>Unix timestamp</td>
+<td>Date the invitation was created</td>
+</tr>
 </tbody></table>
-<h2 id='submit-new-invitations'>Submit new invitations</h2><pre class="highlight shell tab-shell"><code>curl --location --request POST <span class="s1">'https://api.huntr.co/org/organization-invitations'</span> <span class="se">\</span>
+<h2 id='list-organization-invitations'>List Organization Invitations</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.huntr.co/org/organization-invitations"</span>
+  -H <span class="s2">"Authorization: Bearer &lt;ORG_ACCESS_TOKEN&gt;"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5bc77e60856b6201a7f84d99"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"toEmail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"johns@gmail.com"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"boardName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fall 2020"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"memberFieldValues"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+          </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1539800672</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5bc77ea0856b6201a7f84d9a"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"toEmail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"peterj@gmail.com"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"boardName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fall 2020"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"memberFieldValues"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+          </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1539800736</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5ca53f5687967fd925e3aff4"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"toEmail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"joshg@gmail.com"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"boardName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fall 2020"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"boardTemplate"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5a6e4c3c7e42789e6e65c987"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fall 2020 Cohort 1"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"listNames"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                  </span><span class="s2">"Wishlist"</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"Applied"</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"Interview"</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"Offer"</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"Rejected"</span><span class="w">
+              </span><span class="p">]</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="s2">"memberFieldValues"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+              </span><span class="p">{</span><span class="w">
+                  </span><span class="s2">"fieldId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5b3f908c99c94b6177d55a28"</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Seattle"</span><span class="w">
+              </span><span class="p">}</span><span class="w">
+          </span><span class="p">],</span><span class="w">
+          </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1554333526</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint retrieves all pending organization invitations.</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>GET https://api.huntr.co/org/organization-invitations</code></p>
+<h2 id='create-organization-invitation'>Create Organization Invitation</h2><pre class="highlight shell tab-shell"><code>curl --location --request POST <span class="s1">'https://api.huntr.co/org/organization-invitations'</span> <span class="se">\</span>
 --header <span class="s1">'Authorization: Bearer &lt;ORG_ACCESS_TOKEN&gt;'</span> <span class="se">\</span>
 --header <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
 --data-raw <span class="s1">'{
-    "emails": ["test@example.com"],
-    "boardName": "Job Search 2020"
+    "email": "test@example.com",
+    "boardName": "Job Search 2020",
+  "boardTemplateId": "5a6e4a567e42789e6e65c986",
+  "memberFieldValues": [
+    {"fieldId": "5b3f908c99c94b6177d55a28", "value": "Vancouver"},
+    {"fieldId": "5b3f9cf499c94b6177d55a2a", "value": "Web Design"}
+  ]
 }'</span>
 </code></pre>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5e6a9d1f62593578ce9de841"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"toEmail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test@example.com"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"boardName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Job Search 2020"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"to"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5e6a7c99c56bc6669e3da876"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"givenName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cristobal"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"familyName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hackett"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test@example.com"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1584045343</span><span class="w">
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5ec478c20f3c3c8443328eb5"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"toEmail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test@example.com"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"boardName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Job Search 2020"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"boardTemplate"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5a6e4a567e42789e6e65c986"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tech Jobs"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"listNames"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"Wishlist"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"Applied"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"Phone Interview"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"On Site Interview"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"Offer"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"Rejected"</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"memberFieldValues"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"fieldId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5b3f908c99c94b6177d55a28"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Vancouver"</span><span class="w">
         </span><span class="p">},</span><span class="w">
-        </span><span class="s2">"boardTemplate"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5a6e4a567e42789e6e65c986"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tech Jobs"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"listNames"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-                </span><span class="s2">"Wishlist"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"Applied"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"Phone Interview"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"On Site Interview"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"Offer"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"Rejected"</span><span class="w">
-            </span><span class="p">]</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"fieldId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5b3f9cf499c94b6177d55a2a"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Web Design"</span><span class="w">
         </span><span class="p">}</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-</span><span class="p">]</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1589934274</span><span class="w">
+</span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>This endpoint creates and sends a new Organization Invitation for a member.
-The people invited through this endpoint will receive an email invitation
+<p>This endpoint creates and sends a single Organization Invitation.
+The person invited through this endpoint will receive an email invitation
 to join your organization under Huntr.</p>
 
-<p>To prevent duplicate invitations from being sent, if you submit a request with one or more emails that have an existing
-pending invitation from your organization, these will be overlooked, and no
-new invitations will be created for those email addresses. In those cases
-you will notice that the response body will not contain results for the email addresses
-that have a pending invitation from your organization.</p>
-<h3 id='http-request'>HTTP Request</h3>
+<p>To prevent duplicate invitations from being sent, requests with an email that has an existing pending invitation from your organization will return an error and no invitation will be created.</p>
+<h3 id='http-request-2'>HTTP Request</h3>
 <p><code>POST https://api.huntr.co/org/organization-invitations</code></p>
 <h3 id='json-body-parameters'>JSON Body Parameters</h3>
 <table><thead>
@@ -599,22 +705,28 @@ that have a pending invitation from your organization.</p>
 </tr>
 </thead><tbody>
 <tr>
-<td><code>emails</code></td>
+<td><code>email</code></td>
 <td>yes</td>
-<td>Array</td>
-<td>An array of email addresses for members your want to invite</td>
+<td>String</td>
+<td>An email address for the job seeker your want to invite</td>
 </tr>
 <tr>
 <td><code>boardName</code></td>
 <td>no</td>
 <td>String</td>
-<td>Name of board to be created for all members</td>
+<td>Name of board to be created for member</td>
 </tr>
 <tr>
 <td><code>boardTemplateId</code></td>
 <td>no</td>
 <td>String</td>
-<td>Id of the board template to use when creating boards for members, if none is submitted it will default to Organization&#39;s default board template, or Huntr&#39;s default template if no template has been set as a default.</td>
+<td>Id of the board template to use when creating a board for member, if none is submitted it will default to Organization&#39;s default board template, or Huntr&#39;s default template if no template has been set as a default.</td>
+</tr>
+<tr>
+<td><code>memberFieldValues</code></td>
+<td>no</td>
+<td>Array</td>
+<td>Array of member field values to assign to the member when invitation is accepted. Each object in the array is of type <code>{fieldId: &quot;5b3f908c99c94b6177d55a28&quot;, value: &quot;Montreal&quot;}</code>, where <code>fieldId</code> represents the <code>id</code> of an existing <a href="#member-fields">Member Field</a></td>
 </tr>
 </tbody></table>
 <h1 id='members'>Members</h1><h2 id='member-resource'>Member Resource</h2>
@@ -627,7 +739,13 @@ that have a pending invitation from your organization.</p>
     </span><span class="s2">"familyName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Varela"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"gracev@huntr.co"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1526954421</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"isActive"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+    </span><span class="s2">"isActive"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"memberFieldValues"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"fieldId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5b3f908c99c94b6177d55a28"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Montreal"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>A member is one of the job seekers using Huntr under your organization. If you are an educational institution, your job seeking students qualify as your members.</p>
@@ -669,6 +787,11 @@ that have a pending invitation from your organization.</p>
 <td>Boolean</td>
 <td>Defines if member has been deactivated by an organization admin or advisor. Deactivating a member prevents them from continuing activity on boards managed by your organization, and it is usually done for members who have found a job and stopped using Huntr.</td>
 </tr>
+<tr>
+<td>memberFieldValues</td>
+<td>Array</td>
+<td>Array of assigned member field values. Each object in the array is of type <code>{fieldId: &quot;5b3f908c99c94b6177d55a28&quot;, value: &quot;Montreal&quot;}</code>, where <code>fieldId</code> represents the <code>id</code> of an existing <a href="#member-fields">Member Field</a></td>
+</tr>
 </tbody></table>
 <h2 id='list-members'>List Members</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.huntr.co/org/members?active=true&amp;limit=3"</span>
   -H <span class="s2">"Authorization: Bearer &lt;ORG_ACCESS_TOKEN&gt;"</span>
@@ -684,7 +807,8 @@ that have a pending invitation from your organization.</p>
             </span><span class="s2">"familyName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Moscoso"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"robertom@huntr.co"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1526953927</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"isActive"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+            </span><span class="s2">"isActive"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"memberFieldValues"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="p">{</span><span class="w">
             </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5a9f699edd2f935a4e5b263a"</span><span class="p">,</span><span class="w">
@@ -692,7 +816,8 @@ that have a pending invitation from your organization.</p>
             </span><span class="s2">"familyName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Haylock"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rennie@huntr.co"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1520396702</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"isActive"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+            </span><span class="s2">"isActive"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"memberFieldValues"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="p">{</span><span class="w">
             </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5a9b3d392bd2e22e37dee4f0"</span><span class="p">,</span><span class="w">
@@ -700,14 +825,15 @@ that have a pending invitation from your organization.</p>
             </span><span class="s2">"familyName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Smith"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"johns@huntr.co"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1520123193</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"isActive"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+            </span><span class="s2">"isActive"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"memberFieldValues"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
         </span><span class="p">}</span><span class="w">
     </span><span class="p">],</span><span class="w">
     </span><span class="s2">"next"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5a9b3d392bd2e22e37dee4f0"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint retrieves all members for your organization.</p>
-<h3 id='http-request-2'>HTTP Request</h3>
+<h3 id='http-request-3'>HTTP Request</h3>
 <p><code>GET https://api.huntr.co/org/members</code></p>
 <h3 id='query-parameters'>Query Parameters</h3>
 <table><thead>
@@ -755,11 +881,12 @@ that have a pending invitation from your organization.</p>
     </span><span class="s2">"familyName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Smith"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"johns@huntr.co"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1520123193</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"isActive"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+    </span><span class="s2">"isActive"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"memberFieldValues"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint retrieves a specific member.</p>
-<h3 id='http-request-3'>HTTP Request</h3>
+<h3 id='http-request-4'>HTTP Request</h3>
 <p><code>GET https://api.huntr.co/org/members/&lt;ID&gt;</code></p>
 <h3 id='url-parameters'>URL Parameters</h3>
 <table><thead>
@@ -775,6 +902,314 @@ that have a pending invitation from your organization.</p>
 <td>The ID of the member to retrieve</td>
 </tr>
 </tbody></table>
+<h1 id='member-fields'>Member Fields</h1><h2 id='member-field-resource'>Member Field Resource</h2>
+<blockquote>
+<p>A member field:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+   </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5b3f908c99c94b6177d55a28"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Location"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"fieldType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MULTIPLE_CHOICE"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"choices"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+       </span><span class="s2">"Vancouver"</span><span class="p">,</span><span class="w">
+       </span><span class="s2">"Seattle"</span><span class="p">,</span><span class="w">
+       </span><span class="s2">"New York"</span><span class="p">,</span><span class="w">
+       </span><span class="s2">"Montreal"</span><span class="p">,</span><span class="w">
+       </span><span class="s2">"Miami"</span><span class="w">
+   </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>A member field is a custom field created by someone in your organization which describes your members and is used to filter and/or group your members in different areas of your advisor dashboard. For example: If your members are in different cities, you could create a &#39;location&#39; custom field.</p>
+
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>In all fields</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>String</td>
+<td>true</td>
+<td>Member field id</td>
+</tr>
+<tr>
+<td>name</td>
+<td>String</td>
+<td>true</td>
+<td>Member field name</td>
+</tr>
+<tr>
+<td>fieldType</td>
+<td>String</td>
+<td>true</td>
+<td>Field type</td>
+</tr>
+<tr>
+<td>choices</td>
+<td>String</td>
+<td>false</td>
+<td>Choices found on member fields of fieldType <code>MULTIPLE_CHOICE</code></td>
+</tr>
+</tbody></table>
+<h2 id='types-of-member-fields'>Types of Member Fields</h2><h3 id='this-is-a-list-of-all-the-types-of-fields-currently-available'>This is a list of all the types of fields currently available.</h3>
+<table><thead>
+<tr>
+<th><code>memberField.fieldType</code></th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>MULTIPLE_CHOICE</code></td>
+<td>Represents a multiple choice field type like &quot;Locations&quot; or &quot;Specialties&quot;</td>
+</tr>
+<tr>
+<td><code>TEXT</code></td>
+<td>Represents a text field type like &quot;Nickname&quot;</td>
+</tr>
+<tr>
+<td><code>NUMBER</code></td>
+<td>Represents a number field type like &quot;Age&quot;</td>
+</tr>
+<tr>
+<td><code>DATE</code></td>
+<td>Represents a date field type like &quot;Graduation Date&quot;</td>
+</tr>
+</tbody></table>
+<h2 id='list-member-fields'>List Member Fields</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.huntr.co/org/member-fields"</span>
+  -H <span class="s2">"Authorization: Bearer &lt;ORG_ACCESS_TOKEN&gt;"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5b3f908c99c94b6177d55a28"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Location"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"fieldType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MULTIPLE_CHOICE"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"choices"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"Vancouver"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"Seattle"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"New York"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"Montreal"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"Miami"</span><span class="w">
+            </span><span class="p">]</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5b3f960c99c94b6177d55a29"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Graduation"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"fieldType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DATE"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5b3f9cf499c94b6177d55a2a"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Program"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"fieldType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MULTIPLE_CHOICE"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"choices"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"Web Design"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"iOS"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"Data Science"</span><span class="w">
+            </span><span class="p">]</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5b3fb247d9d5bd9d6de8f655"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cohort"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"fieldType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MULTIPLE_CHOICE"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"choices"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"YVR-001"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"TRT-001"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"YVR-002"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"MTR-001"</span><span class="w">
+            </span><span class="p">]</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5b3ff25b0ec3828665ff7c81"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Status"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"fieldType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MULTIPLE_CHOICE"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"choices"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"In program"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"Searching"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"Placed"</span><span class="w">
+            </span><span class="p">]</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5b40d89ae582264d4368a2bc"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Gender"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"fieldType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MULTIPLE_CHOICE"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"choices"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"Female"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"Male"</span><span class="w">
+            </span><span class="p">]</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5b43ee4a8308d2400b9cced3"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Nickname"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"fieldType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TEXT"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint retrieves all member fields for your organization.</p>
+<h3 id='http-request-5'>HTTP Request</h3>
+<p><code>GET https://api.huntr.co/org/member-fields</code></p>
+<h2 id='create-new-member-field'>Create new member field</h2><pre class="highlight shell tab-shell"><code>curl --location --request POST <span class="s1">'https://api.huntr.co/org/member-fields'</span> <span class="se">\</span>
+--header <span class="s1">'Authorization: Bearer &lt;ORG_ACCESS_TOKEN&gt;'</span> <span class="se">\</span>
+--header <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+--data-raw <span class="s1">'{
+    "name": "Location",
+    "fieldType": "MULTIPLE_CHOICE",
+  "choices": ["London", "Paris", "New York", "San Francisco"]
+}'</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5ec44b9cc482170b3129e569"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Locations"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"fieldType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MULTIPLE_CHOICE"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"choices"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"London"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"Paris"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"New York"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"San Francisco"</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint creates a new Member Field. After creating the new field, you will
+be able to view the field from your advisor dashboard and will be able to send
+organization invitations with the <code>memberFieldValues</code> referring to the newly created field.</p>
+
+<p>To prevent duplicate fields from being created, requests with a field name
+that matches an existing Member Field from your organization, will return an error
+message and the field will not be created.</p>
+<h3 id='http-request-6'>HTTP Request</h3>
+<p><code>POST https://api.huntr.co/org/member-field</code></p>
+<h3 id='json-body-parameters-2'>JSON Body Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>name</code></td>
+<td>yes</td>
+<td>String</td>
+<td>Name of the new field, must be unique (i.e: you cannot have two fields with the same name)</td>
+</tr>
+<tr>
+<td><code>fieldType</code></td>
+<td>yes</td>
+<td>String</td>
+<td>One of <a href="#types-of-member-fields">type of member fields</a></td>
+</tr>
+<tr>
+<td><code>choices</code></td>
+<td>only when <code>fieldType == &#39;MULTIPLE_CHOICE&#39;</code></td>
+<td>Array</td>
+<td>List of strings representing choices in a field of type MULTIPLE_CHOICE</td>
+</tr>
+</tbody></table>
+<h1 id='board-templates'>Board Templates</h1><h2 id='board-template-resource'>Board Template Resource</h2>
+<blockquote>
+<p>A board template:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5a6e4a567e42789e6e65c986"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tech Jobs"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"listNames"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"Wishlist"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"Applied"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"Phone Interview"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"On Site Interview"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"Offer"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"Rejected"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"isDefault"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>A template to use when creating a new board for your members. Board templates are used when you want your job seekers&#39; boards to have specific stages. Say you want your job seekers&#39; board to have the following stages <code>[&#39;Wishlist&#39;, &#39;Applied&#39;, &#39;Interview&#39;, &#39;Offer&#39;]</code>. First you create a board template where <code>listNames == [&#39;Wishlist&#39;, &#39;Applied&#39;, &#39;Interview&#39;, &#39;Offer&#39;]</code> (the order of the stages is the same order that will be followed when a new board is created). Then you can create a new <a href="#create-organization-invitation">Organization Invitation</a> in which <code>boardTemplateId</code> is the id of the Board Template you just created.</p>
+
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Found in all records</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>String</td>
+<td>true</td>
+<td>Board Template id</td>
+</tr>
+<tr>
+<td>name</td>
+<td>String</td>
+<td>true</td>
+<td>Board template name</td>
+</tr>
+<tr>
+<td>listNames</td>
+<td>Array</td>
+<td>true</td>
+<td>Names to give each stage in a board created with this template</td>
+</tr>
+<tr>
+<td>isDefault</td>
+<td>Boolean</td>
+<td>true</td>
+<td>If true, it means the template is the default within the organization</td>
+</tr>
+</tbody></table>
+<h2 id='default-board-stages'>Default Board Stages</h2>
+<p>In cases where there are no existing Board Templates for your organization. Huntr will create boards with the following stages (in the order shown):</p>
+
+<p><code>[ &quot;wishlist&quot;, &quot;applied&quot;, &quot;interview&quot;, &quot;offer&quot;, &quot;rejected&quot; ]</code></p>
+<h2 id='list-board-templates'>List Board Templates</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.huntr.co/org/board-templates"</span>
+  -H <span class="s2">"Authorization: Bearer &lt;ORG_ACCESS_TOKEN&gt;"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5a6bd300f92659747fe49a53"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Spring 2018"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"listNames"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"Applied"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"Wishlist"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"Interview"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"Offer"</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="s2">"isDefault"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5a6e4a567e42789e6e65c986"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tech Jobs"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"listNames"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"Wishlist"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"Applied"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"Phone Interview"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"On Site Interview"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"Offer"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"Rejected"</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="s2">"isDefault"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint retrieves all board templates for your organization.</p>
+<h3 id='http-request-7'>HTTP Request</h3>
+<p><code>GET https://api.huntr.co/org/board-templates</code></p>
 <h1 id='jobs'>Jobs</h1><h2 id='job-resource'>Job Resource</h2>
 <blockquote>
 <p>A job in one of your members&#39; boards:</p>
@@ -1278,7 +1713,7 @@ that have a pending invitation from your organization.</p>
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint lists all jobs added by members from your organization, jobs are sorted by the date they were created, starting from the most recently created.</p>
-<h3 id='http-request-4'>HTTP Request</h3>
+<h3 id='http-request-8'>HTTP Request</h3>
 <p><code>GET https://api.huntr.co/org/jobs</code></p>
 <h3 id='query-parameters-2'>Query Parameters</h3>
 <table><thead>
@@ -1477,7 +1912,7 @@ that have a pending invitation from your organization.</p>
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint retrieves a specific job.</p>
-<h3 id='http-request-5'>HTTP Request</h3>
+<h3 id='http-request-9'>HTTP Request</h3>
 <p><code>GET https://api.huntr.co/org/jobs/&lt;ID&gt;</code></p>
 <h3 id='url-parameters-2'>URL Parameters</h3>
 <table><thead>
@@ -1774,7 +2209,7 @@ that have a pending invitation from your organization.</p>
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint retrieves all activities for your organization, sorted from most recently created to oldest.</p>
-<h3 id='http-request-6'>HTTP Request</h3>
+<h3 id='http-request-10'>HTTP Request</h3>
 <p><code>GET https://api.huntr.co/org/activities</code></p>
 <h3 id='query-parameters-3'>Query Parameters</h3>
 <table><thead>
@@ -2546,7 +2981,7 @@ or Note a new Action will be created representing that event:</p>
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint retrieves all actions for your organization, sorted from most recently created to oldest.</p>
-<h3 id='http-request-7'>HTTP Request</h3>
+<h3 id='http-request-11'>HTTP Request</h3>
 <p><code>GET https://api.huntr.co/org/actions</code></p>
 <h3 id='query-parameters-4'>Query Parameters</h3>
 <table><thead>
@@ -2842,7 +3277,7 @@ or Note a new Action will be created representing that event:</p>
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint retrieves all employers to which your members have added a job for.</p>
-<h3 id='http-request-8'>HTTP Request</h3>
+<h3 id='http-request-12'>HTTP Request</h3>
 <p><code>GET https://api.huntr.co/org/employers</code></p>
 <h3 id='query-parameters-5'>Query Parameters</h3>
 <table><thead>
@@ -3154,7 +3589,7 @@ Starting in May 2020, the Events resource is being replaced by the Actions resou
 </aside>
 
 <p>This endpoint retrieves all events for your organization, sorted from most recently created to oldest.</p>
-<h3 id='http-request-9'>HTTP Request</h3>
+<h3 id='http-request-13'>HTTP Request</h3>
 <p><code>GET https://api.huntr.co/org/events</code></p>
 <h3 id='query-parameters-6'>Query Parameters</h3>
 <table><thead>
