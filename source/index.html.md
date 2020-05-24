@@ -2363,9 +2363,38 @@ Parameter | Type | Default | Description
 
 ## Workflow Resource
 
-A workflow allows Huntr to automatically complete certain Actions when other actions happen within the application. For now, workflows power the automatic creation of certain activities when a job is moved or created into a specific stage.
+A workflow allows Huntr to automatically complete certain Actions when other actions happen within the application. For now, workflows power the automatic creation of certain activities when a job is moved or created into a specific stage. For example, you will notice that if a job seeker moves a job to a stage called "Apply" then Huntr will automatically create an [Activity](#activities) with the `Apply` [Activity Category](#activity-categories).
 
-For example, if a job seeker moved a job to a stage called "Apply" then Huntr will automatically create an [Activity](#activities) with the `Apply` [Activity Category](#activity-categories).
+## Default workflows
+
+Our current default workflows are triggered for ALL Huntr users when jobs are created or moved onto stages with names that imply a specific stage type.
+
+### The default workflows that power automatic activity creation when jobs are moved onto certain stages are the following:
+
+1. `create` **Apply** Activity `when` job is moved or created onto a stage of type **APPLY**
+2. `create` **Phone Screen** Activity `when` job is moved or created onto a stage of type **PHONE_SCREEN**
+3. `create` **Phone Interview** Activity `when` job is moved or created onto a stage of type **PHONE_INTERVIEW**
+4. `create` **On Site Interview** Activity `when` job is moved or created onto a stage of type **ON_SITE_INTERVIEW**
+5. `create` **Offer Received** Activity `when` job is moved or created onto a stage of type **OFFER_RECEIVED**
+6. `create` **Accept Offer** Activity `when` job is moved or created onto a stage of type **OFFER_ACCEPTED**
+7. `create` **Decline Offer** Activity `when` job is moved or created onto a stage of type **OFFER_DECLINED**
+
+
+## Stage names to type mapping
+
+All of the default workflows mentioned above depend on the `stage type` inferred from the name of the stage a job is being created or moved onto. Here are the stage names that map to each stage type:
+
+*note: stage name matches are not case sensitive, so a stage named 'APply' and another one named 'apply' will both be classified as a stage of type 'APPLY'.
+
+Stage Type | Stage Names
+---------- | -----------
+`APPLY` | `applied` `apply` `applying` `applied online`
+`PHONE_SCREEN` | `phone screen` `screening call` `phone screen(s)` `phone screening` `tech screen` `screening interview` `technical screen` `technical phone screen`
+`PHONE_INTERVIEW` | `phone` `phone interview` `video interview` `hr interview` `hr phone interview` `phone interviews`
+`ON_SITE_INTERVIEW` | `interview` `on-site` `on-site interview` `onsite` `interviews` `onsite interview` `on site` `on site interview` `final round interview` `interview 2` `interview 1` `2nd interview` `1st interview` `interviewing` `interviews 3+` `technical interview` `personal interview` `virtual interview` `in person interview` `in-person interview` `in-person interview(s)` `interviewed` `final round` `second interview` `entrevistas` `tech interview` `final interview` `live interview` `interview (1st)` `interview (2nd)` `second round` `first interview` `2nd round` `interview 3` `technical` `3rd interview` `additional onsite` `interview scheduled` `1st round` `in-person` `initial interview` `entrevista`
+`OFFER_RECEIVED` | `offer` `offers` `offer received` `offer extended` `offered` `offer letter` `ofertas`
+`OFFER_ACCEPTED` | `offer accepted` `accepted` `accept` `accept offer`
+`OFFER_DECLINED` | `offer declined` `declined` `decline offer` `i rejected` `rejected by me` `i declined` `declined offer` `rejected offer` `reject offer` `refused` `offer rejected`
 
 ## Coming soon
 
