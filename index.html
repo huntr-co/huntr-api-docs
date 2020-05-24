@@ -403,6 +403,12 @@
                     <a href="#workflow-resource" class="toc-h2 toc-link" data-title="Workflow Resource">Workflow Resource</a>
                   </li>
                   <li>
+                    <a href="#default-workflows" class="toc-h2 toc-link" data-title="Default workflows">Default workflows</a>
+                  </li>
+                  <li>
+                    <a href="#stage-names-to-type-mapping" class="toc-h2 toc-link" data-title="Stage names to type mapping">Stage names to type mapping</a>
+                  </li>
+                  <li>
                     <a href="#coming-soon" class="toc-h2 toc-link" data-title="Coming soon">Coming soon</a>
                   </li>
               </ul>
@@ -3687,9 +3693,59 @@ Starting in May 2020, the Events resource is being replaced by the Actions resou
 </tr>
 </tbody></table>
 <h1 id='workflows'>Workflows</h1><h2 id='workflow-resource'>Workflow Resource</h2>
-<p>A workflow allows Huntr to automatically complete certain Actions when other actions happen within the application. For now, workflows power the automatic creation of certain activities when a job is moved or created into a specific stage.</p>
+<p>A workflow allows Huntr to automatically complete certain Actions when other actions happen within the application. For now, workflows power the automatic creation of certain activities when a job is moved or created into a specific stage. For example, you will notice that if a job seeker moves a job to a stage called &quot;Apply&quot; then Huntr will automatically create an <a href="#activities">Activity</a> with the <code>Apply</code> <a href="#activity-categories">Activity Category</a>.</p>
+<h2 id='default-workflows'>Default workflows</h2>
+<p>Our current default workflows are triggered for ALL Huntr users when jobs are created or moved onto stages with names that imply a specific stage type.</p>
+<h3 id='the-default-workflows-that-power-automatic-activity-creation-when-jobs-are-moved-onto-certain-stages-are-the-following'>The default workflows that power automatic activity creation when jobs are moved onto certain stages are the following:</h3>
+<ol>
+<li><code>create</code> <strong>Apply</strong> Activity <code>when</code> job is moved or created onto a stage of type <strong>APPLY</strong></li>
+<li><code>create</code> <strong>Phone Screen</strong> Activity <code>when</code> job is moved or created onto a stage of type <strong>PHONE_SCREEN</strong></li>
+<li><code>create</code> <strong>Phone Interview</strong> Activity <code>when</code> job is moved or created onto a stage of type <strong>PHONE_INTERVIEW</strong></li>
+<li><code>create</code> <strong>On Site Interview</strong> Activity <code>when</code> job is moved or created onto a stage of type <strong>ON_SITE_INTERVIEW</strong></li>
+<li><code>create</code> <strong>Offer Received</strong> Activity <code>when</code> job is moved or created onto a stage of type <strong>OFFER_RECEIVED</strong></li>
+<li><code>create</code> <strong>Accept Offer</strong> Activity <code>when</code> job is moved or created onto a stage of type <strong>OFFER_ACCEPTED</strong></li>
+<li><code>create</code> <strong>Decline Offer</strong> Activity <code>when</code> job is moved or created onto a stage of type <strong>OFFER_DECLINED</strong></li>
+</ol>
+<h2 id='stage-names-to-type-mapping'>Stage names to type mapping</h2>
+<p>All of the default workflows mentioned above depend on the <code>stage type</code> inferred from the name of the stage a job is being created or moved onto. Here are the stage names that map to each stage type:</p>
 
-<p>For example, if a job seeker moved a job to a stage called &quot;Apply&quot; then Huntr will automatically create an <a href="#activities">Activity</a> with the <code>Apply</code> <a href="#activity-categories">Activity Category</a>.</p>
+<p>*note: stage name matches are not case sensitive, so a stage named &#39;APply&#39; and another one named &#39;apply&#39; will both be classified as a stage of type &#39;APPLY&#39;.</p>
+
+<table><thead>
+<tr>
+<th>Stage Type</th>
+<th>Stage Names</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>APPLY</code></td>
+<td><code>applied</code> <code>apply</code> <code>applying</code> <code>applied online</code></td>
+</tr>
+<tr>
+<td><code>PHONE_SCREEN</code></td>
+<td><code>phone screen</code> <code>screening call</code> <code>phone screen(s)</code> <code>phone screening</code> <code>tech screen</code> <code>screening interview</code> <code>technical screen</code> <code>technical phone screen</code></td>
+</tr>
+<tr>
+<td><code>PHONE_INTERVIEW</code></td>
+<td><code>phone</code> <code>phone interview</code> <code>video interview</code> <code>hr interview</code> <code>hr phone interview</code> <code>phone interviews</code></td>
+</tr>
+<tr>
+<td><code>ON_SITE_INTERVIEW</code></td>
+<td><code>interview</code> <code>on-site</code> <code>on-site interview</code> <code>onsite</code> <code>interviews</code> <code>onsite interview</code> <code>on site</code> <code>on site interview</code> <code>final round interview</code> <code>interview 2</code> <code>interview 1</code> <code>2nd interview</code> <code>1st interview</code> <code>interviewing</code> <code>interviews 3+</code> <code>technical interview</code> <code>personal interview</code> <code>virtual interview</code> <code>in person interview</code> <code>in-person interview</code> <code>in-person interview(s)</code> <code>interviewed</code> <code>final round</code> <code>second interview</code> <code>entrevistas</code> <code>tech interview</code> <code>final interview</code> <code>live interview</code> <code>interview (1st)</code> <code>interview (2nd)</code> <code>second round</code> <code>first interview</code> <code>2nd round</code> <code>interview 3</code> <code>technical</code> <code>3rd interview</code> <code>additional onsite</code> <code>interview scheduled</code> <code>1st round</code> <code>in-person</code> <code>initial interview</code> <code>entrevista</code></td>
+</tr>
+<tr>
+<td><code>OFFER_RECEIVED</code></td>
+<td><code>offer</code> <code>offers</code> <code>offer received</code> <code>offer extended</code> <code>offered</code> <code>offer letter</code> <code>ofertas</code></td>
+</tr>
+<tr>
+<td><code>OFFER_ACCEPTED</code></td>
+<td><code>offer accepted</code> <code>accepted</code> <code>accept</code> <code>accept offer</code></td>
+</tr>
+<tr>
+<td><code>OFFER_DECLINED</code></td>
+<td><code>offer declined</code> <code>declined</code> <code>decline offer</code> <code>i rejected</code> <code>rejected by me</code> <code>i declined</code> <code>declined offer</code> <code>rejected offer</code> <code>reject offer</code> <code>refused</code> <code>offer rejected</code></td>
+</tr>
+</tbody></table>
 <h2 id='coming-soon'>Coming soon</h2>
 <p>The next step is to allow job seekers and organizations to create their own workflows to accomplish things like recurring Activity creation.</p>
 <h1 id='webhooks'>Webhooks</h1><h2 id='receiving-webhooks'>Receiving Webhooks</h2>
