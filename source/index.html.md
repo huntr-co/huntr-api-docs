@@ -2033,7 +2033,17 @@ Parameter | Type | Default | Description
     "lastName": "Alava",
     "email": "palava@huntr.co",
     "title": "HR Manager",
-    "location": "Seattle, WA USA"
+    "location": "Seattle, WA USA",
+    "profiles": {
+      "linkedin" : "pepealava",
+      "twitter" : "pepealava",
+      "googlePlus" : "pepealava",
+      "crunchbase" : "pepealava",
+      "facebook" : "pepealava",
+      "github" : "pepealava",
+      "aboutme" : "pepealava",
+      "gravatar" : "pepealava"
+    }
 }
 ```
 
@@ -2047,6 +2057,7 @@ Parameter | Type | Default | Description
 `email` | String | none | Contact's email
 `title` | String | none | Contact's job title
 `location` | String | none | Contact's location
+`profiles` | Object | none | Contact's social media profile handles
 
 # Employers
 
