@@ -423,6 +423,9 @@
                     <a href="#responding-to-a-webhook" class="toc-h2 toc-link" data-title="Responding to a webhook">Responding to a webhook</a>
                   </li>
                   <li>
+                    <a href="#secure-your-webhooks-optional" class="toc-h2 toc-link" data-title="Secure your webhooks (Optional)">Secure your webhooks (Optional)</a>
+                  </li>
+                  <li>
                     <a href="#webhooks-changelog" class="toc-h2 toc-link" data-title="Webhooks Changelog">Webhooks Changelog</a>
                   </li>
               </ul>
@@ -3772,6 +3775,26 @@ Starting in May 2020, the Events resource is being replaced by the Actions resou
 <p>The Action object contains all the information about the event that just happened, including the type of action and the data associated with that action. Huntr will send the <strong>Action</strong> via an <code>HTTP POST</code> request, to any endpoint URLs that you have defined in your organization&#39;s Webhooks settings.</p>
 <h2 id='responding-to-a-webhook'>Responding to a webhook</h2>
 <p>To acknowledge receipt of a webhook, your endpoint should return a <code>200</code> HTTP status code. All other response codes will indicate to Huntr that you did not receive the webhook.</p>
+<h2 id='secure-your-webhooks-optional'>Secure your webhooks (Optional)</h2>
+<p>Huntr will sign the webhook events it sends to your endpoints by including a signature in each event’s <code>x-huntr-hmac-sha256</code> header. This allows you to verify that the events were sent by Huntr, not by a third party. Signatures for each webhook event are created using the HMAC SHA-256 algorithm.</p>
+<h3 id='validating-huntr-signature'>Validating Huntr signature</h3>
+<p>To validate the signature you received from Huntr, you will generate the signature yourself using your Webhook&#39;s secret and compare that signature with the signature you receive in the webhook payload.</p>
+
+<ol>
+<li>Retrieve the Webhook secret through your advisor portal. Head to to the Developers tab -&gt; Click Webhooks -&gt; Click <code>Reveal</code> for the Webhook record you are working with.</li>
+<li>Using the HMAC SHA-256 algorithm, create a hash (using the retrieved secret from step 1 as a key) of the entire received payload.</li>
+<li>Encode the hash in base64 format.</li>
+<li>Compare the created value with the signature you received in the <code>x-huntr-hmac-sha256</code> header from Huntr.</li>
+</ol>
+
+<p>You can find some code samples on how this verification might work for Python and Node in our <a href="https://github.com/huntr-co/huntr-webhook-verification-examples">huntr-webhook-verification-examples</a> repo.</p>
+<h3 id='common-issues-when-validating-signature'>Common issues when validating signature</h3>
+<ol>
+<li><strong>You are looking at the wrong header</strong>. Check the headers for the specific framework or environment you are working on. While Huntr submits the header name as <code>x-huntr-hmac-sha256</code>, certain frameworks will change case or append extra text into headers. Logging all the request headers for inspection can help find the exact key for the signature header within your framework.</li>
+<li><strong>Payload used to create hash is incorrect</strong>. The body/payload you are providing the hmac algorithm might not exactly match the body that the Huntr system used to encode the hmac signature in the first place. Huntr creates the hmac algorithm with a stringified version of the request body (i.e: the payload). You might have to &#39;stringify&#39; the request body in certain frameworks and not in others depending on how each framework encodes the request object.</li>
+<li><strong>Don&#39;t forget to encode the HMAC hash in base64 format</strong>. You might be properly calculating the hmac, but might have forgotten to encode that result to base64, or you might be encoding to &#39;hex&#39; or another value.</li>
+<li><strong>Use HMAC SHA-256 algorithm</strong>. There are a number of SHA variants available with HMAC, make sure that your are using the &#39;SHA-256&#39; variant.</li>
+</ol>
 <h2 id='webhooks-changelog'>Webhooks Changelog</h2><h3 id='may-2020'>May 2020</h3>
 <p>Before May 2020, Webhooks were powered by the now deprecated <a href="#events-deprecated">Event</a> resource. Webhooks are now powered by the <a href="#actions">Action</a> resource. To make the transition from Event to Action Webhooks easier, Webhook messages will contain all of the old Event fields until the end of 2020, alongside the new fields introduced in the Action resource.</p>
 <h1 id='errors'>Errors</h1>
