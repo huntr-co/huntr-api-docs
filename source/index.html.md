@@ -2425,6 +2425,28 @@ The Action object contains all the information about the event that just happene
 
 To acknowledge receipt of a webhook, your endpoint should return a `200` HTTP status code. All other response codes will indicate to Huntr that you did not receive the webhook.
 
+## Secure your webhooks (Optional)
+
+Huntr will sign the webhook events it sends to your endpoints by including a signature in each event’s `x-huntr-hmac-sha256` header. This allows you to verify that the events were sent by Huntr, not by a third party. Signatures for each webhook event are created using the HMAC SHA-256 algorithm.
+
+### Validating Huntr signature
+
+To validate the signature you received from Huntr, you will generate the signature yourself using your Webhook's secret and compare that signature with the signature you receive in the webhook payload.
+
+1. Retrieve the Webhook secret through your advisor portal. Head to to the Developers tab -> Click Webhooks -> Click `Reveal` for the Webhook record you are working with.
+2. Using the HMAC SHA-256 algorithm, create a hash (using the retrieved secret from step 1 as a key) of the entire received payload.
+3. Encode the hash in base64 format.
+4. Compare the created value with the signature you received in the `x-huntr-hmac-sha256` header from Huntr.
+
+You can find some code samples on how this verification might work for Python and Node in our [huntr-webhook-verification-examples](https://github.com/huntr-co/huntr-webhook-verification-examples) repo.
+
+### Common issues when validating signature
+
+1. **You are looking at the wrong header**. Check the headers for the specific framework or environment you are working on. While Huntr submits the header name as `x-huntr-hmac-sha256`, certain frameworks will change case or append extra text into headers. Logging all the request headers for inspection can help find the exact key for the signature header within your framework.
+2. **Payload used to create hash is incorrect**. The body/payload you are providing the hmac algorithm might not exactly match the body that the Huntr system used to encode the hmac signature in the first place. Huntr creates the hmac algorithm with a stringified version of the request body (i.e: the payload). You might have to 'stringify' the request body in certain frameworks and not in others depending on how each framework encodes the request object.
+3. **Don't forget to encode the HMAC hash in base64 format**. You might be properly calculating the hmac, but might have forgotten to encode that result to base64, or you might be encoding to 'hex' or another value.
+4. **Use HMAC SHA-256 algorithm**. There are a number of SHA variants available with HMAC, make sure that your are using the 'SHA-256' variant.
+
 ## Webhooks Changelog
 
 ### May 2020
