@@ -229,7 +229,7 @@
             <a href="#pagination" class="toc-h1 toc-link" data-title="Pagination">Pagination</a>
           </li>
           <li>
-            <a href="#organization-invitation" class="toc-h1 toc-link" data-title="Organization Invitation">Organization Invitation</a>
+            <a href="#organization-invitations" class="toc-h1 toc-link" data-title="Organization Invitations">Organization Invitations</a>
               <ul class="toc-list-h2">
                   <li>
                     <a href="#organization-invitation-resource" class="toc-h2 toc-link" data-title="Organization Invitation Resource">Organization Invitation Resource</a>
@@ -519,7 +519,7 @@ Your Access Token carries many privileges, so be sure to keep them secure! Do no
 <p>Some API resources have support for bulk fetches via &quot;list&quot; API methods. For instance, you can list members, jobs, and job events. These list API methods share a common structure, taking these two parameters: <code>limit</code>, <code>next</code>.</p>
 
 <p>Huntr uses cursor-based pagination via the <code>next</code> parameter which takes an existing object ID value. Every &quot;list&quot; endpoint result includes a <code>data</code> parameter, with the results from the call, along with a <code>next</code> parameter. The <code>next</code> parameter represents the id of the last object returned. Passing this parameter in subsequent call will return the next page of results. So, if you&#39;ve made your first query and set 100 as a limit and want to retrieve the second page of results, you can repeat the same query, but with the <code>next</code> parameter set with the value returned by your first call. You can see an example set of queries on the right.</p>
-<h1 id='organization-invitation'>Organization Invitation</h1><h2 id='organization-invitation-resource'>Organization Invitation Resource</h2>
+<h1 id='organization-invitations'>Organization Invitations</h1><h2 id='organization-invitation-resource'>Organization Invitation Resource</h2>
 <blockquote>
 <p>An invitation sent to a member to join your Huntr Organization as a job seeker:</p>
 </blockquote>
@@ -1197,7 +1197,7 @@ message and the field will not be created.</p>
     </span><span class="s2">"isDefault"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>A template to use when creating a new board for your members. Board templates are used when you want your job seekers&#39; boards to have specific stages. Say you want your job seekers&#39; board to have the following stages <code>[&#39;Wishlist&#39;, &#39;Applied&#39;, &#39;Interview&#39;, &#39;Offer&#39;]</code>. First you create a board template where <code>listNames == [&#39;Wishlist&#39;, &#39;Applied&#39;, &#39;Interview&#39;, &#39;Offer&#39;]</code> (the order of the stages is the same order that will be followed when a new board is created). Then you can create a new <a href="#create-organization-invitation">Organization Invitation</a> in which <code>boardTemplateId</code> is the id of the Board Template you just created.</p>
+<p>A template to use when creating a new board for your members. Board templates are used when you want your job seekers&#39; boards to have specific stages. Say you want your job seekers&#39; board to have the following stages <code>[&#39;Wishlist&#39;, &#39;Applied&#39;, &#39;Interview&#39;, &#39;Offer&#39;]</code>. First you create a board template where <code>listNames == [&#39;Wishlist&#39;, &#39;Applied&#39;, &#39;Interview&#39;, &#39;Offer&#39;]</code> (the order of the stages is the same order that will be followed when a new board is created). Then you can create a new <a href="#create-organization-invitations">Organization Invitation</a> in which <code>boardTemplateId</code> is the id of the Board Template you just created.</p>
 
 <table><thead>
 <tr>
@@ -2806,6 +2806,18 @@ or Note a new Action will be created representing that event:</p>
 <td>List to which a job was moved or added to in <code>JOB_MOVED</code> and <code>JOB_CREATED</code> actions</td>
 </tr>
 <tr>
+<td><code>member</code></td>
+<td>Object</td>
+<td>false</td>
+<td><a href="#members">Member</a> created in <code>MEMBER_CREATED</code> actions</td>
+</tr>
+<tr>
+<td><code>organizationInvitation</code></td>
+<td>Object</td>
+<td>false</td>
+<td><a href="#organization-invitations">Organization Invitation</a> that was accepted on <code>MEMBER_CREATED</code> actions.</td>
+</tr>
+<tr>
 <td><code>update</code></td>
 <td>Object</td>
 <td>false</td>
@@ -2822,6 +2834,11 @@ or Note a new Action will be created representing that event:</p>
 <th>Extra fields</th>
 </tr>
 </thead><tbody>
+<tr>
+<td><code>MEMBER_CREATED</code></td>
+<td>A new member is created. i.e: job seeker has accepted invitation</td>
+<td><code>member</code> <code>organizationInvitation</code></td>
+</tr>
 <tr>
 <td><code>JOB_CREATED</code></td>
 <td>A new job is created</td>
