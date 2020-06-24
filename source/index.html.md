@@ -101,7 +101,7 @@ Some API resources have support for bulk fetches via "list" API methods. For ins
 
 Huntr uses cursor-based pagination via the `next` parameter which takes an existing object ID value. Every "list" endpoint result includes a `data` parameter, with the results from the call, along with a `next` parameter. The `next` parameter represents the id of the last object returned. Passing this parameter in subsequent call will return the next page of results. So, if you've made your first query and set 100 as a limit and want to retrieve the second page of results, you can repeat the same query, but with the `next` parameter set with the value returned by your first call. You can see an example set of queries on the right.
 
-# Organization Invitation
+# Organization Invitations
 
 ## Organization Invitation Resource
 
@@ -657,7 +657,7 @@ Parameter | Required | Type | Description
 }
 ```
 
-A template to use when creating a new board for your members. Board templates are used when you want your job seekers' boards to have specific stages. Say you want your job seekers' board to have the following stages `['Wishlist', 'Applied', 'Interview', 'Offer']`. First you create a board template where `listNames == ['Wishlist', 'Applied', 'Interview', 'Offer']` (the order of the stages is the same order that will be followed when a new board is created). Then you can create a new [Organization Invitation](#create-organization-invitation) in which `boardTemplateId` is the id of the Board Template you just created.
+A template to use when creating a new board for your members. Board templates are used when you want your job seekers' boards to have specific stages. Say you want your job seekers' board to have the following stages `['Wishlist', 'Applied', 'Interview', 'Offer']`. First you create a board template where `listNames == ['Wishlist', 'Applied', 'Interview', 'Offer']` (the order of the stages is the same order that will be followed when a new board is created). Then you can create a new [Organization Invitation](#create-organization-invitations) in which `boardTemplateId` is the id of the Board Template you just created.
 
 Field | Type | Found in all records | Description
 ----- | ---- | -------------- | -----------
@@ -1792,6 +1792,8 @@ Field | Type | In all actions | Description
 `contact` | Object | false |  [Contact](#contacts) linked to this action; only applies to Contact actions
 `fromList` | Object | false | List from which job was moved in a `JOB_MOVED` action
 `toList` | Object | false | List to which a job was moved or added to in `JOB_MOVED` and `JOB_CREATED` actions
+`member` | Object | false | [Member](#members) created in `MEMBER_CREATED` actions
+`organizationInvitation` | Object | false | [Organization Invitation](#organization-invitations) that was accepted on `MEMBER_CREATED` actions.
 `update` | Object | false | Entry used to update the resource, only shown in Update actions
 
 ## Action Types
@@ -1800,6 +1802,7 @@ There are multiple action types:
 
 Action Type | Description | Extra fields
 ---------- | ----------- | -----------
+`MEMBER_CREATED` |  A new member is created. i.e: job seeker has accepted invitation | `member` `organizationInvitation`
 `JOB_CREATED` | A new job is created | `job` `employer` `toList`
 `JOB_UPDATED` | A job is updated | `job` `employer` `update`
 `JOB_DELETED` | A job is deleted | `jobId` `employer`
