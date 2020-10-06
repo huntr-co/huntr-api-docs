@@ -762,6 +762,7 @@ This endpoint retrieves all board templates for your organization.
         "name": "MailChimp",
         "domain": "mailchimp.com",
         "foundedYear": 2001,
+        "isPartner": true,
         "description": "MailChimp provides marketing automation for e-commerce businesses. Send beautiful emails, connect your e-commerce store, advertise, and build your brand.\n",
         "location": "675 Ponce De Leon Ave NE #5000, Atlanta, GA 30308, USA"
     },
@@ -955,6 +956,7 @@ curl "https://api.huntr.co/org/jobs?limit=2"
                 "name": "MailChimp",
                 "domain": "mailchimp.com",
                 "foundedYear": 2001,
+                "isPartner": true,
                 "description": "MailChimp provides marketing automation for e-commerce businesses. Send beautiful emails, connect your e-commerce store, advertise, and build your brand.\n",
                 "location": "675 Ponce De Leon Ave NE #5000, Atlanta, GA 30308, USA"
             },
@@ -1086,6 +1088,7 @@ curl "https://api.huntr.co/org/jobs?limit=2"
                 "id": "5903fe3a0ceb436653b2bf7d",
                 "name": "ESPN",
                 "domain": "espn.com",
+                "isPartner": false,
                 "description": "Visit ESPN to get up-to-the-minute sports news coverage, scores, highlights and commentary for NFL, MLB, NBA, College Football, NCAA Basketball and more.",
                 "location": "935 Middle St, Bristol, CT 06010, USA"
             },
@@ -1182,6 +1185,7 @@ curl "https://api.huntr.co/org/jobs/5eb0a4338899ba51bf96f645"
         "name": "MailChimp",
         "domain": "mailchimp.com",
         "foundedYear": 2001,
+        "isPartner": true,
         "description": "MailChimp provides marketing automation for e-commerce businesses. Send beautiful emails, connect your e-commerce store, advertise, and build your brand.\n",
         "location": "675 Ponce De Leon Ave NE #5000, Atlanta, GA 30308, USA"
     },
@@ -1344,6 +1348,7 @@ ID | The ID of the job to retrieve
       "name": "MailChimp",
       "domain": "mailchimp.com",
       "foundedYear": 2001,
+      "isPartner": true,
       "description": "MailChimp provides marketing automation for e-commerce businesses. Send beautiful emails, connect your e-commerce store, advertise, and build your brand.\n",
       "location": "675 Ponce De Leon Ave NE #5000, Atlanta, GA 30308, USA"
   },
@@ -1441,6 +1446,7 @@ curl "https://api.huntr.co/org/activities?limit=4"
                 "name": "MailChimp",
                 "domain": "mailchimp.com",
                 "foundedYear": 2001,
+                "isPartner": true,
                 "description": "MailChimp provides marketing automation for e-commerce businesses. Send beautiful emails, connect your e-commerce store, advertise, and build your brand.\n",
                 "location": "675 Ponce De Leon Ave NE #5000, Atlanta, GA 30308, USA"
             },
@@ -1504,6 +1510,7 @@ curl "https://api.huntr.co/org/activities?limit=4"
                 "id": "5903fe3a0ceb436653b2bf7d",
                 "name": "ESPN",
                 "domain": "espn.com",
+                "isPartner": false,
                 "description": "Visit ESPN to get up-to-the-minute sports news coverage, scores, highlights and commentary for NFL, MLB, NBA, College Football, NCAA Basketball and more.",
                 "location": "935 Middle St, Bristol, CT 06010, USA"
             },
@@ -1753,6 +1760,7 @@ This endpoint retrieves all activity categories.
       "name": "MailChimp",
       "domain": "mailchimp.com",
       "foundedYear": 2001,
+      "isPartner": true,
       "description": "MailChimp provides marketing automation for e-commerce businesses. Send beautiful emails, connect your e-commerce store, advertise, and build your brand.\n",
       "location": "675 Ponce De Leon Ave NE #5000, Atlanta, GA 30308, USA"
   },
@@ -1781,6 +1789,7 @@ Field | Type | In all actions | Description
 `jobId` | String | false |  id for job linked to this action
 `job` | Object | false |  [Job](#jobs) linked to this action
 `jobs` | Array | false |  [Jobs](#jobs) linked to this action; only applies to Contact actions, since a contact can be linked to multiple jobs
+`employerId` | String | false |  id for [Employer](#employers) linked to this action
 `employer` | Object | false |  [Employer](#employers) linked to this action
 `employers` | Array | false |  [Employers](#employers) linked to this action; only applies to Contact actions since a contact can be linked to multiple employers
 `activityId` | String | false |  id for Activity linked to this action
@@ -1816,6 +1825,8 @@ Action Type | Description | Extra fields
 `CONTACT_CREATED` |  A new contact is created | `contact` `employers` `jobs`
 `CONTACT_UPDATED` |  A contact is updated | `contact` `employers` `jobs` `update`
 `CONTACT_DELETED` |  A contact is deleted | `contactId`
+`ORGANIZATION_COMPANY_CREATED` |  An employer is saved through the '+ Company' Advisor portal modal | `employer`
+`ORGANIZATION_COMPANY_UPDATED` |  An employer's info is updated through the Advisor portal | `employer` `update`
 
 
 ## List Actions
@@ -1862,6 +1873,7 @@ curl "https://api.huntr.co/org/actions?limit=3"
             "name": "MailChimp",
             "domain": "mailchimp.com",
             "foundedYear": 2001,
+            "isPartner": true,
             "description": "MailChimp provides marketing automation for e-commerce businesses. Send beautiful emails, connect your e-commerce store, advertise, and build your brand.\n",
             "location": "675 Ponce De Leon Ave NE #5000, Atlanta, GA 30308, USA"
         },
@@ -1915,6 +1927,7 @@ curl "https://api.huntr.co/org/actions?limit=3"
             "name": "MailChimp",
             "domain": "mailchimp.com",
             "foundedYear": 2001,
+            "isPartner": true,
             "description": "MailChimp provides marketing automation for e-commerce businesses. Send beautiful emails, connect your e-commerce store, advertise, and build your brand.\n",
             "location": "675 Ponce De Leon Ave NE #5000, Atlanta, GA 30308, USA"
         },
@@ -1962,6 +1975,7 @@ curl "https://api.huntr.co/org/actions?limit=3"
             "name": "The San Diego Foundation",
             "domain": "sdfoundation.org",
             "foundedYear": 1975,
+            "isPartner": false,
             "description": "The San Diego Foundation is a community resource that improves San Diegans’ quality of life by creating equity and ensuring opportunities in the region.",
             "location": "2508 Historic Decatur Rd #200, San Diego, CA 92106, USA"
         },
@@ -2077,6 +2091,7 @@ Parameter | Type | Default | Description
     "description": "Find handmade, vintage, and unique goods that express who you are.",
     "location": "55 Washington St #512, Brooklyn, NY 11201, USA",
     "jobCount": 4,
+    "isPartner": true,
     "applicationCount": 2,
     "interviewCount": 1,
     "offerCount": 1
@@ -2094,6 +2109,7 @@ Field | Type | Description
 `description` | String | Employer description
 `location` | String | Full address for the employer
 `jobCount` | Integer | Number of jobs added for this employer
+`isPartner` | Boolean | Set to `true` if the Employer has been marked as a partner for your organization
 `applicationCount` | Integer | Number of applications to this employer
 `interviewCount` | Integer | Number of interviews from this employer
 `offerCount` | Integer | Number of offers from this employer
@@ -2117,6 +2133,7 @@ curl "https://api.huntr.co/org/employers?limit=2"
           "foundedYear": 1921,
           "description": "The Art Institutes is a system of over 30 nonprofit institutions with a focus on education, student outcomes, and community involvement. Learn more about our programs.\r  ",
           "location": "K&L Gates Center, 210 Sixth Avenue, Pittsburgh, PA 15222, USA",
+          "isPartner": true,
           "jobCount": 1,
           "applicationCount": 0,
           "interviewCount": 0,
@@ -2129,6 +2146,7 @@ curl "https://api.huntr.co/org/employers?limit=2"
           "foundedYear": 2008,
           "description": "Find 100+ million publication pages, 15+ million researchers, and 700k+ projects. ResearchGate is where you discover scientific knowledge and share your work.",
           "location": "10115 Berlin, Germany",
+          "isPartner": false,
           "jobCount": 1,
           "applicationCount": 1,
           "interviewCount": 2,
