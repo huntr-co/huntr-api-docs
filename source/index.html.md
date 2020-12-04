@@ -122,13 +122,31 @@ Huntr uses cursor-based pagination via the `next` parameter which takes an exist
     "boardTemplate": {
         "id": "5a6e4a567e42789e6e65c986",
         "name": "Tech Jobs",
-        "listNames": [
-            "Wishlist",
-            "Applied",
-            "Phone Interview",
-            "On Site Interview",
-            "Offer",
-            "Rejected"
+        "listTemplates": [
+          {
+            "id": "5fc9686050c1de39c8412af7",
+            "name": "Wishlist"
+          },
+          {
+            "id": "5fc9686050c1de39c8412af8",
+            "name": "Applied"
+          },
+          {
+            "id": "5fc9686050c1de39c8412af9",
+            "name": "Phone Interview"
+          },
+          {
+            "id": "5fc9686050c1de39c8412af2",
+            "name": "On Site Interview"
+          },
+          {
+            "id": "5fc9686050c1de39c8412afa",
+            "name": "Offer"
+          },
+          {
+            "id": "5fc9686050c1de39c8412afa",
+            "name": "Rejected"
+          }
         ]
     },
     "memberFieldValues": [
@@ -186,13 +204,32 @@ curl "https://api.huntr.co/org/organization-invitations"
           "boardTemplate": {
               "id": "5a6e4c3c7e42789e6e65c987",
               "name": "Fall 2020 Cohort 1",
-              "listNames": [
-                  "Wishlist",
-                  "Applied",
-                  "Interview",
-                  "Offer",
-                  "Rejected"
-              ]
+              "listTemplates": [
+                {
+                  "id": "5fc9686050c1de39c8412af7",
+                  "name": "Wishlist"
+                },
+                {
+                  "id": "5fc9686050c1de39c8412af8",
+                  "name": "Applied"
+                },
+                {
+                  "id": "5fc9686050c1de39c8412af9",
+                  "name": "Phone Interview"
+                },
+                {
+                  "id": "5fc9686050c1de39c8412af2",
+                  "name": "On Site Interview"
+                },
+                {
+                  "id": "5fc9686050c1de39c8412afa",
+                  "name": "Offer"
+                },
+                {
+                  "id": "5fc9686050c1de39c8412afa",
+                  "name": "Rejected"
+                }
+            ]
           },
           "memberFieldValues": [
               {
@@ -239,13 +276,31 @@ curl --location --request POST 'https://api.huntr.co/org/organization-invitation
     "boardTemplate": {
         "id": "5a6e4a567e42789e6e65c986",
         "name": "Tech Jobs",
-        "listNames": [
-            "Wishlist",
-            "Applied",
-            "Phone Interview",
-            "On Site Interview",
-            "Offer",
-            "Rejected"
+        "listTemplates": [
+          {
+            "id": "5fc9686050c1de39c8412af7",
+            "name": "Wishlist"
+          },
+          {
+            "id": "5fc9686050c1de39c8412af8",
+            "name": "Applied"
+          },
+          {
+            "id": "5fc9686050c1de39c8412af9",
+            "name": "Phone Interview"
+          },
+          {
+            "id": "5fc9686050c1de39c8412af2",
+            "name": "On Site Interview"
+          },
+          {
+            "id": "5fc9686050c1de39c8412afa",
+            "name": "Offer"
+          },
+          {
+            "id": "5fc9686050c1de39c8412afa",
+            "name": "Rejected"
+          }
         ]
     },
     "memberFieldValues": [
@@ -645,26 +700,52 @@ Parameter | Required | Type | Description
 {
     "id": "5a6e4a567e42789e6e65c986",
     "name": "Tech Jobs",
-    "listNames": [
-        "Wishlist",
-        "Applied",
-        "Phone Interview",
-        "On Site Interview",
-        "Offer",
-        "Rejected"
+    "listTemplates": [
+      {
+        "id": "5fc9686050c1de39c8412af7",
+        "name": "Wishlist"
+      },
+      {
+        "id": "5fc9686050c1de39c8412af8",
+        "name": "Applied"
+      },
+      {
+        "id": "5fc9686050c1de39c8412af9",
+        "name": "Phone Interview"
+      },
+      {
+        "id": "5fc9686050c1de39c8412af2",
+        "name": "On Site Interview"
+      },
+      {
+        "id": "5fc9686050c1de39c8412afa",
+        "name": "Offer"
+      },
+      {
+        "id": "5fc9686050c1de39c8412afa",
+        "name": "Rejected"
+      }
     ],
     "isDefault": true
 }
 ```
 
-A template to use when creating a new board for your members. Board templates are used when you want your job seekers' boards to have specific stages. Say you want your job seekers' board to have the following stages `['Wishlist', 'Applied', 'Interview', 'Offer']`. First you create a board template where `listNames == ['Wishlist', 'Applied', 'Interview', 'Offer']` (the order of the stages is the same order that will be followed when a new board is created). Then you can create a new [Organization Invitation](#create-organization-invitations) in which `boardTemplateId` is the id of the Board Template you just created.
+A template to use when creating a new board for your members. Board templates are used when you want your job seekers' boards to have specific stages. Say you want your job seekers' board to have the following stages `['Wishlist', 'Applied', 'Interview', 'Offer']`. First you create a board template where `listTemplates == [{name: 'Wishlist'}, {name: 'Applied'}, {name: 'Interview'}, {name: 'Offer'}]` (the order of the stages is the same order that will be followed when a new board is created). Then you can create a new [Organization Invitation](#create-organization-invitations) in which `boardTemplateId` is the id of the Board Template you just created.
 
 Field | Type | Found in all records | Description
 ----- | ---- | -------------- | -----------
 id | String | true | Board Template id
 name | String | true | Board template name
-listNames | Array | true | Names to give each stage in a board created with this template
+listTemplates | Array | true | Template used to create each stage in a board created with this template
 isDefault | Boolean | true | If true, it means the template is the default within the organization
+
+### Deprecated board template fields
+
+These fields will be supported until the end of Q1 2021. See the **Replacement field** column to see what field is replacing the deprecated fields.
+
+Field | Type | Replacement field | Description
+----- | ---- | ----------------- | -----------
+`listNames` | Array | `listTemplates` | Names of each stage in a board created with this template
 
 ## Default Board Stages
 
@@ -687,26 +768,56 @@ curl "https://api.huntr.co/org/board-templates"
         {
             "id": "5a6bd300f92659747fe49a53",
             "name": "Spring 2018",
-            "listNames": [
-                "Applied",
-                "Wishlist",
-                "Interview",
-                "Offer"
-            ],
-            "isDefault": false
+            "isDefault": false,
+            "listTemplates": [
+              {
+                "id": "5fc9686050c1de39c8412ad8",
+                "name": "Applied"
+              },
+              {
+                "id": "5fc9686050c1de39c8412ad9",
+                "name": "Wishlist"
+              },
+              {
+                "id": "5fc9686050c1de39c8412ad2",
+                "name": "Interview"
+              },
+              {
+                "id": "5fc9686050c1de39c8412ada",
+                "name": "Offer"
+              }
+            ]
         },
         {
             "id": "5a6e4a567e42789e6e65c986",
             "name": "Tech Jobs",
-            "listNames": [
-                "Wishlist",
-                "Applied",
-                "Phone Interview",
-                "On Site Interview",
-                "Offer",
-                "Rejected"
-            ],
-            "isDefault": true
+            "isDefault": true,
+            "listTemplates": [
+              {
+                "id": "5fc9686050c1de39c8412af7",
+                "name": "Wishlist"
+              },
+              {
+                "id": "5fc9686050c1de39c8412af8",
+                "name": "Applied"
+              },
+              {
+                "id": "5fc9686050c1de39c8412af9",
+                "name": "Phone Interview"
+              },
+              {
+                "id": "5fc9686050c1de39c8412af2",
+                "name": "On Site Interview"
+              },
+              {
+                "id": "5fc9686050c1de39c8412afa",
+                "name": "Offer"
+              },
+              {
+                "id": "5fc9686050c1de39c8412afa",
+                "name": "Rejected"
+              }
+            ]
         }
     ]
 }
