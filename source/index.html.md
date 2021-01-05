@@ -10,6 +10,7 @@ toc_footers:
 
 includes:
   - errors
+  - changelog
 
 search: true
 ---
