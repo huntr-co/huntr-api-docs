@@ -305,6 +305,23 @@
               </ul>
           </li>
           <li>
+            <a href="#job-posts" class="toc-h1 toc-link" data-title="Job Posts">Job Posts</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#job-post-resource" class="toc-h2 toc-link" data-title="Job Post Resource">Job Post Resource</a>
+                  </li>
+                  <li>
+                    <a href="#job-types" class="toc-h2 toc-link" data-title="Job Types">Job Types</a>
+                  </li>
+                  <li>
+                    <a href="#list-job-posts" class="toc-h2 toc-link" data-title="List Job Posts">List Job Posts</a>
+                  </li>
+                  <li>
+                    <a href="#retrieve-a-job-post" class="toc-h2 toc-link" data-title="Retrieve a Job Post">Retrieve a Job Post</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#activities" class="toc-h1 toc-link" data-title="Activities">Activities</a>
               <ul class="toc-list-h2">
                   <li>
@@ -449,6 +466,9 @@
               <ul class="toc-list-h2">
                   <li>
                     <a href="#january-4-2021" class="toc-h2 toc-link" data-title="January 4, 2021">January 4, 2021</a>
+                  </li>
+                  <li>
+                    <a href="#february-25-2021" class="toc-h2 toc-link" data-title="February 25, 2021">February 25, 2021</a>
                   </li>
               </ul>
           </li>
@@ -1658,6 +1678,11 @@ message and the field will not be created.</p>
 <td><a href="#employers">Employer</a> for the job</td>
 </tr>
 <tr>
+<td><code>jobPost</code></td>
+<td>Object</td>
+<td><a href="#job-posts">Job Post</a> from which this job was created, if any</td>
+</tr>
+<tr>
 <td><code>list</code></td>
 <td>Object</td>
 <td>Object representing the list the job is in. A list is a stage in a specific Huntr board.</td>
@@ -2134,6 +2159,391 @@ message and the field will not be created.</p>
 <td>The ID of the job to retrieve</td>
 </tr>
 </tbody></table>
+<h1 id='job-posts'>Job Posts</h1><h2 id='job-post-resource'>Job Post Resource</h2>
+<blockquote>
+<p>A job post in your organization&#39;s portal:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"601da7c59ca97b1604508a1c"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Illustrator"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"isRemote"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"salary"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"actual"</span><span class="p">:</span><span class="w"> </span><span class="s2">"90000"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"interval"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ANNUAL"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"jobType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FULL_TIME"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"applicationInstructions"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Apply through original post link or email pete@notion.so"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://notion.so/jobs"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"postDate"</span><span class="p">:</span><span class="w"> </span><span class="mi">1612556211</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1612556229</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"location"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Brooklyn"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Brooklyn, NY, USA"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"United States"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"lat"</span><span class="p">:</span><span class="w"> </span><span class="s2">"40.6781784"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"lng"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-73.9441579"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"jobPostStatus"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Open"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"employerId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5bbfe1c6ed9dc0f2dbb9fe76"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"employer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5bbfe1c6ed9dc0f2dbb9fe76"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Notion"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"domain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"notion.so"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A new tool that blends your everyday work apps into one. It's the all-in-one workspace for you and your team"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"location"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3000 20th St, San Francisco, CA 94110, USA"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"isPartner"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"creatorMember"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5b2bbb5837fbc835bbe32154"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"givenName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rennie"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"familyName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dev 32"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rennie+dev32@huntr.co"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1529592664</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"isActive"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"memberFieldValues"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"ownerMember"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5b2bbb5837fbc835bbe32154"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"givenName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rennie"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"familyName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dev 32"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rennie+dev32@huntr.co"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1529592664</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"isActive"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"memberFieldValues"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"htmlDescription"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;h3&gt;About &lt;strong&gt;Us:&lt;/strong&gt;&lt;/h3&gt;&lt;p&gt;We make software that anyone can mold and shape to take on every challenge — from taking personal notes to running large companies. We've been building together since 2016 and are trusted by customers including Nike, Airbnb, Slack, Samsung, and more. We're excited to be growing a team as diverse and creative as the millions of people we reach worldwide, and a company where everyone can thrive.&lt;/p&gt;&lt;h3&gt;About The Role:&lt;/h3&gt;&lt;p&gt;Do you want to help define what data means at Notion? We are looking to hire our first data engineer to guide the team with a vision for what our data tooling and infrastructure should look like as we scale, and then to build and operate those systems over time. With your background in data processing and warehousing, you'll partner with other members of the Data Team to evolve the infrastructure that allows Notion to make high quality decisions that are driven by data.&lt;/p&gt;&lt;h3&gt;What You'll Do:&lt;/h3&gt;&lt;ul&gt;&lt;li&gt;You'll design and set up the tools that allow other members of the data team to easily write effective data pipelines.&lt;/li&gt;&lt;li&gt;You'll articulate best practices around logging frameworks and implement the changes to make those practices a reality.&lt;/li&gt;&lt;li&gt;You'll implement alerting systems to track data quality and consistency.&lt;/li&gt;&lt;li&gt;You'll create tools for data science team members that enable them to produce insights quickly and with high impact.&lt;/li&gt;&lt;li&gt;You'll help the Data Science team apply and generalize statistical and econometric models efficiently across large datasets.&lt;/li&gt;&lt;/ul&gt;&lt;h3&gt;What We're Looking For:&lt;/h3&gt;&lt;ul&gt;&lt;li&gt;&lt;strong&gt;Team player:&lt;/strong&gt; For you, work isn't a solo endeavor. You have worked cross-functionally to establish the right overarching data architecture for a company's needs, to build data pipelines, and to provide guidance on best data practices for the business.&lt;/li&gt;&lt;li&gt;&lt;strong&gt;Data tools experience:&lt;/strong&gt; You have experience managing relational databases and authoring queries (SQL) and using workflow management technologies (e.g. Airflow, Luigi)&lt;/li&gt;&lt;li&gt;&lt;strong&gt;Thoughtful problem-solving:&lt;/strong&gt; For you, problem-solving starts with a clear and accurate understanding of the context. You can decompose tricky problems and work towards a clean solution, by yourself or with teammates. You're comfortable asking for help when you get stuck.&lt;/li&gt;&lt;li&gt;&lt;strong&gt;Pragmatic and business-oriented:&lt;/strong&gt; You care about business impact and prioritize projects accordingly. You're not just going after cool stuff—you understand the balance between craft, speed, and the bottom line.&lt;/li&gt;&lt;li&gt;&lt;strong&gt;Put users first:&lt;/strong&gt; You think critically about the implications of what you're building, and how it shapes real people's lives. You understand that reach comes with responsibility for our impact—good and bad.&lt;/li&gt;&lt;li&gt;&lt;strong&gt;Not ideological about technology:&lt;/strong&gt; To you, technologies and programming languages are about tradeoffs. You may be opinionated, but you're not ideological and can learn new technologies as you go.&lt;/li&gt;&lt;li&gt;&lt;strong&gt;Empathetic communication:&lt;/strong&gt; You communicate nuanced ideas clearly, whether you're explaining technical decisions in writing or brainstorming in real time. In disagreements, you engage thoughtfully with other perspectives and compromise when needed.&lt;/li&gt;&lt;/ul&gt;&lt;h3&gt;Bonus Points:&lt;/h3&gt;&lt;ul&gt;&lt;li&gt;You've built out data infrastructure from, or nearly from, scratch at a fast-growing startup.&lt;/li&gt;&lt;li&gt;If you have led or managed a Data Engineering Team.&lt;/li&gt;&lt;/ul&gt;"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>A job post in your organization&#39;s portal. Job posts are sourced and saved by your advisors through the Advisor Portal or the Huntr chrome extension. Learn more about the job portal feature <a href="https://blog.huntr.co/job-portal">here</a>.</p>
+
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>String</td>
+<td>Job post&#39;s id</td>
+</tr>
+<tr>
+<td><code>title</code></td>
+<td>String</td>
+<td>Job post title</td>
+</tr>
+<tr>
+<td><code>htmlDescription</code></td>
+<td>String</td>
+<td>Html Job post description</td>
+</tr>
+<tr>
+<td><code>applicationInstructions</code></td>
+<td>String</td>
+<td>Instructions on how to apply to this job post</td>
+</tr>
+<tr>
+<td><code>url</code></td>
+<td>String</td>
+<td>URL for the original job post</td>
+</tr>
+<tr>
+<td><code>employerId</code></td>
+<td>String</td>
+<td>Id of the job post <a href="#employers">Employer</a></td>
+</tr>
+<tr>
+<td><code>jobType</code></td>
+<td>String</td>
+<td>Job type, see <a href="#job-types">Job Types</a></td>
+</tr>
+<tr>
+<td><code>isRemote</code></td>
+<td>Boolean</td>
+<td>Defines if the job is a remote opportunity</td>
+</tr>
+<tr>
+<td><code>salary</code></td>
+<td>Object</td>
+<td>Job post salary</td>
+</tr>
+<tr>
+<td><code>location</code></td>
+<td>Object</td>
+<td>Object representing job post&#39;s location</td>
+</tr>
+<tr>
+<td><code>jobPostStatus</code></td>
+<td>Object</td>
+<td>Object representing job post&#39;s status</td>
+</tr>
+<tr>
+<td><code>creatorMember</code></td>
+<td>Object</td>
+<td><a href="#members">Advisor</a> who created the job post</td>
+</tr>
+<tr>
+<td><code>ownerMember</code></td>
+<td>Object</td>
+<td><a href="#members">Advisor</a> who owns the job post</td>
+</tr>
+<tr>
+<td><code>employer</code></td>
+<td>Object</td>
+<td><a href="#employers">Employer</a> for the job post</td>
+</tr>
+<tr>
+<td><code>postDate</code></td>
+<td>Unix timestamp</td>
+<td>Date the job post was posted, your staff can change this date from the advisor portal</td>
+</tr>
+<tr>
+<td><code>createdAt</code></td>
+<td>Unix timestamp</td>
+<td>Date the job post was created by the member</td>
+</tr>
+</tbody></table>
+<h2 id='job-types'>Job Types</h2>
+<p>There 4 job types:</p>
+
+<table><thead>
+<tr>
+<th>Job Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>FULL_TIME</code></td>
+<td>Represents a full time job</td>
+</tr>
+<tr>
+<td><code>PART_TIME</code></td>
+<td>Represents a part time job</td>
+</tr>
+<tr>
+<td><code>CONTRACTOR</code></td>
+<td>Represents a contractor job</td>
+</tr>
+<tr>
+<td><code>INTERNSHIP</code></td>
+<td>Represents an internship</td>
+</tr>
+</tbody></table>
+<h2 id='list-job-posts'>List Job Posts</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.huntr.co/org/job-posts?limit=2"</span>
+  -H <span class="s2">"Authorization: Bearer &lt;ORG_ACCESS_TOKEN&gt;"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6037116c9c299b95bfd431d8"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Engineer"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"isRemote"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"htmlDescription"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;p&gt;Job Description&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Item one&lt;/li&gt;&lt;li&gt;Item two&lt;/li&gt;&lt;li&gt;Item three&lt;/li&gt;&lt;/ul&gt;"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"salary"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"actual"</span><span class="p">:</span><span class="w"> </span><span class="s2">"85000"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"interval"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ANNUAL"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"jobType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FULL_TIME"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"applicationInstructions"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Send email to joe@priceline.com"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://priceline.com/jobs"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"postDate"</span><span class="p">:</span><span class="w"> </span><span class="mi">1614221661</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1614221676</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"location"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Priceline"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"800 Connecticut Ave, Norwalk, CT 06854, USA"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"United States"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"lat"</span><span class="p">:</span><span class="w"> </span><span class="s2">"41.0930242"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"lng"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-73.4539645"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"jobPostStatus"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Draft"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"employer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"59b5f5f10143bacaa3eaa3ff"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Priceline.com"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"domain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"priceline.com"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"foundedYear"</span><span class="p">:</span><span class="w"> </span><span class="mi">1998</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Deep Discounts on Hotels, Flights and Rental Cars.  Get Exclusive Savings with Priceline.com."</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"location"</span><span class="p">:</span><span class="w"> </span><span class="s2">"800 Connecticut Ave, Norwalk, CT 06854, USA"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"isPartner"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"ownerMember"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5b2bbb5837fbc835bbe32154"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"givenName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rennie"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"familyName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dev 32"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rennie+dev32@huntr.co"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1529592664</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"isActive"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"memberFieldValues"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"creatorMember"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5b2bbb5837fbc835bbe32154"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"givenName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rennie"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"familyName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dev 32"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rennie+dev32@huntr.co"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1529592664</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"isActive"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"memberFieldValues"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"employerId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"59b5f5f10143bacaa3eaa3ff"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6037114e9c299b95bfd43158"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Product Manager"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"isRemote"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"jobType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FULL_TIME"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"postDate"</span><span class="p">:</span><span class="w"> </span><span class="mi">1614221578</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1614221646</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"location"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Slack"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"500 Howard St, San Francisco, CA 94105, USA"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"United States"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"lat"</span><span class="p">:</span><span class="w"> </span><span class="s2">"37.7885052"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"lng"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-122.396428"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"jobPostStatus"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Open"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"employer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"592ed813b67c6168772b19ec"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Slack"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"domain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"slack.com"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Slack brings all your communication together in one place. It’s real-time messaging, archiving and search for modern teams."</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"location"</span><span class="p">:</span><span class="w"> </span><span class="s2">"San Francisco, CA, USA"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"isPartner"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"ownerMember"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5b2bbb5837fbc835bbe32154"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"givenName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rennie"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"familyName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dev 32"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rennie+dev32@huntr.co"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1529592664</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"isActive"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"memberFieldValues"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"creatorMember"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5b2bbb5837fbc835bbe32154"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"givenName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rennie"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"familyName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dev 32"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rennie+dev32@huntr.co"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1529592664</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"isActive"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"memberFieldValues"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"employerId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"592ed813b67c6168772b19ec"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"next"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6037114e9c299b95bfd43158"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint lists all job posts added by advisors/staff from your organization to your organization&#39;s internal job portal, jobs are sorted by the date they were created, starting from the most recently created.</p>
+<h3 id='http-request-11'>HTTP Request</h3>
+<p><code>GET https://api.huntr.co/org/job-posts</code></p>
+<h3 id='query-parameters-3'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>limit</code></td>
+<td>Integer</td>
+<td>100</td>
+<td>Defines the maximum number of job posts to return</td>
+</tr>
+<tr>
+<td><code>next</code></td>
+<td>String</td>
+<td>none</td>
+<td>If set, returns the next set of results after the object id provided</td>
+</tr>
+</tbody></table>
+<h2 id='retrieve-a-job-post'>Retrieve a Job Post</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.huntr.co/org/job-posts/601da7c59ca97b1604508a1c"</span>
+  -H <span class="s2">"Authorization: Bearer &lt;ORG_ACCESS_TOKEN&gt;"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"601da7c59ca97b1604508a1c"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Illustrator"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"isRemote"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"htmlDescription"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;h3&gt;About &lt;strong&gt;Us:&lt;/strong&gt;&lt;/h3&gt;&lt;p&gt;We make software that anyone can mold and shape to take on every challenge — from taking personal notes to running large companies. We've been building together since 2016 and are trusted by customers including Nike, Airbnb, Slack, Samsung, and more. We're excited to be growing a team as diverse and creative as the millions of people we reach worldwide, and a company where everyone can thrive.&lt;/p&gt;&lt;h3&gt;About The Role:&lt;/h3&gt;&lt;p&gt;Do you want to help define what data means at Notion? We are looking to hire our first data engineer to guide the team with a vision for what our data tooling and infrastructure should look like as we scale, and then to build and operate those systems over time. With your background in data processing and warehousing, you'll partner with other members of the Data Team to evolve the infrastructure that allows Notion to make high quality decisions that are driven by data.&lt;/p&gt;&lt;h3&gt;What You'll Do:&lt;/h3&gt;&lt;ul&gt;&lt;li&gt;You'll design and set up the tools that allow other members of the data team to easily write effective data pipelines.&lt;/li&gt;&lt;li&gt;You'll articulate best practices around logging frameworks and implement the changes to make those practices a reality.&lt;/li&gt;&lt;li&gt;You'll implement alerting systems to track data quality and consistency.&lt;/li&gt;&lt;li&gt;You'll create tools for data science team members that enable them to produce insights quickly and with high impact.&lt;/li&gt;&lt;li&gt;You'll help the Data Science team apply and generalize statistical and econometric models efficiently across large datasets.&lt;/li&gt;&lt;/ul&gt;&lt;h3&gt;What We're Looking For:&lt;/h3&gt;&lt;ul&gt;&lt;li&gt;&lt;strong&gt;Team player:&lt;/strong&gt; For you, work isn't a solo endeavor. You have worked cross-functionally to establish the right overarching data architecture for a company's needs, to build data pipelines, and to provide guidance on best data practices for the business.&lt;/li&gt;&lt;li&gt;&lt;strong&gt;Data tools experience:&lt;/strong&gt; You have experience managing relational databases and authoring queries (SQL) and using workflow management technologies (e.g. Airflow, Luigi)&lt;/li&gt;&lt;li&gt;&lt;strong&gt;Thoughtful problem-solving:&lt;/strong&gt; For you, problem-solving starts with a clear and accurate understanding of the context. You can decompose tricky problems and work towards a clean solution, by yourself or with teammates. You're comfortable asking for help when you get stuck.&lt;/li&gt;&lt;li&gt;&lt;strong&gt;Pragmatic and business-oriented:&lt;/strong&gt; You care about business impact and prioritize projects accordingly. You're not just going after cool stuff—you understand the balance between craft, speed, and the bottom line.&lt;/li&gt;&lt;li&gt;&lt;strong&gt;Put users first:&lt;/strong&gt; You think critically about the implications of what you're building, and how it shapes real people's lives. You understand that reach comes with responsibility for our impact—good and bad.&lt;/li&gt;&lt;li&gt;&lt;strong&gt;Not ideological about technology:&lt;/strong&gt; To you, technologies and programming languages are about tradeoffs. You may be opinionated, but you're not ideological and can learn new technologies as you go.&lt;/li&gt;&lt;li&gt;&lt;strong&gt;Empathetic communication:&lt;/strong&gt; You communicate nuanced ideas clearly, whether you're explaining technical decisions in writing or brainstorming in real time. In disagreements, you engage thoughtfully with other perspectives and compromise when needed.&lt;/li&gt;&lt;/ul&gt;&lt;h3&gt;Bonus Points:&lt;/h3&gt;&lt;ul&gt;&lt;li&gt;You've built out data infrastructure from, or nearly from, scratch at a fast-growing startup.&lt;/li&gt;&lt;li&gt;If you have led or managed a Data Engineering Team.&lt;/li&gt;&lt;/ul&gt;"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"salary"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"actual"</span><span class="p">:</span><span class="w"> </span><span class="s2">"90000"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"interval"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ANNUAL"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"jobType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FULL_TIME"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"applicationInstructions"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Apply through original post link or email pete@notion.so"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://notion.so/jobs"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"postDate"</span><span class="p">:</span><span class="w"> </span><span class="mi">1612556211</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1612556229</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"location"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Brooklyn"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Brooklyn, NY, USA"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"United States"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"lat"</span><span class="p">:</span><span class="w"> </span><span class="s2">"40.6781784"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"lng"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-73.9441579"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"jobPostStatus"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Open"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"employer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5bbfe1c6ed9dc0f2dbb9fe76"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Notion"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"domain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"notion.so"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A new tool that blends your everyday work apps into one. It's the all-in-one workspace for you and your team"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"location"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3000 20th St, San Francisco, CA 94110, USA"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"isPartner"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"ownerMember"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5b2bbb5837fbc835bbe32154"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"givenName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rennie"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"familyName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dev 32"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rennie+dev32@huntr.co"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1529592664</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"isActive"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"memberFieldValues"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"creatorMember"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5b2bbb5837fbc835bbe32154"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"givenName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rennie"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"familyName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dev 32"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rennie+dev32@huntr.co"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1529592664</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"isActive"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"memberFieldValues"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"employerId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5bbfe1c6ed9dc0f2dbb9fe76"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint retrieves a specific job post.</p>
+<h3 id='http-request-12'>HTTP Request</h3>
+<p><code>GET https://api.huntr.co/org/job-posts/&lt;ID&gt;</code></p>
+<h3 id='url-parameters-4'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ID</td>
+<td>The ID of the job post to retrieve</td>
+</tr>
+</tbody></table>
 <h1 id='activities'>Activities</h1><h2 id='activity-resource'>Activity Resource</h2>
 <blockquote>
 <p>An activity object:</p>
@@ -2252,6 +2662,12 @@ message and the field will not be created.</p>
 <td>Object</td>
 <td>false</td>
 <td>Job linked to activity</td>
+</tr>
+<tr>
+<td><code>jobPost</code></td>
+<td>Object</td>
+<td>false</td>
+<td><a href="#job-posts">Job Post</a> linked to activity, if any</td>
 </tr>
 <tr>
 <td><code>employer</code></td>
@@ -2420,9 +2836,9 @@ message and the field will not be created.</p>
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint retrieves all activities for your organization, sorted from most recently created to oldest.</p>
-<h3 id='http-request-11'>HTTP Request</h3>
+<h3 id='http-request-13'>HTTP Request</h3>
 <p><code>GET https://api.huntr.co/org/activities</code></p>
-<h3 id='query-parameters-3'>Query Parameters</h3>
+<h3 id='query-parameters-4'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -2888,6 +3304,18 @@ or Note a new Action will be created representing that event:</p>
 <td><a href="#jobs">Jobs</a> linked to this action; only applies to Contact actions, since a contact can be linked to multiple jobs</td>
 </tr>
 <tr>
+<td><code>jobPostId</code></td>
+<td>String</td>
+<td>false</td>
+<td>id for job post linked to this action</td>
+</tr>
+<tr>
+<td><code>jobPost</code></td>
+<td>Object</td>
+<td>false</td>
+<td><a href="#job-posts">Job Post</a> linked to this action</td>
+</tr>
+<tr>
 <td><code>employerId</code></td>
 <td>String</td>
 <td>false</td>
@@ -3068,6 +3496,21 @@ or Note a new Action will be created representing that event:</p>
 <td>An employer&#39;s info is updated through the Advisor portal</td>
 <td><code>employer</code> <code>update</code></td>
 </tr>
+<tr>
+<td><code>JOB_POST_CREATED</code></td>
+<td>A new job post is created</td>
+<td><code>jobPost</code> <code>employer</code></td>
+</tr>
+<tr>
+<td><code>JOB_POST_UPDATED</code></td>
+<td>A job post is updated</td>
+<td><code>jobPost</code> <code>employer</code> <code>update</code></td>
+</tr>
+<tr>
+<td><code>JOB_POST_DELETED</code></td>
+<td>A job post is deleted</td>
+<td><code>jobPostId</code> <code>employer</code></td>
+</tr>
 </tbody></table>
 <h2 id='list-actions'>List Actions</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.huntr.co/org/actions?limit=3"</span>
   -H <span class="s2">"Authorization: Bearer &lt;ORG_ACCESS_TOKEN&gt;"</span>
@@ -3229,9 +3672,9 @@ or Note a new Action will be created representing that event:</p>
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint retrieves all actions for your organization, sorted from most recently created to oldest.</p>
-<h3 id='http-request-12'>HTTP Request</h3>
+<h3 id='http-request-14'>HTTP Request</h3>
 <p><code>GET https://api.huntr.co/org/actions</code></p>
-<h3 id='query-parameters-4'>Query Parameters</h3>
+<h3 id='query-parameters-5'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -3549,9 +3992,9 @@ or Note a new Action will be created representing that event:</p>
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint retrieves all employers to which your members have added a job for.</p>
-<h3 id='http-request-13'>HTTP Request</h3>
+<h3 id='http-request-15'>HTTP Request</h3>
 <p><code>GET https://api.huntr.co/org/employers</code></p>
-<h3 id='query-parameters-5'>Query Parameters</h3>
+<h3 id='query-parameters-6'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -3861,9 +4304,9 @@ Starting in May 2020, the Events resource is being replaced by the Actions resou
 </aside>
 
 <p>This endpoint retrieves all events for your organization, sorted from most recently created to oldest.</p>
-<h3 id='http-request-14'>HTTP Request</h3>
+<h3 id='http-request-16'>HTTP Request</h3>
 <p><code>GET https://api.huntr.co/org/events</code></p>
-<h3 id='query-parameters-6'>Query Parameters</h3>
+<h3 id='query-parameters-7'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -4127,6 +4570,16 @@ Starting in May 2020, the Events resource is being replaced by the Actions resou
 </tbody></table>
 <h1 id='changelog'>Changelog</h1><h2 id='january-4-2021'>January 4, 2021</h2>
 <p>Added validation for the <code>limit</code> parameter for requests that use the <a href="#pagination">List</a> API methods. The maximum <code>limit</code> value for those requests is now 500.</p>
+<h2 id='february-25-2021'>February 25, 2021</h2>
+<ul>
+<li>New <a href="#job-posts">Job Post resource</a></li>
+<li>New <a href="#list-job-posts">GET /job-posts</a> endpoint to list job posts</li>
+<li>New <a href="#retrieve-a-job-post">GET /job-posts/<ID></a> endpoint to get job post</li>
+<li>New <code>jobPost</code> field in <a href="#jobs">Job</a> resource, if job was saved from a Job Post</li>
+<li>New <code>jobPost</code> field in <a href="#activities">Activity</a> resource, if activity is related to a job that was saved from a Job Post</li>
+<li>New <code>jobPost</code> and <code>jobPostId</code> fields in <a href="#actions">Action</a> resource</li>
+<li>Three new <a href="#action-types">Action Types</a> related to Job Posts: <code>JOB_POST_CREATED</code>, <code>JOB_POST_UPDATED</code>, <code>JOB_POST_DELETED</code></li>
+</ul>
 
       </div>
       <div class="dark-box">
