@@ -1004,6 +1004,7 @@ Field | Type | Description
 `creatorMember` | Object | [Member](#members) who created the job
 `ownerMember` | Object | [Member](#members) who owns the job
 `employer`  | Object | [Employer](#employers) for the job
+`jobPost` | Object | [Job Post](#job-posts) from which this job was created, if any
 `list`  | Object | Object representing the list the job is in. A list is a stage in a specific Huntr board.
 `createdAt` | Unix timestamp | Date the job was created by the member
 
@@ -1418,6 +1419,306 @@ Parameter | Description
 --------- | -----------
 ID | The ID of the job to retrieve
 
+# Job Posts
+
+## Job Post Resource
+
+> A job post in your organization's portal:
+
+```json
+{
+    "id": "601da7c59ca97b1604508a1c",
+    "title": "Illustrator",
+    "isRemote": false,
+    "salary": {
+      "actual": "90000",
+      "currency": "USD",
+      "interval": "ANNUAL"
+    },
+    "jobType": "FULL_TIME",
+    "applicationInstructions": "Apply through original post link or email pete@notion.so",
+    "url": "https://notion.so/jobs",
+    "postDate": 1612556211,
+    "createdAt": 1612556229,
+    "location": {
+        "name": "Brooklyn",
+        "address": "Brooklyn, NY, USA",
+        "country": "United States",
+        "lat": "40.6781784",
+        "lng": "-73.9441579"
+    },
+    "jobPostStatus": {
+        "name": "Open"
+    },
+    "employerId": "5bbfe1c6ed9dc0f2dbb9fe76",
+    "employer": {
+        "id": "5bbfe1c6ed9dc0f2dbb9fe76",
+        "name": "Notion",
+        "domain": "notion.so",
+        "description": "A new tool that blends your everyday work apps into one. It's the all-in-one workspace for you and your team",
+        "location": "3000 20th St, San Francisco, CA 94110, USA",
+        "isPartner": false
+    },
+    "creatorMember": {
+        "id": "5b2bbb5837fbc835bbe32154",
+        "givenName": "Rennie",
+        "familyName": "Dev 32",
+        "email": "rennie+dev32@huntr.co",
+        "createdAt": 1529592664,
+        "isActive": true,
+        "memberFieldValues": []
+    },
+    "ownerMember": {
+        "id": "5b2bbb5837fbc835bbe32154",
+        "givenName": "Rennie",
+        "familyName": "Dev 32",
+        "email": "rennie+dev32@huntr.co",
+        "createdAt": 1529592664,
+        "isActive": true,
+        "memberFieldValues": []
+    },
+    "htmlDescription": "<h3>About <strong>Us:</strong></h3><p>We make software that anyone can mold and shape to take on every challenge — from taking personal notes to running large companies. We've been building together since 2016 and are trusted by customers including Nike, Airbnb, Slack, Samsung, and more. We're excited to be growing a team as diverse and creative as the millions of people we reach worldwide, and a company where everyone can thrive.</p><h3>About The Role:</h3><p>Do you want to help define what data means at Notion? We are looking to hire our first data engineer to guide the team with a vision for what our data tooling and infrastructure should look like as we scale, and then to build and operate those systems over time. With your background in data processing and warehousing, you'll partner with other members of the Data Team to evolve the infrastructure that allows Notion to make high quality decisions that are driven by data.</p><h3>What You'll Do:</h3><ul><li>You'll design and set up the tools that allow other members of the data team to easily write effective data pipelines.</li><li>You'll articulate best practices around logging frameworks and implement the changes to make those practices a reality.</li><li>You'll implement alerting systems to track data quality and consistency.</li><li>You'll create tools for data science team members that enable them to produce insights quickly and with high impact.</li><li>You'll help the Data Science team apply and generalize statistical and econometric models efficiently across large datasets.</li></ul><h3>What We're Looking For:</h3><ul><li><strong>Team player:</strong> For you, work isn't a solo endeavor. You have worked cross-functionally to establish the right overarching data architecture for a company's needs, to build data pipelines, and to provide guidance on best data practices for the business.</li><li><strong>Data tools experience:</strong> You have experience managing relational databases and authoring queries (SQL) and using workflow management technologies (e.g. Airflow, Luigi)</li><li><strong>Thoughtful problem-solving:</strong> For you, problem-solving starts with a clear and accurate understanding of the context. You can decompose tricky problems and work towards a clean solution, by yourself or with teammates. You're comfortable asking for help when you get stuck.</li><li><strong>Pragmatic and business-oriented:</strong> You care about business impact and prioritize projects accordingly. You're not just going after cool stuff—you understand the balance between craft, speed, and the bottom line.</li><li><strong>Put users first:</strong> You think critically about the implications of what you're building, and how it shapes real people's lives. You understand that reach comes with responsibility for our impact—good and bad.</li><li><strong>Not ideological about technology:</strong> To you, technologies and programming languages are about tradeoffs. You may be opinionated, but you're not ideological and can learn new technologies as you go.</li><li><strong>Empathetic communication:</strong> You communicate nuanced ideas clearly, whether you're explaining technical decisions in writing or brainstorming in real time. In disagreements, you engage thoughtfully with other perspectives and compromise when needed.</li></ul><h3>Bonus Points:</h3><ul><li>You've built out data infrastructure from, or nearly from, scratch at a fast-growing startup.</li><li>If you have led or managed a Data Engineering Team.</li></ul>"
+}
+```
+
+A job post in your organization's portal. Job posts are sourced and saved by your advisors through the Advisor Portal or the Huntr chrome extension. Learn more about the job portal feature [here](https://blog.huntr.co/job-portal).
+
+Field | Type | Description
+----- | ---- | -----------
+`id` | String | Job post's id
+`title` | String | Job post title  
+`htmlDescription` | String | Html Job post description
+`applicationInstructions` | String | Instructions on how to apply to this job post
+`url` | String | URL for the original job post
+`employerId`  | String | Id of the job post [Employer](#employers)
+`jobType` | String | Job type, see [Job Types](#job-types)
+`isRemote` | Boolean | Defines if the job is a remote opportunity
+`salary` | Object | Job post salary
+`location` | Object | Object representing job post's location
+`jobPostStatus` | Object | Object representing job post's status
+`creatorMember` | Object | [Advisor](#members) who created the job post
+`ownerMember` | Object | [Advisor](#members) who owns the job post
+`employer`  | Object | [Employer](#employers) for the job post
+`postDate` | Unix timestamp | Date the job post was posted, your staff can change this date from the advisor portal
+`createdAt` | Unix timestamp | Date the job post was created by the member
+
+## Job Types
+
+There 4 job types:
+
+Job Type | Description
+---------- | -----------
+`FULL_TIME` |  Represents a full time job
+`PART_TIME` | Represents a part time job
+`CONTRACTOR` | Represents a contractor job
+`INTERNSHIP` | Represents an internship
+
+## List Job Posts
+
+```shell
+curl "https://api.huntr.co/org/job-posts?limit=2"
+  -H "Authorization: Bearer <ORG_ACCESS_TOKEN>"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+    "data": [
+      {
+        "id": "6037116c9c299b95bfd431d8",
+        "title": "Engineer",
+        "isRemote": true,
+        "htmlDescription": "<p>Job Description</p><ul><li>Item one</li><li>Item two</li><li>Item three</li></ul>",
+        "salary": {
+            "actual": "85000",
+            "currency": "USD",
+            "interval": "ANNUAL"
+        },
+        "jobType": "FULL_TIME",
+        "applicationInstructions": "Send email to joe@priceline.com",
+        "url": "https://priceline.com/jobs",
+        "postDate": 1614221661,
+        "createdAt": 1614221676,
+        "location": {
+            "name": "Priceline",
+            "address": "800 Connecticut Ave, Norwalk, CT 06854, USA",
+            "country": "United States",
+            "lat": "41.0930242",
+            "lng": "-73.4539645"
+        },
+        "jobPostStatus": {
+            "name": "Draft"
+        },
+        "employer": {
+            "id": "59b5f5f10143bacaa3eaa3ff",
+            "name": "Priceline.com",
+            "domain": "priceline.com",
+            "foundedYear": 1998,
+            "description": "Deep Discounts on Hotels, Flights and Rental Cars.  Get Exclusive Savings with Priceline.com.",
+            "location": "800 Connecticut Ave, Norwalk, CT 06854, USA",
+            "isPartner": false
+        },
+        "ownerMember": {
+            "id": "5b2bbb5837fbc835bbe32154",
+            "givenName": "Rennie",
+            "familyName": "Dev 32",
+            "email": "rennie+dev32@huntr.co",
+            "createdAt": 1529592664,
+            "isActive": true,
+            "memberFieldValues": []
+        },
+        "creatorMember": {
+            "id": "5b2bbb5837fbc835bbe32154",
+            "givenName": "Rennie",
+            "familyName": "Dev 32",
+            "email": "rennie+dev32@huntr.co",
+            "createdAt": 1529592664,
+            "isActive": true,
+            "memberFieldValues": []
+        },
+        "employerId": "59b5f5f10143bacaa3eaa3ff"
+      },
+      {
+        "id": "6037114e9c299b95bfd43158",
+        "title": "Product Manager",
+        "isRemote": false,
+        "jobType": "FULL_TIME",
+        "postDate": 1614221578,
+        "createdAt": 1614221646,
+        "location": {
+            "name": "Slack",
+            "address": "500 Howard St, San Francisco, CA 94105, USA",
+            "country": "United States",
+            "lat": "37.7885052",
+            "lng": "-122.396428"
+        },
+        "jobPostStatus": {
+            "name": "Open"
+        },
+        "employer": {
+            "id": "592ed813b67c6168772b19ec",
+            "name": "Slack",
+            "domain": "slack.com",
+            "description": "Slack brings all your communication together in one place. It’s real-time messaging, archiving and search for modern teams.",
+            "location": "San Francisco, CA, USA",
+            "isPartner": false
+        },
+        "ownerMember": {
+            "id": "5b2bbb5837fbc835bbe32154",
+            "givenName": "Rennie",
+            "familyName": "Dev 32",
+            "email": "rennie+dev32@huntr.co",
+            "createdAt": 1529592664,
+            "isActive": true,
+            "memberFieldValues": []
+        },
+        "creatorMember": {
+            "id": "5b2bbb5837fbc835bbe32154",
+            "givenName": "Rennie",
+            "familyName": "Dev 32",
+            "email": "rennie+dev32@huntr.co",
+            "createdAt": 1529592664,
+            "isActive": true,
+            "memberFieldValues": []
+        },
+        "employerId": "592ed813b67c6168772b19ec"
+      }
+    ],
+    "next": "6037114e9c299b95bfd43158"
+}
+```
+
+This endpoint lists all job posts added by advisors/staff from your organization to your organization's internal job portal, jobs are sorted by the date they were created, starting from the most recently created.
+
+### HTTP Request
+
+`GET https://api.huntr.co/org/job-posts`
+
+### Query Parameters
+
+Parameter | Type | Default | Description
+--------- | ---- | ------- | -----------
+`limit` | Integer | 100 | Defines the maximum number of job posts to return
+`next` | String | none | If set, returns the next set of results after the object id provided
+
+## Retrieve a Job Post
+
+```shell
+curl "https://api.huntr.co/org/job-posts/601da7c59ca97b1604508a1c"
+  -H "Authorization: Bearer <ORG_ACCESS_TOKEN>"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+    "id": "601da7c59ca97b1604508a1c",
+    "title": "Illustrator",
+    "isRemote": false,
+    "htmlDescription": "<h3>About <strong>Us:</strong></h3><p>We make software that anyone can mold and shape to take on every challenge — from taking personal notes to running large companies. We've been building together since 2016 and are trusted by customers including Nike, Airbnb, Slack, Samsung, and more. We're excited to be growing a team as diverse and creative as the millions of people we reach worldwide, and a company where everyone can thrive.</p><h3>About The Role:</h3><p>Do you want to help define what data means at Notion? We are looking to hire our first data engineer to guide the team with a vision for what our data tooling and infrastructure should look like as we scale, and then to build and operate those systems over time. With your background in data processing and warehousing, you'll partner with other members of the Data Team to evolve the infrastructure that allows Notion to make high quality decisions that are driven by data.</p><h3>What You'll Do:</h3><ul><li>You'll design and set up the tools that allow other members of the data team to easily write effective data pipelines.</li><li>You'll articulate best practices around logging frameworks and implement the changes to make those practices a reality.</li><li>You'll implement alerting systems to track data quality and consistency.</li><li>You'll create tools for data science team members that enable them to produce insights quickly and with high impact.</li><li>You'll help the Data Science team apply and generalize statistical and econometric models efficiently across large datasets.</li></ul><h3>What We're Looking For:</h3><ul><li><strong>Team player:</strong> For you, work isn't a solo endeavor. You have worked cross-functionally to establish the right overarching data architecture for a company's needs, to build data pipelines, and to provide guidance on best data practices for the business.</li><li><strong>Data tools experience:</strong> You have experience managing relational databases and authoring queries (SQL) and using workflow management technologies (e.g. Airflow, Luigi)</li><li><strong>Thoughtful problem-solving:</strong> For you, problem-solving starts with a clear and accurate understanding of the context. You can decompose tricky problems and work towards a clean solution, by yourself or with teammates. You're comfortable asking for help when you get stuck.</li><li><strong>Pragmatic and business-oriented:</strong> You care about business impact and prioritize projects accordingly. You're not just going after cool stuff—you understand the balance between craft, speed, and the bottom line.</li><li><strong>Put users first:</strong> You think critically about the implications of what you're building, and how it shapes real people's lives. You understand that reach comes with responsibility for our impact—good and bad.</li><li><strong>Not ideological about technology:</strong> To you, technologies and programming languages are about tradeoffs. You may be opinionated, but you're not ideological and can learn new technologies as you go.</li><li><strong>Empathetic communication:</strong> You communicate nuanced ideas clearly, whether you're explaining technical decisions in writing or brainstorming in real time. In disagreements, you engage thoughtfully with other perspectives and compromise when needed.</li></ul><h3>Bonus Points:</h3><ul><li>You've built out data infrastructure from, or nearly from, scratch at a fast-growing startup.</li><li>If you have led or managed a Data Engineering Team.</li></ul>",
+    "salary": {
+        "actual": "90000",
+        "currency": "USD",
+        "interval": "ANNUAL"
+    },
+    "jobType": "FULL_TIME",
+    "applicationInstructions": "Apply through original post link or email pete@notion.so",
+    "url": "https://notion.so/jobs",
+    "postDate": 1612556211,
+    "createdAt": 1612556229,
+    "location": {
+        "name": "Brooklyn",
+        "address": "Brooklyn, NY, USA",
+        "country": "United States",
+        "lat": "40.6781784",
+        "lng": "-73.9441579"
+    },
+    "jobPostStatus": {
+        "name": "Open"
+    },
+    "employer": {
+        "id": "5bbfe1c6ed9dc0f2dbb9fe76",
+        "name": "Notion",
+        "domain": "notion.so",
+        "description": "A new tool that blends your everyday work apps into one. It's the all-in-one workspace for you and your team",
+        "location": "3000 20th St, San Francisco, CA 94110, USA",
+        "isPartner": false
+    },
+    "ownerMember": {
+        "id": "5b2bbb5837fbc835bbe32154",
+        "givenName": "Rennie",
+        "familyName": "Dev 32",
+        "email": "rennie+dev32@huntr.co",
+        "createdAt": 1529592664,
+        "isActive": true,
+        "memberFieldValues": []
+    },
+    "creatorMember": {
+        "id": "5b2bbb5837fbc835bbe32154",
+        "givenName": "Rennie",
+        "familyName": "Dev 32",
+        "email": "rennie+dev32@huntr.co",
+        "createdAt": 1529592664,
+        "isActive": true,
+        "memberFieldValues": []
+    },
+    "employerId": "5bbfe1c6ed9dc0f2dbb9fe76"
+}
+```
+
+This endpoint retrieves a specific job post.
+
+### HTTP Request
+
+`GET https://api.huntr.co/org/job-posts/<ID>`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the job post to retrieve
+
 # Activities
 
 ## Activity Resource
@@ -1485,6 +1786,7 @@ Field | Type | In all events | Description
 `createdAt` | Unix timestamp | true | Date when activity was created
 `activityCategory` | Object | true |  **[Activity Category](#activity-categories)** representing the type of Activity
 `job` | Object | false |  Job linked to activity
+`jobPost` | Object | false | [Job Post](#job-posts) linked to activity, if any
 `employer` | Object | false |  If activity is linked to a job, then this is the job's employer
 `ownerMember` | Object | true | Member who owns the board where the activity was added. i.e: your job seeker
 `creatorMember` | Object | false | Member who created the activity. In most cases, this is your job seeker; but if an advisor created this activity, then it would be your advisor.
@@ -1901,6 +2203,8 @@ Field | Type | In all actions | Description
 `jobId` | String | false |  id for job linked to this action
 `job` | Object | false |  [Job](#jobs) linked to this action
 `jobs` | Array | false |  [Jobs](#jobs) linked to this action; only applies to Contact actions, since a contact can be linked to multiple jobs
+`jobPostId` | String | false |  id for job post linked to this action
+`jobPost` | Object | false |  [Job Post](#job-posts) linked to this action
 `employerId` | String | false |  id for [Employer](#employers) linked to this action
 `employer` | Object | false |  [Employer](#employers) linked to this action
 `employers` | Array | false |  [Employers](#employers) linked to this action; only applies to Contact actions since a contact can be linked to multiple employers
@@ -1939,6 +2243,9 @@ Action Type | Description | Extra fields
 `CONTACT_DELETED` |  A contact is deleted | `contactId`
 `ORGANIZATION_COMPANY_CREATED` |  An employer is saved through the '+ Company' Advisor portal modal | `employer`
 `ORGANIZATION_COMPANY_UPDATED` |  An employer's info is updated through the Advisor portal | `employer` `update`
+`JOB_POST_CREATED` | A new job post is created | `jobPost` `employer`
+`JOB_POST_UPDATED` | A job post is updated | `jobPost` `employer` `update`
+`JOB_POST_DELETED` | A job post is deleted | `jobPostId` `employer`
 
 
 ## List Actions
