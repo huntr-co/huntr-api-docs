@@ -319,6 +319,17 @@
                   <li>
                     <a href="#retrieve-a-job-post" class="toc-h2 toc-link" data-title="Retrieve a Job Post">Retrieve a Job Post</a>
                   </li>
+                  <li>
+                    <a href="#create-job-post" class="toc-h2 toc-link" data-title="Create Job Post">Create Job Post</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#salary" class="toc-h1 toc-link" data-title="Salary">Salary</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#salary-resource" class="toc-h2 toc-link" data-title="Salary Resource">Salary Resource</a>
+                  </li>
               </ul>
           </li>
           <li>
@@ -469,6 +480,9 @@
                   </li>
                   <li>
                     <a href="#february-25-2021" class="toc-h2 toc-link" data-title="February 25, 2021">February 25, 2021</a>
+                  </li>
+                  <li>
+                    <a href="#march-4-2021" class="toc-h2 toc-link" data-title="March 4, 2021">March 4, 2021</a>
                   </li>
               </ul>
           </li>
@@ -2544,6 +2558,203 @@ message and the field will not be created.</p>
 <td>The ID of the job post to retrieve</td>
 </tr>
 </tbody></table>
+<h2 id='create-job-post'>Create Job Post</h2><pre class="highlight shell tab-shell"><code>curl --location --request POST <span class="s1">'https://api.huntr.co/org/job-posts'</span> <span class="se">\</span>
+--header <span class="s1">'Authorization: Bearer &lt;ORG_ACCESS_TOKEN&gt;'</span> <span class="se">\</span>
+--header <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+--data-raw <span class="s1">'{
+    "title": "Full Stack Engineer",
+    "jobType": "FULL_TIME",
+    "jobPostStatusName": "Open",
+    "applicationInstructions": "Send resume to info@huntr.co",
+    "htmlDescription": "&lt;b&gt;Description&lt;/b&gt;&lt;p&gt;An html job description&lt;/p&gt;",
+    "url": "https://huntr.co/jobs/1",
+    "isRemote": false,
+    "location": {"address": "Seattle, WA, United States"},
+    "postDate": 1614911232,
+    "salary": {
+        "min": "90000",
+        "max": "120000",
+        "currency": "USD",
+        "interval": "ANNUAL"
+    },
+    "employer": {
+        "name": "Huntr",
+        "domain": "huntr.co"
+    }
+}'</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6041976280901dae754f0851"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Full Stack Engineer"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"isRemote"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"htmlDescription"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;b&gt;Description&lt;/b&gt;&lt;p&gt;An html job description&lt;/p&gt;"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"salary"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"min"</span><span class="p">:</span><span class="w"> </span><span class="mi">90000</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"max"</span><span class="p">:</span><span class="w"> </span><span class="mi">120000</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"interval"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ANNUAL"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"jobType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FULL_TIME"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"applicationInstructions"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Send resume to info@huntr.co"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://huntr.co/jobs/1"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"postDate"</span><span class="p">:</span><span class="w"> </span><span class="mi">1614911232</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1614911330</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"location"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Seattle, King County, Washington, USA"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Seattle, WA, United States"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"lat"</span><span class="p">:</span><span class="w"> </span><span class="s2">"47.6038321"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"lng"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-122.3300624"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"jobPostStatus"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Open"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"employer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"584917a6e660b2d8a5b46bd1"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Huntr"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"domain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"huntr.co"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"isPartner"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"employerId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"584917a6e660b2d8a5b46bd1"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint creates a single Job Post. If the job post status is <code>Open</code>, then this job will be published in your organization&#39;s job portal.</p>
+<h3 id='http-request-13'>HTTP Request</h3>
+<p><code>POST https://api.huntr.co/org/job-posts</code></p>
+<h3 id='json-body-parameters-3'>JSON Body Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>title</code></td>
+<td>yes</td>
+<td>String</td>
+<td>Job title</td>
+</tr>
+<tr>
+<td><code>jobType</code></td>
+<td>yes</td>
+<td>String</td>
+<td>A <a href="#job-types">Job Type</a> name</td>
+</tr>
+<tr>
+<td><code>jobPostStatusName</code></td>
+<td>yes</td>
+<td>String</td>
+<td>One of <code>Open</code>, <code>Closed</code> or <code>Draft</code></td>
+</tr>
+<tr>
+<td><code>employer</code></td>
+<td>yes</td>
+<td>Object</td>
+<td>Required, unless the <code>employerId</code> field is included. Object is of type <code>{&quot;name&quot;: &quot;Google&quot;, &quot;domain&quot;: &quot;google.com&quot;, &quot;description&quot;: &quot;American multinational technology company&quot;}</code>. If object is included, then it requires the <code>domain</code> key. If we find an employer in the Huntr database with this <code>domain</code>, we will link the job post to that employer; if not, then a new employer will be created and you will be able to edit the employer details from your organization&#39;s portal.</td>
+</tr>
+<tr>
+<td><code>employerId</code></td>
+<td>yes</td>
+<td>String</td>
+<td>Id for existing Huntr employer. Required, unless an <code>employer</code> object is included.</td>
+</tr>
+<tr>
+<td><code>applicationInstructions</code></td>
+<td>no</td>
+<td>String</td>
+<td>Application instructions</td>
+</tr>
+<tr>
+<td><code>url</code></td>
+<td>no</td>
+<td>String</td>
+<td>Url for the location of the original job post</td>
+</tr>
+<tr>
+<td><code>htmlDescription</code></td>
+<td>no</td>
+<td>String</td>
+<td>Job description in HTML format</td>
+</tr>
+<tr>
+<td><code>isRemote</code></td>
+<td>no</td>
+<td>Boolean</td>
+<td>Defines if this is a remote opportunity or not</td>
+</tr>
+<tr>
+<td><code>postDate</code></td>
+<td>no</td>
+<td>Unix Timestamp</td>
+<td>Timestamp denoting job post date.</td>
+</tr>
+<tr>
+<td><code>location</code></td>
+<td>no</td>
+<td>Object</td>
+<td>Location of the opportunity. Object of type <code>{&quot;name&quot;: &quot;Huntr HQ&quot;, &quot;address&quot;: &quot;Seattle, WA, USA&quot;, &quot;lat&quot;: &quot;47.6038321&quot;, &quot;lng&quot;: &quot;-122.3300624&quot;}</code>. If object is included, it requires either the <code>address</code> key or both <code>lat</code> and <code>lng</code> keys.</td>
+</tr>
+<tr>
+<td><code>salary</code></td>
+<td>no</td>
+<td>Object</td>
+<td>A <a href="#salary">Salary</a> object</td>
+</tr>
+</tbody></table>
+<h1 id='salary'>Salary</h1><h2 id='salary-resource'>Salary Resource</h2>
+<blockquote>
+<p>A salary object:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"actual"</span><span class="p">:</span><span class="w"> </span><span class="mi">120000</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"interval"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ANNUAL"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This resource represents a salary. There&#39;s two possible salary formats:</p>
+
+<ol>
+<li>A specific salary, in which case we would use the <code>actual</code> key.</li>
+<li>A salary range, in which case we would use the <code>min</code> and <code>max</code> keys.</li>
+</ol>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>actual</code></td>
+<td>Number</td>
+<td>Represents a specific salary amount</td>
+</tr>
+<tr>
+<td><code>min</code></td>
+<td>Number</td>
+<td>Represents the minimum value in a salary range</td>
+</tr>
+<tr>
+<td><code>max</code></td>
+<td>Number</td>
+<td>Represents the maximum value in a salary range</td>
+</tr>
+<tr>
+<td><code>currency</code></td>
+<td>String</td>
+<td>One of <a href="https://en.wikipedia.org/wiki/ISO_4217">ISO 4217 currency codes</a></td>
+</tr>
+<tr>
+<td><code>interval</code></td>
+<td>String</td>
+<td>One of <code>ANNUAL</code>, <code>MONTHLY</code>, <code>WEEKLY</code>, <code>DAILY</code> or <code>HOURLY</code></td>
+</tr>
+</tbody></table>
 <h1 id='activities'>Activities</h1><h2 id='activity-resource'>Activity Resource</h2>
 <blockquote>
 <p>An activity object:</p>
@@ -2836,7 +3047,7 @@ message and the field will not be created.</p>
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint retrieves all activities for your organization, sorted from most recently created to oldest.</p>
-<h3 id='http-request-13'>HTTP Request</h3>
+<h3 id='http-request-14'>HTTP Request</h3>
 <p><code>GET https://api.huntr.co/org/activities</code></p>
 <h3 id='query-parameters-4'>Query Parameters</h3>
 <table><thead>
@@ -3672,7 +3883,7 @@ or Note a new Action will be created representing that event:</p>
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint retrieves all actions for your organization, sorted from most recently created to oldest.</p>
-<h3 id='http-request-14'>HTTP Request</h3>
+<h3 id='http-request-15'>HTTP Request</h3>
 <p><code>GET https://api.huntr.co/org/actions</code></p>
 <h3 id='query-parameters-5'>Query Parameters</h3>
 <table><thead>
@@ -3992,7 +4203,7 @@ or Note a new Action will be created representing that event:</p>
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint retrieves all employers to which your members have added a job for.</p>
-<h3 id='http-request-15'>HTTP Request</h3>
+<h3 id='http-request-16'>HTTP Request</h3>
 <p><code>GET https://api.huntr.co/org/employers</code></p>
 <h3 id='query-parameters-6'>Query Parameters</h3>
 <table><thead>
@@ -4304,7 +4515,7 @@ Starting in May 2020, the Events resource is being replaced by the Actions resou
 </aside>
 
 <p>This endpoint retrieves all events for your organization, sorted from most recently created to oldest.</p>
-<h3 id='http-request-16'>HTTP Request</h3>
+<h3 id='http-request-17'>HTTP Request</h3>
 <p><code>GET https://api.huntr.co/org/events</code></p>
 <h3 id='query-parameters-7'>Query Parameters</h3>
 <table><thead>
@@ -4579,6 +4790,10 @@ Starting in May 2020, the Events resource is being replaced by the Actions resou
 <li>New <code>jobPost</code> field in <a href="#activities">Activity</a> resource, if activity is related to a job that was saved from a Job Post</li>
 <li>New <code>jobPost</code> and <code>jobPostId</code> fields in <a href="#actions">Action</a> resource</li>
 <li>Three new <a href="#action-types">Action Types</a> related to Job Posts: <code>JOB_POST_CREATED</code>, <code>JOB_POST_UPDATED</code>, <code>JOB_POST_DELETED</code></li>
+</ul>
+<h2 id='march-4-2021'>March 4, 2021</h2>
+<ul>
+<li>New <a href="#create-job-post">POST /job-posts</a> endpoint to create job posts</li>
 </ul>
 
       </div>
