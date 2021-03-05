@@ -1719,6 +1719,123 @@ Parameter | Description
 --------- | -----------
 ID | The ID of the job post to retrieve
 
+## Create Job Post
+
+```shell
+curl --location --request POST 'https://api.huntr.co/org/job-posts' \
+--header 'Authorization: Bearer <ORG_ACCESS_TOKEN>' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "title": "Full Stack Engineer",
+    "jobType": "FULL_TIME",
+    "jobPostStatusName": "Open",
+    "applicationInstructions": "Send resume to info@huntr.co",
+    "htmlDescription": "<b>Description</b><p>An html job description</p>",
+    "url": "https://huntr.co/jobs/1",
+    "isRemote": false,
+    "location": {"address": "Seattle, WA, United States"},
+    "postDate": 1614911232,
+    "salary": {
+        "min": "90000",
+        "max": "120000",
+        "currency": "USD",
+        "interval": "ANNUAL"
+    },
+    "employer": {
+        "name": "Huntr",
+        "domain": "huntr.co"
+    }
+}'
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+    "id": "6041976280901dae754f0851",
+    "title": "Full Stack Engineer",
+    "isRemote": false,
+    "htmlDescription": "<b>Description</b><p>An html job description</p>",
+    "salary": {
+        "min": 90000,
+        "max": 120000,
+        "currency": "USD",
+        "interval": "ANNUAL"
+    },
+    "jobType": "FULL_TIME",
+    "applicationInstructions": "Send resume to info@huntr.co",
+    "url": "https://huntr.co/jobs/1",
+    "postDate": 1614911232,
+    "createdAt": 1614911330,
+    "location": {
+        "name": "Seattle, King County, Washington, USA",
+        "address": "Seattle, WA, United States",
+        "lat": "47.6038321",
+        "lng": "-122.3300624"
+    },
+    "jobPostStatus": {
+        "name": "Open"
+    },
+    "employer": {
+        "id": "584917a6e660b2d8a5b46bd1",
+        "name": "Huntr",
+        "domain": "huntr.co",
+        "isPartner": false
+    },
+    "employerId": "584917a6e660b2d8a5b46bd1"
+}
+```
+
+This endpoint creates a single Job Post. If the job post status is `Open`, then this job will be published in your organization's job portal.
+
+### HTTP Request
+
+`POST https://api.huntr.co/org/job-posts`
+
+### JSON Body Parameters
+
+Parameter | Required | Type | Description
+--------- | -------- | ---- | -----------
+`title` | yes | String | Job title
+`jobType` | yes | String | A [Job Type](#job-types) name
+`jobPostStatusName` | yes | String | One of `Open`, `Closed` or `Draft`
+`employer` | yes | Object | Required, unless the `employerId` field is included. Object is of type `{"name": "Google", "domain": "google.com", "description": "American multinational technology company"}`. If object is included, then it requires the `domain` key. If we find an employer in the Huntr database with this `domain`, we will link the job post to that employer; if not, then a new employer will be created and you will be able to edit the employer details from your organization's portal.
+`employerId` | yes | String | Id for existing Huntr employer. Required, unless an `employer` object is included.
+`applicationInstructions` | no | String | Application instructions
+`url` | no | String | Url for the location of the original job post
+`htmlDescription` | no | String | Job description in HTML format
+`isRemote` | no | Boolean | Defines if this is a remote opportunity or not
+`postDate` | no | Unix Timestamp | Timestamp denoting job post date.
+`location` | no | Object | Location of the opportunity. Object of type `{"name": "Huntr HQ", "address": "Seattle, WA, USA", "lat": "47.6038321", "lng": "-122.3300624"}`. If object is included, it requires either the `address` key or both `lat` and `lng` keys.
+`salary` | no | Object | A [Salary](#salary) object
+
+# Salary
+
+## Salary Resource
+
+> A salary object:
+
+```json
+{
+    "actual": 120000,
+    "currency": "USD",
+    "interval": "ANNUAL"
+}
+```
+
+This resource represents a salary. There's two possible salary formats:
+
+1. A specific salary, in which case we would use the `actual` key.
+2. A salary range, in which case we would use the `min` and `max` keys.
+
+Parameter | Type | Description
+--------- | ---- | -----------
+`actual` | Number | Represents a specific salary amount
+`min` | Number | Represents the minimum value in a salary range
+`max` | Number | Represents the maximum value in a salary range
+`currency` | String | One of [ISO 4217 currency codes](https://en.wikipedia.org/wiki/ISO_4217)
+`interval` | String | One of `ANNUAL`, `MONTHLY`, `WEEKLY`, `DAILY` or `HOURLY`
+
 # Activities
 
 ## Activity Resource

@@ -11,3 +11,6 @@ Added validation for the `limit` parameter for requests that use the [List](#pag
 - New `jobPost` field in [Activity](#activities) resource, if activity is related to a job that was saved from a Job Post
 - New `jobPost` and `jobPostId` fields in [Action](#actions) resource
 - Three new [Action Types](#action-types) related to Job Posts: `JOB_POST_CREATED`, `JOB_POST_UPDATED`, `JOB_POST_DELETED`
+
+## March 4, 2021
+- New [POST /job-posts](#create-job-post) endpoint to create job posts
