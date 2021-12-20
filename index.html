@@ -391,6 +391,30 @@
               </ul>
           </li>
           <li>
+            <a href="#goals" class="toc-h1 toc-link" data-title="Goals">Goals</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#goal-resource" class="toc-h2 toc-link" data-title="Goal Resource">Goal Resource</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#goal-enrollments" class="toc-h1 toc-link" data-title="Goal Enrollments">Goal Enrollments</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#goal-enrollment-resource" class="toc-h2 toc-link" data-title="Goal Enrollment Resource">Goal Enrollment Resource</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#goal-progresses" class="toc-h1 toc-link" data-title="Goal Progresses">Goal Progresses</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#goal-progress-resource" class="toc-h2 toc-link" data-title="Goal Progress Resource">Goal Progress Resource</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#employers" class="toc-h1 toc-link" data-title="Employers">Employers</a>
               <ul class="toc-list-h2">
                   <li>
@@ -483,6 +507,9 @@
                   </li>
                   <li>
                     <a href="#march-4-2021" class="toc-h2 toc-link" data-title="March 4, 2021">March 4, 2021</a>
+                  </li>
+                  <li>
+                    <a href="#december-20-2021" class="toc-h2 toc-link" data-title="December 20, 2021">December 20, 2021</a>
                   </li>
               </ul>
           </li>
@@ -3633,6 +3660,21 @@ or Note a new Action will be created representing that event:</p>
 <td><code>member</code> <code>organizationInvitation</code></td>
 </tr>
 <tr>
+<td><code>MEMBER_UPDATED</code></td>
+<td>Details for a member have been updated. i.e: A custom field or advisor update for a member</td>
+<td><code>member</code> <code>update</code></td>
+</tr>
+<tr>
+<td><code>MEMBER_DELETED</code></td>
+<td>A member is deleted. i.e: job seeker has been deleted</td>
+<td><code>member</code></td>
+</tr>
+<tr>
+<td><code>MEMBER_DEACTIVATED</code></td>
+<td>A member is deactivated. i.e: job seeker has been deactivated</td>
+<td><code>member</code></td>
+</tr>
+<tr>
 <td><code>JOB_CREATED</code></td>
 <td>A new job is created</td>
 <td><code>job</code> <code>employer</code> <code>toList</code></td>
@@ -3721,6 +3763,41 @@ or Note a new Action will be created representing that event:</p>
 <td><code>JOB_POST_DELETED</code></td>
 <td>A job post is deleted</td>
 <td><code>jobPostId</code> <code>employer</code></td>
+</tr>
+<tr>
+<td><code>GOAL_CREATED</code></td>
+<td>A new goal is created</td>
+<td><code>goal</code></td>
+</tr>
+<tr>
+<td><code>GOAL_UPDATED</code></td>
+<td>A goal is updated</td>
+<td><code>goal</code> <code>update</code></td>
+</tr>
+<tr>
+<td><code>GOAL_ENROLLMENT_CREATED</code></td>
+<td>A job seeker is enrolled into a goal</td>
+<td><code>goal</code> <code>goalEnrollment</code></td>
+</tr>
+<tr>
+<td><code>GOAL_PROGRESS_UPDATED</code></td>
+<td>Triggered every time there is progress from a job seeker towards a goal</td>
+<td><code>goal</code> <code>goalEnrollment</code> <code>goalProgress</code> <code>update</code></td>
+</tr>
+<tr>
+<td><code>GOAL_PROGRESS_COMPLETED</code></td>
+<td>Triggered when a job seeker has completed a goal</td>
+<td><code>goal</code> <code>goalEnrollment</code> <code>goalProgress</code> <code>update</code></td>
+</tr>
+<tr>
+<td><code>GOAL_PROGRESS_INCOMPLETE</code></td>
+<td>Triggered if a job seeker did not complete the goal on time and the end date for the goal has passed</td>
+<td><code>goal</code> <code>goalEnrollment</code> <code>goalProgress</code> <code>update</code></td>
+</tr>
+<tr>
+<td><code>GOAL_PROGRESS_IN_PROGRESS</code></td>
+<td>Triggered on the start date of a goal progress record</td>
+<td><code>goal</code> <code>goalEnrollment</code> <code>goalProgress</code> <code>update</code></td>
 </tr>
 </tbody></table>
 <h2 id='list-actions'>List Actions</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.huntr.co/org/actions?limit=3"</span>
@@ -4079,6 +4156,301 @@ or Note a new Action will be created representing that event:</p>
 <td>Object</td>
 <td>none</td>
 <td>Contact&#39;s social media profile handles</td>
+</tr>
+</tbody></table>
+<h1 id='goals'>Goals</h1><h2 id='goal-resource'>Goal Resource</h2>
+<blockquote>
+<p>A goal object:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"61bf6eef5fda60b9fb7f3978"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Log 5 activities of type Phone Call each wee"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Job seekers have to  complete 5 activities of type Phone Call each week for 4 weeks from the moment they are enrolled into this goal.</span><span class="se">\n\n</span><span class="s2">Weekly goal intervals begin on Monday of every week.</span><span class="se">\n\n</span><span class="s2">Job seekers will be enrolled manually by advisors."</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"instructions"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;p&gt;These are some instructions! They have a &lt;a href=</span><span class="se">\"</span><span class="s2">https://google.com</span><span class="se">\"</span><span class="s2"> target=</span><span class="se">\"</span><span class="s2">_blank</span><span class="se">\"</span><span class="s2">&gt;link too&lt;/a&gt;&lt;/p&gt;"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTIVE"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"scheduleType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RECURRING"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"objectiveEntity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Activity"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"objectiveTargetType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NUMERIC"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"objectiveEntityConditions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"operator"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IS_IN"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"_activityCategory"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"5e448f3bf2b856c29af11281"</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"operator"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EQUAL"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"completed"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"objectiveNumericTarget"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"enrollmentType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MANUAL"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"enrollmentTriggers"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+  </span><span class="s2">"enrollmentStartDate"</span><span class="p">:</span><span class="w"> </span><span class="mi">1639935727</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"ownerMember"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5e6a7bbdc56bc6669e3da86c"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"givenName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ruipo"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"familyName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fauli"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rennie+thinkful20@huntr.co"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1584036797</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"isActive"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This resource represents a goal you&#39;ve designed for your job seekers. Goals are like a blueprint of an objective you want your job seekers to accomplish. Our goals feature works with this goal resource along with <a href="#goal-enrollments">Goal Enrollment</a> and <a href="#goal-progresses">Goal Progress</a> resources. While goals tell Huntr what you expect your job seekers to do, goal enrollments represent a job seeker&#39;s participation in a goal, and goal progress records represent a job seeker&#39;s performance towards a goal for a specific time window (i.e: performance towards a goal for a specific monthly or week interval). These three items provide everything you need to design goals and effectively track job seeker performance towards those goals.</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>String</td>
+<td>none</td>
+<td>id for the goal</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td>String</td>
+<td>none</td>
+<td>name of the goal</td>
+</tr>
+<tr>
+<td><code>description</code></td>
+<td>String</td>
+<td>none</td>
+<td>private internal description of the goal</td>
+</tr>
+<tr>
+<td><code>instructions</code></td>
+<td>String</td>
+<td>none</td>
+<td>public job seeker facing instructions of the goal</td>
+</tr>
+<tr>
+<td><code>status</code></td>
+<td>String</td>
+<td>none</td>
+<td>status of the goal</td>
+</tr>
+<tr>
+<td><code>scheduleType</code></td>
+<td>String</td>
+<td>none</td>
+<td>either <code>RECURRING</code> or <code>ONE_TIME</code></td>
+</tr>
+<tr>
+<td><code>objectiveEntity</code></td>
+<td>String</td>
+<td>none</td>
+<td>either <code>Activity</code>, <code>Job</code> or <code>Contact</code></td>
+</tr>
+<tr>
+<td><code>objectiveEntityConditions</code></td>
+<td>Array</td>
+<td>none</td>
+<td>For <code>Activity</code> entity types, details the Activity Category ids that count towards to goal.</td>
+</tr>
+<tr>
+<td><code>objectiveNumericTarget</code></td>
+<td>Number</td>
+<td>none</td>
+<td>Number of entities that must be saved or logged to complete the goal</td>
+</tr>
+<tr>
+<td><code>enrollmentType</code></td>
+<td>String</td>
+<td>none</td>
+<td>one of <code>MANUAL</code>, <code>ON_SIGNUP</code> or <code>ON_TRIGGER</code></td>
+</tr>
+<tr>
+<td><code>enrollmentTriggers</code></td>
+<td>String</td>
+<td>none</td>
+<td>for <code>ON_TRIGGER</code> enrollmend, details the action that triggers the enrollment</td>
+</tr>
+<tr>
+<td><code>enrollmentStartDate</code></td>
+<td>Unix timestamp</td>
+<td>none</td>
+<td>date when auto enrollments should start</td>
+</tr>
+<tr>
+<td><code>oneTimeGoalDueDaysCount</code></td>
+<td>String</td>
+<td>none</td>
+<td>for <code>ONE_TIME</code> goals, details the number of days the job seeker has to complete this goal.</td>
+</tr>
+</tbody></table>
+<h1 id='goal-enrollments'>Goal Enrollments</h1><h2 id='goal-enrollment-resource'>Goal Enrollment Resource</h2>
+<blockquote>
+<p>A goal enrollment object:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"61bf669a887ee3b7bff62fe1"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"goalId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"61a1653e0a60f10199537f84"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTIVE"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"ownerMember"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5e6a7bbdc56bc6669e3da86c"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"givenName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ruipo"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"familyName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fauli"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rennie+thinkful20@huntr.co"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1584036797</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"isActive"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This resource represents a job seeker&#39;s participation in a goal. Any job seeker participating in a goal will have a corresponding Goal Enrollment record.</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>String</td>
+<td>none</td>
+<td>id for the goal enrollment</td>
+</tr>
+<tr>
+<td><code>goalId</code></td>
+<td>String</td>
+<td>none</td>
+<td>id for the goal</td>
+</tr>
+<tr>
+<td><code>status</code></td>
+<td>String</td>
+<td>none</td>
+<td>status of the goal enrollment.</td>
+</tr>
+<tr>
+<td><code>ownerMember</code></td>
+<td>Object</td>
+<td><a href="#members">Member</a> who is participating in the goal</td>
+<td></td>
+</tr>
+</tbody></table>
+<h1 id='goal-progresses'>Goal Progresses</h1><h2 id='goal-progress-resource'>Goal Progress Resource</h2>
+<blockquote>
+<p>A goal progress object:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"61bf669a887ee3b7bff62fe3"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"goalId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"61a1653e0a60f10199537f84"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"goalEnrollmentId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"61bf669a887ee3b7bff62fe1"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IN_PROGRESS"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"progressIndex"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"objectiveNumericCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"objectiveNumericTarget"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"objectiveEntity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Job"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"objectiveActivityIds"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+  </span><span class="s2">"objectiveJobIds"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"61bf66a70ab6e63cef099798"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"61bf66db0ab6e63cef0997b5"</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"objectiveContactIds"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+  </span><span class="s2">"start"</span><span class="p">:</span><span class="w"> </span><span class="mi">1639890000</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"end"</span><span class="p">:</span><span class="w"> </span><span class="mi">1647752399</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This resource represents a job seeker&#39;s performance towards a goal for a specific time window. For <code>RECURRING</code> goals, there will be multiple Goal Progress records for each job seeker enrollment, each one representing the job seeker&#39;s performance towards a different time window (week or month). For <code>ONE_TIME</code> goals, there is only 1 goal progress record per job seeker enrollment.</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>String</td>
+<td>none</td>
+<td>id for the goal progress</td>
+</tr>
+<tr>
+<td><code>goalId</code></td>
+<td>String</td>
+<td>none</td>
+<td>id for the goal this goal progress record is related to</td>
+</tr>
+<tr>
+<td><code>goalEnrollmentId</code></td>
+<td>String</td>
+<td>none</td>
+<td>id for the goal enrollment this goal progress record is related to</td>
+</tr>
+<tr>
+<td><code>status</code></td>
+<td>String</td>
+<td>none</td>
+<td>one of <code>UPCOMING</code>, <code>IN_PROGRESS</code>, <code>COMPLETE</code>, <code>INCOMPLETE</code></td>
+</tr>
+<tr>
+<td><code>progressIndex</code></td>
+<td>Number</td>
+<td>none</td>
+<td>For a given job seeker, represents the goal progress index in a list of goal progress records sorted by start date.</td>
+</tr>
+<tr>
+<td><code>objectiveNumericCount</code></td>
+<td>Number</td>
+<td>none</td>
+<td>current progress number for this goal</td>
+</tr>
+<tr>
+<td><code>objectiveNumericTarget</code></td>
+<td>Number</td>
+<td>none</td>
+<td>target number for this goal</td>
+</tr>
+<tr>
+<td><code>objectiveEntity</code></td>
+<td>String</td>
+<td>none</td>
+<td>one of  <code>Activity</code>, <code>Job</code>, <code>Contact</code></td>
+</tr>
+<tr>
+<td><code>objectiveActivityIds</code></td>
+<td>Array</td>
+<td>none</td>
+<td>ids for logged activities that count towards this goal progress record, only applies to goals with objectiveEntity of type <code>Activity</code></td>
+</tr>
+<tr>
+<td><code>objectiveJobIds</code></td>
+<td>Array</td>
+<td>none</td>
+<td>ids for saved jobs that count towards this goal progress record, only applies to goals with objectiveEntity of type <code>Job</code></td>
+</tr>
+<tr>
+<td><code>objectiveContactIds</code></td>
+<td>Array</td>
+<td>none</td>
+<td>ids for saved contacts that count towards this goal progress record, only applies to goals with objectiveEntity of type <code>Contact</code></td>
+</tr>
+<tr>
+<td><code>start</code></td>
+<td>Unix timestamp</td>
+<td>none</td>
+<td>Start date for this goal progress record</td>
+</tr>
+<tr>
+<td><code>end</code></td>
+<td>Unix timestamp</td>
+<td>none</td>
+<td>End date for this goal progress record</td>
 </tr>
 </tbody></table>
 <h1 id='employers'>Employers</h1><h2 id='employer-resource'>Employer Resource</h2>
@@ -4794,6 +5166,14 @@ Starting in May 2020, the Events resource is being replaced by the Actions resou
 <h2 id='march-4-2021'>March 4, 2021</h2>
 <ul>
 <li>New <a href="#create-job-post">POST /job-posts</a> endpoint to create job posts</li>
+</ul>
+<h2 id='december-20-2021'>December 20, 2021</h2>
+<ul>
+<li>New <a href="#goals">Goal</a> resource</li>
+<li>New <a href="#goal-enrollments">Goal Enrollment</a> resource</li>
+<li><p>New <a href="#goal-progresses">Goal Progress</a> resource</p></li>
+<li><p>Seven new <a href="#action-types">Action Types</a> related to Goals: <code>GOAL_CREATED</code>, <code>GOAL_UPDATED</code>, <code>GOAL_ENROLLMENT_CREATED</code>, <code>GOAL_PROGRESS_UPDATED</code>, <code>GOAL_PROGRESS_COMPLETED</code>, <code>GOAL_PROGRESS_INCOMPLETE</code>, <code>GOAL_PROGRESS_IN_PROGRESS</code></p></li>
+<li><p>Three new <a href="#action-types">Action Types</a> related to Members: <code>MEMBER_UPDATED</code>, <code>MEMBER_DELETED</code>, <code>MEMBER_DEACTIVATED</code></p></li>
 </ul>
 
       </div>
