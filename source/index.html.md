@@ -2344,7 +2344,10 @@ There are multiple action types:
 
 Action Type | Description | Extra fields
 ---------- | ----------- | -----------
-`MEMBER_CREATED` |  A new member is created. i.e: job seeker has accepted invitation | `member` `organizationInvitation`
+`MEMBER_CREATED` |  A new member is created. i.e: job seeker has accepted invitation | `member` `organizationInvitation` `organizationInvitationId`
+`MEMBER_UPDATED` |  Details for a member have been updated. i.e: A custom field or advisor update for a member | `member` `update`
+`MEMBER_DELETED` |  A member is deleted. i.e: job seeker has been deleted | `member`
+`MEMBER_DEACTIVATED` |  A member is deactivated. i.e: job seeker has been deactivated | `member`
 `JOB_CREATED` | A new job is created | `job` `employer` `toList`
 `JOB_UPDATED` | A job is updated | `job` `employer` `update`
 `JOB_DELETED` | A job is deleted | `jobId` `employer`
@@ -2363,7 +2366,15 @@ Action Type | Description | Extra fields
 `JOB_POST_CREATED` | A new job post is created | `jobPost` `employer`
 `JOB_POST_UPDATED` | A job post is updated | `jobPost` `employer` `update`
 `JOB_POST_DELETED` | A job post is deleted | `jobPostId` `employer`
-
+`GOAL_CREATED` |  A new goal is created | `goal`
+`GOAL_UPDATED` |  A goal is updated | `goal` `update`
+`GOAL_ENROLLMENT_CREATED` |  A job seeker is enrolled into a goal | `goal` `goalEnrollment`
+`GOAL_ENROLLMENT_CONCLUDED` |  A job seeker is unenrolled from a goal | `goal` `goalEnrollment` `update`
+`GOAL_PROGRESS_UPDATED` |  Triggered every time there is progress from a job seeker towards a goal | `goal` `goalEnrollment` `goalProgress` `update`
+`GOAL_PROGRESS_COMPLETED` |  Triggered when a job seeker has completed a goal | `goal` `goalEnrollment` `goalProgress` `update`
+`GOAL_PROGRESS_INCOMPLETE` | Triggered if a job seeker did not complete the goal on time and the end date for the goal has passed | `goal` `goalEnrollment` `goalProgress` `update`
+`GOAL_PROGRESS_IN_PROGRESS` |  Triggered on the start date of a goal progress record | `goal` `goalEnrollment` `goalProgress` `update`
+`GOAL_PROGRESS_UNENROLLED` |  Triggered after an advisor unenrolls a job seeker from a goal, thus marking all upcoming goal progress records as unenrolled | `goal` `goalEnrollment` `goalProgress` `update`
 
 ## List Actions
 
@@ -2611,6 +2622,145 @@ Parameter | Type | Default | Description
 `title` | String | none | Contact's job title
 `location` | String | none | Contact's location
 `profiles` | Object | none | Contact's social media profile handles
+
+# Goals
+
+## Goal Resource
+
+> A goal object:
+
+```json
+{
+  "id": "61bf6eef5fda60b9fb7f3978",
+  "name": "Log 5 activities of type Phone Call each wee",
+  "description": "Job seekers have to  complete 5 activities of type Phone Call each week for 4 weeks from the moment they are enrolled into this goal.\n\nWeekly goal intervals begin on Monday of every week.\n\nJob seekers will be enrolled manually by advisors.",
+  "instructions": "<p>These are some instructions! They have a <a href=\"https://google.com\" target=\"_blank\">link too</a></p>",
+  "status": "ACTIVE",
+  "scheduleType": "RECURRING",
+  "objectiveEntity": "Activity",
+  "objectiveTargetType": "NUMERIC",
+  "objectiveEntityConditions": [
+    {
+      "operator": "IS_IN",
+      "key": "_activityCategory",
+      "value": [
+        "5e448f3bf2b856c29af11281"
+      ]
+    },
+    {
+      "operator": "EQUAL",
+      "key": "completed",
+      "value": true
+    }
+  ],
+  "objectiveNumericTarget": 5,
+  "enrollmentType": "MANUAL",
+  "enrollmentTriggers": [],
+  "enrollmentStartDate": 1639935727,
+  "ownerMember": {
+      "id": "5e6a7bbdc56bc6669e3da86c",
+      "givenName": "Ruipo",
+      "familyName": "Fauli",
+      "email": "rennie+thinkful20@huntr.co",
+      "createdAt": 1584036797,
+      "isActive": true
+  }
+}
+```
+
+This resource represents a goal you've designed for your job seekers. Goals are like a blueprint of an objective you want your job seekers to accomplish. Our goals feature works with this goal resource along with [Goal Enrollment](#goal-enrollments) and [Goal Progress](#goal-progresses) resources. While goals tell Huntr what you expect your job seekers to do, goal enrollments represent a job seeker's participation in a goal, and goal progress records represent a job seeker's performance towards a goal for a specific time window (i.e: performance towards a goal for a specific monthly or week interval). These three items provide everything you need to design goals and effectively track job seeker performance towards those goals.
+
+Parameter | Type | Default | Description
+--------- | ---- | ------- | -----------
+`id` | String | none | id for the goal
+`name` | String | none | name of the goal
+`description` | String | none | private internal description of the goal
+`instructions` | String | none | public job seeker facing instructions of the goal
+`status` | String | none | status of the goal
+`scheduleType` | String | none | either `RECURRING` or `ONE_TIME`
+`objectiveEntity` | String | none | either `Activity`, `Job` or `Contact`
+`objectiveEntityConditions` | Array | none | For `Activity` entity types, details the Activity Category ids that count towards to goal.
+`objectiveNumericTarget` | Number | none | Number of entities that must be saved or logged to complete the goal
+`enrollmentType` | String | none | one of `MANUAL`, `ON_SIGNUP` or `ON_TRIGGER`
+`enrollmentTriggers` | String | none | for `ON_TRIGGER` enrollmend, details the action that triggers the enrollment
+`enrollmentStartDate` | Unix timestamp | none | date when auto enrollments should start
+`oneTimeGoalDueDaysCount` | String | none | for `ONE_TIME` goals, details the number of days the job seeker has to complete this goal.
+
+# Goal Enrollments
+
+## Goal Enrollment Resource
+
+> A goal enrollment object:
+
+```json
+{
+  "id": "61bf669a887ee3b7bff62fe1",
+  "goalId": "61a1653e0a60f10199537f84",
+  "status": "ACTIVE",
+  "ownerMember": {
+      "id": "5e6a7bbdc56bc6669e3da86c",
+      "givenName": "Ruipo",
+      "familyName": "Fauli",
+      "email": "rennie+thinkful20@huntr.co",
+      "createdAt": 1584036797,
+      "isActive": true
+  }
+}
+```
+
+This resource represents a job seeker's participation in a goal. Any job seeker participating in a goal will have a corresponding Goal Enrollment record.
+
+Parameter | Type | Default | Description
+--------- | ---- | ------- | -----------
+`id` | String | none | id for the goal enrollment
+`goalId` | String | none | id for the goal
+`status` | String | none | status of the goal enrollment.
+`ownerMember` | Object | [Member](#members) who is participating in the goal
+
+# Goal Progresses
+
+## Goal Progress Resource
+
+> A goal progress object:
+
+```json
+{
+  "id": "61bf669a887ee3b7bff62fe3",
+  "goalId": "61a1653e0a60f10199537f84",
+  "goalEnrollmentId": "61bf669a887ee3b7bff62fe1",
+  "status": "IN_PROGRESS",
+  "progressIndex": 1,
+  "objectiveNumericCount": 2,
+  "objectiveNumericTarget": 20,
+  "objectiveEntity": "Job",
+  "objectiveActivityIds": [],
+  "objectiveJobIds": [
+    "61bf66a70ab6e63cef099798",
+    "61bf66db0ab6e63cef0997b5"
+  ],
+  "objectiveContactIds": [],
+  "start": 1639890000,
+  "end": 1647752399
+}
+```
+
+This resource represents a job seeker's performance towards a goal for a specific time window. For `RECURRING` goals, there will be multiple Goal Progress records for each job seeker enrollment, each one representing the job seeker's performance towards a different time window (week or month). For `ONE_TIME` goals, there is only 1 goal progress record per job seeker enrollment.
+
+Parameter | Type | Default | Description
+--------- | ---- | ------- | -----------
+`id` | String | none | id for the goal progress
+`goalId` | String | none | id for the goal this goal progress record is related to
+`goalEnrollmentId` | String | none | id for the goal enrollment this goal progress record is related to
+`status` | String | none | one of `UPCOMING`, `IN_PROGRESS`, `COMPLETE`, `INCOMPLETE`, `UNENROLLED`
+`progressIndex` | Number | none | For a given job seeker, represents the goal progress index in a list of goal progress records sorted by start date.
+`objectiveNumericCount` | Number | none | current progress number for this goal
+`objectiveNumericTarget` | Number | none | target number for this goal
+`objectiveEntity` | String | none | one of  `Activity`, `Job`, `Contact`
+`objectiveActivityIds` | Array | none | ids for logged activities that count towards this goal progress record, only applies to goals with objectiveEntity of type `Activity`
+`objectiveJobIds` | Array | none | ids for saved jobs that count towards this goal progress record, only applies to goals with objectiveEntity of type `Job`
+`objectiveContactIds` | Array | none | ids for saved contacts that count towards this goal progress record, only applies to goals with objectiveEntity of type `Contact`
+`start` | Unix timestamp | none | Start date for this goal progress record
+`end` | Unix timestamp | none | End date for this goal progress record
 
 # Employers
 
