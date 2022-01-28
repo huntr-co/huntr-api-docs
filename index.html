@@ -511,6 +511,9 @@
                   <li>
                     <a href="#december-20-2021" class="toc-h2 toc-link" data-title="December 20, 2021">December 20, 2021</a>
                   </li>
+                  <li>
+                    <a href="#january-28-2022" class="toc-h2 toc-link" data-title="January 28, 2022">January 28, 2022</a>
+                  </li>
               </ul>
           </li>
       </div>
@@ -3657,7 +3660,7 @@ or Note a new Action will be created representing that event:</p>
 <tr>
 <td><code>MEMBER_CREATED</code></td>
 <td>A new member is created. i.e: job seeker has accepted invitation</td>
-<td><code>member</code> <code>organizationInvitation</code></td>
+<td><code>member</code> <code>organizationInvitation</code> <code>organizationInvitationId</code></td>
 </tr>
 <tr>
 <td><code>MEMBER_UPDATED</code></td>
@@ -3780,6 +3783,11 @@ or Note a new Action will be created representing that event:</p>
 <td><code>goal</code> <code>goalEnrollment</code></td>
 </tr>
 <tr>
+<td><code>GOAL_ENROLLMENT_CONCLUDED</code></td>
+<td>A job seeker is unenrolled from a goal</td>
+<td><code>goal</code> <code>goalEnrollment</code> <code>update</code></td>
+</tr>
+<tr>
 <td><code>GOAL_PROGRESS_UPDATED</code></td>
 <td>Triggered every time there is progress from a job seeker towards a goal</td>
 <td><code>goal</code> <code>goalEnrollment</code> <code>goalProgress</code> <code>update</code></td>
@@ -3797,6 +3805,11 @@ or Note a new Action will be created representing that event:</p>
 <tr>
 <td><code>GOAL_PROGRESS_IN_PROGRESS</code></td>
 <td>Triggered on the start date of a goal progress record</td>
+<td><code>goal</code> <code>goalEnrollment</code> <code>goalProgress</code> <code>update</code></td>
+</tr>
+<tr>
+<td><code>GOAL_PROGRESS_UNENROLLED</code></td>
+<td>Triggered after an advisor unenrolls a job seeker from a goal, thus marking all upcoming goal progress records as unenrolled</td>
 <td><code>goal</code> <code>goalEnrollment</code> <code>goalProgress</code> <code>update</code></td>
 </tr>
 </tbody></table>
@@ -4396,7 +4409,7 @@ or Note a new Action will be created representing that event:</p>
 <td><code>status</code></td>
 <td>String</td>
 <td>none</td>
-<td>one of <code>UPCOMING</code>, <code>IN_PROGRESS</code>, <code>COMPLETE</code>, <code>INCOMPLETE</code></td>
+<td>one of <code>UPCOMING</code>, <code>IN_PROGRESS</code>, <code>COMPLETE</code>, <code>INCOMPLETE</code>, <code>UNENROLLED</code></td>
 </tr>
 <tr>
 <td><code>progressIndex</code></td>
@@ -5174,6 +5187,11 @@ Starting in May 2020, the Events resource is being replaced by the Actions resou
 <li><p>New <a href="#goal-progresses">Goal Progress</a> resource</p></li>
 <li><p>Seven new <a href="#action-types">Action Types</a> related to Goals: <code>GOAL_CREATED</code>, <code>GOAL_UPDATED</code>, <code>GOAL_ENROLLMENT_CREATED</code>, <code>GOAL_PROGRESS_UPDATED</code>, <code>GOAL_PROGRESS_COMPLETED</code>, <code>GOAL_PROGRESS_INCOMPLETE</code>, <code>GOAL_PROGRESS_IN_PROGRESS</code></p></li>
 <li><p>Three new <a href="#action-types">Action Types</a> related to Members: <code>MEMBER_UPDATED</code>, <code>MEMBER_DELETED</code>, <code>MEMBER_DEACTIVATED</code></p></li>
+</ul>
+<h2 id='january-28-2022'>January 28, 2022</h2>
+<ul>
+<li>Two new <a href="#action-types">Action Types</a> related to Goals: <code>GOAL_ENROLLMENT_CONCLUDED</code>, <code>GOAL_PROGRESS_UNENROLLED</code></li>
+<li>New potential status value for <a href="#goal-progresses">Goal Progress</a>: <code>UNENROLLED</code></li>
 </ul>
 
       </div>
