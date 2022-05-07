@@ -2319,7 +2319,7 @@ Field | Type | In all actions | Description
 `creatorMember` | Object | true | Member who took the action. In most cases, this is your job seeker; but if an advisor took the action, then it would be your advisor.
 `jobId` | String | false |  id for job linked to this action
 `job` | Object | false |  [Job](#jobs) linked to this action
-`jobs` | Array | false |  [Jobs](#jobs) linked to this action; only applies to Contact actions, since a contact can be linked to multiple jobs
+`jobs` | Array | false |  [Jobs](#jobs) linked to this action; only applies to Contact and Document related actions, since a contact and a document can be linked to multiple jobs
 `jobPostId` | String | false |  id for job post linked to this action
 `jobPost` | Object | false |  [Job Post](#job-posts) linked to this action
 `employerId` | String | false |  id for [Employer](#employers) linked to this action
@@ -2332,6 +2332,8 @@ Field | Type | In all actions | Description
 `note` | Object | false |  [Note](#notes) linked to this action; only applies to Note actions
 `contactId` | String | false |  id for contact linked to this action
 `contact` | Object | false |  [Contact](#contacts) linked to this action; only applies to Contact actions
+`documentId` | String | false |  id for document linked to this action
+`document` | Object | false |  [Document](#documents) linked to this action; only applies to Document actions
 `fromList` | Object | false | List from which job was moved in a `JOB_MOVED` action
 `toList` | Object | false | List to which a job was moved or added to in `JOB_MOVED` and `JOB_CREATED` actions
 `member` | Object | false | [Member](#members) created in `MEMBER_CREATED` actions
@@ -2375,6 +2377,9 @@ Action Type | Description | Extra fields
 `GOAL_PROGRESS_INCOMPLETE` | Triggered if a job seeker did not complete the goal on time and the end date for the goal has passed | `goal` `goalEnrollment` `goalProgress` `update`
 `GOAL_PROGRESS_IN_PROGRESS` |  Triggered on the start date of a goal progress record | `goal` `goalEnrollment` `goalProgress` `update`
 `GOAL_PROGRESS_UNENROLLED` |  Triggered after an advisor unenrolls a job seeker from a goal, thus marking all upcoming goal progress records as unenrolled | `goal` `goalEnrollment` `goalProgress` `update`
+`DOCUMENT_CREATED` |  A new document is created | `document` `jobs`
+`DOCUMENT_UPDATED` |  A document is updated | `document` `jobs` `update`
+`DOCUMENT_DELETED` |  A document is deleted | `documentId`
 
 ## List Actions
 
@@ -2622,6 +2627,34 @@ Parameter | Type | Default | Description
 `title` | String | none | Contact's job title
 `location` | String | none | Contact's location
 `profiles` | Object | none | Contact's social media profile handles
+
+# Documents
+
+## Document Resource
+
+> A document object:
+
+```json
+{
+  "id": "622bc9862a2ee4f9779277eb",
+  "title": "Resume",
+  "name": "MyResume.pdf",
+  "url": "https://huntr-documents.s3.amazonaws.com/8b33e720-46f7-45b9-be76-b163be75fbb6/MyResume.pdf",
+  "extension": "pdf",
+  "documentCategoryName": "Resume"
+}
+```
+
+This resource represents a document.
+
+Parameter | Type | Default | Description
+--------- | ---- | ------- | -----------
+`id` | String | none | id for the document
+`title` | String | none | Document's title
+`name` | String | none | Document's file name
+`url` | String | none | URL where document file is hosted. This url is protected, thus the document is not accessible.
+`extension` | String | none | Document's file extension
+`documentCategoryName` | String | none | Document category name
 
 # Goals
 

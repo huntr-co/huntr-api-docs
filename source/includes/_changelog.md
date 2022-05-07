@@ -26,3 +26,7 @@ Added validation for the `limit` parameter for requests that use the [List](#pag
 ## January 28, 2022
 - Two new [Action Types](#action-types) related to Goals: `GOAL_ENROLLMENT_CONCLUDED`, `GOAL_PROGRESS_UNENROLLED`
 - New potential status value for [Goal Progress](#goal-progresses): `UNENROLLED`
+
+## May 6, 2022
+- Thre new [Action Types](#action-types) related to Documents: `DOCUMENT_CREATED`, `DOCUMENT_UPDATED`, `DOCUMENT_DELETED`
+- New [Document](#documents) resource
