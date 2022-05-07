@@ -391,6 +391,14 @@
               </ul>
           </li>
           <li>
+            <a href="#documents" class="toc-h1 toc-link" data-title="Documents">Documents</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#document-resource" class="toc-h2 toc-link" data-title="Document Resource">Document Resource</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#goals" class="toc-h1 toc-link" data-title="Goals">Goals</a>
               <ul class="toc-list-h2">
                   <li>
@@ -513,6 +521,9 @@
                   </li>
                   <li>
                     <a href="#january-28-2022" class="toc-h2 toc-link" data-title="January 28, 2022">January 28, 2022</a>
+                  </li>
+                  <li>
+                    <a href="#may-6-2022" class="toc-h2 toc-link" data-title="May 6, 2022">May 6, 2022</a>
                   </li>
               </ul>
           </li>
@@ -3542,7 +3553,7 @@ or Note a new Action will be created representing that event:</p>
 <td><code>jobs</code></td>
 <td>Array</td>
 <td>false</td>
-<td><a href="#jobs">Jobs</a> linked to this action; only applies to Contact actions, since a contact can be linked to multiple jobs</td>
+<td><a href="#jobs">Jobs</a> linked to this action; only applies to Contact and Document related actions, since a contact and a document can be linked to multiple jobs</td>
 </tr>
 <tr>
 <td><code>jobPostId</code></td>
@@ -3615,6 +3626,18 @@ or Note a new Action will be created representing that event:</p>
 <td>Object</td>
 <td>false</td>
 <td><a href="#contacts">Contact</a> linked to this action; only applies to Contact actions</td>
+</tr>
+<tr>
+<td><code>documentId</code></td>
+<td>String</td>
+<td>false</td>
+<td>id for document linked to this action</td>
+</tr>
+<tr>
+<td><code>document</code></td>
+<td>Object</td>
+<td>false</td>
+<td><a href="#documents">Document</a> linked to this action; only applies to Document actions</td>
 </tr>
 <tr>
 <td><code>fromList</code></td>
@@ -3811,6 +3834,21 @@ or Note a new Action will be created representing that event:</p>
 <td><code>GOAL_PROGRESS_UNENROLLED</code></td>
 <td>Triggered after an advisor unenrolls a job seeker from a goal, thus marking all upcoming goal progress records as unenrolled</td>
 <td><code>goal</code> <code>goalEnrollment</code> <code>goalProgress</code> <code>update</code></td>
+</tr>
+<tr>
+<td><code>DOCUMENT_CREATED</code></td>
+<td>A new document is created</td>
+<td><code>document</code> <code>jobs</code></td>
+</tr>
+<tr>
+<td><code>DOCUMENT_UPDATED</code></td>
+<td>A document is updated</td>
+<td><code>document</code> <code>jobs</code> <code>update</code></td>
+</tr>
+<tr>
+<td><code>DOCUMENT_DELETED</code></td>
+<td>A document is deleted</td>
+<td><code>documentId</code></td>
 </tr>
 </tbody></table>
 <h2 id='list-actions'>List Actions</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.huntr.co/org/actions?limit=3"</span>
@@ -4169,6 +4207,66 @@ or Note a new Action will be created representing that event:</p>
 <td>Object</td>
 <td>none</td>
 <td>Contact&#39;s social media profile handles</td>
+</tr>
+</tbody></table>
+<h1 id='documents'>Documents</h1><h2 id='document-resource'>Document Resource</h2>
+<blockquote>
+<p>A document object:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"622bc9862a2ee4f9779277eb"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Resume"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MyResume.pdf"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://huntr-documents.s3.amazonaws.com/8b33e720-46f7-45b9-be76-b163be75fbb6/MyResume.pdf"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"extension"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pdf"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"documentCategoryName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Resume"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This resource represents a document.</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>String</td>
+<td>none</td>
+<td>id for the document</td>
+</tr>
+<tr>
+<td><code>title</code></td>
+<td>String</td>
+<td>none</td>
+<td>Document&#39;s title</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td>String</td>
+<td>none</td>
+<td>Document&#39;s file name</td>
+</tr>
+<tr>
+<td><code>url</code></td>
+<td>String</td>
+<td>none</td>
+<td>URL where document file is hosted. This url is protected, thus the document is not accessible.</td>
+</tr>
+<tr>
+<td><code>extension</code></td>
+<td>String</td>
+<td>none</td>
+<td>Document&#39;s file extension</td>
+</tr>
+<tr>
+<td><code>documentCategoryName</code></td>
+<td>String</td>
+<td>none</td>
+<td>Document category name</td>
 </tr>
 </tbody></table>
 <h1 id='goals'>Goals</h1><h2 id='goal-resource'>Goal Resource</h2>
@@ -5192,6 +5290,11 @@ Starting in May 2020, the Events resource is being replaced by the Actions resou
 <ul>
 <li>Two new <a href="#action-types">Action Types</a> related to Goals: <code>GOAL_ENROLLMENT_CONCLUDED</code>, <code>GOAL_PROGRESS_UNENROLLED</code></li>
 <li>New potential status value for <a href="#goal-progresses">Goal Progress</a>: <code>UNENROLLED</code></li>
+</ul>
+<h2 id='may-6-2022'>May 6, 2022</h2>
+<ul>
+<li>Thre new <a href="#action-types">Action Types</a> related to Documents: <code>DOCUMENT_CREATED</code>, <code>DOCUMENT_UPDATED</code>, <code>DOCUMENT_DELETED</code></li>
+<li>New <a href="#documents">Document</a> resource</li>
 </ul>
 
       </div>
