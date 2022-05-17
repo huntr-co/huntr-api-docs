@@ -2886,8 +2886,9 @@ This endpoint retrieves all employers to which your members have added a job for
 
 Parameter | Default | Description
 --------- | ------- | -----------
-limit | 100 | Defines the maximum number of employers to return
-next | none | If set, returns the next set of results after the object id provided
+`limit` | 100 | Defines the maximum number of employers to return
+`isPartner` | none | Set this parameter to `true` if you want to retrieve only your employers marked as partners
+`next` | none | If set, returns the next set of results after the object id provided
 
 # Events (Deprecated)
 
