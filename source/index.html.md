@@ -2487,6 +2487,7 @@ Field | Type | In all actions | Description
 `job` | Object | false |  [Job](#jobs) linked to this action
 `jobs` | Array | false |  [Jobs](#jobs) linked to this action; only applies to Contact and Document related actions, since a contact and a document can be linked to multiple jobs
 `jobPostId` | String | false |  id for job post linked to this action
+`jobPostIds` | String | false |  array of ids for job posts linked to this action
 `jobPost` | Object | false |  [Job Post](#job-posts) linked to this action
 `employerId` | String | false |  id for [Employer](#employers) linked to this action
 `employer` | Object | false |  [Employer](#employers) linked to this action
@@ -2534,6 +2535,7 @@ Action Type | Description | Extra fields
 `JOB_POST_CREATED` | A new job post is created | `jobPost` `employer`
 `JOB_POST_UPDATED` | A job post is updated | `jobPost` `employer` `update`
 `JOB_POST_DELETED` | A job post is deleted | `jobPostId` `employer`
+`BULK_JOB_POST_UPDATED` | Multiple job posts are updated | `jobPostIds` `update`
 `GOAL_CREATED` |  A new goal is created | `goal`
 `GOAL_UPDATED` |  A goal is updated | `goal` `update`
 `GOAL_ENROLLMENT_CREATED` |  A job seeker is enrolled into a goal | `goal` `goalEnrollment`
