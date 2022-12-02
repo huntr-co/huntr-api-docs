@@ -30,3 +30,6 @@ Added validation for the `limit` parameter for requests that use the [List](#pag
 ## May 6, 2022
 - Thre new [Action Types](#action-types) related to Documents: `DOCUMENT_CREATED`, `DOCUMENT_UPDATED`, `DOCUMENT_DELETED`
 - New [Document](#documents) resource
+
+## June 15, 2022
+- New `MULTIPLE_SELECT` [Member Field Type](#types-of-member-fields)
