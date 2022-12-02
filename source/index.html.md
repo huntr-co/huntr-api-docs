@@ -1447,6 +1447,15 @@ ID | The ID of the job to retrieve
         "lat": "40.6781784",
         "lng": "-73.9441579"
     },
+    "locations": [
+      {
+          "name": "Brooklyn",
+          "address": "Brooklyn, NY, USA",
+          "country": "United States",
+          "lat": "40.6781784",
+          "lng": "-73.9441579"
+      }
+    ],
     "jobPostStatus": {
         "name": "Open"
     },
@@ -1478,6 +1487,7 @@ ID | The ID of the job to retrieve
         "memberFieldValues": []
     },
     "tags": [{
+        "id": "6375bf49678aa421b84e8743",
         "name": "🔥 Hot Jobs",
         "description": "High demand job posts",
         "color": "#FF0000",
@@ -1651,6 +1661,7 @@ curl "https://api.huntr.co/org/job-posts?limit=2"
         },
         "employerId": "592ed813b67c6168772b19ec",
         "tags": [{
+            "id": "6375bf49678aa421b84e8743",
             "name": "🔥 Hot Jobs",
             "description": "High demand job posts",
             "color": "#FF0000",
@@ -1744,6 +1755,7 @@ curl "https://api.huntr.co/org/job-posts/601da7c59ca97b1604508a1c"
     },
     "employerId": "5bbfe1c6ed9dc0f2dbb9fe76",
     "tags": [{
+        "id": "6375bf49678aa421b84e8743",
         "name": "🔥 Hot Jobs",
         "description": "High demand job posts",
         "color": "#FF0000",
@@ -1789,7 +1801,7 @@ curl --location --request POST 'https://api.huntr.co/org/job-posts' \
         "name": "Huntr",
         "domain": "huntr.co"
     },
-    "tagIds": ["6375bf2a678aa421b84e872e"]
+    "tagIds": ["6375bf49678aa421b84e8743"]
 }'
 ```
 
@@ -1835,6 +1847,7 @@ curl --location --request POST 'https://api.huntr.co/org/job-posts' \
     },
     "employerId": "584917a6e660b2d8a5b46bd1",
     "tags": [{
+        "id": "6375bf49678aa421b84e8743",
         "name": "🔥 Hot Jobs",
         "description": "High demand job posts",
         "color": "#FF0000",
@@ -1927,7 +1940,7 @@ This endpoint creates a new tag.
 Parameter | Required | Type | Description
 --------- | -------- | ---- | -----------
 `name` | yes | String | Tag name
-`description` | false | String | Internal tag description
+`description` | no | String | Internal tag description
 `color` | yes | String | Display color for this tag
 `targetObjects` | yes | Array | Array of [Target Objects](#target-objects) this tag can be applied to
 
@@ -1971,7 +1984,7 @@ This endpoint lists all tags created by your organization
 
 Target Objects refer to the types resources a tag can be applied to. There is currently only one type of target object
 
-Job Type | Description
+Target Object | Description
 ---------- | -----------
 `JOB_POST` |  Tag can be applied to [Job Posts](#job-posts)
 
@@ -2487,7 +2500,7 @@ Field | Type | In all actions | Description
 `job` | Object | false |  [Job](#jobs) linked to this action
 `jobs` | Array | false |  [Jobs](#jobs) linked to this action; only applies to Contact and Document related actions, since a contact and a document can be linked to multiple jobs
 `jobPostId` | String | false |  id for job post linked to this action
-`jobPostIds` | String | false |  array of ids for job posts linked to this action
+`jobPostIds` | Array | false |  array of ids for job posts linked to this action
 `jobPost` | Object | false |  [Job Post](#job-posts) linked to this action
 `employerId` | String | false |  id for [Employer](#employers) linked to this action
 `employer` | Object | false |  [Employer](#employers) linked to this action
