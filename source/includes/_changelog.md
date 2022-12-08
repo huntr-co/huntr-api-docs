@@ -36,3 +36,7 @@ Added validation for the `limit` parameter for requests that use the [List](#pag
 - API endpoints for managing [Tags](#tags)
 - New locations field in [Job Posts](#job-posts)
 - New tags field in [Job Posts](#job-posts)
+
+## Dec 8, 2022
+- New API endpoint to [Send Job Posts to Job Seekers](#send-job-posts-to-job-seekers)
+- New `memberEntries` body parameter in [Create Job Post](#create-job-post) endpoint to send job post to job seekers
