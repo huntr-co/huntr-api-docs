@@ -322,6 +322,9 @@
                   <li>
                     <a href="#create-job-post" class="toc-h2 toc-link" data-title="Create Job Post">Create Job Post</a>
                   </li>
+                  <li>
+                    <a href="#send-job-posts-to-job-seekers" class="toc-h2 toc-link" data-title="Send Job Posts to Job Seekers">Send Job Posts to Job Seekers</a>
+                  </li>
               </ul>
           </li>
           <li>
@@ -544,6 +547,9 @@
                   </li>
                   <li>
                     <a href="#nov-29-2022" class="toc-h2 toc-link" data-title="Nov 29, 2022">Nov 29, 2022</a>
+                  </li>
+                  <li>
+                    <a href="#dec-8-2022" class="toc-h2 toc-link" data-title="Dec 8, 2022">Dec 8, 2022</a>
                   </li>
               </ul>
           </li>
@@ -2716,7 +2722,11 @@ message and the field will not be created.</p>
         "name": "Huntr",
         "domain": "huntr.co"
     },
-    "tagIds": ["6375bf49678aa421b84e8743"]
+    "tagIds": ["6375bf49678aa421b84e8743"],
+    "memberEntries": [
+      {"email": "johns@gmail.com"},
+      {"memberId": "5b0379b5712bb674fd0d561e"}
+    ]
 }'</span>
 </code></pre>
 <blockquote>
@@ -2768,7 +2778,7 @@ message and the field will not be created.</p>
     </span><span class="p">}]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>This endpoint creates a single Job Post. If the job post status is <code>Open</code>, then this job will be published in your organization&#39;s job portal.</p>
+<p>This endpoint creates a single Job Post. If the job post status is <code>Open</code>, then this job will be published in your organization&#39;s job portal. See the <code>memberEntries</code> key if you&#39;d like to share the newly created job post with a list of job seekers in one request.</p>
 <h3 id='http-request-13'>HTTP Request</h3>
 <p><code>POST https://api.huntr.co/org/job-posts</code></p>
 <h3 id='json-body-parameters-3'>JSON Body Parameters</h3>
@@ -2864,6 +2874,54 @@ message and the field will not be created.</p>
 <td>Array</td>
 <td>Array of <a href="#tags">Tag</a> ids for this job post</td>
 </tr>
+<tr>
+<td><code>memberEntries</code></td>
+<td>no</td>
+<td>Array</td>
+<td>Array of objects specifying the job seekers you want to share this new Job Post with. Each entry is an object with either an <code>email</code> or <code>memberId</code> key corresponding to the member you want to send the job post to:  <code>{&quot;email&quot;: &quot;john@example.com&quot;}</code> or <code>{&quot;memberId&quot;: &quot;5b0379b5712bb674fd0d561e&quot;}</code>. If received, our system will queue up an asynchronous job to deliver this job post for each member included in <code>memberEntries</code>. The jobs should run and finish a few seconds after your request is received. Each delivery of the job post to a job seeker triggers a <code>JOB_CREATED</code> action you can listen to via our <a href="#webhooks">Webhooks</a>; the <a href="#actions">Action</a> body for the webhook will contain a <code>jobPost</code> key matching the job post that was just created.</td>
+</tr>
+</tbody></table>
+<h2 id='send-job-posts-to-job-seekers'>Send Job Posts to Job Seekers</h2><pre class="highlight shell tab-shell"><code>curl --location --request POST <span class="s1">'https://api.huntr.co/org/job-posts/send-to-members'</span> <span class="se">\</span>
+--header <span class="s1">'Authorization: Bearer &lt;ORG_ACCESS_TOKEN&gt;'</span> <span class="se">\</span>
+--header <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+--data-raw <span class="s1">'{
+    "jobPostIds": ["6041976280901dae754f0851", "6041976280901dae754f0852"],
+    "memberEntries": [
+      {"email": "johns@gmail.com"},
+      {"memberId": "5b0379b5712bb674fd0d561e"}
+    ]
+}'</span>
+</code></pre>
+<blockquote>
+<p>The above command sends 2 job posts to 2 job seekers and returns a <code>200 OK</code> status response</p>
+</blockquote>
+
+<p>This endpoint sends multiple job posts to job seekers&#39; Huntr boards in the form of a new <a href="#jobs">Job</a> card in each board. You can see all the job seekers that a job post has been shared with via the <strong>Pipeline</strong> tab of the Job Post details page in your advisor dashboard.</p>
+
+<p>This endpoint does not run synchronously, it only queues up asynchronous jobs to deliver the job posts to each member included in <code>memberEntries</code>. Thus, a <code>200</code> status response does not imply successful delivery, it only means that your job post delivery requests have been successfully queued up. The jobs should run and finish a few seconds after your request is received. Each delivery of the job post to a job seeker triggers a <code>JOB_CREATED</code> action you can listen to via our <a href="#webhooks">Webhooks</a>. The <a href="#actions">Action</a> body for the webhook will contain a <code>jobPost</code> key matching the job posts in the <code>jobPostIds</code> key of the original <code>job-posts/send-to-members</code> request. </p>
+<h3 id='http-request-14'>HTTP Request</h3>
+<p><code>POST https://api.huntr.co/org/job-posts/send-to-members</code></p>
+<h3 id='json-body-parameters-4'>JSON Body Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>jobPostIds</code></td>
+<td>yes</td>
+<td>Array</td>
+<td>array of ids for the job posts you want to send</td>
+</tr>
+<tr>
+<td><code>memberEntries</code></td>
+<td>yes</td>
+<td>Array</td>
+<td>Array of objects specifying the job seekers you want to share these job posts with. Each entry is an object with either an <code>email</code> or <code>memberId</code> key corresponding to the member you want to send the job post to:  <code>{&quot;email&quot;: &quot;john@example.com&quot;}</code> or <code>{&quot;memberId&quot;: &quot;5b0379b5712bb674fd0d561e&quot;}</code>.</td>
+</tr>
 </tbody></table>
 <h1 id='tags'>Tags</h1><h2 id='tag-resource'>Tag Resource</h2><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6375bf49678aa421b84e8743"</span><span class="p">,</span><span class="w">
@@ -2930,9 +2988,9 @@ message and the field will not be created.</p>
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint creates a new tag.</p>
-<h3 id='http-request-14'>HTTP Request</h3>
+<h3 id='http-request-15'>HTTP Request</h3>
 <p><code>POST https://api.huntr.co/org/tags</code></p>
-<h3 id='json-body-parameters-4'>JSON Body Parameters</h3>
+<h3 id='json-body-parameters-5'>JSON Body Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -2991,7 +3049,7 @@ message and the field will not be created.</p>
 
 </span></code></pre>
 <p>This endpoint lists all tags created by your organization</p>
-<h3 id='http-request-15'>HTTP Request</h3>
+<h3 id='http-request-16'>HTTP Request</h3>
 <p><code>GET https://api.huntr.co/org/tags</code></p>
 <h2 id='target-objects'>Target Objects</h2>
 <p>Target Objects refer to the types resources a tag can be applied to. There is currently only one type of target object</p>
@@ -3349,7 +3407,7 @@ message and the field will not be created.</p>
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint retrieves all activities for your organization, sorted from most recently created to oldest.</p>
-<h3 id='http-request-16'>HTTP Request</h3>
+<h3 id='http-request-17'>HTTP Request</h3>
 <p><code>GET https://api.huntr.co/org/activities</code></p>
 <h3 id='query-parameters-4'>Query Parameters</h3>
 <table><thead>
@@ -4283,7 +4341,7 @@ or Note a new Action will be created representing that event:</p>
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint retrieves all actions for your organization, sorted from most recently created to oldest.</p>
-<h3 id='http-request-17'>HTTP Request</h3>
+<h3 id='http-request-18'>HTTP Request</h3>
 <p><code>GET https://api.huntr.co/org/actions</code></p>
 <h3 id='query-parameters-5'>Query Parameters</h3>
 <table><thead>
@@ -4958,7 +5016,7 @@ or Note a new Action will be created representing that event:</p>
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint retrieves all employers to which your members have added a job for.</p>
-<h3 id='http-request-18'>HTTP Request</h3>
+<h3 id='http-request-19'>HTTP Request</h3>
 <p><code>GET https://api.huntr.co/org/employers</code></p>
 <h3 id='query-parameters-6'>Query Parameters</h3>
 <table><thead>
@@ -5275,7 +5333,7 @@ Starting in May 2020, the Events resource is being replaced by the Actions resou
 </aside>
 
 <p>This endpoint retrieves all events for your organization, sorted from most recently created to oldest.</p>
-<h3 id='http-request-19'>HTTP Request</h3>
+<h3 id='http-request-20'>HTTP Request</h3>
 <p><code>GET https://api.huntr.co/org/events</code></p>
 <h3 id='query-parameters-7'>Query Parameters</h3>
 <table><thead>
@@ -5579,6 +5637,11 @@ Starting in May 2020, the Events resource is being replaced by the Actions resou
 <li>API endpoints for managing <a href="#tags">Tags</a></li>
 <li>New locations field in <a href="#job-posts">Job Posts</a></li>
 <li>New tags field in <a href="#job-posts">Job Posts</a></li>
+</ul>
+<h2 id='dec-8-2022'>Dec 8, 2022</h2>
+<ul>
+<li>New API endpoint to <a href="#send-job-posts-to-job-seekers">Send Job Posts to Job Seekers</a></li>
+<li>New <code>memberEntries</code> body parameter in <a href="#create-job-post">Create Job Post</a> endpoint to send job post to job seekers</li>
 </ul>
 
       </div>
