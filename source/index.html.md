@@ -1801,7 +1801,11 @@ curl --location --request POST 'https://api.huntr.co/org/job-posts' \
         "name": "Huntr",
         "domain": "huntr.co"
     },
-    "tagIds": ["6375bf49678aa421b84e8743"]
+    "tagIds": ["6375bf49678aa421b84e8743"],
+    "memberEntries": [
+      {"email": "johns@gmail.com"},
+      {"memberId": "5b0379b5712bb674fd0d561e"}
+    ]
 }'
 ```
 
@@ -1855,7 +1859,7 @@ curl --location --request POST 'https://api.huntr.co/org/job-posts' \
 }
 ```
 
-This endpoint creates a single Job Post. If the job post status is `Open`, then this job will be published in your organization's job portal.
+This endpoint creates a single Job Post. If the job post status is `Open`, then this job will be published in your organization's job portal. See the `memberEntries` key if you'd like to share the newly created job post with a list of job seekers in one request.
 
 ### HTTP Request
 
@@ -1879,6 +1883,39 @@ Parameter | Required | Type | Description
 `locations` | no | Array | Array of locations of the opportunity. Location object is of type `{"name": "Huntr HQ", "address": "Seattle, WA, USA", "lat": "47.6038321", "lng": "-122.3300624"}`. Each included object requires either the `address` key or both `lat` and `lng` keys.
 `salary` | no | Object | A [Salary](#salary) object
 `tagIds` | no | Array | Array of [Tag](#tags) ids for this job post
+`memberEntries` | no | Array | Array of objects specifying the job seekers you want to share this new Job Post with. Each entry is an object with either an `email` or `memberId` key corresponding to the member you want to send the job post to:  `{"email": "john@example.com"}` or `{"memberId": "5b0379b5712bb674fd0d561e"}`. If received, our system will queue up an asynchronous job to deliver this job post for each member included in `memberEntries`. The jobs should run and finish a few seconds after your request is received. Each delivery of the job post to a job seeker triggers a `JOB_CREATED` action you can listen to via our [Webhooks](#webhooks); the [Action](#actions) body for the webhook will contain a `jobPost` key matching the job post that was just created.
+
+## Send Job Posts to Job Seekers
+
+```shell
+curl --location --request POST 'https://api.huntr.co/org/job-posts/send-to-members' \
+--header 'Authorization: Bearer <ORG_ACCESS_TOKEN>' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "jobPostIds": ["6041976280901dae754f0851", "6041976280901dae754f0852"],
+    "memberEntries": [
+      {"email": "johns@gmail.com"},
+      {"memberId": "5b0379b5712bb674fd0d561e"}
+    ]
+}'
+```
+
+> The above command sends 2 job posts to 2 job seekers and returns a `200 OK` status response
+
+This endpoint sends multiple job posts to job seekers' Huntr boards in the form of a new [Job](#jobs) card in each board. You can see all the job seekers that a job post has been shared with via the **Pipeline** tab of the Job Post details page in your advisor dashboard.
+
+This endpoint does not run synchronously, it only queues up asynchronous jobs to deliver the job posts to each member included in `memberEntries`. Thus, a `200` status response does not imply successful delivery, it only means that your job post delivery requests have been successfully queued up. The jobs should run and finish a few seconds after your request is received. Each delivery of the job post to a job seeker triggers a `JOB_CREATED` action you can listen to via our [Webhooks](#webhooks). The [Action](#actions) body for the webhook will contain a `jobPost` key matching the job posts in the `jobPostIds` key of the original `job-posts/send-to-members` request. 
+
+### HTTP Request
+
+`POST https://api.huntr.co/org/job-posts/send-to-members`
+
+### JSON Body Parameters
+
+Parameter | Required | Type | Description
+--------- | -------- | ---- | -----------
+`jobPostIds` | yes | Array | array of ids for the job posts you want to send
+`memberEntries` | yes | Array | Array of objects specifying the job seekers you want to share these job posts with. Each entry is an object with either an `email` or `memberId` key corresponding to the member you want to send the job post to:  `{"email": "john@example.com"}` or `{"memberId": "5b0379b5712bb674fd0d561e"}`.
 
 # Tags
 ## Tag Resource
