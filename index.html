@@ -546,10 +546,16 @@
                     <a href="#may-6-2022" class="toc-h2 toc-link" data-title="May 6, 2022">May 6, 2022</a>
                   </li>
                   <li>
+                    <a href="#june-15-2022" class="toc-h2 toc-link" data-title="June 15, 2022">June 15, 2022</a>
+                  </li>
+                  <li>
                     <a href="#nov-29-2022" class="toc-h2 toc-link" data-title="Nov 29, 2022">Nov 29, 2022</a>
                   </li>
                   <li>
                     <a href="#dec-8-2022" class="toc-h2 toc-link" data-title="Dec 8, 2022">Dec 8, 2022</a>
+                  </li>
+                  <li>
+                    <a href="#jan-27-2023" class="toc-h2 toc-link" data-title="Jan 27, 2023">Jan 27, 2023</a>
                   </li>
               </ul>
           </li>
@@ -819,6 +825,7 @@ Your Access Token carries many privileges, so be sure to keep them secure! Do no
     "email": "test@example.com",
     "boardName": "Job Search 2020",
   "boardTemplateId": "5a6e4a567e42789e6e65c986",
+  "advisorEmail": "john@huntr.co",
   "memberFieldValues": [
     {"fieldId": "5b3f908c99c94b6177d55a28", "value": "Vancouver"},
     {"fieldId": "5b3f9cf499c94b6177d55a2a", "value": "Web Design"}
@@ -914,6 +921,12 @@ to join your organization under Huntr.</p>
 <td>no</td>
 <td>Array</td>
 <td>Array of member field values to assign to the member when invitation is accepted. Each object in the array is of type <code>{fieldId: &quot;5b3f908c99c94b6177d55a28&quot;, value: &quot;Montreal&quot;}</code>, where <code>fieldId</code> represents the <code>id</code> of an existing <a href="#member-fields">Member Field</a></td>
+</tr>
+<tr>
+<td><code>advisorEmail</code></td>
+<td>no</td>
+<td>String</td>
+<td>Email address of the Huntr advisor you&#39;d like to assign to this member. Advisor must already have an advisor account under your organization with Huntr.</td>
 </tr>
 </tbody></table>
 <h1 id='members'>Members</h1><h2 id='member-resource'>Member Resource</h2>
@@ -1190,7 +1203,7 @@ to join your organization under Huntr.</p>
 <td>choices</td>
 <td>String</td>
 <td>false</td>
-<td>Choices found on member fields of fieldType <code>MULTIPLE_CHOICE</code></td>
+<td>Choices found on member fields of fieldType <code>MULTIPLE_CHOICE</code> and <code>MULTIPLE_SELECT</code></td>
 </tr>
 </tbody></table>
 <h2 id='types-of-member-fields'>Types of Member Fields</h2><h3 id='this-is-a-list-of-all-the-types-of-fields-currently-available'>This is a list of all the types of fields currently available.</h3>
@@ -1202,7 +1215,11 @@ to join your organization under Huntr.</p>
 </thead><tbody>
 <tr>
 <td><code>MULTIPLE_CHOICE</code></td>
-<td>Represents a multiple choice field type like &quot;Locations&quot; or &quot;Specialties&quot;</td>
+<td>Represents a multiple choice field for which each job seeker may only have a single value for. Like &quot;Cohort&quot; or &quot;Campus&quot;</td>
+</tr>
+<tr>
+<td><code>MULTIPLE_SELECT</code></td>
+<td>Represents a multiple choice field for which each job seeker may have multiple values for. Like &quot;Security Certifications&quot; or &quot;Specialties&quot;</td>
 </tr>
 <tr>
 <td><code>TEXT</code></td>
@@ -1349,9 +1366,9 @@ message and the field will not be created.</p>
 </tr>
 <tr>
 <td><code>choices</code></td>
-<td>only when <code>fieldType == &#39;MULTIPLE_CHOICE&#39;</code></td>
+<td>only when <code>fieldType == &#39;MULTIPLE_CHOICE&#39;</code> or <code>fieldType == &#39;MULTIPLE_SELECT&#39;</code></td>
 <td>Array</td>
-<td>List of strings representing choices in a field of type MULTIPLE_CHOICE</td>
+<td>List of strings representing choices in a field of type MULTIPLE_CHOICE or MULTIPLE_SELECT</td>
 </tr>
 </tbody></table>
 <h1 id='board-templates'>Board Templates</h1><h2 id='board-template-resource'>Board Template Resource</h2>
@@ -2898,7 +2915,7 @@ message and the field will not be created.</p>
 
 <p>This endpoint sends multiple job posts to job seekers&#39; Huntr boards in the form of a new <a href="#jobs">Job</a> card in each board. You can see all the job seekers that a job post has been shared with via the <strong>Pipeline</strong> tab of the Job Post details page in your advisor dashboard.</p>
 
-<p>This endpoint does not run synchronously, it only queues up asynchronous jobs to deliver the job posts to each member included in <code>memberEntries</code>. Thus, a <code>200</code> status response does not imply successful delivery, it only means that your job post delivery requests have been successfully queued up. The jobs should run and finish a few seconds after your request is received. Each delivery of the job post to a job seeker triggers a <code>JOB_CREATED</code> action you can listen to via our <a href="#webhooks">Webhooks</a>. The <a href="#actions">Action</a> body for the webhook will contain a <code>jobPost</code> key matching the job posts in the <code>jobPostIds</code> key of the original <code>job-posts/send-to-members</code> request. </p>
+<p>This endpoint does not run synchronously, it only queues up asynchronous jobs to deliver the job posts to each member included in <code>memberEntries</code>. Thus, a <code>200</code> status response does not imply successful delivery, it only means that your job post delivery requests have been successfully queued up. The jobs should run and finish a few seconds after your request is received. Each delivery of the job post to a job seeker triggers a <code>JOB_CREATED</code> action you can listen to via our <a href="#webhooks">Webhooks</a>. The <a href="#actions">Action</a> body for the webhook will contain a <code>jobPost</code> key matching the job posts in the <code>jobPostIds</code> key of the original <code>job-posts/send-to-members</code> request.</p>
 <h3 id='http-request-14'>HTTP Request</h3>
 <p><code>POST https://api.huntr.co/org/job-posts/send-to-members</code></p>
 <h3 id='json-body-parameters-4'>JSON Body Parameters</h3>
@@ -5631,6 +5648,10 @@ Starting in May 2020, the Events resource is being replaced by the Actions resou
 <li>Three new <a href="#action-types">Action Types</a> related to Documents: <code>DOCUMENT_CREATED</code>, <code>DOCUMENT_UPDATED</code>, <code>DOCUMENT_DELETED</code></li>
 <li>New <a href="#documents">Document</a> resource</li>
 </ul>
+<h2 id='june-15-2022'>June 15, 2022</h2>
+<ul>
+<li>New <code>MULTIPLE_SELECT</code> <a href="#types-of-member-fields">Member Field Type</a></li>
+</ul>
 <h2 id='nov-29-2022'>Nov 29, 2022</h2>
 <ul>
 <li>New <a href="#action-types">Action Type</a> for bulk updating job posts <code>BULK_JOB_POST_UPDATED</code></li>
@@ -5642,6 +5663,10 @@ Starting in May 2020, the Events resource is being replaced by the Actions resou
 <ul>
 <li>New API endpoint to <a href="#send-job-posts-to-job-seekers">Send Job Posts to Job Seekers</a></li>
 <li>New <code>memberEntries</code> body parameter in <a href="#create-job-post">Create Job Post</a> endpoint to send job post to job seekers</li>
+</ul>
+<h2 id='jan-27-2023'>Jan 27, 2023</h2>
+<ul>
+<li>New <code>advisorEmail</code> body parameter in <a href="#create-organization-invitation">Create Organization Invitation</a> endpoint to assign an advisor to newly invited members.</li>
 </ul>
 
       </div>
