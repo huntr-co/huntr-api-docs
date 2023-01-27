@@ -260,6 +260,7 @@ curl --location --request POST 'https://api.huntr.co/org/organization-invitation
 	"email": "test@example.com",
 	"boardName": "Job Search 2020",
   "boardTemplateId": "5a6e4a567e42789e6e65c986",
+  "advisorEmail": "john@huntr.co",
   "memberFieldValues": [
     {"fieldId": "5b3f908c99c94b6177d55a28", "value": "Vancouver"},
     {"fieldId": "5b3f9cf499c94b6177d55a2a", "value": "Web Design"}
@@ -336,6 +337,7 @@ Parameter | Required | Type | Description
 `boardName` | no | String | Name of board to be created for member
 `boardTemplateId` | no | String | Id of the board template to use when creating a board for member, if none is submitted it will default to Organization's default board template, or Huntr's default template if no template has been set as a default.
 `memberFieldValues` | no | Array | Array of member field values to assign to the member when invitation is accepted. Each object in the array is of type `{fieldId: "5b3f908c99c94b6177d55a28", value: "Montreal"}`, where `fieldId` represents the `id` of an existing [Member Field](#member-fields)
+`advisorEmail` | no | String | Email address of the Huntr advisor you'd like to assign to this member. Advisor must already have an advisor account under your organization with Huntr.
 
 # Members
 
@@ -1905,7 +1907,7 @@ curl --location --request POST 'https://api.huntr.co/org/job-posts/send-to-membe
 
 This endpoint sends multiple job posts to job seekers' Huntr boards in the form of a new [Job](#jobs) card in each board. You can see all the job seekers that a job post has been shared with via the **Pipeline** tab of the Job Post details page in your advisor dashboard.
 
-This endpoint does not run synchronously, it only queues up asynchronous jobs to deliver the job posts to each member included in `memberEntries`. Thus, a `200` status response does not imply successful delivery, it only means that your job post delivery requests have been successfully queued up. The jobs should run and finish a few seconds after your request is received. Each delivery of the job post to a job seeker triggers a `JOB_CREATED` action you can listen to via our [Webhooks](#webhooks). The [Action](#actions) body for the webhook will contain a `jobPost` key matching the job posts in the `jobPostIds` key of the original `job-posts/send-to-members` request. 
+This endpoint does not run synchronously, it only queues up asynchronous jobs to deliver the job posts to each member included in `memberEntries`. Thus, a `200` status response does not imply successful delivery, it only means that your job post delivery requests have been successfully queued up. The jobs should run and finish a few seconds after your request is received. Each delivery of the job post to a job seeker triggers a `JOB_CREATED` action you can listen to via our [Webhooks](#webhooks). The [Action](#actions) body for the webhook will contain a `jobPost` key matching the job posts in the `jobPostIds` key of the original `job-posts/send-to-members` request.
 
 ### HTTP Request
 

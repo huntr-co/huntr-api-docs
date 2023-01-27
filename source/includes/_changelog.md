@@ -43,3 +43,6 @@ Added validation for the `limit` parameter for requests that use the [List](#pag
 ## Dec 8, 2022
 - New API endpoint to [Send Job Posts to Job Seekers](#send-job-posts-to-job-seekers)
 - New `memberEntries` body parameter in [Create Job Post](#create-job-post) endpoint to send job post to job seekers
+
+## Jan 27, 2023
+- New `advisorEmail` body parameter in [Create Organization Invitation](#create-organization-invitation) endpoint to assign an advisor to newly invited members.
