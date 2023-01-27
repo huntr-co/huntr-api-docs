@@ -1448,6 +1448,15 @@ ID | The ID of the job to retrieve
         "lat": "40.6781784",
         "lng": "-73.9441579"
     },
+    "locations": [
+      {
+          "name": "Brooklyn",
+          "address": "Brooklyn, NY, USA",
+          "country": "United States",
+          "lat": "40.6781784",
+          "lng": "-73.9441579"
+      }
+    ],
     "jobPostStatus": {
         "name": "Open"
     },
@@ -1478,6 +1487,12 @@ ID | The ID of the job to retrieve
         "isActive": true,
         "memberFieldValues": []
     },
+    "tags": [{
+        "id": "6375bf49678aa421b84e8743",
+        "name": "🔥 Hot Jobs",
+        "description": "High demand job posts",
+        "color": "#FF0000",
+    }],
     "htmlDescription": "<h3>About <strong>Us:</strong></h3><p>We make software that anyone can mold and shape to take on every challenge — from taking personal notes to running large companies. We've been building together since 2016 and are trusted by customers including Nike, Airbnb, Slack, Samsung, and more. We're excited to be growing a team as diverse and creative as the millions of people we reach worldwide, and a company where everyone can thrive.</p><h3>About The Role:</h3><p>Do you want to help define what data means at Notion? We are looking to hire our first data engineer to guide the team with a vision for what our data tooling and infrastructure should look like as we scale, and then to build and operate those systems over time. With your background in data processing and warehousing, you'll partner with other members of the Data Team to evolve the infrastructure that allows Notion to make high quality decisions that are driven by data.</p><h3>What You'll Do:</h3><ul><li>You'll design and set up the tools that allow other members of the data team to easily write effective data pipelines.</li><li>You'll articulate best practices around logging frameworks and implement the changes to make those practices a reality.</li><li>You'll implement alerting systems to track data quality and consistency.</li><li>You'll create tools for data science team members that enable them to produce insights quickly and with high impact.</li><li>You'll help the Data Science team apply and generalize statistical and econometric models efficiently across large datasets.</li></ul><h3>What We're Looking For:</h3><ul><li><strong>Team player:</strong> For you, work isn't a solo endeavor. You have worked cross-functionally to establish the right overarching data architecture for a company's needs, to build data pipelines, and to provide guidance on best data practices for the business.</li><li><strong>Data tools experience:</strong> You have experience managing relational databases and authoring queries (SQL) and using workflow management technologies (e.g. Airflow, Luigi)</li><li><strong>Thoughtful problem-solving:</strong> For you, problem-solving starts with a clear and accurate understanding of the context. You can decompose tricky problems and work towards a clean solution, by yourself or with teammates. You're comfortable asking for help when you get stuck.</li><li><strong>Pragmatic and business-oriented:</strong> You care about business impact and prioritize projects accordingly. You're not just going after cool stuff—you understand the balance between craft, speed, and the bottom line.</li><li><strong>Put users first:</strong> You think critically about the implications of what you're building, and how it shapes real people's lives. You understand that reach comes with responsibility for our impact—good and bad.</li><li><strong>Not ideological about technology:</strong> To you, technologies and programming languages are about tradeoffs. You may be opinionated, but you're not ideological and can learn new technologies as you go.</li><li><strong>Empathetic communication:</strong> You communicate nuanced ideas clearly, whether you're explaining technical decisions in writing or brainstorming in real time. In disagreements, you engage thoughtfully with other perspectives and compromise when needed.</li></ul><h3>Bonus Points:</h3><ul><li>You've built out data infrastructure from, or nearly from, scratch at a fast-growing startup.</li><li>If you have led or managed a Data Engineering Team.</li></ul>"
 }
 ```
@@ -1495,13 +1510,21 @@ Field | Type | Description
 `jobType` | String | Job type, see [Job Types](#job-types)
 `isRemote` | Boolean | Defines if the job is a remote opportunity
 `salary` | Object | Job post salary
-`location` | Object | Object representing job post's location
+`location` | Object | Object representing job post's location. If a job has multiple locations, the first one is returned
+`locations` | Array | Array of objects representing multiple locations for a job post
 `jobPostStatus` | Object | Object representing job post's status
 `creatorMember` | Object | [Advisor](#members) who created the job post
 `ownerMember` | Object | [Advisor](#members) who owns the job post
 `employer`  | Object | [Employer](#employers) for the job post
+`tags` | Array | An array of [Tags](#tags)
 `postDate` | Unix timestamp | Date the job post was posted, your staff can change this date from the advisor portal
 `createdAt` | Unix timestamp | Date the job post was created by the member
+
+### Deprecated job post fields
+
+Field | Type | Replacement field | Description
+----- | ---- | ----------------- | -----------
+`location` | Object | `locations` | Object representing job post's location. If a job has multiple locations, the first one is returned
 
 ## Job Types
 
@@ -1548,6 +1571,13 @@ curl "https://api.huntr.co/org/job-posts?limit=2"
             "lat": "41.0930242",
             "lng": "-73.4539645"
         },
+        "locations": [{
+            "name": "Priceline",
+            "address": "800 Connecticut Ave, Norwalk, CT 06854, USA",
+            "country": "United States",
+            "lat": "41.0930242",
+            "lng": "-73.4539645"
+        }],
         "jobPostStatus": {
             "name": "Draft"
         },
@@ -1594,6 +1624,13 @@ curl "https://api.huntr.co/org/job-posts?limit=2"
             "lat": "37.7885052",
             "lng": "-122.396428"
         },
+        "locations": [{
+            "name": "Slack",
+            "address": "500 Howard St, San Francisco, CA 94105, USA",
+            "country": "United States",
+            "lat": "37.7885052",
+            "lng": "-122.396428"
+        }],
         "jobPostStatus": {
             "name": "Open"
         },
@@ -1623,7 +1660,13 @@ curl "https://api.huntr.co/org/job-posts?limit=2"
             "isActive": true,
             "memberFieldValues": []
         },
-        "employerId": "592ed813b67c6168772b19ec"
+        "employerId": "592ed813b67c6168772b19ec",
+        "tags": [{
+            "id": "6375bf49678aa421b84e8743",
+            "name": "🔥 Hot Jobs",
+            "description": "High demand job posts",
+            "color": "#FF0000",
+        }]
       }
     ],
     "next": "6037114e9c299b95bfd43158"
@@ -1675,6 +1718,13 @@ curl "https://api.huntr.co/org/job-posts/601da7c59ca97b1604508a1c"
         "lat": "40.6781784",
         "lng": "-73.9441579"
     },
+    "locations": [{
+        "name": "Brooklyn",
+        "address": "Brooklyn, NY, USA",
+        "country": "United States",
+        "lat": "40.6781784",
+        "lng": "-73.9441579"
+    }],
     "jobPostStatus": {
         "name": "Open"
     },
@@ -1704,7 +1754,13 @@ curl "https://api.huntr.co/org/job-posts/601da7c59ca97b1604508a1c"
         "isActive": true,
         "memberFieldValues": []
     },
-    "employerId": "5bbfe1c6ed9dc0f2dbb9fe76"
+    "employerId": "5bbfe1c6ed9dc0f2dbb9fe76",
+    "tags": [{
+        "id": "6375bf49678aa421b84e8743",
+        "name": "🔥 Hot Jobs",
+        "description": "High demand job posts",
+        "color": "#FF0000",
+    }]
 }
 ```
 
@@ -1734,7 +1790,7 @@ curl --location --request POST 'https://api.huntr.co/org/job-posts' \
     "htmlDescription": "<b>Description</b><p>An html job description</p>",
     "url": "https://huntr.co/jobs/1",
     "isRemote": false,
-    "location": {"address": "Seattle, WA, United States"},
+    "locations": [{"address": "Seattle, WA, United States"}],
     "postDate": 1614911232,
     "salary": {
         "min": "90000",
@@ -1745,7 +1801,12 @@ curl --location --request POST 'https://api.huntr.co/org/job-posts' \
     "employer": {
         "name": "Huntr",
         "domain": "huntr.co"
-    }
+    },
+    "tagIds": ["6375bf49678aa421b84e8743"],
+    "memberEntries": [
+      {"email": "johns@gmail.com"},
+      {"memberId": "5b0379b5712bb674fd0d561e"}
+    ]
 }'
 ```
 
@@ -1774,6 +1835,12 @@ curl --location --request POST 'https://api.huntr.co/org/job-posts' \
         "lat": "47.6038321",
         "lng": "-122.3300624"
     },
+    "locations": [{
+        "name": "Seattle, King County, Washington, USA",
+        "address": "Seattle, WA, United States",
+        "lat": "47.6038321",
+        "lng": "-122.3300624"
+    }],
     "jobPostStatus": {
         "name": "Open"
     },
@@ -1783,11 +1850,17 @@ curl --location --request POST 'https://api.huntr.co/org/job-posts' \
         "domain": "huntr.co",
         "isPartner": false
     },
-    "employerId": "584917a6e660b2d8a5b46bd1"
+    "employerId": "584917a6e660b2d8a5b46bd1",
+    "tags": [{
+        "id": "6375bf49678aa421b84e8743",
+        "name": "🔥 Hot Jobs",
+        "description": "High demand job posts",
+        "color": "#FF0000",
+    }]
 }
 ```
 
-This endpoint creates a single Job Post. If the job post status is `Open`, then this job will be published in your organization's job portal.
+This endpoint creates a single Job Post. If the job post status is `Open`, then this job will be published in your organization's job portal. See the `memberEntries` key if you'd like to share the newly created job post with a list of job seekers in one request.
 
 ### HTTP Request
 
@@ -1808,7 +1881,150 @@ Parameter | Required | Type | Description
 `isRemote` | no | Boolean | Defines if this is a remote opportunity or not
 `postDate` | no | Unix Timestamp | Timestamp denoting job post date.
 `location` | no | Object | Location of the opportunity. Object of type `{"name": "Huntr HQ", "address": "Seattle, WA, USA", "lat": "47.6038321", "lng": "-122.3300624"}`. If object is included, it requires either the `address` key or both `lat` and `lng` keys.
+`locations` | no | Array | Array of locations of the opportunity. Location object is of type `{"name": "Huntr HQ", "address": "Seattle, WA, USA", "lat": "47.6038321", "lng": "-122.3300624"}`. Each included object requires either the `address` key or both `lat` and `lng` keys.
 `salary` | no | Object | A [Salary](#salary) object
+`tagIds` | no | Array | Array of [Tag](#tags) ids for this job post
+`memberEntries` | no | Array | Array of objects specifying the job seekers you want to share this new Job Post with. Each entry is an object with either an `email` or `memberId` key corresponding to the member you want to send the job post to:  `{"email": "john@example.com"}` or `{"memberId": "5b0379b5712bb674fd0d561e"}`. If received, our system will queue up an asynchronous job to deliver this job post for each member included in `memberEntries`. The jobs should run and finish a few seconds after your request is received. Each delivery of the job post to a job seeker triggers a `JOB_CREATED` action you can listen to via our [Webhooks](#webhooks); the [Action](#actions) body for the webhook will contain a `jobPost` key matching the job post that was just created.
+
+## Send Job Posts to Job Seekers
+
+```shell
+curl --location --request POST 'https://api.huntr.co/org/job-posts/send-to-members' \
+--header 'Authorization: Bearer <ORG_ACCESS_TOKEN>' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "jobPostIds": ["6041976280901dae754f0851", "6041976280901dae754f0852"],
+    "memberEntries": [
+      {"email": "johns@gmail.com"},
+      {"memberId": "5b0379b5712bb674fd0d561e"}
+    ]
+}'
+```
+
+> The above command sends 2 job posts to 2 job seekers and returns a `200 OK` status response
+
+This endpoint sends multiple job posts to job seekers' Huntr boards in the form of a new [Job](#jobs) card in each board. You can see all the job seekers that a job post has been shared with via the **Pipeline** tab of the Job Post details page in your advisor dashboard.
+
+This endpoint does not run synchronously, it only queues up asynchronous jobs to deliver the job posts to each member included in `memberEntries`. Thus, a `200` status response does not imply successful delivery, it only means that your job post delivery requests have been successfully queued up. The jobs should run and finish a few seconds after your request is received. Each delivery of the job post to a job seeker triggers a `JOB_CREATED` action you can listen to via our [Webhooks](#webhooks). The [Action](#actions) body for the webhook will contain a `jobPost` key matching the job posts in the `jobPostIds` key of the original `job-posts/send-to-members` request. 
+
+### HTTP Request
+
+`POST https://api.huntr.co/org/job-posts/send-to-members`
+
+### JSON Body Parameters
+
+Parameter | Required | Type | Description
+--------- | -------- | ---- | -----------
+`jobPostIds` | yes | Array | array of ids for the job posts you want to send
+`memberEntries` | yes | Array | Array of objects specifying the job seekers you want to share these job posts with. Each entry is an object with either an `email` or `memberId` key corresponding to the member you want to send the job post to:  `{"email": "john@example.com"}` or `{"memberId": "5b0379b5712bb674fd0d561e"}`.
+
+# Tags
+## Tag Resource
+
+```json
+{
+  "id": "6375bf49678aa421b84e8743",
+  "name": "🔥 Hot Jobs",
+  "description": "High demand job posts",
+  "color": "#FF0000",
+  "targetObjects": ["JOB_POST"]
+}
+```
+
+Tags are keywords or identifiers which can be applied to records within Huntr.
+
+Field | Type | Description
+----- | ---- | -----------
+`id` | String | id for the tag
+`name` | String | Display name for the tag
+`description` | String | An internal description for what the tag describes
+`color` | String | Hex color for displaying this tag
+`targetObjects` | Array | Array of [Target Objects](#target-objects) this tag can be applied to
+
+## Create Tag
+
+```shell
+curl --location --request POST 'https://api.huntr.co/org/tags' \
+--header 'Authorization: Bearer <ORG_ACCESS_TOKEN>' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "name": "🔥 Hot Jobs",
+    "description": "High demand job posts",
+    "color": "#FF0000",
+    "targetObjects": ["JOB_POST"]
+}'
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "id": "6375bf49678aa421b84e8743",
+  "name": "🔥 Hot Jobs",
+  "description": "High demand job posts",
+  "color": "#FF0000",
+  "targetObjects": ["JOB_POST"]
+}
+```
+
+This endpoint creates a new tag.
+
+### HTTP Request
+
+`POST https://api.huntr.co/org/tags`
+
+### JSON Body Parameters
+
+Parameter | Required | Type | Description
+--------- | -------- | ---- | -----------
+`name` | yes | String | Tag name
+`description` | no | String | Internal tag description
+`color` | yes | String | Display color for this tag
+`targetObjects` | yes | Array | Array of [Target Objects](#target-objects) this tag can be applied to
+
+## List Tags
+
+```shell
+curl "https://api.huntr.co/org/tags"
+  -H "Authorization: Bearer <ORG_ACCESS_TOKEN>"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+[
+    {
+        "id": "6375bf49678aa421b84e8743",
+        "name": "🔥 Hot Jobs",
+        "description": "High demand job posts",
+        "color": "#FF0000",
+        "targetObjects": ["JOB_POST"]
+    },
+    {
+        "id": "6375bf2a678aa421b84e872e",
+        "name": "💎 Exclusive",
+        "description": "Organization exclusive jobs",
+        "color": "#A0A0FF",
+        "targetObjects": ["JOB_POST"]
+    }
+]
+
+```
+
+This endpoint lists all tags created by your organization
+
+### HTTP Request
+
+`GET https://api.huntr.co/org/tags`
+
+
+## Target Objects
+
+Target Objects refer to the types resources a tag can be applied to. There is currently only one type of target object
+
+Target Object | Description
+---------- | -----------
+`JOB_POST` |  Tag can be applied to [Job Posts](#job-posts)
 
 # Salary
 
@@ -2322,6 +2538,7 @@ Field | Type | In all actions | Description
 `job` | Object | false |  [Job](#jobs) linked to this action
 `jobs` | Array | false |  [Jobs](#jobs) linked to this action; only applies to Contact and Document related actions, since a contact and a document can be linked to multiple jobs
 `jobPostId` | String | false |  id for job post linked to this action
+`jobPostIds` | Array | false |  array of ids for job posts linked to this action
 `jobPost` | Object | false |  [Job Post](#job-posts) linked to this action
 `employerId` | String | false |  id for [Employer](#employers) linked to this action
 `employer` | Object | false |  [Employer](#employers) linked to this action
@@ -2369,6 +2586,7 @@ Action Type | Description | Extra fields
 `JOB_POST_CREATED` | A new job post is created | `jobPost` `employer`
 `JOB_POST_UPDATED` | A job post is updated | `jobPost` `employer` `update`
 `JOB_POST_DELETED` | A job post is deleted | `jobPostId` `employer`
+`BULK_JOB_POST_UPDATED` | Multiple job posts are updated | `jobPostIds` `update`
 `GOAL_CREATED` |  A new goal is created | `goal`
 `GOAL_UPDATED` |  A goal is updated | `goal` `update`
 `GOAL_ENROLLMENT_CREATED` |  A job seeker is enrolled into a goal | `goal` `goalEnrollment`

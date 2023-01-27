@@ -28,8 +28,18 @@ Added validation for the `limit` parameter for requests that use the [List](#pag
 - New potential status value for [Goal Progress](#goal-progresses): `UNENROLLED`
 
 ## May 6, 2022
-- Thre new [Action Types](#action-types) related to Documents: `DOCUMENT_CREATED`, `DOCUMENT_UPDATED`, `DOCUMENT_DELETED`
+- Three new [Action Types](#action-types) related to Documents: `DOCUMENT_CREATED`, `DOCUMENT_UPDATED`, `DOCUMENT_DELETED`
 - New [Document](#documents) resource
 
 ## June 15, 2022
 - New `MULTIPLE_SELECT` [Member Field Type](#types-of-member-fields)
+
+## Nov 29, 2022
+- New [Action Type](#action-types) for bulk updating job posts `BULK_JOB_POST_UPDATED`
+- API endpoints for managing [Tags](#tags)
+- New locations field in [Job Posts](#job-posts)
+- New tags field in [Job Posts](#job-posts)
+
+## Dec 8, 2022
+- New API endpoint to [Send Job Posts to Job Seekers](#send-job-posts-to-job-seekers)
+- New `memberEntries` body parameter in [Create Job Post](#create-job-post) endpoint to send job post to job seekers
