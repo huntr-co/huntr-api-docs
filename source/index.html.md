@@ -545,7 +545,7 @@ Field | Type | In all fields | Description
 id | String | true | Member field id
 name | String | true | Member field name
 fieldType | String | true | Field type
-choices | String | false | Choices found on member fields of fieldType `MULTIPLE_CHOICE`
+choices | String | false | Choices found on member fields of fieldType `MULTIPLE_CHOICE` and `MULTIPLE_SELECT`
 
 ## Types of Member Fields
 
@@ -553,7 +553,8 @@ choices | String | false | Choices found on member fields of fieldType `MULTIPLE
 
 `memberField.fieldType` | Description
 ----------------------- | -----------
-`MULTIPLE_CHOICE` | Represents a multiple choice field type like "Locations" or "Specialties"
+`MULTIPLE_CHOICE` | Represents a multiple choice field for which each job seeker may only have a single value for. Like "Cohort" or "Campus"
+`MULTIPLE_SELECT` | Represents a multiple choice field for which each job seeker may have multiple values for. Like "Security Certifications" or "Specialties"
 `TEXT` | Represents a text field type like "Nickname"
 `NUMBER` | Represents a number field type like "Age"
 `DATE` | Represents a date field type like "Graduation Date"
@@ -689,7 +690,7 @@ Parameter | Required | Type | Description
 --------- | -------- | ---- | -----------
 `name` | yes | String | Name of the new field, must be unique (i.e: you cannot have two fields with the same name)
 `fieldType` | yes | String | One of [type of member fields](#types-of-member-fields)
-`choices` | only when `fieldType == 'MULTIPLE_CHOICE'` | Array | List of strings representing choices in a field of type MULTIPLE_CHOICE
+`choices` | only when `fieldType == 'MULTIPLE_CHOICE'` or `fieldType == 'MULTIPLE_SELECT'` | Array | List of strings representing choices in a field of type MULTIPLE_CHOICE or MULTIPLE_SELECT
 
 # Board Templates
 

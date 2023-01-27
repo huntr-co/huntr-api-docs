@@ -31,6 +31,9 @@ Added validation for the `limit` parameter for requests that use the [List](#pag
 - Three new [Action Types](#action-types) related to Documents: `DOCUMENT_CREATED`, `DOCUMENT_UPDATED`, `DOCUMENT_DELETED`
 - New [Document](#documents) resource
 
+## June 15, 2022
+- New `MULTIPLE_SELECT` [Member Field Type](#types-of-member-fields)
+
 ## Nov 29, 2022
 - New [Action Type](#action-types) for bulk updating job posts `BULK_JOB_POST_UPDATED`
 - API endpoints for managing [Tags](#tags)
