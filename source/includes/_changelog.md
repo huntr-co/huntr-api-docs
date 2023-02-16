@@ -46,3 +46,7 @@ Added validation for the `limit` parameter for requests that use the [List](#pag
 
 ## Jan 27, 2023
 - New `advisorEmail` body parameter in [Create Organization Invitation](#create-organization-invitation) endpoint to assign an advisor to newly invited members.
+
+## Feb 15, 2023
+- New `memberFieldValuesKeyedById` field in [Member](#member-resource) resource for quick access to member's custom field values.
+- New `lastSeenAt` field in [Member](#member-resource).

@@ -353,12 +353,19 @@ Parameter | Required | Type | Description
     "email": "gracev@huntr.co",
     "createdAt": 1526954421,
     "isActive": true,
+    "lastSeenAt": 1526984421,
     "memberFieldValues": [
         {
             "fieldId": "5b3f908c99c94b6177d55a28",
             "value": "Montreal"
         }
-    ]
+    ],
+    "memberFieldValuesKeyedById": {
+      "5b3f908c99c94b6177d55a28": {
+        "fieldId": "5b3f908c99c94b6177d55a28",
+        "value": "Montreal"
+      }
+    }        
 }
 ```
 
@@ -373,6 +380,8 @@ email | String | Member's email
 createdAt | Unix timestamp | Date the member signed up for Huntr
 isActive | Boolean | Defines if member has been deactivated by an organization admin or advisor. Deactivating a member prevents them from continuing activity on boards managed by your organization, and it is usually done for members who have found a job and stopped using Huntr.
 memberFieldValues | Array | Array of assigned member field values. Each object in the array is of type `{fieldId: "5b3f908c99c94b6177d55a28", value: "Montreal"}`, where `fieldId` represents the `id` of an existing [Member Field](#member-fields)
+memberFieldValuesKeyedById | Object | The same elements seen as memberFieldValues, but keyed by fieldId for fast access.
+lastSeenAt | Unix timestamp | Last date the member was seen using Huntr (this includes logging in, saving jobs from extension, mobile, etc)
 
 ## List Members
 
