@@ -50,3 +50,8 @@ Added validation for the `limit` parameter for requests that use the [List](#pag
 ## Feb 15, 2023
 - New `memberFieldValuesKeyedById` field in [Member](#member-resource) resource for quick access to member's custom field values.
 - New `lastSeenAt` field in [Member](#member-resource).
+
+## Apr 4, 2023
+- New API endpoint to [List Goals](#list-goals)
+- New API endpoint to [Retrieve a Goal](#retrieve-a-goal)
+- New API endpoint to [Enroll Job Seeker in Goal](#create-goal-enrollment)
