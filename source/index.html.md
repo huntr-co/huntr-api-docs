@@ -2949,6 +2949,241 @@ Parameter | Type | Default | Description
 `enrollmentStartDate` | Unix timestamp | none | date when auto enrollments should start
 `oneTimeGoalDueDaysCount` | String | none | for `ONE_TIME` goals, details the number of days the job seeker has to complete this goal.
 
+## List Goals
+
+```shell
+curl "https://api.huntr.co/org/goals"
+  -H "Authorization: Bearer <ORG_ACCESS_TOKEN>"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+    "data": [{
+        "id": "642711341daf29393e1b2351",
+        "name": "Weekly Application Goal",
+        "description": "Job seekers have to  complete 5 activities of type Apply each week for 12 week(s) from the moment they are enrolled into this goal.\n\nJob seekers will be enrolled manually by advisors.",
+        "instructions": "<p>Each week, you must complete 5 job applications.</p>",
+        "status": "ACTIVE",
+        "scheduleType": "RECURRING",
+        "objectiveEntity": "Activity",
+        "objectiveTargetType": "NUMERIC",
+        "objectiveEntityConditions": [
+            {
+                "operator": "IS_IN",
+                "key": "_activityCategory",
+                "value": [
+                    "635c14b97370b10fbb987f10"
+                ]
+            },
+            {
+                "operator": "EQUAL",
+                "key": "completed",
+                "value": true
+            }
+        ],
+        "objectiveNumericTarget": 5,
+        "enrollmentType": "MANUAL",
+        "enrollmentTriggers": [],
+        "enrollmentStartDate": 1680281939,
+        "goalRecurrence": {
+            "byMonth": [],
+            "byMonthDay": [],
+            "byYearDay": [],
+            "byWeekNumber": [],
+            "byWeekDay": [],
+            "byHour": [],
+            "byMinute": [],
+            "bySecond": [],
+            "frequency": 2,
+            "start": "2023-03-27T00:00:00.000Z",
+            "interval": 1,
+            "count": 12,
+            "timezone": "America/Los_Angeles"
+        },
+        "firstGoalInterval": {
+            "id": "642711541eaf29393e1b2354",
+            "nextIntervalId": "642711541daf29393e1b2355",
+            "intervalIndex": 1,
+            "timezone": "America/Los_Angeles",
+            "goalId": "642711541daf29393e1b2351",
+            "start": 1679900400,
+            "end": 1680505200
+        },
+        "currentGoalInterval": {
+            "id": "642711541eaf29393e1b2355",
+            "nextIntervalId": "642711541daf29393e1b2356",
+            "previousIntervalId": "642711541daf29393e1b2354",
+            "intervalIndex": 2,
+            "timezone": "America/Los_Angeles",
+            "goalId": "642711541daf29393e1b2351",
+            "start": 1680505200,
+            "end": 1681110000
+        }
+    },
+    {
+        "id": "642bd7b0089c281e8d21344e",
+        "name": "Interview Goal",
+        "description": "Job seekers have to  complete 1 activities of type Interview each month for 6 month(s) from the moment they are enrolled into this goal.\n\nJob seekers will be enrolled manually by advisors.",
+        "instructions": "<p>Keep interviewing! Don't stop until you find that dream job 😊</p>",
+        "status": "ACTIVE",
+        "scheduleType": "RECURRING",
+        "objectiveEntity": "Activity",
+        "objectiveTargetType": "NUMERIC",
+        "objectiveEntityConditions": [
+            {
+                "operator": "IS_IN",
+                "key": "_activityCategory",
+                "value": [
+                    "635c14b97771b10fbb987f10"
+                ]
+            },
+            {
+                "operator": "EQUAL",
+                "key": "completed",
+                "value": true
+            }
+        ],
+        "objectiveNumericTarget": 1,
+        "enrollmentType": "MANUAL",
+        "enrollmentTriggers": [],
+        "enrollmentStartDate": 1680594864,
+        "goalRecurrence": {
+            "byMonth": [],
+            "byMonthDay": [],
+            "byYearDay": [],
+            "byWeekNumber": [],
+            "byWeekDay": [],
+            "byHour": [],
+            "byMinute": [],
+            "bySecond": [],
+            "frequency": 1,
+            "start": "2023-04-01T00:00:00.000Z",
+            "interval": 1,
+            "count": 6,
+            "timezone": "America/Los_Angeles"
+        },
+        "firstGoalInterval": {
+            "id": "642bd7b0089c281e8d213451",
+            "nextIntervalId": "642bd7b0089c281e8d213452",
+            "intervalIndex": 1,
+            "timezone": "America/Los_Angeles",
+            "goalId": "642bd7b0089c281e8d21344e",
+            "start": 1680332400,
+            "end": 1682924400
+        },
+        "currentGoalInterval": {
+            "id": "642bd7b0089c281e8d213451",
+            "nextIntervalId": "642bd7b0089c281e8d213452",
+            "intervalIndex": 1,
+            "timezone": "America/Los_Angeles",
+            "goalId": "642bd7b0089c281e8d21344e",
+            "start": 1680332400,
+            "end": 1682924400
+        }
+    }]
+}
+```
+
+This endpoint retrieves all goals for your organization. By default, only active goals are returned.
+
+### HTTP Request
+
+`GET https://api.huntr.co/org/goals`
+
+### Query Parameters
+
+Parameter | Type | Default | Description
+--------- | ---- | ------- | -----------
+`includeInactive` | Boolean | false | If true, will return inactive goals alongside active goals.
+
+## Retrieve a Goal
+
+```shell
+curl "https://api.huntr.co/org/goals/642711341daf29393e1b2351"
+  -H "Authorization: Bearer <ORG_ACCESS_TOKEN>"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+    "id": "642711341daf29393e1b2351",
+    "name": "Weekly Application Goal",
+    "description": "Job seekers have to  complete 5 activities of type Apply each week for 12 week(s) from the moment they are enrolled into this goal.\n\nJob seekers will be enrolled manually by advisors.",
+    "instructions": "<p>Each week, you must complete 5 job applications.</p>",
+    "status": "ACTIVE",
+    "scheduleType": "RECURRING",
+    "objectiveEntity": "Activity",
+    "objectiveTargetType": "NUMERIC",
+    "objectiveEntityConditions": [
+        {
+            "operator": "IS_IN",
+            "key": "_activityCategory",
+            "value": [
+                "635c14b97370b10fbb987f10"
+            ]
+        },
+        {
+            "operator": "EQUAL",
+            "key": "completed",
+            "value": true
+        }
+    ],
+    "objectiveNumericTarget": 5,
+    "enrollmentType": "MANUAL",
+    "enrollmentTriggers": [],
+    "enrollmentStartDate": 1680281939,
+    "goalRecurrence": {
+        "byMonth": [],
+        "byMonthDay": [],
+        "byYearDay": [],
+        "byWeekNumber": [],
+        "byWeekDay": [],
+        "byHour": [],
+        "byMinute": [],
+        "bySecond": [],
+        "frequency": 2,
+        "start": "2023-03-27T00:00:00.000Z",
+        "interval": 1,
+        "count": 12,
+        "timezone": "America/Los_Angeles"
+    },
+    "firstGoalInterval": {
+        "id": "642711541eaf29393e1b2354",
+        "nextIntervalId": "642711541daf29393e1b2355",
+        "intervalIndex": 1,
+        "timezone": "America/Los_Angeles",
+        "goalId": "642711541daf29393e1b2351",
+        "start": 1679900400,
+        "end": 1680505200
+    },
+    "currentGoalInterval": {
+        "id": "642711541eaf29393e1b2355",
+        "nextIntervalId": "642711541daf29393e1b2356",
+        "previousIntervalId": "642711541daf29393e1b2354",
+        "intervalIndex": 2,
+        "timezone": "America/Los_Angeles",
+        "goalId": "642711541daf29393e1b2351",
+        "start": 1680505200,
+        "end": 1681110000
+    }
+}
+```
+
+This endpoint retrieves a specific goal.
+
+### HTTP Request
+
+`GET https://api.huntr.co/org/goals/<ID>`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the goal to retrieve
+
 # Goal Enrollments
 
 ## Goal Enrollment Resource
@@ -2979,6 +3214,68 @@ Parameter | Type | Default | Description
 `goalId` | String | none | id for the goal
 `status` | String | none | status of the goal enrollment.
 `ownerMember` | Object | [Member](#members) who is participating in the goal
+
+## Create Goal Enrollment
+
+```shell
+curl --location --request POST 'https://api.huntr.co/org/goals/642711341daf29393e1b2351/enrollments' \
+--header 'Authorization: Bearer <ORG_ACCESS_TOKEN>' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "memberId": "64090fa941a8885a417d0c99",
+}'
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+    "id": "642da8d2aad714656f293a14",
+    "goalId": "642711341daf29393e1b2351",
+    "status": "ACTIVE",
+    "startingGoalIntervalId": "642711541eaf29393e1b2354",
+    "ownerMember": {
+        "id": "64090fa941a8885a417d0c99",
+        "fullName": "Peter Huntr",
+        "givenName": "Peter",
+        "familyName": "Huntr",
+        "email": "peter-huntr@huntr.co",
+        "createdAt": 1678315433,
+        "isActive": true,
+        "lastSeenAt": 1678316577,
+    },
+    "startingGoalInterval": {
+        "id": "642711541eaf29393e1b2354",
+        "nextIntervalId": "642da8c7aad714656f29389f",
+        "intervalIndex": 1,
+        "timezone": "America/Los_Angeles",
+        "goalId": "642da8c7aad714656f29389b",
+        "start": 1680505200,
+        "end": 1681110000
+    }
+}
+```
+
+This endpoint creates a new goal enrollment for an organization member.
+
+### HTTP Request
+
+`POST https://api.huntr.co/org/goals/<ID>/enrollments`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the goal to enroll the member in
+
+### JSON Body Parameters
+
+Parameter | Required | Type | Description
+--------- | -------- | ---- | -----------
+`memberId` | no | String | [Member](#members) id of member to be enrolled in this goal. Either `memberId` or `memberEmail` must be set.
+`memberEmail` | no | String | [Member](#members) email of member to be enrolled in this goal. Either `memberId` or `memberEmail` must be set.
+`startingGoalIntervalId` | no | String | For `RECURRING` goals, the id of the first goal interval for this member. Defaults to the current interval if not provided
+`oneTimeGoalStart` | no | Unix timestamp | For `ONE_TIME` goals, specifies the start time for this member. Defaults to now if not provided.
 
 # Goal Progresses
 
