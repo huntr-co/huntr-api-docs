@@ -424,6 +424,12 @@
                   <li>
                     <a href="#goal-resource" class="toc-h2 toc-link" data-title="Goal Resource">Goal Resource</a>
                   </li>
+                  <li>
+                    <a href="#list-goals" class="toc-h2 toc-link" data-title="List Goals">List Goals</a>
+                  </li>
+                  <li>
+                    <a href="#retrieve-a-goal" class="toc-h2 toc-link" data-title="Retrieve a Goal">Retrieve a Goal</a>
+                  </li>
               </ul>
           </li>
           <li>
@@ -431,6 +437,9 @@
               <ul class="toc-list-h2">
                   <li>
                     <a href="#goal-enrollment-resource" class="toc-h2 toc-link" data-title="Goal Enrollment Resource">Goal Enrollment Resource</a>
+                  </li>
+                  <li>
+                    <a href="#create-goal-enrollment" class="toc-h2 toc-link" data-title="Create Goal Enrollment">Create Goal Enrollment</a>
                   </li>
               </ul>
           </li>
@@ -559,6 +568,9 @@
                   </li>
                   <li>
                     <a href="#feb-15-2023" class="toc-h2 toc-link" data-title="Feb 15, 2023">Feb 15, 2023</a>
+                  </li>
+                  <li>
+                    <a href="#apr-4-2023" class="toc-h2 toc-link" data-title="Apr 4, 2023">Apr 4, 2023</a>
                   </li>
               </ul>
           </li>
@@ -4766,6 +4778,241 @@ or Note a new Action will be created representing that event:</p>
 <td>for <code>ONE_TIME</code> goals, details the number of days the job seeker has to complete this goal.</td>
 </tr>
 </tbody></table>
+<h2 id='list-goals'>List Goals</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.huntr.co/org/goals"</span>
+  -H <span class="s2">"Authorization: Bearer &lt;ORG_ACCESS_TOKEN&gt;"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"642711341daf29393e1b2351"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Weekly Application Goal"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Job seekers have to  complete 5 activities of type Apply each week for 12 week(s) from the moment they are enrolled into this goal.</span><span class="se">\n\n</span><span class="s2">Job seekers will be enrolled manually by advisors."</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"instructions"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;p&gt;Each week, you must complete 5 job applications.&lt;/p&gt;"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTIVE"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"scheduleType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RECURRING"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"objectiveEntity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Activity"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"objectiveTargetType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NUMERIC"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"objectiveEntityConditions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"operator"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IS_IN"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"_activityCategory"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                    </span><span class="s2">"635c14b97370b10fbb987f10"</span><span class="w">
+                </span><span class="p">]</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"operator"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EQUAL"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"completed"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"objectiveNumericTarget"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"enrollmentType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MANUAL"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"enrollmentTriggers"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+        </span><span class="s2">"enrollmentStartDate"</span><span class="p">:</span><span class="w"> </span><span class="mi">1680281939</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"goalRecurrence"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"byMonth"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+            </span><span class="s2">"byMonthDay"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+            </span><span class="s2">"byYearDay"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+            </span><span class="s2">"byWeekNumber"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+            </span><span class="s2">"byWeekDay"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+            </span><span class="s2">"byHour"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+            </span><span class="s2">"byMinute"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+            </span><span class="s2">"bySecond"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+            </span><span class="s2">"frequency"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-03-27T00:00:00.000Z"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"interval"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"timezone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"America/Los_Angeles"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"firstGoalInterval"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"642711541eaf29393e1b2354"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"nextIntervalId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"642711541daf29393e1b2355"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"intervalIndex"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"timezone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"America/Los_Angeles"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"goalId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"642711541daf29393e1b2351"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"start"</span><span class="p">:</span><span class="w"> </span><span class="mi">1679900400</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"end"</span><span class="p">:</span><span class="w"> </span><span class="mi">1680505200</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"currentGoalInterval"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"642711541eaf29393e1b2355"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"nextIntervalId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"642711541daf29393e1b2356"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"previousIntervalId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"642711541daf29393e1b2354"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"intervalIndex"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"timezone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"America/Los_Angeles"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"goalId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"642711541daf29393e1b2351"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"start"</span><span class="p">:</span><span class="w"> </span><span class="mi">1680505200</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"end"</span><span class="p">:</span><span class="w"> </span><span class="mi">1681110000</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"642bd7b0089c281e8d21344e"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Interview Goal"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Job seekers have to  complete 1 activities of type Interview each month for 6 month(s) from the moment they are enrolled into this goal.</span><span class="se">\n\n</span><span class="s2">Job seekers will be enrolled manually by advisors."</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"instructions"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;p&gt;Keep interviewing! Don't stop until you find that dream job 😊&lt;/p&gt;"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTIVE"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"scheduleType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RECURRING"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"objectiveEntity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Activity"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"objectiveTargetType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NUMERIC"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"objectiveEntityConditions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"operator"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IS_IN"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"_activityCategory"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                    </span><span class="s2">"635c14b97771b10fbb987f10"</span><span class="w">
+                </span><span class="p">]</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"operator"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EQUAL"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"completed"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"objectiveNumericTarget"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"enrollmentType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MANUAL"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"enrollmentTriggers"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+        </span><span class="s2">"enrollmentStartDate"</span><span class="p">:</span><span class="w"> </span><span class="mi">1680594864</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"goalRecurrence"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"byMonth"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+            </span><span class="s2">"byMonthDay"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+            </span><span class="s2">"byYearDay"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+            </span><span class="s2">"byWeekNumber"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+            </span><span class="s2">"byWeekDay"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+            </span><span class="s2">"byHour"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+            </span><span class="s2">"byMinute"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+            </span><span class="s2">"bySecond"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+            </span><span class="s2">"frequency"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-04-01T00:00:00.000Z"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"interval"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"timezone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"America/Los_Angeles"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"firstGoalInterval"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"642bd7b0089c281e8d213451"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"nextIntervalId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"642bd7b0089c281e8d213452"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"intervalIndex"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"timezone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"America/Los_Angeles"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"goalId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"642bd7b0089c281e8d21344e"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"start"</span><span class="p">:</span><span class="w"> </span><span class="mi">1680332400</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"end"</span><span class="p">:</span><span class="w"> </span><span class="mi">1682924400</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"currentGoalInterval"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"642bd7b0089c281e8d213451"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"nextIntervalId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"642bd7b0089c281e8d213452"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"intervalIndex"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"timezone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"America/Los_Angeles"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"goalId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"642bd7b0089c281e8d21344e"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"start"</span><span class="p">:</span><span class="w"> </span><span class="mi">1680332400</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"end"</span><span class="p">:</span><span class="w"> </span><span class="mi">1682924400</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">}]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint retrieves all goals for your organization. By default, only active goals are returned.</p>
+<h3 id='http-request-19'>HTTP Request</h3>
+<p><code>GET https://api.huntr.co/org/goals</code></p>
+<h3 id='query-parameters-6'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>includeInactive</code></td>
+<td>Boolean</td>
+<td>false</td>
+<td>If true, will return inactive goals alongside active goals.</td>
+</tr>
+</tbody></table>
+<h2 id='retrieve-a-goal'>Retrieve a Goal</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.huntr.co/org/goals/642711341daf29393e1b2351"</span>
+  -H <span class="s2">"Authorization: Bearer &lt;ORG_ACCESS_TOKEN&gt;"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"642711341daf29393e1b2351"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Weekly Application Goal"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Job seekers have to  complete 5 activities of type Apply each week for 12 week(s) from the moment they are enrolled into this goal.</span><span class="se">\n\n</span><span class="s2">Job seekers will be enrolled manually by advisors."</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"instructions"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;p&gt;Each week, you must complete 5 job applications.&lt;/p&gt;"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTIVE"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"scheduleType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RECURRING"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"objectiveEntity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Activity"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"objectiveTargetType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NUMERIC"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"objectiveEntityConditions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"operator"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IS_IN"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"_activityCategory"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"635c14b97370b10fbb987f10"</span><span class="w">
+            </span><span class="p">]</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"operator"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EQUAL"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"completed"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"objectiveNumericTarget"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"enrollmentType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MANUAL"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"enrollmentTriggers"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="s2">"enrollmentStartDate"</span><span class="p">:</span><span class="w"> </span><span class="mi">1680281939</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"goalRecurrence"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"byMonth"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+        </span><span class="s2">"byMonthDay"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+        </span><span class="s2">"byYearDay"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+        </span><span class="s2">"byWeekNumber"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+        </span><span class="s2">"byWeekDay"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+        </span><span class="s2">"byHour"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+        </span><span class="s2">"byMinute"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+        </span><span class="s2">"bySecond"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+        </span><span class="s2">"frequency"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-03-27T00:00:00.000Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"interval"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"timezone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"America/Los_Angeles"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"firstGoalInterval"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"642711541eaf29393e1b2354"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"nextIntervalId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"642711541daf29393e1b2355"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"intervalIndex"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"timezone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"America/Los_Angeles"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"goalId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"642711541daf29393e1b2351"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"start"</span><span class="p">:</span><span class="w"> </span><span class="mi">1679900400</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"end"</span><span class="p">:</span><span class="w"> </span><span class="mi">1680505200</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"currentGoalInterval"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"642711541eaf29393e1b2355"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"nextIntervalId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"642711541daf29393e1b2356"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"previousIntervalId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"642711541daf29393e1b2354"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"intervalIndex"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"timezone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"America/Los_Angeles"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"goalId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"642711541daf29393e1b2351"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"start"</span><span class="p">:</span><span class="w"> </span><span class="mi">1680505200</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"end"</span><span class="p">:</span><span class="w"> </span><span class="mi">1681110000</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint retrieves a specific goal.</p>
+<h3 id='http-request-20'>HTTP Request</h3>
+<p><code>GET https://api.huntr.co/org/goals/&lt;ID&gt;</code></p>
+<h3 id='url-parameters-5'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ID</td>
+<td>The ID of the goal to retrieve</td>
+</tr>
+</tbody></table>
 <h1 id='goal-enrollments'>Goal Enrollments</h1><h2 id='goal-enrollment-resource'>Goal Enrollment Resource</h2>
 <blockquote>
 <p>A goal enrollment object:</p>
@@ -4817,6 +5064,91 @@ or Note a new Action will be created representing that event:</p>
 <td>Object</td>
 <td><a href="#members">Member</a> who is participating in the goal</td>
 <td></td>
+</tr>
+</tbody></table>
+<h2 id='create-goal-enrollment'>Create Goal Enrollment</h2><pre class="highlight shell tab-shell"><code>curl --location --request POST <span class="s1">'https://api.huntr.co/org/goals/642711341daf29393e1b2351/enrollments'</span> <span class="se">\</span>
+--header <span class="s1">'Authorization: Bearer &lt;ORG_ACCESS_TOKEN&gt;'</span> <span class="se">\</span>
+--header <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+--data-raw <span class="s1">'{
+    "memberId": "64090fa941a8885a417d0c99",
+}'</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"642da8d2aad714656f293a14"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"goalId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"642711341daf29393e1b2351"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTIVE"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"startingGoalIntervalId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"642711541eaf29393e1b2354"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"ownerMember"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"64090fa941a8885a417d0c99"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"fullName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Peter Huntr"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"givenName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Peter"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"familyName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Huntr"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"peter-huntr@huntr.co"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1678315433</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"isActive"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"lastSeenAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1678316577</span><span class="p">,</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"startingGoalInterval"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"642711541eaf29393e1b2354"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"nextIntervalId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"642da8c7aad714656f29389f"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"intervalIndex"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"timezone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"America/Los_Angeles"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"goalId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"642da8c7aad714656f29389b"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"start"</span><span class="p">:</span><span class="w"> </span><span class="mi">1680505200</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"end"</span><span class="p">:</span><span class="w"> </span><span class="mi">1681110000</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint creates a new goal enrollment for an organization member.</p>
+<h3 id='http-request-21'>HTTP Request</h3>
+<p><code>POST https://api.huntr.co/org/goals/&lt;ID&gt;/enrollments</code></p>
+<h3 id='url-parameters-6'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ID</td>
+<td>The ID of the goal to enroll the member in</td>
+</tr>
+</tbody></table>
+<h3 id='json-body-parameters-6'>JSON Body Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>memberId</code></td>
+<td>no</td>
+<td>String</td>
+<td><a href="#members">Member</a> id of member to be enrolled in this goal. Either <code>memberId</code> or <code>memberEmail</code> must be set.</td>
+</tr>
+<tr>
+<td><code>memberEmail</code></td>
+<td>no</td>
+<td>String</td>
+<td><a href="#members">Member</a> email of member to be enrolled in this goal. Either <code>memberId</code> or <code>memberEmail</code> must be set.</td>
+</tr>
+<tr>
+<td><code>startingGoalIntervalId</code></td>
+<td>no</td>
+<td>String</td>
+<td>For <code>RECURRING</code> goals, the id of the first goal interval for this member. Defaults to the current interval if not provided</td>
+</tr>
+<tr>
+<td><code>oneTimeGoalStart</code></td>
+<td>no</td>
+<td>Unix timestamp</td>
+<td>For <code>ONE_TIME</code> goals, specifies the start time for this member. Defaults to now if not provided.</td>
 </tr>
 </tbody></table>
 <h1 id='goal-progresses'>Goal Progresses</h1><h2 id='goal-progress-resource'>Goal Progress Resource</h2>
@@ -5053,9 +5385,9 @@ or Note a new Action will be created representing that event:</p>
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint retrieves all employers to which your members have added a job for.</p>
-<h3 id='http-request-19'>HTTP Request</h3>
+<h3 id='http-request-22'>HTTP Request</h3>
 <p><code>GET https://api.huntr.co/org/employers</code></p>
-<h3 id='query-parameters-6'>Query Parameters</h3>
+<h3 id='query-parameters-7'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -5370,9 +5702,9 @@ Starting in May 2020, the Events resource is being replaced by the Actions resou
 </aside>
 
 <p>This endpoint retrieves all events for your organization, sorted from most recently created to oldest.</p>
-<h3 id='http-request-20'>HTTP Request</h3>
+<h3 id='http-request-23'>HTTP Request</h3>
 <p><code>GET https://api.huntr.co/org/events</code></p>
-<h3 id='query-parameters-7'>Query Parameters</h3>
+<h3 id='query-parameters-8'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -5692,6 +6024,12 @@ Starting in May 2020, the Events resource is being replaced by the Actions resou
 <ul>
 <li>New <code>memberFieldValuesKeyedById</code> field in <a href="#member-resource">Member</a> resource for quick access to member&#39;s custom field values.</li>
 <li>New <code>lastSeenAt</code> field in <a href="#member-resource">Member</a>.</li>
+</ul>
+<h2 id='apr-4-2023'>Apr 4, 2023</h2>
+<ul>
+<li>New API endpoint to <a href="#list-goals">List Goals</a></li>
+<li>New API endpoint to <a href="#retrieve-a-goal">Retrieve a Goal</a></li>
+<li>New API endpoint to <a href="#create-goal-enrollment">Enroll Job Seeker in Goal</a></li>
 </ul>
 
       </div>
