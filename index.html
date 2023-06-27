@@ -463,6 +463,22 @@
               </ul>
           </li>
           <li>
+            <a href="#organization-employer-requests" class="toc-h1 toc-link" data-title="Organization Employer Requests">Organization Employer Requests</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#organization-employer-request-resource" class="toc-h2 toc-link" data-title="Organization Employer Request Resource">Organization Employer Request Resource</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#organization-employer-partnerships" class="toc-h1 toc-link" data-title="Organization Employer Partnerships">Organization Employer Partnerships</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#organization-employer-partnership-resource" class="toc-h2 toc-link" data-title="Organization Employer Partnership Resource">Organization Employer Partnership Resource</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#events-deprecated" class="toc-h1 toc-link" data-title="Events (Deprecated)">Events (Deprecated)</a>
               <ul class="toc-list-h2">
                   <li>
@@ -4038,6 +4054,18 @@ or Note a new Action will be created representing that event:</p>
 <td><a href="#organization-invitations">Organization Invitation</a> that was accepted on <code>MEMBER_CREATED</code> actions.</td>
 </tr>
 <tr>
+<td><code>organizationEmployerRequest</code></td>
+<td>Object</td>
+<td>false</td>
+<td><a href="#organization-employer-requests">Organization Employer Request</a> related to Employer portal actions like <code>ORGANIZATION_EMPLOYER_REQUEST_CREATED</code> <code>ORGANIZATION_EMPLOYER_REQUEST_VERIFIED</code> <code>ORGANIZATION_EMPLOYER_REQUEST_APPROVED</code> <code>ORGANIZATION_EMPLOYER_REQUEST_DECLINED</code>.</td>
+</tr>
+<tr>
+<td><code>organizationEmployerPartnership</code></td>
+<td>Object</td>
+<td>false</td>
+<td><a href="#organization-employer-partnerships">Organization Employer Partnership</a> related to Employer portal actions like <code>ORGANIZATION_EMPLOYER_PARTNERSHIP_CREATED</code>.</td>
+</tr>
+<tr>
 <td><code>update</code></td>
 <td>Object</td>
 <td>false</td>
@@ -4228,6 +4256,31 @@ or Note a new Action will be created representing that event:</p>
 <td><code>DOCUMENT_DELETED</code></td>
 <td>A document is deleted</td>
 <td><code>documentId</code></td>
+</tr>
+<tr>
+<td><code>ORGANIZATION_EMPLOYER_REQUEST_CREATED</code></td>
+<td>Triggered immediately after a new employer request is created. When first triggered, request is still not linked to an employer in our DB.</td>
+<td><code>organizationEmployerRequest</code></td>
+</tr>
+<tr>
+<td><code>ORGANIZATION_EMPLOYER_REQUEST_VERIFIED</code></td>
+<td>Triggered after employer verifies their email and claims or joins their corresponding employer account. We suggest listening to this action instead of <code>ORGANIZATION_EMPLOYER_REQUEST_CREATED</code> for new request notifications.</td>
+<td><code>organizationEmployerRequest</code> <code>employer</code></td>
+</tr>
+<tr>
+<td><code>ORGANIZATION_EMPLOYER_REQUEST_APPROVED</code></td>
+<td>An employer request is approved by a team member</td>
+<td><code>organizationEmployerRequest</code> <code>employer</code></td>
+</tr>
+<tr>
+<td><code>ORGANIZATION_EMPLOYER_REQUEST_DECLINED</code></td>
+<td>An employer request is declined by a team member</td>
+<td><code>organizationEmployerRequest</code> <code>employer</code></td>
+</tr>
+<tr>
+<td><code>ORGANIZATION_EMPLOYER_PARTNERSHIP_CREATED</code></td>
+<td>First user from a new employer has joined your portal</td>
+<td><code>organizationEmployerPartnership</code> <code>employer</code></td>
 </tr>
 </tbody></table>
 <h2 id='list-actions'>List Actions</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.huntr.co/org/actions?limit=3"</span>
@@ -5409,6 +5462,123 @@ or Note a new Action will be created representing that event:</p>
 <td><code>next</code></td>
 <td>none</td>
 <td>If set, returns the next set of results after the object id provided</td>
+</tr>
+</tbody></table>
+<h1 id='organization-employer-requests'>Organization Employer Requests</h1><h2 id='organization-employer-request-resource'>Organization Employer Request Resource</h2>
+<blockquote>
+<p>An employer request object:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"648111fee7093f3013aeaefd"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"approvalStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"APPROVED"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"fromEmail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"karen.salgado@dropbox.com"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"utmTags"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"utm_source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"facebook"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"utm_medium"</span><span class="p">:</span><span class="w"> </span><span class="s2">"social"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"utm_campaign"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fb-2023"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1686180350</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"decidedAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1686180501</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This resource represents a request from a potential employer partner to join your talent portal.</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>String</td>
+<td>none</td>
+<td>id for the request</td>
+</tr>
+<tr>
+<td><code>approvalStatus</code></td>
+<td>String</td>
+<td><code>PENDING</code></td>
+<td>either <code>PENDING</code>, <code>APPROVED</code> or <code>REJECTED</code></td>
+</tr>
+<tr>
+<td><code>fromEmail</code></td>
+<td>String</td>
+<td>none</td>
+<td>Requester&#39;s email</td>
+</tr>
+<tr>
+<td><code>utmTags</code></td>
+<td>Object</td>
+<td><code>{}</code></td>
+<td>Any utm tags found in the url the employer used to reach your portal&#39;s signup form</td>
+</tr>
+<tr>
+<td><code>createdAt</code></td>
+<td>Unix timestamp</td>
+<td>none</td>
+<td>Date the request was created.</td>
+</tr>
+<tr>
+<td><code>decidedAt</code></td>
+<td>Unix timestamp</td>
+<td>none</td>
+<td>Date the request decision was made (either approved or rejected).</td>
+</tr>
+</tbody></table>
+<h1 id='organization-employer-partnerships'>Organization Employer Partnerships</h1><h2 id='organization-employer-partnership-resource'>Organization Employer Partnership Resource</h2>
+<blockquote>
+<p>An employer partnership object:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"647fc0f471dbf904d034305e"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"employerCanPostJobs"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"employerCanBrowseCandidates"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"employerId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5eb4719153a6366028ad14e6"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1686094068</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This resource represents an employer who has joined your talent portal. This is not to be confused with the Employer&#39;s <code>isPartner</code> field, which can be set to true by your team even for employers who have not signed up for your portal. In short, every employer who has joined your portal, will have a corresponding Organization Employer Partnership record.</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>String</td>
+<td>none</td>
+<td>id for the partnership</td>
+</tr>
+<tr>
+<td><code>employerCanPostJobs</code></td>
+<td>Boolean</td>
+<td>none</td>
+<td>Defines whether this employer can post jobs into your portal</td>
+</tr>
+<tr>
+<td><code>employerCanBrowseCandidates</code></td>
+<td>Boolean</td>
+<td>none</td>
+<td>Defines whether this employer can view your candidate profiles</td>
+</tr>
+<tr>
+<td><code>employerId</code></td>
+<td>String</td>
+<td>none</td>
+<td>id of the corresponding <a href="#employers">Employer</a></td>
+</tr>
+<tr>
+<td><code>createdAt</code></td>
+<td>Unix timestamp</td>
+<td>true</td>
+<td>Date the partnership was created.</td>
 </tr>
 </tbody></table>
 <h1 id='events-deprecated'>Events (Deprecated)</h1>
