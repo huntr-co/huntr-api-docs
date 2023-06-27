@@ -2567,6 +2567,8 @@ Field | Type | In all actions | Description
 `toList` | Object | false | List to which a job was moved or added to in `JOB_MOVED` and `JOB_CREATED` actions
 `member` | Object | false | [Member](#members) created in `MEMBER_CREATED` actions
 `organizationInvitation` | Object | false | [Organization Invitation](#organization-invitations) that was accepted on `MEMBER_CREATED` actions.
+`organizationEmployerRequest` | Object | false | [Organization Employer Request](#organization-employer-requests) related to Employer portal actions like `ORGANIZATION_EMPLOYER_REQUEST_CREATED` `ORGANIZATION_EMPLOYER_REQUEST_VERIFIED` `ORGANIZATION_EMPLOYER_REQUEST_APPROVED` `ORGANIZATION_EMPLOYER_REQUEST_DECLINED`.
+`organizationEmployerPartnership` | Object | false | [Organization Employer Partnership](#organization-employer-partnerships) related to Employer portal actions like `ORGANIZATION_EMPLOYER_PARTNERSHIP_CREATED`.
 `update` | Object | false | Entry used to update the resource, only shown in Update actions
 
 ## Action Types
@@ -2610,6 +2612,11 @@ Action Type | Description | Extra fields
 `DOCUMENT_CREATED` |  A new document is created | `document` `jobs`
 `DOCUMENT_UPDATED` |  A document is updated | `document` `jobs` `update`
 `DOCUMENT_DELETED` |  A document is deleted | `documentId`
+`ORGANIZATION_EMPLOYER_REQUEST_CREATED` |  Triggered immediately after a new employer request is created. When first triggered, request is still not linked to an employer in our DB. | `organizationEmployerRequest`
+`ORGANIZATION_EMPLOYER_REQUEST_VERIFIED` | Triggered after employer verifies their email and claims or joins their corresponding employer account. We suggest listening to this action instead of `ORGANIZATION_EMPLOYER_REQUEST_CREATED` for new request notifications. | `organizationEmployerRequest` `employer`
+`ORGANIZATION_EMPLOYER_REQUEST_APPROVED` |  An employer request is approved by a team member | `organizationEmployerRequest` `employer`
+`ORGANIZATION_EMPLOYER_REQUEST_DECLINED` |  An employer request is declined by a team member | `organizationEmployerRequest` `employer`
+`ORGANIZATION_EMPLOYER_PARTNERSHIP_CREATED` | First user from a new employer has joined your portal | `organizationEmployerPartnership` `employer`
 
 ## List Actions
 
@@ -3416,6 +3423,64 @@ Parameter | Default | Description
 `limit` | 100 | Defines the maximum number of employers to return
 `isPartner` | none | Set this parameter to `true` if you want to retrieve only your employers marked as partners
 `next` | none | If set, returns the next set of results after the object id provided
+
+# Organization Employer Requests
+
+## Organization Employer Request Resource
+
+> An employer request object:
+
+```json
+{
+    "id": "648111fee7093f3013aeaefd",
+    "approvalStatus": "APPROVED",
+    "fromEmail": "karen.salgado@dropbox.com",
+    "utmTags": {
+        "utm_source": "facebook",
+        "utm_medium": "social",
+        "utm_campaign": "fb-2023"
+    },
+    "createdAt": 1686180350,
+    "decidedAt": 1686180501
+}
+```
+
+This resource represents a request from a potential employer partner to join your talent portal.
+
+Parameter | Type | Default | Description
+--------- | ---- | ------- | -----------
+`id` | String | none | id for the request
+`approvalStatus` | String | `PENDING` | either `PENDING`, `APPROVED` or `REJECTED`
+`fromEmail` | String | none | Requester's email
+`utmTags` | Object | `{}` | Any utm tags found in the url the employer used to reach your portal's signup form
+`createdAt` | Unix timestamp | none | Date the request was created.
+`decidedAt` | Unix timestamp | none | Date the request decision was made (either approved or rejected).
+
+# Organization Employer Partnerships
+
+## Organization Employer Partnership Resource
+
+> An employer partnership object:
+
+```json
+{
+    "id": "647fc0f471dbf904d034305e",
+    "employerCanPostJobs": true,
+    "employerCanBrowseCandidates": true,
+    "employerId": "5eb4719153a6366028ad14e6",
+    "createdAt": 1686094068
+}
+```
+
+This resource represents an employer who has joined your talent portal. This is not to be confused with the Employer's `isPartner` field, which can be set to true by your team even for employers who have not signed up for your portal. In short, every employer who has joined your portal, will have a corresponding Organization Employer Partnership record.
+
+Parameter | Type | Default | Description
+--------- | ---- | ------- | -----------
+`id` | String | none | id for the partnership
+`employerCanPostJobs` | Boolean | none | Defines whether this employer can post jobs into your portal
+`employerCanBrowseCandidates` | Boolean | none | Defines whether this employer can view your candidate profiles
+`employerId` | String | none | id of the corresponding [Employer](#employers)
+`createdAt` | Unix timestamp | true | Date the partnership was created.
 
 # Events (Deprecated)
 
