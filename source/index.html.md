@@ -579,7 +579,11 @@ curl "https://api.huntr.co/org/members/5a9b3d392bd2e22e37dee4f0"
     "advisor": {
         "id": "64befb78b1ad13706cad0745",
         "fullName": "Alice Advisor",
+        "givenName": "Alice",
+        "familyName": "Advisor",
         "email": "alice@huntr.co",
+        "createdAt": 1666980452,
+        "lastSeenAt": 1689792002,
     }
 }
 ```
