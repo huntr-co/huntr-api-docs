@@ -75,7 +75,16 @@ curl "https://api.huntr.co/org/members?limit=2"
             "familyName": "Varela",
             "email": "gracev@huntr.co",
             "createdAt": 1526954421,
-            "isActive": true
+            "isActive": true,
+            "advisor": {
+                "id": "64befb78b1ad13706cad0745",
+                "fullName": "Alice Advisor",
+                "givenName": "Alice",
+                "familyName": "Advisor",
+                "email": "alice@huntr.co",
+                "createdAt": 1666980452,
+                "lastSeenAt": 1689792002,
+            }
         },
         {
             "id": "5b037898b7f93473edc1c43a",
@@ -83,7 +92,16 @@ curl "https://api.huntr.co/org/members?limit=2"
             "familyName": "Haylock",
             "email": "nicoleh@huntr.co",
             "createdAt": 1526954136,
-            "isActive": false
+            "isActive": false,
+            "advisor": {
+                "id": "64befb996efb7b393bfba5fb",
+                "fullName": "Bob Advisor",
+                "givenName": "Bob",
+                "familyName": "Advisor",
+                "createdAt": 1666980452,
+                "lastSeenAt": 1689792002,
+                "email": "bob@huntr.co",
+            }
         }
     ],
     "next": "5b037898b7f93473edc1c43a"
@@ -339,6 +357,76 @@ Parameter | Required | Type | Description
 `memberFieldValues` | no | Array | Array of member field values to assign to the member when invitation is accepted. Each object in the array is of type `{fieldId: "5b3f908c99c94b6177d55a28", value: "Montreal"}`, where `fieldId` represents the `id` of an existing [Member Field](#member-fields)
 `advisorEmail` | no | String | Email address of the Huntr advisor you'd like to assign to this member. Advisor must already have an advisor account under your organization with Huntr.
 
+# Advisors
+## Advisor Resource
+
+> An advisor of your organization:
+
+```json
+{
+    "id": "64befb78b1ad13706cad0745",
+    "fullName": "Alice Advisor",
+    "givenName": "Alice",
+    "familyName": "Advisor",
+    "email": "alice@huntr.co",
+    "createdAt": 1666980452,
+    "lastSeenAt": 1689792002,
+}
+```
+
+An advisor within your organization
+
+Field | Type | Description
+----- | ---- | -----------
+id | String | Advisors's Huntr id
+givenName | String | Advisor's given name
+familyName | String | Advisor's family name
+fullName | String | Advisor's full name
+email | String | Advisor's email
+createdAt | Unix timestamp | Date the advisor signed up for Huntr
+lastSeenAt | Unix timestamp | Last date the advisor was seen using Huntr
+
+## List Advisors
+
+```shell
+curl "https://api.huntr.co/org/advisors"
+  -H "Authorization: Bearer <ORG_ACCESS_TOKEN>"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+    "data": [
+        {
+            "id": "64befb78b1ad13706cad0745",
+            "fullName": "Alice Advisor",
+            "givenName": "Alice",
+            "familyName": "Advisor",
+            "email": "alice@huntr.co",
+            "createdAt": 1666980452,
+            "lastSeenAt": 1689792002
+        }
+        {
+            "id": "64befb78b1ad13706cad0746",
+            "fullName": "Bob Advisor",
+            "givenName": "Bob",
+            "familyName": "Advisor",
+            "createdAt": 1666980452,
+            "lastSeenAt": 1689792002,
+            "email": "bob@huntr.co",
+        }
+    ]
+}
+```
+
+This endpoint retrieves all advisors for your organization.
+
+### HTTP Request
+
+`GET https://api.huntr.co/org/advisors`
+
+
 # Members
 
 ## Member Resource
@@ -365,7 +453,16 @@ Parameter | Required | Type | Description
         "fieldId": "5b3f908c99c94b6177d55a28",
         "value": "Montreal"
       }
-    }        
+    },
+    "advisor": {
+        "id": "64befb78b1ad13706cad0745",
+        "fullName": "Alice Advisor",
+        "givenName": "Alice",
+        "familyName": "Advisor",
+        "email": "alice@huntr.co",
+        "createdAt": 1666980452,
+        "lastSeenAt": 1689792002,
+    }
 }
 ```
 
@@ -382,6 +479,7 @@ isActive | Boolean | Defines if member has been deactivated by an organization a
 memberFieldValues | Array | Array of assigned member field values. Each object in the array is of type `{fieldId: "5b3f908c99c94b6177d55a28", value: "Montreal"}`, where `fieldId` represents the `id` of an existing [Member Field](#member-fields)
 memberFieldValuesKeyedById | Object | The same elements seen as memberFieldValues, but keyed by fieldId for fast access.
 lastSeenAt | Unix timestamp | Last date the member was seen using Huntr (this includes logging in, saving jobs from extension, mobile, etc)
+advisor | Object | [Advisor](#advisors) who this job seeker is assigned to
 
 ## List Members
 
@@ -402,7 +500,16 @@ curl "https://api.huntr.co/org/members?active=true&limit=3"
             "email": "robertom@huntr.co",
             "createdAt": 1526953927,
             "isActive": true,
-            "memberFieldValues": []
+            "memberFieldValues": [],
+            "advisor": {
+                "id": "64befb78b1ad13706cad0745",
+                "fullName": "Alice Advisor",
+                "givenName": "Alice",
+                "familyName": "Advisor",
+                "email": "alice@huntr.co",
+                "createdAt": 1666980452,
+                "lastSeenAt": 1689792002
+            }
         },
         {
             "id": "5a9f699edd2f935a4e5b263a",
@@ -420,7 +527,16 @@ curl "https://api.huntr.co/org/members?active=true&limit=3"
             "email": "johns@huntr.co",
             "createdAt": 1520123193,
             "isActive": true,
-            "memberFieldValues": []
+            "memberFieldValues": [],
+            "advisor": {
+                "id": "64befb996efb7b393bfba5fb",
+                "fullName": "Bob Advisor",
+                "givenName": "Bob",
+                "familyName": "Advisor",
+                "email": "bob@huntr.co",
+                "createdAt": 1666980452,
+                "lastSeenAt": 1689792002,
+            }
         }
     ],
     "next": "5a9b3d392bd2e22e37dee4f0"
@@ -459,7 +575,12 @@ curl "https://api.huntr.co/org/members/5a9b3d392bd2e22e37dee4f0"
     "email": "johns@huntr.co",
     "createdAt": 1520123193,
     "isActive": true,
-    "memberFieldValues": []
+    "memberFieldValues": [],
+    "advisor": {
+        "id": "64befb78b1ad13706cad0745",
+        "fullName": "Alice Advisor",
+        "email": "alice@huntr.co",
+    }
 }
 ```
 
