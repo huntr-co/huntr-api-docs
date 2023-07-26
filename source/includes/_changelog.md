@@ -55,3 +55,7 @@ Added validation for the `limit` parameter for requests that use the [List](#pag
 - New API endpoint to [List Goals](#list-goals)
 - New API endpoint to [Retrieve a Goal](#retrieve-a-goal)
 - New API endpoint to [Enroll Job Seeker in Goal](#create-goal-enrollment)
+
+## July 24, 2023
+- New API endpoint to [List Advisors](#list-advisors)
+- New [Advisor](#advisor-resource) field in [Member](#member-resource)
