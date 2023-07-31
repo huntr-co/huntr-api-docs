@@ -976,6 +976,8 @@ This endpoint retrieves all board templates for your organization.
 ```json
 {
     "id": "5eb0a4338899ba51bf96f645",
+    "boardId": "5eb0a4338899ba51bf94a641",
+    "listId": "5eb0a4338899ba51bf76f571",
     "title": "Senior Engineer",
     "htmlDescription": "<p><strong>Description</strong></p><p>Great opportunity</p>",
     "salary": "$90k",
@@ -1125,6 +1127,8 @@ A job is an instance of a job opportunity that one of your members has added to 
 Field | Type | Description
 ----- | ---- | -----------
 `id` | String | Job's id
+`boardId` | String | Id of the job seeker Board the job lives in
+`listId` | String | Id of the List within a Board the job is currently at
 `title` | String | Job title  
 `description` | String | Job description
 `htmlDescription` | String | Html Job description
@@ -2668,8 +2672,8 @@ Field | Type | In all actions | Description
 `actionType` | String | true | Type of action
 `date` | Unix timestamp | true | Date when the action happened
 `createdByWorkflow` | Boolean | true | If true, it means the Action was taken by the Huntr system as a response to another user action; like a job being moved to a specific stage. See [Workflows](#workflows) for more information.
-`ownerMember` | Object | true | Member who owns the board where the action occurred. i.e: your job seeker
 `creatorMember` | Object | true | Member who took the action. In most cases, this is your job seeker; but if an advisor took the action, then it would be your advisor.
+`ownerMember` | Object | false | Member who owns the board where the action occurred. i.e: your job seeker
 `jobId` | String | false |  id for job linked to this action
 `job` | Object | false |  [Job](#jobs) linked to this action
 `jobs` | Array | false |  [Jobs](#jobs) linked to this action; only applies to Contact and Document related actions, since a contact and a document can be linked to multiple jobs
@@ -2682,6 +2686,7 @@ Field | Type | In all actions | Description
 `activityId` | String | false |  id for Activity linked to this action
 `activity` | Object | false |  [Activity](#activities) linked to this action; only applies to Activity actions
 `activityCategory` | Object | false |  [Activity Category](#activity-categories) linked to this action; only applies to Activity actions
+`boardId` | String | false |  id for Board linked to this action. i.e: Board where job was created in a `JOB_CREATED` action
 `noteId` | String | false |  id for note linked to this action
 `note` | Object | false |  [Note](#notes) linked to this action; only applies to Note actions
 `contactId` | String | false |  id for contact linked to this action
@@ -2689,7 +2694,9 @@ Field | Type | In all actions | Description
 `documentId` | String | false |  id for document linked to this action
 `document` | Object | false |  [Document](#documents) linked to this action; only applies to Document actions
 `fromList` | Object | false | List from which job was moved in a `JOB_MOVED` action
+`fromListId` | String | false |  List id from which a job was moved in `JOB_MOVED` action
 `toList` | Object | false | List to which a job was moved or added to in `JOB_MOVED` and `JOB_CREATED` actions
+`toListId` | String | false |  List id to which a job was moved or added to in `JOB_MOVED` and `JOB_CREATED` actions
 `member` | Object | false | [Member](#members) created in `MEMBER_CREATED` actions
 `organizationInvitation` | Object | false | [Organization Invitation](#organization-invitations) that was accepted on `MEMBER_CREATED` actions.
 `organizationEmployerRequest` | Object | false | [Organization Employer Request](#organization-employer-requests) related to Employer portal actions like `ORGANIZATION_EMPLOYER_REQUEST_CREATED` `ORGANIZATION_EMPLOYER_REQUEST_VERIFIED` `ORGANIZATION_EMPLOYER_REQUEST_APPROVED` `ORGANIZATION_EMPLOYER_REQUEST_DECLINED`.

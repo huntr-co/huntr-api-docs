@@ -59,3 +59,7 @@ Added validation for the `limit` parameter for requests that use the [List](#pag
 ## July 24, 2023
 - New API endpoint to [List Advisors](#list-advisors)
 - New [Advisor](#advisor-resource) field in [Member](#member-resource)
+
+## July 31, 2023
+- New `boardId`, `listId` and `list.id` fields in [Job](#jobs) resource
+- New `boardId`, `fromListId` and `toListId` fields in [Action](#actions) resource
