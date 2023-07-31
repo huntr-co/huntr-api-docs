@@ -602,6 +602,9 @@
                   <li>
                     <a href="#july-24-2023" class="toc-h2 toc-link" data-title="July 24, 2023">July 24, 2023</a>
                   </li>
+                  <li>
+                    <a href="#july-31-2023" class="toc-h2 toc-link" data-title="July 31, 2023">July 31, 2023</a>
+                  </li>
               </ul>
           </li>
       </div>
@@ -1750,6 +1753,8 @@ message and the field will not be created.</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5eb0a4338899ba51bf96f645"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"boardId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5eb0a4338899ba51bf94a641"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"listId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5eb0a4338899ba51bf76f571"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Senior Engineer"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"htmlDescription"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;p&gt;&lt;strong&gt;Description&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;Great opportunity&lt;/p&gt;"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"salary"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$90k"</span><span class="p">,</span><span class="w">
@@ -1906,6 +1911,16 @@ message and the field will not be created.</p>
 <td><code>id</code></td>
 <td>String</td>
 <td>Job&#39;s id</td>
+</tr>
+<tr>
+<td><code>boardId</code></td>
+<td>String</td>
+<td>Id of the job seeker Board the job lives in</td>
+</tr>
+<tr>
+<td><code>listId</code></td>
+<td>String</td>
+<td>Id of the List within a Board the job is currently at</td>
 </tr>
 <tr>
 <td><code>title</code></td>
@@ -4074,16 +4089,16 @@ or Note a new Action will be created representing that event:</p>
 <td>If true, it means the Action was taken by the Huntr system as a response to another user action; like a job being moved to a specific stage. See <a href="#workflows">Workflows</a> for more information.</td>
 </tr>
 <tr>
-<td><code>ownerMember</code></td>
-<td>Object</td>
-<td>true</td>
-<td>Member who owns the board where the action occurred. i.e: your job seeker</td>
-</tr>
-<tr>
 <td><code>creatorMember</code></td>
 <td>Object</td>
 <td>true</td>
 <td>Member who took the action. In most cases, this is your job seeker; but if an advisor took the action, then it would be your advisor.</td>
+</tr>
+<tr>
+<td><code>ownerMember</code></td>
+<td>Object</td>
+<td>false</td>
+<td>Member who owns the board where the action occurred. i.e: your job seeker</td>
 </tr>
 <tr>
 <td><code>jobId</code></td>
@@ -4158,6 +4173,12 @@ or Note a new Action will be created representing that event:</p>
 <td><a href="#activity-categories">Activity Category</a> linked to this action; only applies to Activity actions</td>
 </tr>
 <tr>
+<td><code>boardId</code></td>
+<td>String</td>
+<td>false</td>
+<td>id for Board linked to this action. i.e: Board where job was created in a <code>JOB_CREATED</code> action</td>
+</tr>
+<tr>
 <td><code>noteId</code></td>
 <td>String</td>
 <td>false</td>
@@ -4200,10 +4221,22 @@ or Note a new Action will be created representing that event:</p>
 <td>List from which job was moved in a <code>JOB_MOVED</code> action</td>
 </tr>
 <tr>
+<td><code>fromListId</code></td>
+<td>String</td>
+<td>false</td>
+<td>List id from which a job was moved in <code>JOB_MOVED</code> action</td>
+</tr>
+<tr>
 <td><code>toList</code></td>
 <td>Object</td>
 <td>false</td>
 <td>List to which a job was moved or added to in <code>JOB_MOVED</code> and <code>JOB_CREATED</code> actions</td>
+</tr>
+<tr>
+<td><code>toListId</code></td>
+<td>String</td>
+<td>false</td>
+<td>List id to which a job was moved or added to in <code>JOB_MOVED</code> and <code>JOB_CREATED</code> actions</td>
 </tr>
 <tr>
 <td><code>member</code></td>
@@ -6369,6 +6402,11 @@ Starting in May 2020, the Events resource is being replaced by the Actions resou
 <ul>
 <li>New API endpoint to <a href="#list-advisors">List Advisors</a></li>
 <li>New <a href="#advisor-resource">Advisor</a> field in <a href="#member-resource">Member</a></li>
+</ul>
+<h2 id='july-31-2023'>July 31, 2023</h2>
+<ul>
+<li>New <code>boardId</code>, <code>listId</code> and <code>list.id</code> fields in <a href="#jobs">Job</a> resource</li>
+<li>New <code>boardId</code>, <code>fromListId</code> and <code>toListId</code> fields in <a href="#actions">Action</a> resource</li>
 </ul>
 
       </div>
