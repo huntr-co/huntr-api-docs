@@ -2958,6 +2958,122 @@ Parameter | Type | Default | Description
 `id` | String | none | id for the note
 `text` | String | none | text in the note
 
+## List Internal Member Notes
+
+```shell
+curl "https://api.huntr.co/org/notes/members?limit=3"
+  -H "Authorization: Bearer <ORG_ACCESS_TOKEN>"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+    "data": [
+        {
+            "id": "653180e3741d48c684c7f4ba",
+            "text": "Parker is doing a great job of sending applications!",
+            "htmlText": "<p>Parker is doing a great job of sending applications!</p>",
+            "memberId": "5ebcba7d91ec9047d83f158f"
+        },
+        {
+            "id": "6531809d3b7961c682801699",
+            "text": "Joe just finished his first interview.",
+            "htmlText": "<p>Joe just finished his first interview</p>",
+            "memberId": "5e6a862b37d66bc3840bfcc5"
+        },
+        {
+            "id": "63be5e43ee7cdb028e33f39c",
+            "text": "Hello world",
+            "htmlText": "<p>Hello world</p>",
+            "memberId": "61b78473f77ae961e214e581"
+        }
+    ],
+    "next": "63be5e43ee7cdb028e33f39c"
+}
+```
+
+This endpoint retrieves all internal member notes (written by staff/advisors from your org) found in job seeker profiles via the admin dashboard, sorted from most recently created to oldest.
+
+### HTTP Request
+
+`GET https://api.huntr.co/org/notes/members`
+
+### Query Parameters
+
+Parameter | Type | Default | Description
+--------- | ---- | ------- | -----------
+`limit` | Integer | 100 | Defines the maximum number of notes to return
+`next` | String | none | If set, returns the next set of results after the object id provided
+
+## Create Internal Member Note
+
+```shell
+curl --location --request POST 'https://api.huntr.co/org/notes/members' \
+--header 'Authorization: Bearer <ORG_ACCESS_TOKEN>' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "memberId": "64090fa941a8885a417d0c99",
+    "htmlText": "This is an internal note about <b>John H.</b> one of our members. Happy to say he is excelling in his job search!"
+}'
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+    "id": "65318ebf41e0bede400849ef",
+    "text": "This is an internal note about John H. one of our members. Happy to say he is excelling in his job search!",
+    "htmlText": "This is an internal note about <b>John H.</b> one of our members. Happy to say he is excelling in his job search!",
+    "memberId": "64090fa941a8885a417d0c99"
+}
+```
+
+This endpoint creates a new internal note (i.e: notes private to org staff) for an organization member. You'll see these notes in the member's profile, through your org's admin dashboard.
+
+### HTTP Request
+
+`POST https://api.huntr.co/org/notes/members`
+
+### JSON Body Parameters
+
+Parameter | Required | Type | Description
+--------- | -------- | ---- | -----------
+`memberId` | no | String | [Member](#members) id of the member this note is linked to. Either `memberId` or `memberEmail` must be set.
+`memberEmail` | no | String | [Member](#members) email of the member this note is linked to. Either `memberId` or `memberEmail` must be set.
+`htmlText` | yes | String | The content of the note. You can pass either simple text or valid html (to support features like `bold`, `links`, `underline`, etc).
+
+## Delete Internal Member Note
+
+```shell
+curl --location --request DELETE 'https://api.huntr.co/org/notes/members/note/65318ebf41e0bede400849ef' \
+--header 'Authorization: Bearer <ORG_ACCESS_TOKEN>' \
+--header 'Content-Type: application/json' \
+```
+
+> The above command returns the deleted note in JSON structured like this:
+
+```json
+{
+    "id": "65318ebf41e0bede400849ef",
+    "text": "This is an internal note about John H. one of our members. Happy to say he is excelling in his job search!",
+    "htmlText": "This is an internal note about <b>John H.</b> one of our members. Happy to say he is excelling in his job search!",
+    "memberId": "64090fa941a8885a417d0c99"
+}
+```
+
+This endpoint deletes an internal member note.
+
+### HTTP Request
+
+`DELETE https://api.huntr.co/org/notes/members/note/<ID>`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the note to delete
+
 # Contacts
 
 ## Contact Resource
