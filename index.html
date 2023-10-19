@@ -411,6 +411,15 @@
                   <li>
                     <a href="#note-resource" class="toc-h2 toc-link" data-title="Note Resource">Note Resource</a>
                   </li>
+                  <li>
+                    <a href="#list-internal-member-notes" class="toc-h2 toc-link" data-title="List Internal Member Notes">List Internal Member Notes</a>
+                  </li>
+                  <li>
+                    <a href="#create-internal-member-note" class="toc-h2 toc-link" data-title="Create Internal Member Note">Create Internal Member Note</a>
+                  </li>
+                  <li>
+                    <a href="#delete-internal-member-note" class="toc-h2 toc-link" data-title="Delete Internal Member Note">Delete Internal Member Note</a>
+                  </li>
               </ul>
           </li>
           <li>
@@ -604,6 +613,9 @@
                   </li>
                   <li>
                     <a href="#july-31-2023" class="toc-h2 toc-link" data-title="July 31, 2023">July 31, 2023</a>
+                  </li>
+                  <li>
+                    <a href="#october-19-2023" class="toc-h2 toc-link" data-title="October 19, 2023">October 19, 2023</a>
                   </li>
               </ul>
           </li>
@@ -4737,6 +4749,7 @@ or Note a new Action will be created representing that event:</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5b05ca42f193b66c692c29a0"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Interview went well. It lasted about 2 hours and was half technical and half culture fit."</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"htmlText"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;p&gt;&lt;b&gt;Interview went well.&lt;/b&gt; It lasted about 2 hours and was half technical and half culture fit.&lt;/p&gt;"</span><span class="p">,</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This resource represents a note.</p>
@@ -4760,6 +4773,145 @@ or Note a new Action will be created representing that event:</p>
 <td>String</td>
 <td>none</td>
 <td>text in the note</td>
+</tr>
+<tr>
+<td><code>htmlText</code></td>
+<td>String</td>
+<td>none</td>
+<td>text in the note in html format</td>
+</tr>
+</tbody></table>
+<h2 id='list-internal-member-notes'>List Internal Member Notes</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.huntr.co/org/notes/members?limit=3"</span>
+  -H <span class="s2">"Authorization: Bearer &lt;ORG_ACCESS_TOKEN&gt;"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"653180e3741d48c684c7f4ba"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Parker is doing a great job of sending applications!"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"htmlText"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;p&gt;Parker is doing a great job of sending applications!&lt;/p&gt;"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"memberId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5ebcba7d91ec9047d83f158f"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6531809d3b7961c682801699"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Joe just finished his first interview."</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"htmlText"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;p&gt;Joe just finished his first interview&lt;/p&gt;"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"memberId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5e6a862b37d66bc3840bfcc5"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"63be5e43ee7cdb028e33f39c"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hello world"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"htmlText"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;p&gt;Hello world&lt;/p&gt;"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"memberId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"61b78473f77ae961e214e581"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"next"</span><span class="p">:</span><span class="w"> </span><span class="s2">"63be5e43ee7cdb028e33f39c"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint retrieves all internal member notes (written by staff/advisors from your org) found in job seeker profiles via the admin dashboard, sorted from most recently created to oldest.</p>
+<h3 id='http-request-20'>HTTP Request</h3>
+<p><code>GET https://api.huntr.co/org/notes/members</code></p>
+<h3 id='query-parameters-6'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>limit</code></td>
+<td>Integer</td>
+<td>100</td>
+<td>Defines the maximum number of notes to return</td>
+</tr>
+<tr>
+<td><code>next</code></td>
+<td>String</td>
+<td>none</td>
+<td>If set, returns the next set of results after the object id provided</td>
+</tr>
+</tbody></table>
+<h2 id='create-internal-member-note'>Create Internal Member Note</h2><pre class="highlight shell tab-shell"><code>curl --location --request POST <span class="s1">'https://api.huntr.co/org/notes/members'</span> <span class="se">\</span>
+--header <span class="s1">'Authorization: Bearer &lt;ORG_ACCESS_TOKEN&gt;'</span> <span class="se">\</span>
+--header <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+--data-raw <span class="s1">'{
+    "memberId": "64090fa941a8885a417d0c99",
+    "htmlText": "This is an internal note about &lt;b&gt;John H.&lt;/b&gt; one of our members. Happy to say he is excelling in his job search!"
+}'</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"65318ebf41e0bede400849ef"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This is an internal note about John H. one of our members. Happy to say he is excelling in his job search!"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"htmlText"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This is an internal note about &lt;b&gt;John H.&lt;/b&gt; one of our members. Happy to say he is excelling in his job search!"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"memberId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"64090fa941a8885a417d0c99"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint creates a new internal note (i.e: notes private to org staff) for an organization member. You&#39;ll see these notes in the member&#39;s profile, through your org&#39;s admin dashboard.</p>
+<h3 id='http-request-21'>HTTP Request</h3>
+<p><code>POST https://api.huntr.co/org/notes/members</code></p>
+<h3 id='json-body-parameters-6'>JSON Body Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>memberId</code></td>
+<td>no</td>
+<td>String</td>
+<td><a href="#members">Member</a> id of the member this note is linked to. Either <code>memberId</code> or <code>memberEmail</code> must be set.</td>
+</tr>
+<tr>
+<td><code>memberEmail</code></td>
+<td>no</td>
+<td>String</td>
+<td><a href="#members">Member</a> email of the member this note is linked to. Either <code>memberId</code> or <code>memberEmail</code> must be set.</td>
+</tr>
+<tr>
+<td><code>htmlText</code></td>
+<td>yes</td>
+<td>String</td>
+<td>The content of the note. You can pass either simple text or valid html (to support features like <code>bold</code>, <code>links</code>, <code>underline</code>, etc).</td>
+</tr>
+</tbody></table>
+<h2 id='delete-internal-member-note'>Delete Internal Member Note</h2><pre class="highlight shell tab-shell"><code>curl --location --request DELETE <span class="s1">'https://api.huntr.co/org/notes/members/note/65318ebf41e0bede400849ef'</span> <span class="se">\</span>
+--header <span class="s1">'Authorization: Bearer &lt;ORG_ACCESS_TOKEN&gt;'</span> <span class="se">\</span>
+--header <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+</code></pre>
+<blockquote>
+<p>The above command returns the deleted note in JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"65318ebf41e0bede400849ef"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This is an internal note about John H. one of our members. Happy to say he is excelling in his job search!"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"htmlText"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This is an internal note about &lt;b&gt;John H.&lt;/b&gt; one of our members. Happy to say he is excelling in his job search!"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"memberId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"64090fa941a8885a417d0c99"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint deletes an internal member note.</p>
+<h3 id='http-request-22'>HTTP Request</h3>
+<p><code>DELETE https://api.huntr.co/org/notes/members/note/&lt;ID&gt;</code></p>
+<h3 id='url-parameters-5'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ID</td>
+<td>The ID of the note to delete</td>
 </tr>
 </tbody></table>
 <h1 id='contacts'>Contacts</h1><h2 id='contact-resource'>Contact Resource</h2>
@@ -5161,9 +5313,9 @@ or Note a new Action will be created representing that event:</p>
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint retrieves all goals for your organization. By default, only active goals are returned.</p>
-<h3 id='http-request-20'>HTTP Request</h3>
+<h3 id='http-request-23'>HTTP Request</h3>
 <p><code>GET https://api.huntr.co/org/goals</code></p>
-<h3 id='query-parameters-6'>Query Parameters</h3>
+<h3 id='query-parameters-7'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -5249,9 +5401,9 @@ or Note a new Action will be created representing that event:</p>
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint retrieves a specific goal.</p>
-<h3 id='http-request-21'>HTTP Request</h3>
+<h3 id='http-request-24'>HTTP Request</h3>
 <p><code>GET https://api.huntr.co/org/goals/&lt;ID&gt;</code></p>
-<h3 id='url-parameters-5'>URL Parameters</h3>
+<h3 id='url-parameters-6'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -5353,9 +5505,9 @@ or Note a new Action will be created representing that event:</p>
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint creates a new goal enrollment for an organization member.</p>
-<h3 id='http-request-22'>HTTP Request</h3>
+<h3 id='http-request-25'>HTTP Request</h3>
 <p><code>POST https://api.huntr.co/org/goals/&lt;ID&gt;/enrollments</code></p>
-<h3 id='url-parameters-6'>URL Parameters</h3>
+<h3 id='url-parameters-7'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -5367,7 +5519,7 @@ or Note a new Action will be created representing that event:</p>
 <td>The ID of the goal to enroll the member in</td>
 </tr>
 </tbody></table>
-<h3 id='json-body-parameters-6'>JSON Body Parameters</h3>
+<h3 id='json-body-parameters-7'>JSON Body Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -5635,9 +5787,9 @@ or Note a new Action will be created representing that event:</p>
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint retrieves all employers to which your members have added a job for.</p>
-<h3 id='http-request-23'>HTTP Request</h3>
+<h3 id='http-request-26'>HTTP Request</h3>
 <p><code>GET https://api.huntr.co/org/employers</code></p>
-<h3 id='query-parameters-7'>Query Parameters</h3>
+<h3 id='query-parameters-8'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -6069,9 +6221,9 @@ Starting in May 2020, the Events resource is being replaced by the Actions resou
 </aside>
 
 <p>This endpoint retrieves all events for your organization, sorted from most recently created to oldest.</p>
-<h3 id='http-request-24'>HTTP Request</h3>
+<h3 id='http-request-27'>HTTP Request</h3>
 <p><code>GET https://api.huntr.co/org/events</code></p>
-<h3 id='query-parameters-8'>Query Parameters</h3>
+<h3 id='query-parameters-9'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -6407,6 +6559,12 @@ Starting in May 2020, the Events resource is being replaced by the Actions resou
 <ul>
 <li>New <code>boardId</code>, <code>listId</code> and <code>list.id</code> fields in <a href="#jobs">Job</a> resource</li>
 <li>New <code>boardId</code>, <code>fromListId</code> and <code>toListId</code> fields in <a href="#actions">Action</a> resource</li>
+</ul>
+<h2 id='october-19-2023'>October 19, 2023</h2>
+<ul>
+<li>New API endpoint to <a href="#list-internal-member-notes">List Internal Member Notes</a></li>
+<li>New API endpoint to <a href="#create-internal-member-note">Create Internal Member Note</a></li>
+<li>New API endpoint to <a href="#delete-internal-member-note">Delete Internal Member Note</a></li>
 </ul>
 
       </div>
