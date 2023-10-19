@@ -2948,6 +2948,7 @@ Parameter | Type | Default | Description
 {
     "id": "5b05ca42f193b66c692c29a0",
     "text": "Interview went well. It lasted about 2 hours and was half technical and half culture fit.",
+    "htmlText": "<p><b>Interview went well.</b> It lasted about 2 hours and was half technical and half culture fit.</p>",
 }
 ```
 
@@ -2957,6 +2958,7 @@ Parameter | Type | Default | Description
 --------- | ---- | ------- | -----------
 `id` | String | none | id for the note
 `text` | String | none | text in the note
+`htmlText` | String | none | text in the note in html format
 
 ## List Internal Member Notes
 
