@@ -271,6 +271,17 @@
               </ul>
           </li>
           <li>
+            <a href="#member-groups" class="toc-h1 toc-link" data-title="Member Groups">Member Groups</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#member-group-resource" class="toc-h2 toc-link" data-title="Member Group Resource">Member Group Resource</a>
+                  </li>
+                  <li>
+                    <a href="#list-member-groups" class="toc-h2 toc-link" data-title="List Member Groups">List Member Groups</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#member-fields" class="toc-h1 toc-link" data-title="Member Fields">Member Fields</a>
               <ul class="toc-list-h2">
                   <li>
@@ -1381,6 +1392,78 @@ to join your organization under Huntr.</p>
 <td>The value to give the member field</td>
 </tr>
 </tbody></table>
+<h1 id='member-groups'>Member Groups</h1><h2 id='member-group-resource'>Member Group Resource</h2>
+<blockquote>
+<p>A member field:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5b3f908c99c94b6177d55a28"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024 Candidates"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024 Candidate Cohort"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1588634675</span><span class="p">,</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>A member group is a set of members in your organization. Member groups can be used to share job posts to job seekers and limit visibility of job posts in your job board.</p>
+
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>In all fields</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>String</td>
+<td>true</td>
+<td>Member group id</td>
+</tr>
+<tr>
+<td>name</td>
+<td>String</td>
+<td>true</td>
+<td>Member group name</td>
+</tr>
+<tr>
+<td>description</td>
+<td>String</td>
+<td>false</td>
+<td>Member group description</td>
+</tr>
+<tr>
+<td>createdAt</td>
+<td>String</td>
+<td>true</td>
+<td>Unix timestamp</td>
+</tr>
+</tbody></table>
+<h2 id='list-member-groups'>List Member Groups</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.huntr.co/org/member-groups"</span>
+  -H <span class="s2">"Authorization: Bearer &lt;ORG_ACCESS_TOKEN&gt;"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5b3f908c99c94b6177d55a28"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024 Candidates"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024 Candidate Cohort"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1612451816</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5b3f908c99c94b6177d55a29"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024 Candidates"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024 Candidate Cohort"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1614221646</span><span class="p">,</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint retrieves all member groups for your organization.</p>
+<h3 id='http-request-7'>HTTP Request</h3>
+<p><code>GET https://api.huntr.co/org/member-groups</code></p>
 <h1 id='member-fields'>Member Fields</h1><h2 id='member-field-resource'>Member Field Resource</h2>
 <blockquote>
 <p>A member field:</p>
@@ -1535,7 +1618,7 @@ to join your organization under Huntr.</p>
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint retrieves all member fields for your organization.</p>
-<h3 id='http-request-7'>HTTP Request</h3>
+<h3 id='http-request-8'>HTTP Request</h3>
 <p><code>GET https://api.huntr.co/org/member-fields</code></p>
 <h2 id='create-new-member-field'>Create new member field</h2><pre class="highlight shell tab-shell"><code>curl --location --request POST <span class="s1">'https://api.huntr.co/org/member-fields'</span> <span class="se">\</span>
 --header <span class="s1">'Authorization: Bearer &lt;ORG_ACCESS_TOKEN&gt;'</span> <span class="se">\</span>
@@ -1568,7 +1651,7 @@ organization invitations with the <code>memberFieldValues</code> referring to th
 <p>To prevent duplicate fields from being created, requests with a field name
 that matches an existing Member Field from your organization, will return an error
 message and the field will not be created.</p>
-<h3 id='http-request-8'>HTTP Request</h3>
+<h3 id='http-request-9'>HTTP Request</h3>
 <p><code>POST https://api.huntr.co/org/member-fields</code></p>
 <h3 id='json-body-parameters-2'>JSON Body Parameters</h3>
 <table><thead>
@@ -1757,7 +1840,7 @@ message and the field will not be created.</p>
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint retrieves all board templates for your organization.</p>
-<h3 id='http-request-9'>HTTP Request</h3>
+<h3 id='http-request-10'>HTTP Request</h3>
 <p><code>GET https://api.huntr.co/org/board-templates</code></p>
 <h1 id='jobs'>Jobs</h1><h2 id='job-resource'>Job Resource</h2>
 <blockquote>
@@ -2282,7 +2365,7 @@ message and the field will not be created.</p>
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint lists all jobs added by members from your organization, jobs are sorted by the date they were created, starting from the most recently created.</p>
-<h3 id='http-request-10'>HTTP Request</h3>
+<h3 id='http-request-11'>HTTP Request</h3>
 <p><code>GET https://api.huntr.co/org/jobs</code></p>
 <h3 id='query-parameters-2'>Query Parameters</h3>
 <table><thead>
@@ -2482,7 +2565,7 @@ message and the field will not be created.</p>
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint retrieves a specific job.</p>
-<h3 id='http-request-11'>HTTP Request</h3>
+<h3 id='http-request-12'>HTTP Request</h3>
 <p><code>GET https://api.huntr.co/org/jobs/&lt;ID&gt;</code></p>
 <h3 id='url-parameters-3'>URL Parameters</h3>
 <table><thead>
@@ -2668,6 +2751,16 @@ message and the field will not be created.</p>
 <td>Unix timestamp</td>
 <td>Date the job post was created by the member</td>
 </tr>
+<tr>
+<td><code>visibility</code></td>
+<td>String</td>
+<td>One of <code>VISIBLE</code>, <code>HIDDEN</code>. Describes whether this job post is visible to all organization members. If <code>HIDDEN</code>, job post can be shared directly to job seekers or made visible to specific member groups in your organization.</td>
+</tr>
+<tr>
+<td><code>visibleMemberGroupIds</code></td>
+<td>Array</td>
+<td>Array of <a href="#member-groups">Member Group</a> ids which this job post will be made visible to. Will always be empty unless <code>visibilty</code> is <code>HIDDEN</code> and job post has been shared with one or more member groups.</td>
+</tr>
 </tbody></table>
 <h3 id='deprecated-job-post-fields'>Deprecated job post fields</h3>
 <table><thead>
@@ -2778,7 +2871,9 @@ message and the field will not be created.</p>
             </span><span class="s2">"isActive"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
             </span><span class="s2">"memberFieldValues"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
         </span><span class="p">},</span><span class="w">
-        </span><span class="s2">"employerId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"59b5f5f10143bacaa3eaa3ff"</span><span class="w">
+        </span><span class="s2">"employerId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"59b5f5f10143bacaa3eaa3ff"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"visibility"</span><span class="p">:</span><span class="w"> </span><span class="s2">"VISIBLE"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"visibleMemberGroupIds"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="p">{</span><span class="w">
         </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6037114e9c299b95bfd43158"</span><span class="p">,</span><span class="w">
@@ -2836,14 +2931,16 @@ message and the field will not be created.</p>
             </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🔥 Hot Jobs"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"High demand job posts"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"color"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#FF0000"</span><span class="p">,</span><span class="w">
-        </span><span class="p">}]</span><span class="w">
+        </span><span class="p">}],</span><span class="w">
+        </span><span class="s2">"visibility"</span><span class="p">:</span><span class="w"> </span><span class="s2">"VISIBLE"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"visibleMemberGroupIds"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">],</span><span class="w">
     </span><span class="s2">"next"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6037114e9c299b95bfd43158"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint lists all job posts added by advisors/staff from your organization to your organization&#39;s internal job portal, jobs are sorted by the date they were created, starting from the most recently created.</p>
-<h3 id='http-request-12'>HTTP Request</h3>
+<h3 id='http-request-13'>HTTP Request</h3>
 <p><code>GET https://api.huntr.co/org/job-posts</code></p>
 <h3 id='query-parameters-3'>Query Parameters</h3>
 <table><thead>
@@ -2937,11 +3034,13 @@ message and the field will not be created.</p>
         </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🔥 Hot Jobs"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"High demand job posts"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"color"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#FF0000"</span><span class="p">,</span><span class="w">
-    </span><span class="p">}]</span><span class="w">
+    </span><span class="p">}],</span><span class="w">
+    </span><span class="s2">"visibility"</span><span class="p">:</span><span class="w"> </span><span class="s2">"VISIBLE"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"visibleMemberGroupIds"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint retrieves a specific job post.</p>
-<h3 id='http-request-13'>HTTP Request</h3>
+<h3 id='http-request-14'>HTTP Request</h3>
 <p><code>GET https://api.huntr.co/org/job-posts/&lt;ID&gt;</code></p>
 <h3 id='url-parameters-4'>URL Parameters</h3>
 <table><thead>
@@ -2982,7 +3081,9 @@ message and the field will not be created.</p>
     "memberEntries": [
       {"email": "johns@gmail.com"},
       {"memberId": "5b0379b5712bb674fd0d561e"}
-    ]
+    ],
+    "visibility": "HIDDEN",
+    "visibleMemberGroupIds": ["5b3f908c99c94b6177d55a28"]
 }'</span>
 </code></pre>
 <blockquote>
@@ -3035,7 +3136,7 @@ message and the field will not be created.</p>
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint creates a single Job Post. If the job post status is <code>Open</code>, then this job will be published in your organization&#39;s job portal. See the <code>memberEntries</code> key if you&#39;d like to share the newly created job post with a list of job seekers in one request.</p>
-<h3 id='http-request-14'>HTTP Request</h3>
+<h3 id='http-request-15'>HTTP Request</h3>
 <p><code>POST https://api.huntr.co/org/job-posts</code></p>
 <h3 id='json-body-parameters-3'>JSON Body Parameters</h3>
 <table><thead>
@@ -3136,6 +3237,18 @@ message and the field will not be created.</p>
 <td>Array</td>
 <td>Array of objects specifying the job seekers you want to share this new Job Post with. Each entry is an object with either an <code>email</code> or <code>memberId</code> key corresponding to the member you want to send the job post to:  <code>{&quot;email&quot;: &quot;john@example.com&quot;}</code> or <code>{&quot;memberId&quot;: &quot;5b0379b5712bb674fd0d561e&quot;}</code>. If received, our system will queue up an asynchronous job to deliver this job post for each member included in <code>memberEntries</code>. The jobs should run and finish a few seconds after your request is received. Each delivery of the job post to a job seeker triggers a <code>JOB_CREATED</code> action you can listen to via our <a href="#webhooks">Webhooks</a>; the <a href="#actions">Action</a> body for the webhook will contain a <code>jobPost</code> key matching the job post that was just created.</td>
 </tr>
+<tr>
+<td><code>visibility</code></td>
+<td>no</td>
+<td>String</td>
+<td>one of <code>VISIBLE</code>, <code>HIDDEN</code>. If not provided, default value is <code>VISIBLE</code></td>
+</tr>
+<tr>
+<td><code>visibleMemberGroupIds</code></td>
+<td>no</td>
+<td>Array</td>
+<td>Array of <a href="#member-groups">Member Group</a> ids which this job post will be made visible to. If <code>visibility</code> is <code>VISIBLE</code>, this parameter has no effect.</td>
+</tr>
 </tbody></table>
 <h2 id='send-job-posts-to-job-seekers'>Send Job Posts to Job Seekers</h2><pre class="highlight shell tab-shell"><code>curl --location --request POST <span class="s1">'https://api.huntr.co/org/job-posts/send-to-members'</span> <span class="se">\</span>
 --header <span class="s1">'Authorization: Bearer &lt;ORG_ACCESS_TOKEN&gt;'</span> <span class="se">\</span>
@@ -3155,7 +3268,7 @@ message and the field will not be created.</p>
 <p>This endpoint sends multiple job posts to job seekers&#39; Huntr boards in the form of a new <a href="#jobs">Job</a> card in each board. You can see all the job seekers that a job post has been shared with via the <strong>Pipeline</strong> tab of the Job Post details page in your advisor dashboard.</p>
 
 <p>This endpoint does not run synchronously, it only queues up asynchronous jobs to deliver the job posts to each member included in <code>memberEntries</code>. Thus, a <code>200</code> status response does not imply successful delivery, it only means that your job post delivery requests have been successfully queued up. The jobs should run and finish a few seconds after your request is received. Each delivery of the job post to a job seeker triggers a <code>JOB_CREATED</code> action you can listen to via our <a href="#webhooks">Webhooks</a>. The <a href="#actions">Action</a> body for the webhook will contain a <code>jobPost</code> key matching the job posts in the <code>jobPostIds</code> key of the original <code>job-posts/send-to-members</code> request.</p>
-<h3 id='http-request-15'>HTTP Request</h3>
+<h3 id='http-request-16'>HTTP Request</h3>
 <p><code>POST https://api.huntr.co/org/job-posts/send-to-members</code></p>
 <h3 id='json-body-parameters-4'>JSON Body Parameters</h3>
 <table><thead>
@@ -3244,7 +3357,7 @@ message and the field will not be created.</p>
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint creates a new tag.</p>
-<h3 id='http-request-16'>HTTP Request</h3>
+<h3 id='http-request-17'>HTTP Request</h3>
 <p><code>POST https://api.huntr.co/org/tags</code></p>
 <h3 id='json-body-parameters-5'>JSON Body Parameters</h3>
 <table><thead>
@@ -3305,7 +3418,7 @@ message and the field will not be created.</p>
 
 </span></code></pre>
 <p>This endpoint lists all tags created by your organization</p>
-<h3 id='http-request-17'>HTTP Request</h3>
+<h3 id='http-request-18'>HTTP Request</h3>
 <p><code>GET https://api.huntr.co/org/tags</code></p>
 <h2 id='target-objects'>Target Objects</h2>
 <p>Target Objects refer to the types resources a tag can be applied to. There is currently only one type of target object</p>
@@ -3663,7 +3776,7 @@ message and the field will not be created.</p>
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint retrieves all activities for your organization, sorted from most recently created to oldest.</p>
-<h3 id='http-request-18'>HTTP Request</h3>
+<h3 id='http-request-19'>HTTP Request</h3>
 <p><code>GET https://api.huntr.co/org/activities</code></p>
 <h3 id='query-parameters-4'>Query Parameters</h3>
 <table><thead>
@@ -4652,7 +4765,7 @@ or Note a new Action will be created representing that event:</p>
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint retrieves all actions for your organization, sorted from most recently created to oldest.</p>
-<h3 id='http-request-19'>HTTP Request</h3>
+<h3 id='http-request-20'>HTTP Request</h3>
 <p><code>GET https://api.huntr.co/org/actions</code></p>
 <h3 id='query-parameters-5'>Query Parameters</h3>
 <table><thead>
@@ -4812,7 +4925,7 @@ or Note a new Action will be created representing that event:</p>
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint retrieves all internal member notes (written by staff/advisors from your org) found in job seeker profiles via the admin dashboard, sorted from most recently created to oldest.</p>
-<h3 id='http-request-20'>HTTP Request</h3>
+<h3 id='http-request-21'>HTTP Request</h3>
 <p><code>GET https://api.huntr.co/org/notes/members</code></p>
 <h3 id='query-parameters-6'>Query Parameters</h3>
 <table><thead>
@@ -4855,7 +4968,7 @@ or Note a new Action will be created representing that event:</p>
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint creates a new internal note (i.e: notes private to org staff) for an organization member. You&#39;ll see these notes in the member&#39;s profile, through your org&#39;s admin dashboard.</p>
-<h3 id='http-request-21'>HTTP Request</h3>
+<h3 id='http-request-22'>HTTP Request</h3>
 <p><code>POST https://api.huntr.co/org/notes/members</code></p>
 <h3 id='json-body-parameters-6'>JSON Body Parameters</h3>
 <table><thead>
@@ -4900,7 +5013,7 @@ or Note a new Action will be created representing that event:</p>
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint deletes an internal member note.</p>
-<h3 id='http-request-22'>HTTP Request</h3>
+<h3 id='http-request-23'>HTTP Request</h3>
 <p><code>DELETE https://api.huntr.co/org/notes/members/note/&lt;ID&gt;</code></p>
 <h3 id='url-parameters-5'>URL Parameters</h3>
 <table><thead>
@@ -5313,7 +5426,7 @@ or Note a new Action will be created representing that event:</p>
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint retrieves all goals for your organization. By default, only active goals are returned.</p>
-<h3 id='http-request-23'>HTTP Request</h3>
+<h3 id='http-request-24'>HTTP Request</h3>
 <p><code>GET https://api.huntr.co/org/goals</code></p>
 <h3 id='query-parameters-7'>Query Parameters</h3>
 <table><thead>
@@ -5401,7 +5514,7 @@ or Note a new Action will be created representing that event:</p>
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint retrieves a specific goal.</p>
-<h3 id='http-request-24'>HTTP Request</h3>
+<h3 id='http-request-25'>HTTP Request</h3>
 <p><code>GET https://api.huntr.co/org/goals/&lt;ID&gt;</code></p>
 <h3 id='url-parameters-6'>URL Parameters</h3>
 <table><thead>
@@ -5505,7 +5618,7 @@ or Note a new Action will be created representing that event:</p>
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint creates a new goal enrollment for an organization member.</p>
-<h3 id='http-request-25'>HTTP Request</h3>
+<h3 id='http-request-26'>HTTP Request</h3>
 <p><code>POST https://api.huntr.co/org/goals/&lt;ID&gt;/enrollments</code></p>
 <h3 id='url-parameters-7'>URL Parameters</h3>
 <table><thead>
@@ -5787,7 +5900,7 @@ or Note a new Action will be created representing that event:</p>
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint retrieves all employers to which your members have added a job for.</p>
-<h3 id='http-request-26'>HTTP Request</h3>
+<h3 id='http-request-27'>HTTP Request</h3>
 <p><code>GET https://api.huntr.co/org/employers</code></p>
 <h3 id='query-parameters-8'>Query Parameters</h3>
 <table><thead>
@@ -6221,7 +6334,7 @@ Starting in May 2020, the Events resource is being replaced by the Actions resou
 </aside>
 
 <p>This endpoint retrieves all events for your organization, sorted from most recently created to oldest.</p>
-<h3 id='http-request-27'>HTTP Request</h3>
+<h3 id='http-request-28'>HTTP Request</h3>
 <p><code>GET https://api.huntr.co/org/events</code></p>
 <h3 id='query-parameters-9'>Query Parameters</h3>
 <table><thead>
