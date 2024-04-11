@@ -690,12 +690,14 @@ curl "https://api.huntr.co/org/member-groups"
         {
             "id": "5b3f908c99c94b6177d55a28",
             "name": "2024 Candidates",
-            "description": "2024 Candidate Cohort"
+            "description": "2024 Candidate Cohort",
+            "createdAt": 1612451816
         },
         {
             "id": "5b3f908c99c94b6177d55a29",
             "name": "2024 Candidates",
-            "description": "2024 Candidate Cohort"
+            "description": "2024 Candidate Cohort",
+            "createdAt": 1614221646,
         }
     ]
 }
