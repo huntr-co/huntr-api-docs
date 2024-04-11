@@ -653,8 +653,63 @@ Parameter | Type | Description
 `value` | Mixed | The value to give the member field
 
 
-# Member Fields
+# Member Groups
 
+## Member Group Resource
+> A member field:
+
+```json
+{
+    "id": "5b3f908c99c94b6177d55a28",
+    "name": "2024 Candidates",
+    "description": "2024 Candidate Cohort",
+    "createdAt": 1588634675,
+}
+```
+
+A member group is a set of members in your organization. Member groups can be used to share job posts to job seekers and limit visibility of job posts in your job board.
+
+Field | Type | In all fields | Description
+----- | ---- | -------------- | -----------
+id | String | true | Member group id
+name | String | true | Member group name
+description | String | false | Member group description
+createdAt | String | true | Unix timestamp | Date the member group was created
+
+## List Member Groups
+
+```shell
+curl "https://api.huntr.co/org/member-groups"
+  -H "Authorization: Bearer <ORG_ACCESS_TOKEN>"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+    "data": [
+        {
+            "id": "5b3f908c99c94b6177d55a28",
+            "name": "2024 Candidates",
+            "description": "2024 Candidate Cohort",
+            "createdAt": 1612451816
+        },
+        {
+            "id": "5b3f908c99c94b6177d55a29",
+            "name": "2024 Candidates",
+            "description": "2024 Candidate Cohort",
+            "createdAt": 1614221646,
+        }
+    ]
+}
+```
+
+This endpoint retrieves all member groups for your organization.
+
+### HTTP Request
+`GET https://api.huntr.co/org/member-groups`
+
+# Member Fields
 ## Member Field Resource
 
 > A member field:
@@ -1659,6 +1714,8 @@ Field | Type | Description
 `tags` | Array | An array of [Tags](#tags)
 `postDate` | Unix timestamp | Date the job post was posted, your staff can change this date from the advisor portal
 `createdAt` | Unix timestamp | Date the job post was created by the member
+`visibility` | String | One of `VISIBLE`, `HIDDEN`. Describes whether this job post is visible to all organization members. If `HIDDEN`, job post can be shared directly to job seekers or made visible to specific member groups in your organization.
+`visibleMemberGroupIds` | Array | Array of [Member Group](#member-groups) ids which this job post will be made visible to. Will always be empty unless `visibilty` is `HIDDEN` and job post has been shared with one or more member groups.
 
 ### Deprecated job post fields
 
@@ -1748,7 +1805,9 @@ curl "https://api.huntr.co/org/job-posts?limit=2"
             "isActive": true,
             "memberFieldValues": []
         },
-        "employerId": "59b5f5f10143bacaa3eaa3ff"
+        "employerId": "59b5f5f10143bacaa3eaa3ff",
+        "visibility": "VISIBLE",
+        "visibleMemberGroupIds": []
       },
       {
         "id": "6037114e9c299b95bfd43158",
@@ -1806,7 +1865,9 @@ curl "https://api.huntr.co/org/job-posts?limit=2"
             "name": "🔥 Hot Jobs",
             "description": "High demand job posts",
             "color": "#FF0000",
-        }]
+        }],
+        "visibility": "VISIBLE",
+        "visibleMemberGroupIds": []
       }
     ],
     "next": "6037114e9c299b95bfd43158"
@@ -1900,7 +1961,9 @@ curl "https://api.huntr.co/org/job-posts/601da7c59ca97b1604508a1c"
         "name": "🔥 Hot Jobs",
         "description": "High demand job posts",
         "color": "#FF0000",
-    }]
+    }],
+    "visibility": "VISIBLE",
+    "visibleMemberGroupIds": []
 }
 ```
 
@@ -1946,7 +2009,9 @@ curl --location --request POST 'https://api.huntr.co/org/job-posts' \
     "memberEntries": [
       {"email": "johns@gmail.com"},
       {"memberId": "5b0379b5712bb674fd0d561e"}
-    ]
+    ],
+    "visibility": "HIDDEN",
+    "visibleMemberGroupIds": ["5b3f908c99c94b6177d55a28"]
 }'
 ```
 
@@ -2025,6 +2090,8 @@ Parameter | Required | Type | Description
 `salary` | no | Object | A [Salary](#salary) object
 `tagIds` | no | Array | Array of [Tag](#tags) ids for this job post
 `memberEntries` | no | Array | Array of objects specifying the job seekers you want to share this new Job Post with. Each entry is an object with either an `email` or `memberId` key corresponding to the member you want to send the job post to:  `{"email": "john@example.com"}` or `{"memberId": "5b0379b5712bb674fd0d561e"}`. If received, our system will queue up an asynchronous job to deliver this job post for each member included in `memberEntries`. The jobs should run and finish a few seconds after your request is received. Each delivery of the job post to a job seeker triggers a `JOB_CREATED` action you can listen to via our [Webhooks](#webhooks); the [Action](#actions) body for the webhook will contain a `jobPost` key matching the job post that was just created.
+`visibility` | no | String | one of `VISIBLE`, `HIDDEN`. If not provided, default value is `VISIBLE`
+`visibleMemberGroupIds` | no | Array | Array of [Member Group](#member-groups) ids which this job post will be made visible to. If `visibility` is `VISIBLE`, this parameter has no effect.
 
 ## Send Job Posts to Job Seekers
 
