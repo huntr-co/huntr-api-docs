@@ -657,6 +657,7 @@ Parameter | Type | Description
 
 ## Member Group Resource
 > A member field:
+
 ```json
 {
     "id": "5b3f908c99c94b6177d55a28",
