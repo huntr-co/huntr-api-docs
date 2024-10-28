@@ -462,7 +462,10 @@ This endpoint retrieves all advisors for your organization.
         "email": "alice@huntr.co",
         "createdAt": 1666980452,
         "lastSeenAt": 1689792002,
-    }
+    },
+    "boardIds": [
+        "5a6e4c3c7e42789e6e65c987",
+    ]
 }
 ```
 
@@ -480,6 +483,7 @@ memberFieldValues | Array | Array of assigned member field values. Each object i
 memberFieldValuesKeyedById | Object | The same elements seen as memberFieldValues, but keyed by fieldId for fast access.
 lastSeenAt | Unix timestamp | Last date the member was seen using Huntr (this includes logging in, saving jobs from extension, mobile, etc)
 advisor | Object | [Advisor](#advisors) who this job seeker is assigned to
+boardIds | Array | Array of board ids that this member owns, you can use this to build a link to a member's board
 
 ## List Members
 
@@ -509,7 +513,10 @@ curl "https://api.huntr.co/org/members?active=true&limit=3"
                 "email": "alice@huntr.co",
                 "createdAt": 1666980452,
                 "lastSeenAt": 1689792002
-            }
+            },
+            "boardIds": [
+                "5a6e4c3c7e42789e6e65c987",
+            ]
         },
         {
             "id": "5a9f699edd2f935a4e5b263a",
@@ -518,7 +525,10 @@ curl "https://api.huntr.co/org/members?active=true&limit=3"
             "email": "rennie@huntr.co",
             "createdAt": 1520396702,
             "isActive": true,
-            "memberFieldValues": []
+            "memberFieldValues": [],
+            "boardIds": [
+                "5a6e4c3c7e42789e6e65c983",
+            ]
         },
         {
             "id": "5a9b3d392bd2e22e37dee4f0",
@@ -536,7 +546,10 @@ curl "https://api.huntr.co/org/members?active=true&limit=3"
                 "email": "bob@huntr.co",
                 "createdAt": 1666980452,
                 "lastSeenAt": 1689792002,
-            }
+            },
+            "boardIds": [
+                "5a6e4c3c7e42789e6e65c984",
+            ]
         }
     ],
     "next": "5a9b3d392bd2e22e37dee4f0"

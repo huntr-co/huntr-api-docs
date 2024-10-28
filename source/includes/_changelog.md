@@ -68,3 +68,6 @@ Added validation for the `limit` parameter for requests that use the [List](#pag
 - New API endpoint to [List Internal Member Notes](#list-internal-member-notes)
 - New API endpoint to [Create Internal Member Note](#create-internal-member-note)
 - New API endpoint to [Delete Internal Member Note](#delete-internal-member-note)
+
+## October 28, 2024
+- New `boardIds` field in [Member](#member-resource)
