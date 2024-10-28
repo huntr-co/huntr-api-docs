@@ -628,6 +628,9 @@
                   <li>
                     <a href="#october-19-2023" class="toc-h2 toc-link" data-title="October 19, 2023">October 19, 2023</a>
                   </li>
+                  <li>
+                    <a href="#october-28-2024" class="toc-h2 toc-link" data-title="October 28, 2024">October 28, 2024</a>
+                  </li>
               </ul>
           </li>
       </div>
@@ -1141,7 +1144,10 @@ to join your organization under Huntr.</p>
         </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"alice@huntr.co"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1666980452</span><span class="p">,</span><span class="w">
         </span><span class="s2">"lastSeenAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1689792002</span><span class="p">,</span><span class="w">
-    </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"boardIds"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"5a6e4c3c7e42789e6e65c987"</span><span class="p">,</span><span class="w">
+    </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>A member is one of the job seekers using Huntr under your organization. If you are an educational institution, your job seeking students qualify as your members.</p>
@@ -1203,6 +1209,11 @@ to join your organization under Huntr.</p>
 <td>Object</td>
 <td><a href="#advisors">Advisor</a> who this job seeker is assigned to</td>
 </tr>
+<tr>
+<td>boardIds</td>
+<td>Array</td>
+<td>Array of board ids that this member owns, you can use this to build a link to a member&#39;s board</td>
+</tr>
 </tbody></table>
 <h2 id='list-members'>List Members</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.huntr.co/org/members?active=true&amp;limit=3"</span>
   -H <span class="s2">"Authorization: Bearer &lt;ORG_ACCESS_TOKEN&gt;"</span>
@@ -1228,7 +1239,10 @@ to join your organization under Huntr.</p>
                 </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"alice@huntr.co"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1666980452</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"lastSeenAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1689792002</span><span class="w">
-            </span><span class="p">}</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"boardIds"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"5a6e4c3c7e42789e6e65c987"</span><span class="p">,</span><span class="w">
+            </span><span class="p">]</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="p">{</span><span class="w">
             </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5a9f699edd2f935a4e5b263a"</span><span class="p">,</span><span class="w">
@@ -1237,7 +1251,10 @@ to join your organization under Huntr.</p>
             </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rennie@huntr.co"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1520396702</span><span class="p">,</span><span class="w">
             </span><span class="s2">"isActive"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"memberFieldValues"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+            </span><span class="s2">"memberFieldValues"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+            </span><span class="s2">"boardIds"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"5a6e4c3c7e42789e6e65c983"</span><span class="p">,</span><span class="w">
+            </span><span class="p">]</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="p">{</span><span class="w">
             </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5a9b3d392bd2e22e37dee4f0"</span><span class="p">,</span><span class="w">
@@ -1255,7 +1272,10 @@ to join your organization under Huntr.</p>
                 </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bob@huntr.co"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1666980452</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"lastSeenAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1689792002</span><span class="p">,</span><span class="w">
-            </span><span class="p">}</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"boardIds"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"5a6e4c3c7e42789e6e65c984"</span><span class="p">,</span><span class="w">
+            </span><span class="p">]</span><span class="w">
         </span><span class="p">}</span><span class="w">
     </span><span class="p">],</span><span class="w">
     </span><span class="s2">"next"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5a9b3d392bd2e22e37dee4f0"</span><span class="w">
@@ -6678,6 +6698,10 @@ Starting in May 2020, the Events resource is being replaced by the Actions resou
 <li>New API endpoint to <a href="#list-internal-member-notes">List Internal Member Notes</a></li>
 <li>New API endpoint to <a href="#create-internal-member-note">Create Internal Member Note</a></li>
 <li>New API endpoint to <a href="#delete-internal-member-note">Delete Internal Member Note</a></li>
+</ul>
+<h2 id='october-28-2024'>October 28, 2024</h2>
+<ul>
+<li>New <code>boardIds</code> field in <a href="#member-resource">Member</a></li>
 </ul>
 
       </div>
