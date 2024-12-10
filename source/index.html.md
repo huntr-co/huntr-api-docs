@@ -896,6 +896,411 @@ Parameter | Required | Type | Description
 `fieldType` | yes | String | One of [type of member fields](#types-of-member-fields)
 `choices` | only when `fieldType == 'MULTIPLE_CHOICE'` or `fieldType == 'MULTIPLE_SELECT'` | Array | List of strings representing choices in a field of type MULTIPLE_CHOICE or MULTIPLE_SELECT
 
+# Candidates
+
+## Candidate Resource
+
+> A candidate profile in your talent portal. All candidate profiles belong to a member, but not all members will have a candidate profile:
+
+```json
+{
+    "id": "5b0379b5712bb674fd0d561e",
+    "firstName": "John",
+    "lastName": "Smith",
+    "email": "johns@huntr.co",
+    "emails": [
+        {
+            "email": "johns@huntr.co",
+            "type": "personal"
+        }
+    ],
+    "phoneNumber": "+14155551234",
+    "phoneNumbers": [
+        {
+            "number": "+14155551234",
+            "type": "mobile"
+        }
+    ],
+    "headline": "Full Stack Developer",
+    "bio": "Experienced developer with 5 years of experience...",
+    "profilePhotoUrl": "https://example.com/photo.jpg",
+    "backgroundPhotoUrl": "https://example.com/background.jpg",
+    "currentLocation": {
+        "name": "San Francisco",
+        "address": "San Francisco, CA",
+        "country": "United States",
+        "lat": "37.7749",
+        "lng": "-122.4194"
+    },
+    "timezone": "America/Los_Angeles",
+    "totalWorkExperienceYears": 5,
+    "skillNames": ["JavaScript", "Python", "React"],
+    "profiles": {
+        "linkedin": "https://linkedin.com/in/graciela",
+        "github": "https://github.com/graciela"
+    },
+    "legallyAuthorizedToWorkInUsa": true,
+    "requireWorkVisaSponsorshipInUsa": false,
+    "experiencePreference": "mid-level",
+    "industryPreferencesNames": ["Technology", "Healthcare"],
+    "rolePreferencesNames": ["Software Engineer", "Full Stack Developer"],
+    "expectedSalary": "$120,000",
+    "willingToRelocate": true,
+    "openToWorkEnvironments": ["remote", "hybrid", "onsite"],
+    "workEnvironmentPreference": "remote",
+    "locationPreferences": [
+        {
+            "name": "San Francisco Bay Area",
+            "address": "San Francisco, CA",
+            "country": "United States",
+            "lat": "37.7749",
+            "lng": "-122.4194"
+        }
+    ],
+    "jobTypePreferences": ["full-time", "contract"],
+    "isVisibleToAllEmployers": true,
+    "isPublicProfile": false,
+    "workExperiences": [
+        {
+            "isCurrentPosition": true,
+            "description": "Led development of...",
+            "startedAt": 1577836800,
+            "jobTitle": "Senior Developer",
+            "jobSummary": "Full stack development...",
+            "employerName": "Tech Corp",
+            "location": {
+                "name": "San Francisco",
+                "address": "San Francisco, CA"
+            },
+            "achievements": ["Increased performance by 50%"],
+            "skillNames": ["JavaScript", "React"]
+        }
+    ],
+    "volunteerExperiences": [
+        {
+            "isCurrentPosition": false,
+            "description": "Mentored junior developers...",
+            "startedAt": 1577836800,
+            "endedAt": 1609459200,
+            "jobTitle": "Mentor",
+            "employerName": "Code.org"
+        }
+    ],
+    "educations": [
+        {
+            "description": "Computer Science major",
+            "graduationAt": 1577836800,
+            "cumulativeGpa": "3.8",
+            "achievements": ["Dean's List"],
+            "fieldOfStudyName": "Computer Science",
+            "degreeTypeName": "Bachelor of Science",
+            "schoolName": "University of California"
+        }
+    ],
+    "projects": [
+        {
+            "title": "Personal Website",
+            "releasedAt": 1577836800,
+            "headline": "Modern React-based portfolio",
+            "description": "Built using...",
+            "link": "https://example.com",
+            "achievements": ["Featured on GitHub"],
+            "mainImageUrl": "https://example.com/image.jpg",
+            "imageUrls": ["https://example.com/image1.jpg"],
+            "skillNames": ["React", "Node.js"]
+        }
+    ],
+    "links": [
+        {
+            "title": "Blog",
+            "description": "Technical writing",
+            "url": "https://blog.example.com"
+        }
+    ],
+    "createdAt": 1526954421,
+    "memberId": "5e6a7bbdc56bc6669e3da86c"
+}
+```
+
+A candidate represents a profile in your talent portal. All candidate profiles belong to a member, but not all members will have a candidate profile:
+
+Field | Type | Description
+----- | ---- | -----------
+id | String | Candidate's unique identifier
+memberId | String | Associated organization member ID, see [Member Resource](#member-resource)
+firstName | String | Candidate's first name
+lastName | String | Candidate's last name
+email | String | Candidate's primary email address
+emails | Array | List of candidate's email addresses with types
+phoneNumber | String | Candidate's primary phone number
+phoneNumbers | Array | List of candidate's phone numbers with types
+headline | String | Professional headline
+bio | String | Detailed professional biography
+profilePhotoUrl | String | URL to profile photo
+backgroundPhotoUrl | String | URL to profile background photo
+currentLocation | Object | Current location details including address and coordinates
+timezone | String | Candidate's timezone
+totalWorkExperienceYears | Number | Years of work experience
+skillNames | Array | List of professional skills
+profiles | Object | Social and professional profile links
+legallyAuthorizedToWorkInUsa | Boolean | Work authorization status
+requireWorkVisaSponsorshipInUsa | Boolean | Visa sponsorship requirement
+experiencePreference | String | Preferred experience level
+industryPreferencesNames | Array | Preferred industries
+rolePreferencesNames | Array | Preferred job roles
+expectedSalary | String | Expected compensation
+willingToRelocate | Boolean | Relocation preference
+openToWorkEnvironments | Array | Acceptable work environments
+workEnvironmentPreference | String | Preferred work environment
+locationPreferences | Array | Preferred work locations
+jobTypePreferences | Array | Preferred employment types
+isVisibleToAllEmployers | Boolean | Visibility to employer partners
+isPublicProfile | Boolean | Public profile status
+workExperiences | Array | Professional work history
+volunteerExperiences | Array | Volunteer experience
+educations | Array | Educational background
+projects | Array | Portfolio projects
+links | Array | Professional links and resources
+createdAt | Unix timestamp | When the candidate was created
+
+## List Candidates
+
+```shell
+curl "https://api.huntr.co/org/candidates?limit=2"
+  -H "Authorization: Bearer <ORG_ACCESS_TOKEN>"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+    "data": [
+        {
+            "id": "5b0379b5712bb674fd0d561e",
+            "firstName": "Graciela",
+            "lastName": "Varela",
+            "email": "gracev@huntr.co",
+            "memberId": "5e6a7bbdc56bc6669e3da86c"
+        }
+    ],
+    "next": "5b0379b5712bb674fd0d561e"
+}
+```
+
+This endpoint retrieves all candidates in your organization. The returned candidates are a lean/lightweight version of the [Candidate Resource](#candidate-resource). You can use the [Retrieve a Candidate](#retrieve-a-candidate) endpoint to get the full candidate profile, or the [Retrieve Candidate Action Metrics](#retrieve-candidate-action-metrics) endpoint to get the candidate's action metrics.
+
+### HTTP Request
+
+`GET https://api.huntr.co/org/candidates`
+
+### Query Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+`email` | none | Filter candidates by email address, will return an array with 1 candidate if the email address is associated with a candidate profile
+`memberId` | none | Filter candidates by member ID, will return an array with 1 candidate if the member has a candidate profile
+`limit` | 100 | Maximum number of candidates to return (max: 500)
+`next` | none | Cursor for pagination (candidate ID to start after)
+
+## Retrieve a Candidate
+
+```shell
+curl "https://api.huntr.co/org/candidates/5b0379b5712bb674fd0d561e"
+  -H "Authorization: Bearer <ORG_ACCESS_TOKEN>"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+    "id": "5b0379b5712bb674fd0d561e",
+    "firstName": "John",
+    "lastName": "Smith",
+    "email": "johns@huntr.co",
+    "emails": [
+        {
+            "email": "johns@huntr.co",
+            "type": "personal"
+        }
+    ],
+    "phoneNumber": "+14155551234",
+    "phoneNumbers": [
+        {
+            "number": "+14155551234",
+            "type": "mobile"
+        }
+    ],
+    "headline": "Full Stack Developer",
+    "bio": "Experienced developer with 5 years of experience...",
+    "profilePhotoUrl": "https://example.com/photo.jpg",
+    "backgroundPhotoUrl": "https://example.com/background.jpg",
+    "currentLocation": {
+        "name": "San Francisco",
+        "address": "San Francisco, CA",
+        "country": "United States",
+        "lat": "37.7749",
+        "lng": "-122.4194"
+    },
+    "timezone": "America/Los_Angeles",
+    "totalWorkExperienceYears": 5,
+    "skillNames": ["JavaScript", "Python", "React"],
+    "profiles": {
+        "linkedin": "https://linkedin.com/in/graciela",
+        "github": "https://github.com/graciela"
+    },
+    "legallyAuthorizedToWorkInUsa": true,
+    "requireWorkVisaSponsorshipInUsa": false,
+    "experiencePreference": "mid-level",
+    "industryPreferencesNames": ["Technology", "Healthcare"],
+    "rolePreferencesNames": ["Software Engineer", "Full Stack Developer"],
+    "expectedSalary": "$120,000",
+    "willingToRelocate": true,
+    "openToWorkEnvironments": ["remote", "hybrid", "onsite"],
+    "workEnvironmentPreference": "remote",
+    "locationPreferences": [
+        {
+            "name": "San Francisco Bay Area",
+            "address": "San Francisco, CA",
+            "country": "United States",
+            "lat": "37.7749",
+            "lng": "-122.4194"
+        }
+    ],
+    "jobTypePreferences": ["full-time", "contract"],
+    "isVisibleToAllEmployers": true,
+    "isPublicProfile": false,
+    "workExperiences": [
+        {
+            "isCurrentPosition": true,
+            "description": "Led development of...",
+            "startedAt": 1577836800,
+            "jobTitle": "Senior Developer",
+            "jobSummary": "Full stack development...",
+            "employerName": "Tech Corp",
+            "location": {
+                "name": "San Francisco",
+                "address": "San Francisco, CA"
+            },
+            "achievements": ["Increased performance by 50%"],
+            "skillNames": ["JavaScript", "React"]
+        }
+    ],
+    "volunteerExperiences": [
+        {
+            "isCurrentPosition": false,
+            "description": "Mentored junior developers...",
+            "startedAt": 1577836800,
+            "endedAt": 1609459200,
+            "jobTitle": "Mentor",
+            "employerName": "Code.org"
+        }
+    ],
+    "educations": [
+        {
+            "description": "Computer Science major",
+            "graduationAt": 1577836800,
+            "cumulativeGpa": "3.8",
+            "achievements": ["Dean's List"],
+            "fieldOfStudyName": "Computer Science",
+            "degreeTypeName": "Bachelor of Science",
+            "schoolName": "University of California"
+        }
+    ],
+    "projects": [
+        {
+            "title": "Personal Website",
+            "releasedAt": 1577836800,
+            "headline": "Modern React-based portfolio",
+            "description": "Built using...",
+            "link": "https://example.com",
+            "achievements": ["Featured on GitHub"],
+            "mainImageUrl": "https://example.com/image.jpg",
+            "imageUrls": ["https://example.com/image1.jpg"],
+            "skillNames": ["React", "Node.js"]
+        }
+    ],
+    "links": [
+        {
+            "title": "Blog",
+            "description": "Technical writing",
+            "url": "https://blog.example.com"
+        }
+    ],
+    "createdAt": 1526954421,
+    "memberId": "5e6a7bbdc56bc6669e3da86c"
+}
+```
+
+This endpoint retrieves a specific candidate.
+
+### HTTP Request
+
+`GET https://api.huntr.co/org/candidates/<ID>`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the candidate to retrieve
+
+## Retrieve Candidate Action Metrics
+
+```shell
+curl "https://api.huntr.co/org/candidates/5b0379b5712bb674fd0d561e/action-metrics"
+  -H "Authorization: Bearer <ORG_ACCESS_TOKEN>"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+    "CANDIDATE_PROFILE_VIEWED": {
+        "uniqueEmployersCt": 3,
+        "totalCt": 6,
+        "employers": [
+            {
+                "id": "642b2cc41d74bb7525269573",
+                "name": "Buffer",
+                "domain": "buffer.com",
+                "totalCt": 2
+            },
+            {
+                "id": "641220c4b1cdf6c81a3cbf88",
+                "name": "Duolingo",
+                "domain": "duolingo.com",
+                "totalCt": 2
+            },
+            {
+                "id": "647fc0ef71dbf904d0343023",
+                "name": "Glassdoor",
+                "domain": "glassdoor.com",
+                "totalCt": 2
+            }
+        ]
+    }
+}
+```
+
+This endpoint retrieves detailed action metrics for a specific candidate, broken down by employer and action type. As of now, the only action type displayed is `CANDIDATE_PROFILE_VIEWED`.
+
+### HTTP Request
+
+`GET https://api.huntr.co/org/candidates/<ID>/action-metrics`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the candidate to retrieve metrics for
+
+### Action Metrics Response
+
+Field | Type | Description
+----- | ---- | -----------
+`uniqueEmployersCt` | Number | Number of unique employers that have completed the action under which the metrics are being displayed (i.e. if the action is `CANDIDATE_PROFILE_VIEWED`, this will be the number of unique employers that have viewed the candidate profile)
+`totalCt` | Number | Total number of times the action was completed
+`employers` | Array | List of employers that have completed the action under which the metrics are being displayed
+
 # Board Templates
 
 ## Board Template Resource

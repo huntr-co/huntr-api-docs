@@ -71,3 +71,9 @@ Added validation for the `limit` parameter for requests that use the [List](#pag
 
 ## October 28, 2024
 - New `boardIds` field in [Member](#member-resource)
+
+## December 9, 2024
+- New [Candidate](#candidate-resource) resource
+- New API endpoint to [List Candidates](#list-candidates)
+- New API endpoint to [Retrieve a Candidate](#retrieve-a-candidate)
+- New API endpoint to [Retrieve Candidate Action Metrics](#retrieve-candidate-action-metrics)
