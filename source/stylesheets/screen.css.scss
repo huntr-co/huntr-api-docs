@@ -505,6 +505,10 @@ html, body {
 // This is all the stuff that appears in the right half of the page
 
 .content {
+  &>div.highlight {
+    clear:none;
+  }
+
   pre, blockquote {
     background-color: $code-bg;
     color: #fff;
@@ -606,4 +610,8 @@ html, body {
 
 .highlight, .highlight .w {
   background-color: $code-bg;
+}
+
+.highlight .nl {
+  background-color: transparent;
 }
