@@ -77,3 +77,6 @@ Added validation for the `limit` parameter for requests that use the [List](#pag
 - New API endpoint to [List Candidates](#list-candidates)
 - New API endpoint to [Retrieve a Candidate](#retrieve-a-candidate)
 - New API endpoint to [Retrieve Candidate Action Metrics](#retrieve-candidate-action-metrics)
+- New [Action Type](#action-types) `CANDIDATE_PROFILE_VIEWED`
+- New [Action Type](#action-types) `CANDIDATE_SEARCH_RAN`
+- New [Action Type](#action-types) `ORGANIZATION_TALENT_PORTAL_ACCESSED`

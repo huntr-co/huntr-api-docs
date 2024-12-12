@@ -3187,6 +3187,9 @@ Field | Type | In all actions | Description
 `organizationEmployerRequest` | Object | false | [Organization Employer Request](#organization-employer-requests) related to Employer portal actions like `ORGANIZATION_EMPLOYER_REQUEST_CREATED` `ORGANIZATION_EMPLOYER_REQUEST_VERIFIED` `ORGANIZATION_EMPLOYER_REQUEST_APPROVED` `ORGANIZATION_EMPLOYER_REQUEST_DECLINED`.
 `organizationEmployerPartnership` | Object | false | [Organization Employer Partnership](#organization-employer-partnerships) related to Employer portal actions like `ORGANIZATION_EMPLOYER_PARTNERSHIP_CREATED`.
 `update` | Object | false | Entry used to update the resource, only shown in Update actions
+`creatorEmployerMember` | Object | false | Employer user/member who took the action. These applies for actions like `CANDIDATE_PROFILE_VIEWED`, `CANDIDATE_SEARCH_RAN` and `ORGANIZATION_TALENT_PORTAL_ACCESSED`
+`candidate` | Object | false | [Candidate](#candidates) related to actions like `CANDIDATE_PROFILE_VIEWED`
+`filters` | Object | false | Filters used in a `CANDIDATE_SEARCH_RAN` action
 
 ## Action Types
 
@@ -3234,6 +3237,9 @@ Action Type | Description | Extra fields
 `ORGANIZATION_EMPLOYER_REQUEST_APPROVED` |  An employer request is approved by a team member | `organizationEmployerRequest` `employer`
 `ORGANIZATION_EMPLOYER_REQUEST_DECLINED` |  An employer request is declined by a team member | `organizationEmployerRequest` `employer`
 `ORGANIZATION_EMPLOYER_PARTNERSHIP_CREATED` | First user from a new employer has joined your portal | `organizationEmployerPartnership` `employer`
+`CANDIDATE_PROFILE_VIEWED` | A job seeker's profile is viewed by an employer | `candidate`, `employer`, `creatorEmployerMember`
+`CANDIDATE_SEARCH_RAN` | An employer run a candidate search in your organization's talent portal | `employer`, `filters`, `creatorEmployerMember`
+`ORGANIZATION_TALENT_PORTAL_ACCESSED` | An employer has accessed your organization's talent portal | `employer`, `creatorEmployerMember`
 
 ## List Actions
 
