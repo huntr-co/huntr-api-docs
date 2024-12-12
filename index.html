@@ -5018,6 +5018,24 @@ or Note a new Action will be created representing that event:</p>
 <td>false</td>
 <td>Entry used to update the resource, only shown in Update actions</td>
 </tr>
+<tr>
+<td><code>creatorEmployerMember</code></td>
+<td>Object</td>
+<td>false</td>
+<td>Employer user/member who took the action. These applies for actions like <code>CANDIDATE_PROFILE_VIEWED</code>, <code>CANDIDATE_SEARCH_RAN</code> and <code>ORGANIZATION_TALENT_PORTAL_ACCESSED</code></td>
+</tr>
+<tr>
+<td><code>candidate</code></td>
+<td>Object</td>
+<td>false</td>
+<td><a href="#candidates">Candidate</a> related to actions like <code>CANDIDATE_PROFILE_VIEWED</code></td>
+</tr>
+<tr>
+<td><code>filters</code></td>
+<td>Object</td>
+<td>false</td>
+<td>Filters used in a <code>CANDIDATE_SEARCH_RAN</code> action</td>
+</tr>
 </tbody></table>
 <h2 id='action-types'>Action Types</h2>
 <p>There are multiple action types:</p>
@@ -5228,6 +5246,21 @@ or Note a new Action will be created representing that event:</p>
 <td><code>ORGANIZATION_EMPLOYER_PARTNERSHIP_CREATED</code></td>
 <td>First user from a new employer has joined your portal</td>
 <td><code>organizationEmployerPartnership</code> <code>employer</code></td>
+</tr>
+<tr>
+<td><code>CANDIDATE_PROFILE_VIEWED</code></td>
+<td>A job seeker&#39;s profile is viewed by an employer</td>
+<td><code>candidate</code>, <code>employer</code>, <code>creatorEmployerMember</code></td>
+</tr>
+<tr>
+<td><code>CANDIDATE_SEARCH_RAN</code></td>
+<td>An employer run a candidate search in your organization&#39;s talent portal</td>
+<td><code>employer</code>, <code>filters</code>, <code>creatorEmployerMember</code></td>
+</tr>
+<tr>
+<td><code>ORGANIZATION_TALENT_PORTAL_ACCESSED</code></td>
+<td>An employer has accessed your organization&#39;s talent portal</td>
+<td><code>employer</code>, <code>creatorEmployerMember</code></td>
 </tr>
 </tbody></table>
 <h2 id='list-actions'>List Actions</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.huntr.co/org/actions?limit=3"</span>
@@ -7314,6 +7347,9 @@ Starting in May 2020, the Events resource is being replaced by the Actions resou
 <li>New API endpoint to <a href="#list-candidates">List Candidates</a></li>
 <li>New API endpoint to <a href="#retrieve-a-candidate">Retrieve a Candidate</a></li>
 <li>New API endpoint to <a href="#retrieve-candidate-action-metrics">Retrieve Candidate Action Metrics</a></li>
+<li>New <a href="#action-types">Action Type</a> <code>CANDIDATE_PROFILE_VIEWED</code></li>
+<li>New <a href="#action-types">Action Type</a> <code>CANDIDATE_SEARCH_RAN</code></li>
+<li>New <a href="#action-types">Action Type</a> <code>ORGANIZATION_TALENT_PORTAL_ACCESSED</code></li>
 </ul>
 
       </div>
